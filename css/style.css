@@ -360,6 +360,66 @@ header p {
     line-height: 1.7;
 }
 
+.answer-toggle {
+    margin: 0 0 14px;
+    padding: 8px 12px;
+    border: 1px solid #3d5a80;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1a1a1a;
+    font: inherit;
+    cursor: pointer;
+}
+
+.answer-toggle:hover {
+    background: #edf5ff;
+}
+
+.possible-answer {
+    margin-top: 14px !important;
+    padding: 12px 14px;
+    border-left: 4px solid #3d5a80;
+    background: #ffffff;
+}
+
+.glossary-term {
+    position: relative;
+    font-weight: 700;
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+    cursor: help;
+}
+
+.glossary-definition {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 260px;
+    padding: 10px 12px;
+    border: 1px solid #cfd8e3;
+    border-radius: 6px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(26, 26, 26, 0.14);
+    font-size: 0.92rem;
+    font-weight: 400;
+    line-height: 1.45;
+    text-decoration: none;
+    cursor: default;
+}
+
+.glossary-term.is-open .glossary-definition {
+    display: block;
+}
+
+@media (hover: hover) {
+    .glossary-term:hover .glossary-definition,
+    .glossary-term:focus .glossary-definition {
+        display: block;
+    }
+}
+
 .lesson-ordered-list {
     list-style: decimal;
 }
