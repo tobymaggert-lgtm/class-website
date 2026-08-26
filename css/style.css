@@ -382,6 +382,92 @@ header p {
     background: #ffffff;
 }
 
+.simulation-panel {
+    margin: 18px 0;
+    padding: 16px;
+    border: 1px solid #dfe3e8;
+    background: #ffffff;
+}
+
+.simulation-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.simulation-button {
+    min-height: 42px;
+    padding: 8px 14px;
+    border: 1px solid #3d5a80;
+    border-radius: 6px;
+    background: #3d5a80;
+    color: #ffffff;
+    font: inherit;
+    cursor: pointer;
+}
+
+.simulation-button:hover,
+.simulation-button:focus {
+    background: #2d4664;
+}
+
+.simulation-controls label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.simulation-controls select {
+    min-height: 42px;
+    padding: 6px 8px;
+    border: 1px solid #b8c2cc;
+    border-radius: 4px;
+    background: #ffffff;
+    font: inherit;
+}
+
+.simulation-result,
+.simulation-summary {
+    margin: 10px 0 !important;
+}
+
+.simulation-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    min-height: 150px;
+    padding: 12px 6px 0;
+    border-bottom: 1px solid #b8c2cc;
+    overflow-x: auto;
+}
+
+.chart-column {
+    display: flex;
+    flex: 1 0 22px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 138px;
+    gap: 5px;
+}
+
+.chart-bar {
+    display: block;
+    width: 100%;
+    min-height: 4px;
+    background: #9aaabd;
+}
+
+.chart-column.is-qualifying .chart-bar {
+    background: #c96b4b;
+}
+
+.chart-label {
+    font-size: 0.78rem;
+}
+
 .glossary-term {
     position: relative;
     font-weight: 700;

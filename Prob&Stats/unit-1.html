@@ -391,57 +391,140 @@
           <section id="lesson-3" class="lesson">
             <div class="lesson-header">
               <p class="lesson-number">Lesson 3</p>
-              <h3>Lesson 3 Title</h3>
+              <h3>Randomization as a Fair Process</h3>
             </div>
 
             <div class="lesson-section lesson-bellringer">
               <h4>Bellringer</h4>
-              <p>Bellringer content will go here.</p>
+              <p>You flip a coin 10 times and get:</p>
+              <p><strong>H T H H H T H H H H</strong></p>
+              <ul class="lesson-list">
+                <li>Is this a fair coin?</li>
+                <li>What makes you think that?</li>
+                <li>How many heads would you expect if the coin were fair?</li>
+                <li>Would getting 7 heads out of 10 convince you that the coin is unfair?</li>
+                <li>What about 9 heads out of 10?</li>
+                <li>How could we figure out what results are reasonable just from chance?</li>
+              </ul>
             </div>
 
             <div class="lesson-section lesson-objectives">
               <h4>Objectives</h4>
               <ul class="lesson-list">
-                <li>Student-friendly objective 1 will go here.</li>
-                <li>Student-friendly objective 2 will go here.</li>
-                <li>Student-friendly objective 3 will go here.</li>
+                <li>I can explain why randomization can be used to model chance.</li>
+                <li>I can use a simulation to investigate what results are possible when nothing unusual is happening.</li>
+                <li>I can explain the idea of a null model.</li>
+                <li>I can describe what makes an observed result surprising.</li>
+                <li>I can explain why a single unusual result is not necessarily evidence of a real effect.</li>
               </ul>
             </div>
 
             <div class="lesson-section lesson-explore">
               <h4>Explore</h4>
-              <p>A question, problem, or phenomenon students investigate before formal instruction will go here.</p>
+              <div class="lesson-callout"><p><strong>Is this coin fair?</strong></p></div>
+              <p>Suppose someone claims that a coin is fair.</p>
+              <p>You flip the coin 10 times and get:</p>
+              <p><strong>H H H H H H H T T H</strong></p>
+              <p>You got <strong>8 heads out of 10 flips</strong>.</p>
+              <ul class="lesson-list">
+                <li>Does this prove the coin is unfair?</li>
+                <li>If the coin really were fair, could you still get 8 heads?</li>
+                <li>What about 9 heads?</li>
+                <li>What about 10 heads?</li>
+                <li>How often would you expect to get 8 or more heads just by chance?</li>
+              </ul>
+              <p>We need a way to investigate what could happen <strong>if the coin really is fair</strong>.</p>
+              <p>That is where simulation comes in.</p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-3-explore-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-3-explore-answers" class="possible-answer" hidden>
+                <p><strong>Does this prove the coin is unfair?</strong> No. Getting 8 heads out of 10 flips could happen even with a fair coin. We need to know how often results like this happen just by chance before deciding that the coin is unusual.</p>
+                <p><strong>If the coin really were fair, could you still get 8 heads?</strong> Yes. Randomness can produce groups of flips that are not exactly half heads and half tails.</p>
+                <p><strong>What about 9 heads?</strong> Yes, 9 heads is possible with a fair coin, but it should happen less often than 8 heads.</p>
+                <p><strong>What about 10 heads?</strong> Yes, 10 heads is also possible with a fair coin, but it should be even less common.</p>
+                <p><strong>How often would you expect to get 8 or more heads just by chance?</strong> We could use a simulation of many groups of 10 fair coin flips and count how often 8 or more heads occur. This gives us an idea of how unusual 8 heads would be under the assumption that the coin is fair.</p>
+              </div>
             </div>
 
             <div class="lesson-section lesson-simulation">
               <h4>Technology / Simulation / Data Investigation</h4>
               <div class="simulation-widget">
-                <p>Interactive simulation, generated data, or technology-based investigation will go here.</p>
+                <h5>Simulation 1: Is This Coin Unfair?</h5>
+                <p>We will assume, for now, that the coin <strong>is fair</strong>.</p>
+                <p>Our goal is to see what kinds of results we can get from a fair coin.</p>
+                <div class="simulation-panel" data-simulation="coin">
+                  <div class="simulation-controls">
+                    <button type="button" class="simulation-button" data-action="single">Flip 10 Times</button>
+                    <button type="button" class="simulation-button" data-action="batch">Run 100 Simulations</button>
+                    <label>Count at least <select data-control="cutoff" aria-label="Coin simulation cutoff"><option value="8">8 heads</option><option value="9">9 heads</option><option value="10">10 heads</option></select></label>
+                  </div>
+                  <p class="simulation-result" data-output="single">Run a simulation to see one result.</p>
+                  <div class="simulation-summary" data-output="summary">No batch simulations yet.</div>
+                  <div class="simulation-chart" data-output="chart" aria-label="Coin heads distribution"></div>
+                </div>
+                <h5>Physical Simulation</h5>
+                <ol class="lesson-list"><li>Flip a coin 10 times.</li><li>Record the number of heads.</li><li>Repeat this process many times.</li><li>Record the number of heads each time.</li><li>Create a dotplot showing the results.</li></ol>
+                <p>If we use technology, we can perform many simulations much faster.</p>
+                <ul class="lesson-list"><li>How many heads occurred most often?</li><li>How often did we get exactly 5 heads?</li><li>How often did we get 8 or more heads?</li><li>Did anyone get 10 heads?</li><li>What is the largest number of heads you observed?</li><li>Does getting 8 heads now seem unusual?</li></ul>
+                <button type="button" class="answer-toggle" data-answer-target="lesson-3-simulation-answers" aria-expanded="false">Show Possible Answers</button>
+                <div id="lesson-3-simulation-answers" class="possible-answer" hidden><p><strong>How many heads occurred most often?</strong> Results near 5 heads should occur most often, although the exact most common result can vary from simulation to simulation.</p><p><strong>How often did we get exactly 5 heads?</strong> We should get exactly 5 heads fairly often because it is one of the most likely outcomes for 10 fair coin flips.</p><p><strong>How often did we get 8 or more heads?</strong> It should happen occasionally, but much less often than results near 5 heads. The exact number will vary because the simulation is random.</p><p><strong>Did anyone get 10 heads?</strong> It is possible, but it is uncommon. Whether it appears in 100 simulations depends on random chance.</p><p><strong>What is the largest number of heads you observed?</strong> Answers will vary. A large number such as 8, 9, or 10 is possible, but extreme results should occur less often than results near 5.</p><p><strong>Does getting 8 heads now seem unusual?</strong> It is somewhat unusual because it occurs less often than results near 5 heads, but it is still possible under the assumption that the coin is fair.</p></div>
+                <h5>Simulation 2: Let's Make It More Extreme</h5>
+                <p>Now repeat the simulation, but instead of asking about 8 or more heads, focus on <strong>9 or more heads</strong>.</p><p>Run another 100 or more simulations.</p><p>Use the cutoff control above to compare 8, 9, and 10 heads.</p>
+                <ul class="lesson-list"><li>How many simulations produced 9 or more heads?</li><li>How does this compare with getting 8 or more heads?</li><li>Which result would be more surprising?</li><li>What if we observed 10 heads out of 10?</li><li>Does "possible" mean "not surprising"?</li></ul>
+                <button type="button" class="answer-toggle" data-answer-target="lesson-3-extreme-answers" aria-expanded="false">Show Possible Answers</button>
+                <div id="lesson-3-extreme-answers" class="possible-answer" hidden><p><strong>How many simulations produced 9 or more heads?</strong> Usually very few. The exact number will vary because the simulations are random.</p><p><strong>How does this compare with getting 8 or more heads?</strong> Getting 9 or more heads should be less common than getting 8 or more heads because there are fewer outcomes that qualify.</p><p><strong>Which result would be more surprising?</strong> 9 or more heads is more surprising than 8 or more heads because it occurs less often in simulations of a fair coin.</p><p><strong>What if we observed 10 heads out of 10?</strong> That would be very unusual under the assumption of a fair coin, although it would still be possible.</p><p><strong>Does "possible" mean "not surprising"?</strong> No. Something can be possible but very unlikely. Simulation helps us distinguish between results that are common and results that are rare.</p></div>
+                <h5>Simulation 3: Can Someone Guess Better Than Chance?</h5>
+                <p>Suppose a teacher claims that students can correctly guess whether a coin will land heads or tails better than random chance.</p><p>A student makes 20 guesses before each coin flip.</p><p>The student correctly predicts <strong>16 out of 20 flips</strong>.</p><p>We want to know:</p><p><strong>Could someone get 16 or more correct simply by guessing randomly?</strong></p><p>For this simulation, assume that the student's guesses are <strong>no better than random guessing</strong>.</p>
+                <div class="simulation-panel" data-simulation="guessing"><div class="simulation-controls"><button type="button" class="simulation-button" data-action="single">Run 20 Guesses</button><button type="button" class="simulation-button" data-action="batch">Run 100 Simulations</button><label>Count at least <select data-control="cutoff" aria-label="Guessing simulation cutoff"><option value="16">16 correct</option><option value="18">18 correct</option><option value="20">20 correct</option></select></label></div><p class="simulation-result" data-output="single">Run a simulation to see one result.</p><div class="simulation-summary" data-output="summary">No batch simulations yet.</div><div class="simulation-chart" data-output="chart" aria-label="Guessing accuracy distribution"></div></div>
+                <ul class="lesson-list"><li>How often did random guessing produce 16 or more correct guesses?</li><li>Is 16 correct surprising?</li><li>Would you be more convinced if the student got 18 correct?</li><li>What if the student got 20 correct?</li><li>What does our simulation tell us?</li></ul>
+                <button type="button" class="answer-toggle" data-answer-target="lesson-3-guessing-answers" aria-expanded="false">Show Possible Answers</button>
+                <div id="lesson-3-guessing-answers" class="possible-answer" hidden><p><strong>How often did random guessing produce 16 or more correct guesses?</strong> It should happen occasionally but not very often. The exact proportion will vary from simulation to simulation.</p><p><strong>Is 16 correct surprising?</strong> It is somewhat surprising because it is much higher than the typical result for random guessing, but it is still possible by chance.</p><p><strong>Would you be more convinced if the student got 18 correct?</strong> Yes. A score of 18 would be less common under random guessing, so it would provide stronger evidence that something unusual may be happening.</p><p><strong>What if the student got 20 correct?</strong> Getting all 20 correct through random guessing would be extremely unusual. It would provide much stronger evidence against the idea that the student is simply guessing randomly.</p><p><strong>What does our simulation tell us?</strong> It tells us how often results like the observed score can occur when the student is only guessing randomly. If the observed result is very rare in the simulation, we have evidence that random guessing may not adequately explain what happened.</p></div>
               </div>
             </div>
 
             <div class="lesson-section lesson-questions">
               <h4>Guiding Questions</h4>
               <ul class="lesson-list">
-                <li>Guiding question 1 will go here.</li>
-                <li>Guiding question 2 will go here.</li>
-                <li>Guiding question 3 will go here.</li>
+                <li>Why did we begin by assuming that the coin was fair?<button type="button" class="answer-toggle" data-answer-target="lesson-3-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-3-guiding-1" class="possible-answer" hidden>We need a starting point for our simulation. Assuming the coin is fair lets us model what results could happen if nothing unusual is happening.</p></li>
+                <li>What does it mean to say that the coin is fair?<button type="button" class="answer-toggle" data-answer-target="lesson-3-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-3-guiding-2" class="possible-answer" hidden>A fair coin has an equal chance of landing heads or tails on each flip.</p></li>
+                <li>Why did we simulate many sets of 10 flips instead of flipping the coin only once?<button type="button" class="answer-toggle" data-answer-target="lesson-3-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-3-guiding-3" class="possible-answer" hidden>One set of 10 flips gives us only one result. Many simulations show us the range of results that could happen just by chance and help us see which results are common or unusual.</p></li>
+                <li>What does each simulation represent?<button type="button" class="answer-toggle" data-answer-target="lesson-3-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-3-guiding-4" class="possible-answer" hidden>Each simulation represents one possible set of results that could occur if the coin is fair or if the student is simply guessing randomly.</p></li>
+                <li>Why can a fair coin still produce 8 heads out of 10 flips?<button type="button" class="answer-toggle" data-answer-target="lesson-3-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-3-guiding-5" class="possible-answer" hidden>Randomness does not guarantee exactly half heads and half tails in every small group of flips. An outcome such as 8 heads can happen by chance.</p></li>
+                <li>Why isn't every possible result equally likely?<button type="button" class="answer-toggle" data-answer-target="lesson-3-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-3-guiding-6" class="possible-answer" hidden>Some numbers of heads can occur in more combinations of individual flips than others. For example, there are many different sequences that produce 5 heads, while only one sequence produces 10 heads.</p></li>
+                <li>What makes a result unusual or surprising?<button type="button" class="answer-toggle" data-answer-target="lesson-3-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-3-guiding-7" class="possible-answer" hidden>A result is unusual when it occurs relatively rarely under the model or assumption we are investigating.</p></li>
+                <li>Why is 10 heads out of 10 more surprising than 6 heads out of 10?<button type="button" class="answer-toggle" data-answer-target="lesson-3-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-3-guiding-8" class="possible-answer" hidden>A fair coin produces results near 5 heads more often than extreme results such as 10 heads. Therefore, 10 heads is much less common.</p></li>
+                <li>What does the simulation tell us about what can happen just by chance?<button type="button" class="answer-toggle" data-answer-target="lesson-3-guiding-9" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-3-guiding-9" class="possible-answer" hidden>It shows us the range of results that can occur when nothing unusual is happening and helps us determine which results are common and which are rare.</p></li>
+                <li>Why do we need many simulations?<button type="button" class="answer-toggle" data-answer-target="lesson-3-guiding-10" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-3-guiding-10" class="possible-answer" hidden>Many simulations give us a better picture of the distribution of possible results. A small number of simulations could make a rare event appear more or less common just because of random variation.</p></li>
+                <li>What is the purpose of starting with the assumption that "nothing unusual is happening"?<button type="button" class="answer-toggle" data-answer-target="lesson-3-guiding-11" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-3-guiding-11" class="possible-answer" hidden>It gives us a model for what we would expect if there were no real effect or unusual process. We can then compare the observed result with what the model produces.</p></li>
+                <li>How is this similar to the random sampling we studied in Lesson 2?<button type="button" class="answer-toggle" data-answer-target="lesson-3-guiding-12" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-3-guiding-12" class="possible-answer" hidden>In both situations, randomness creates variability. Different random samples can produce different results, just as different random simulations can produce different results.</p></li>
+                <li>Why doesn't an unusual result automatically prove that something unusual is happening?<button type="button" class="answer-toggle" data-answer-target="lesson-3-guiding-13" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-3-guiding-13" class="possible-answer" hidden>Even unlikely events can happen by chance. An unusual result provides evidence against our assumption, but it does not prove that the assumption is false.</p></li>
+                <li>If a result is very unlikely under our assumption, what might that tell us?<button type="button" class="answer-toggle" data-answer-target="lesson-3-guiding-14" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-3-guiding-14" class="possible-answer" hidden>It may suggest that the assumption does not adequately explain what happened and that something other than ordinary chance may be involved.</p></li>
               </ul>
             </div>
 
             <div class="lesson-section lesson-big-idea">
               <h4>The Big Idea</h4>
-              <p>The formal statistical idea that emerges from the investigation will be explained here.</p>
+              <div class="lesson-callout emphasis"><p><strong><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">Chance models<span class="glossary-definition">Models that describe what results might occur because of random chance.</span></span> help determine what is surprising.</strong></p></div>
+              <p>Randomness creates <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">variability<span class="glossary-definition">The fact that different individuals, samples, or random outcomes can produce different results.</span></span>, even when nothing unusual is happening. We can use <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">randomization<span class="glossary-definition">Using a random process to represent or produce chance outcomes.</span></span> and <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">simulation<span class="glossary-definition">A model that uses a random process to imitate a real situation.</span></span> to model what results might occur just by chance. To do this, we begin with a <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">null idea<span class="glossary-definition">The starting assumption that there is no real effect, difference, or unusual process.</span></span>: assume that there is no real effect, difference, or unusual process happening.</p>
+              <p>We then compare an <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">observed result<span class="glossary-definition">The actual result that we obtained from the situation being studied.</span></span> to the results produced by our simulation. If the observed result is common in the simulation, it is not particularly surprising. If the observed result is very unusual, we have <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">evidence<span class="glossary-definition">Information from data or simulations that supports or challenges an idea.</span></span> that the original assumption may not explain what happened.</p>
+              <p>A simulation does not prove that something is true or false. Instead, it helps us answer an important statistical question:</p>
+              <p><strong>"Could we reasonably get a result like this just from chance?"</strong></p>
             </div>
 
             <div class="lesson-section lesson-apply">
               <h4>Apply</h4>
-              <p>A new or modified situation where students apply the concept will go here.</p>
+              <h3>Would You Be Surprised?</h3>
+              <p>For each situation, decide whether the result would be <strong>not surprising</strong>, <strong>somewhat surprising</strong>, or <strong>very surprising</strong> if nothing unusual were happening.</p>
+              <ol class="lesson-list lesson-ordered-list"><li>A fair coin is flipped 10 times and lands on heads 6 times.</li><li>A fair coin is flipped 10 times and lands on heads 10 times.</li><li>A six-sided die is rolled 20 times and lands on 6 exactly 3 times.</li><li>A six-sided die is rolled 20 times and lands on 6 exactly 15 times.</li><li>A student guesses randomly on 20 true/false questions and gets 11 correct.</li><li>A student guesses randomly on 20 true/false questions and gets 19 correct.</li></ol>
+              <p>Choose one of the situations. State what you would assume if <strong>nothing unusual were happening</strong>, describe how you could simulate that situation, and explain what result would make you suspicious that something unusual was happening.</p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-3-apply-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-3-apply-answers" class="possible-answer" hidden><p><strong>1. Fair coin, 6 heads out of 10:</strong> Not surprising. Results close to 5 heads are common when flipping a fair coin.</p><p><strong>2. Fair coin, 10 heads out of 10:</strong> Very surprising. It is possible with a fair coin, but it is extremely uncommon.</p><p><strong>3. Six-sided die, 3 sixes in 20 rolls:</strong> Not surprising. Getting a few sixes in 20 rolls is a reasonable result when the die is fair.</p><p><strong>4. Six-sided die, 15 sixes in 20 rolls:</strong> Very surprising. A fair die would rarely produce that many sixes.</p><p><strong>5. Random guessing, 11 correct out of 20:</strong> Not surprising. Random guessing should produce results around half correct, and 11 is very close to that.</p><p><strong>6. Random guessing, 19 correct out of 20:</strong> Very surprising. Getting 19 correct by random guessing would be extremely rare.</p></div>
             </div>
 
             <div class="lesson-section lesson-closure">
               <h4>Closure</h4>
-              <p>Closure reflection or synthesis question will go here.</p>
+              <p>A student flips a coin 10 times and gets 9 heads.</p><p>Someone says:</p><p><strong>"That proves the coin is unfair."</strong></p>
+              <ul class="lesson-list"><li>Do you agree or disagree?</li><li>In one or two sentences, explain how <strong>simulation and randomization</strong> could help us decide whether 9 heads is actually surprising.</li></ul>
+              <div class="lesson-callout emphasis"><p><strong>One sentence to remember:</strong></p><p><strong>Before deciding that something unusual happened, ask: "What could have happened just by chance?"</strong></p></div>
             </div>
           </section>
 
