@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Probability & Statistics - Unit 2: Exploring Data</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/main.js" defer></script>
   </head>
   <body>
     <header class="site-header unit-header">
@@ -29,65 +30,168 @@
           </div>
 
           <nav class="lesson-nav">
-            <a href="#lesson-1">Lesson 1</a>
-            <a href="#lesson-2">Lesson 2</a>
-            <a href="#lesson-3">Lesson 3</a>
-            <a href="#lesson-4">Lesson 4</a>
+            
             <a href="#lesson-5">Lesson 5</a>
             <a href="#lesson-6">Lesson 6</a>
+            <a href="#lesson-7">Lesson 7</a>
+            <a href="#lesson-8">Lesson 8</a>
           </nav>
         </aside>
 
         <div class="unit-content">
-          <section id="lesson-1" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 1</p>
-              <h3>Lesson 1 Title</h3>
-            </div>
-            <p>
-              This is a placeholder lesson section for Unit 2. Replace this content with the first lesson's objectives,
-              notes, activities, and assignments.
-            </p>
-          </section>
-
-          <section id="lesson-2" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 2</p>
-              <h3>Lesson 2 Title</h3>
-            </div>
-            <p>
-              Add a short overview, class notes, examples, and any key vocabulary for Lesson 2 here.
-            </p>
-          </section>
-
-          <section id="lesson-3" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 3</p>
-              <h3>Lesson 3 Title</h3>
-            </div>
-            <p>
-              Use this section to include learning targets, guided practice, or discussion prompts for the next lesson.
-            </p>
-          </section>
-
-          <section id="lesson-4" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 4</p>
-              <h3>Lesson 4 Title</h3>
-            </div>
-            <p>
-              Placeholder content for Lesson 4. Add warm-ups, examples, or independent work as needed.
-            </p>
-          </section>
 
           <section id="lesson-5" class="lesson">
             <div class="lesson-header">
               <p class="lesson-number">Lesson 5</p>
-              <h3>Lesson 5 Title</h3>
+              <h3>Visualizing Quantitative Data</h3>
             </div>
-            <p>
-              This section can later hold assessment information, classwork, and review questions for Lesson 5.
-            </p>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p><strong>Which Data Set Would You Rather See?</strong></p></div>
+              <p><strong>Data Set A</strong></p>
+              <p>12, 15, 13, 16, 14, 12, 17, 15, 14, 13, 16, 15, 14, 18, 13, 15, 16, 14, 12, 15</p>
+              <p><strong>Data Set B (same data as a graph)</strong></p>
+              <div id="bellringer-graph" style="margin: 20px 0;"></div> <script> document.addEventListener('DOMContentLoaded', function() { renderDotplot('bellringer-graph', [12, 15, 13, 16, 14, 12, 17, 15, 14, 13, 16, 15, 14, 18, 13, 15, 16, 14, 12, 15], { min: 12, max: 18 }); }); </script>
+              <ul class="lesson-list"><li>Which display helps you understand the data more quickly?</li><li>What values seem typical?</li><li>Which values occur most often?</li><li>How spread out are the values?</li><li>Are there any values that seem unusual?</li><li>What information is easier to see in the graph than in the list?</li></ul>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>I can create and interpret a dotplot.</li><li>I can create and interpret a histogram.</li><li>I can describe the shape of a quantitative distribution.</li><li>I can identify the center of a distribution.</li><li>I can describe the spread or variability of a distribution.</li><li>I can identify clusters, gaps, and possible outliers.</li><li>I can compare two quantitative distributions using their graphs.</li><li>I can explain how graphs reveal patterns that are difficult to see in a list of numbers.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore</h4>
+              <div class="lesson-callout"><p><strong>What Can a Graph Tell Us?</strong></p></div>
+              <p>The following two data sets represent the number of hours students spent studying during the week.</p>
+              <p><strong>Group A</strong><br>2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7</p>
+              <p><strong>Group B</strong><br>1, 1, 2, 2, 3, 4, 5, 5, 6, 7, 8, 8, 9, 10, 12</p>
+              <div style="margin: 20px 0;"><div id="explore-graph-a" style="margin: 20px 0;"></div></div>
+              <div style="margin: 20px 0;"><div id="explore-graph-b" style="margin: 20px 0;"></div></div>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  renderDotplot('explore-graph-a', [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7], { min: 1, max: 12, title: 'Group A: Study Hours' });
+                  renderDotplot('explore-graph-b', [1, 1, 2, 2, 3, 4, 5, 5, 6, 7, 8, 8, 9, 10, 12], { min: 1, max: 12, title: 'Group B: Study Hours' });
+                });
+              </script>
+              <ul class="lesson-list"><li>Which group appears to have a more typical or consistent amount of studying?</li><li>Which group has more variability?</li><li>Where is the center of each distribution?</li><li>Are the distributions shaped similarly?</li><li>Does either distribution contain unusually high or low values?</li><li>Which group would be easier to predict a student's study time from?</li><li>What can you see in the graphs that would be difficult to notice from the lists alone?</li></ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-5-explore-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-5-explore-answers" class="possible-answer" hidden><p><strong>Which group appears to have a more typical or consistent amount of studying?</strong> Group A appears more consistent because most values are concentrated between about 3 and 7 hours.</p><p><strong>Which group has more variability?</strong> Group B has more variability because its values spread from 1 to 12 hours.</p><p><strong>Where is the center of each distribution?</strong> Both have values near 5 hours, but Group A is much more concentrated around that center.</p><p><strong>Are the distributions shaped similarly?</strong> No. Group A is fairly concentrated, while Group B is spread out with a longer right side.</p><p><strong>Does either distribution contain unusually high or low values?</strong> The value of 12 in Group B may be considered unusually high.</p><p><strong>Which group would be easier to predict a student's study time from?</strong> Group A, because its values are more concentrated.</p><p><strong>What can you see in the graphs that would be difficult to notice from the lists?</strong> The graphs make center, spread, shape, clustering, and unusual values easier to see.</p></div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology / Data Investigation</h4>
+              <h5>Investigation 1: Dotplots Reveal Individual Values</h5>
+              <p>Data representing the number of hours of sleep reported by students:</p>
+              <p><strong>4, 5, 5, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 9, 9, 10</strong></p>
+              <div id="investigation-1-graph" style="margin: 20px 0;"></div>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  renderDotplot('investigation-1-graph', [4, 5, 5, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 9, 9, 10], { min: 4, max: 10, title: 'Hours of Sleep' });
+                });
+              </script>
+              <ul class="lesson-list"><li>What value occurs most often?</li><li>What value seems to represent the center?</li><li>How spread out are the values?</li><li>Are there any gaps?</li><li>Are there any possible outliers?</li><li>What is the overall shape of the distribution?</li><li>What is easier to see in the dotplot than in the original list?</li></ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-5-investigation-1-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-5-investigation-1-answers" class="possible-answer" hidden><p><strong>What value occurs most often?</strong> 7 hours occurs most often.</p><p><strong>What value seems to represent the center?</strong> The distribution is centered around about 7 hours.</p><p><strong>How spread out are the values?</strong> Values range from 4 to 10 hours, with most between about 5 and 9 hours.</p><p><strong>Are there any gaps?</strong> There are no major gaps between observed values.</p><p><strong>Are there any possible outliers?</strong> No obvious extreme outliers. The values at 4 and 10 are somewhat farther from center but connected to the distribution.</p><p><strong>What is the overall shape?</strong> Roughly mound-shaped and approximately symmetric, with most values near the center.</p><p><strong>What is easier to see in the dotplot?</strong> The concentration around 7, the overall shape, and spread are easier to see.</p></div>
+
+              <h5>Investigation 2: Histograms Group Data Into Intervals</h5>
+              <p>Dotplots are useful for small data sets. When there are many observations, a histogram helps us see the overall shape.</p>
+              <p>Data representing test scores:</p>
+              <p><strong>52, 58, 61, 63, 65, 66, 67, 68, 69, 70, 71, 72, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 87, 88, 90, 94</strong></p>
+              <div id="investigation-2-graph" style="margin: 20px 0;"></div>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  renderHistogram('investigation-2-graph', [52, 58, 61, 63, 65, 66, 67, 68, 69, 70, 71, 72, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 87, 88, 90, 94], 10, { min: 50, max: 100, title: 'Test Scores', startPoint: 50 });
+                });
+              </script>
+              <ul class="lesson-list"><li>Which interval contains the most scores?</li><li>Where is the center of the distribution?</li><li>How spread out are the scores?</li><li>Does the distribution appear symmetric or skewed?</li><li>Are there any gaps?</li><li>Are there any possible unusual values?</li><li>What information does the histogram make easier to see?</li></ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-5-investigation-2-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-5-investigation-2-answers" class="possible-answer" hidden><p><strong>Which interval contains the most scores?</strong> The 70-79 interval contains the most scores.</p><p><strong>Where is the center?</strong> Centered around the mid-to-upper 70s.</p><p><strong>How spread out are the scores?</strong> Range from low 50s to mid 90s, with most concentrated between about 60 and 90.</p><p><strong>Does it appear symmetric or skewed?</strong> Roughly mound-shaped, although the lower 52 and higher 94 create some spread on both sides.</p><p><strong>Are there gaps?</strong> No major gaps in the middle.</p><p><strong>Unusual values?</strong> Scores near 52 and 94 are farther from the main concentration and may deserve attention.</p><p><strong>What does the histogram make easier to see?</strong> Where scores concentrate, the overall shape, and how scores spread across intervals.</p></div>
+
+              <h5>Investigation 3: Change the Graph</h5>
+              <p>Using the same test-score data, change the histogram interval width to see how it affects what we observe.</p>
+              <label>Interval width: <select data-histogram-control="investigation-3-graph"><option value="5">5 points</option><option value="10" selected>10 points</option></select></label>
+              <div id="investigation-3-graph" style="margin: 20px 0;" data-histogram-data="[52, 58, 61, 63, 65, 66, 67, 68, 69, 70, 71, 72, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 87, 88, 90, 94]" data-histogram-min="50" data-histogram-max="100" data-histogram-title="Test Scores"></div>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  renderHistogram('investigation-3-graph', [52, 58, 61, 63, 65, 66, 67, 68, 69, 70, 71, 72, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 87, 88, 90, 94], 10, { min: 50, max: 100, title: 'Test Scores', startPoint: 50 });
+                });
+              </script>
+              <ul class="lesson-list"><li>What changes when the intervals become wider?</li><li>What information becomes easier to see?</li><li>What information becomes harder to see?</li><li>Can two histograms of the same data look different?</li><li>Does one graph have to be "wrong"?</li><li>Why is choosing an appropriate graph part of statistical thinking?</li></ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-5-investigation-3-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-5-investigation-3-answers" class="possible-answer" hidden><p><strong>What changes when intervals become wider?</strong> Wider intervals combine more observations into each bar, making the overall pattern simpler but hiding some detail.</p><p><strong>What becomes easier to see?</strong> The broad overall shape of the distribution may become clearer.</p><p><strong>What becomes harder to see?</strong> Smaller clusters, gaps, and differences between nearby values.</p><p><strong>Can two histograms of the same data look different?</strong> Yes. Changing interval width or starting point changes the appearance.</p><p><strong>Does one have to be "wrong"?</strong> No. Different reasonable choices can show the same data in different ways.</p><p><strong>Why is choosing appropriate graphs part of statistical thinking?</strong> How data are displayed affects which patterns we notice.</p></div>
+
+              <h5>Investigation 4: Compare Two Distributions</h5>
+              <p><strong>Team A Scores</strong><br>68, 70, 72, 73, 74, 75, 75, 76, 77, 78, 80</p>
+              <p><strong>Team B Scores</strong><br>45, 55, 62, 68, 72, 75, 78, 82, 88, 95, 100</p>
+              <div id="comparison-graph-a" style="margin: 20px 0;"></div>
+              <div id="comparison-graph-b" style="margin: 20px 0;"></div>
+              <script> document.addEventListener('DOMContentLoaded', function() { renderDotplot( 'comparison-graph-a', [72, 73, 74, 74, 75, 75, 75, 76, 76, 77, 78], { min: 65, max: 85, title: 'Team A Scores' } ); renderDotplot( 'comparison-graph-b', [65, 68, 70, 72, 74, 75, 76, 78, 80, 82, 85], { min: 65, max: 85, title: 'Team B Scores' } ); }); </script>
+              <ul class="lesson-list"><li>Which distribution has the greater center?</li><li>Which distribution has greater variability?</li><li>Which group is more consistent?</li><li>Which graph has values that are more clustered?</li><li>Are the distributions shaped similarly?</li><li>Are there possible outliers?</li><li>Which group would allow a more reliable prediction?</li><li>Why is comparing only the averages not enough?</li></ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-5-investigation-4-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-5-investigation-4-answers" class="possible-answer" hidden><p><strong>Which has the greater center?</strong> Centers are fairly similar, both around the mid-70s.</p><p><strong>Which has greater variability?</strong> Team B has much greater variability, ranging from 45 to 100.</p><p><strong>Which is more consistent?</strong> Team A is more consistent, with values tightly clustered around the center.</p><p><strong>More clustered?</strong> Team A has a clear cluster around the 70s.</p><p><strong>Shaped similarly?</strong> No. Team A is tightly concentrated; Team B is spread out.</p><p><strong>Possible outliers?</strong> Values near 45 and 100 in Team B may appear unusual.</p><p><strong>More reliable prediction?</strong> Team A, because values are less variable.</p><p><strong>Why not just compare averages?</strong> Groups can have similar centers but different spreads, shapes, and unusual values. The entire distribution gives more information.</p></div>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ul class="lesson-list">
+                <li>Why is a graph often more useful than a list of quantitative data?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-1" class="possible-answer" hidden>A graph organizes the data visually so patterns, center, spread, clusters, gaps, and unusual observations are easier to see.</p></li>
+                <li>What does the shape of a distribution tell us?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-2" class="possible-answer" hidden>Shape describes the overall pattern, including whether it is symmetric, skewed, clustered, or contains gaps.</p></li>
+                <li>What does the center of a distribution represent?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-3" class="possible-answer" hidden>The center describes a typical or middle location of the data.</p></li>
+                <li>What does the spread of a distribution tell us?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-4" class="possible-answer" hidden>Spread describes how much observations vary from one another.</p></li>
+                <li>Why can two distributions have the same center but look very different?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-5" class="possible-answer" hidden>They may have different spreads, shapes, clusters, or unusual values.</p></li>
+                <li>What is a cluster?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-6" class="possible-answer" hidden>A cluster is a group of observations concentrated close together in one part of the distribution.</p></li>
+                <li>What is a gap?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-7" class="possible-answer" hidden>A gap is an interval or region where there are few or no observations.</p></li>
+                <li>What makes a value appear to be a possible outlier?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-8" class="possible-answer" hidden>A value may appear to be an outlier if it is much farther from the main group than most other values.</p></li>
+                <li>What does it mean for a distribution to be symmetric?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-9" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-9" class="possible-answer" hidden>A distribution is approximately symmetric when its left and right sides have roughly similar shapes around the center.</p></li>
+                <li>What does it mean for a distribution to be skewed?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-10" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-10" class="possible-answer" hidden>A distribution is skewed when one side extends farther than the other, creating a longer tail.</p></li>
+                <li>Why is a dotplot useful?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-11" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-11" class="possible-answer" hidden>A dotplot shows individual observations while also making the overall distribution easy to see.</p></li>
+                <li>Why is a histogram useful?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-12" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-12" class="possible-answer" hidden>A histogram groups quantitative values into intervals and helps reveal the overall shape of a larger distribution.</p></li>
+                <li>When might a histogram be more useful than a dotplot?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-13" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-13" class="possible-answer" hidden>A histogram is more useful when there are many observations or many possible numerical values.</p></li>
+                <li>Can changing the intervals of a histogram change its appearance?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-14" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-14" class="possible-answer" hidden>Yes. Different interval widths can reveal or hide details and make the same distribution appear somewhat different.</p></li>
+                <li>Why is it important to use the same scale when comparing two distributions?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-15" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-15" class="possible-answer" hidden>Using the same scale allows differences in center, spread, and shape to be compared fairly.</p></li>
+                <li>Why is looking only at the average sometimes misleading?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-16" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-16" class="possible-answer" hidden>An average does not describe the entire distribution. It may hide large differences in spread, shape, or unusual observations.</p></li>
+                <li>How can graphs help us understand variability?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-17" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-17" class="possible-answer" hidden>Graphs show how far observations spread from the center and whether values are tightly clustered or widely dispersed.</p></li>
+                <li>What should we look for when describing a quantitative distribution?<button type="button" class="answer-toggle" data-answer-target="lesson-5-guiding-18" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-5-guiding-18" class="possible-answer" hidden>Look for the shape, center, spread, clusters, gaps, and possible outliers.</p></li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">Graphs<span class="glossary-definition">Visual representations of data that help reveal patterns and structure.</span></span> reveal <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">structure<span class="glossary-definition">The underlying organization and pattern of how data are arranged.</span></span> and <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">variability<span class="glossary-definition">The fact that data values differ from one another.</span></span>.</strong></p></div>
+              <p>A list of numbers can contain a great deal of information, but the overall patterns are often difficult to see. A graph allows us to visualize the <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">distribution<span class="glossary-definition">The overall pattern of how quantitative data are spread across possible values.</span></span> of quantitative data.</p>
+              <p>When describing a distribution, we look for its <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">shape<span class="glossary-definition">The overall form or pattern of a distribution.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">center<span class="glossary-definition">A typical or middle location of the data.</span></span>, and <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">spread<span class="glossary-definition">The amount of variability in a distribution.</span></span>. We also look for important features such as <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">clusters<span class="glossary-definition">Groups of observations that are concentrated close together.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">gaps<span class="glossary-definition">Regions of a distribution where there are few or no observations.</span></span>, and possible <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">outliers<span class="glossary-definition">Observations that are unusually far from the rest of the data.</span></span>.</p>
+              <p>Two groups can have similar averages but very different distributions. Because of this, statistical thinking requires us to look beyond a single number and examine the overall pattern of the data.</p>
+              <p>Graphs help us ask:</p>
+              <p><strong>Where are the data concentrated?</strong></p>
+              <p><strong>How much do the data vary?</strong></p>
+              <p><strong>Are there patterns or unusual observations?</strong></p>
+              <div style="margin-top: 20px;"><p><strong>Vocabulary:</strong></p><p><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">Symmetric<span class="glossary-definition">A distribution whose two sides are approximately similar around the center.</span></span> and <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">skewed<span class="glossary-definition">A distribution with a longer tail extending farther in one direction.</span></span> describe shape. A <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">dotplot<span class="glossary-definition">A graph that displays individual quantitative observations as dots along a number line.</span></span> and <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">histogram<span class="glossary-definition">A graph that groups quantitative data into intervals and displays the frequency of observations in each interval.</span></span> are useful visualization tools.</p></div>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p><strong>Describe the Distribution</strong></p>
+              <p>For each distribution provided, describe:</p>
+              <ol class="lesson-list lesson-ordered-list"><li>The shape.</li><li>The approximate center.</li><li>The amount of spread.</li><li>Any clusters.</li><li>Any gaps.</li><li>Any possible outliers.</li></ol>
+              <p>Then compare the two distributions and identify the most important difference between them.</p>
+              <p>If helpful, use this sentence frame:</p>
+              <p><em>"The distribution is approximately __________. It is centered around __________. The data show __________ spread. There is/are __________. Compared with the other distribution, __________."</em></p>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p><strong>One Number Is Not the Whole Story</strong></p>
+              <p>Two classes both have an average test score of 75.</p>
+              <p><strong>Does that mean the two classes performed similarly? Why or why not?</strong></p>
+              <p>The averages may be the same even if the distributions have different spread, shape, clusters, gaps, or outliers.</p>
+              <p>Complete this sentence:</p>
+              <p><strong>"A graph helps me understand quantitative data because __________."</strong></p>
+              <div class="lesson-callout emphasis"><p><strong>One sentence to remember:</strong></p><p><strong>"The center tells us what is typical, but the graph tells us the whole story."</strong></p></div>
+            </div>
           </section>
 
           <section id="lesson-6" class="lesson">
@@ -99,6 +203,27 @@
               Add the final lesson content here, including summaries, exit tickets, or extension activities.
             </p>
           </section>
+
+          <section id="lesson-7" class="lesson">
+            <div class="lesson-header">
+              <p class="lesson-number">Lesson 7</p>
+              <h3>Lesson 7 Title</h3>
+            </div>
+            <p>
+              Use this section to include learning targets, guided practice, or discussion prompts for the next lesson.
+            </p>
+          </section>
+
+          <section id="lesson-8" class="lesson">
+            <div class="lesson-header">
+              <p class="lesson-number">Lesson 8</p>
+              <h3>Lesson 8 Title</h3>
+            </div>
+            <p>
+              Placeholder content for Lesson 4. Add warm-ups, examples, or independent work as needed.
+            </p>
+          </section>
+
         </div>
       </div>
     </main>

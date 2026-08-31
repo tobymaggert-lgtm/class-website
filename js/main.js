@@ -91,3 +91,149 @@ function createSimulation(panel) {
 }
 
 document.querySelectorAll("[data-simulation]").forEach(createSimulation);
+
+function renderDotplot(containerId, data, options = {}) {
+	const container = document.getElementById(containerId);
+	if (!container) return;
+
+	const min = options.min ?? Math.min(...data);
+	const max = options.max ?? Math.max(...data);
+	const label = options.label ?? 'Value';
+	const title = options.title ?? '';
+
+	const counts = {};
+	data.forEach((val) => {
+		counts[val] = (counts[val] || 0) + 1;
+	});
+
+	let html = '';
+	if (title) html += `<h5>${title}</h5>`;
+	html += `<div class="dotplot" role="img" aria-label="${title || label} dotplot">
+		<div style="display: flex; align-items: flex-end; gap: 8px; min-height: 120px; padding: 12px 6px; border-bottom: 1px solid #b8c2cc;">`;
+
+	for (let val = min; val <= max; val += 1) {
+		const count = counts[val] || 0;
+		html += `<div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">`;
+		for (let dot = 0; dot < count; dot += 1) {
+			html += `<div style="width: 12px; height: 12px; border-radius: 50%; background: #9aaabd; cursor: pointer;" title="${val}"></div>`;
+		}
+		html += `<span style="font-size: 0.75rem; font-weight: 600; min-width: 30px; text-align: center;">${val}</span>`;
+		html += `</div>`;
+	}
+	html += `</div></div>`;
+
+	container.innerHTML = html;
+
+	window.renderDotplot = renderDotplot;
+}
+
+function renderHistogram(containerId, data, intervalWidth, options = {}) {
+	const container = document.getElementById(containerId);
+	if (!container) return;
+
+	const min = options.min ?? Math.min(...data);
+	const max = options.max ?? Math.max(...data);
+	const label = options.label ?? 'Value';
+	const title = options.title ?? '';
+	const startPoint =
+		options.startPoint ?? Math.floor(min / intervalWidth) * intervalWidth;
+
+	const intervals = [];
+
+	for (let start = startPoint; start <= max; start += intervalWidth) {
+		intervals.push({
+			start,
+			end: start + intervalWidth,
+			count: 0
+		});
+	}
+
+	data.forEach((val) => {
+		for (const interval of intervals) {
+			if (val >= interval.start && val < interval.end) {
+				interval.count += 1;
+				break;
+			}
+		}
+	});
+
+	const maxCount = Math.max(...intervals.map((i) => i.count), 1);
+
+	const graphHeight = 150;
+
+	let html = '';
+
+	if (title) {
+		html += `<h5>${title}</h5>`;
+	}
+
+	html += `
+		<div class="histogram" role="img" aria-label="${title || label} histogram">
+			<div style="
+				display: flex;
+				align-items: flex-end;
+				gap: 2px;
+				height: ${graphHeight}px;
+				padding: 12px 6px 0;
+				border-bottom: 1px solid #b8c2cc;
+			">
+	`;
+
+	intervals.forEach((interval) => {
+		const height =
+			interval.count === 0
+				? 0
+				: Math.max(4, (interval.count / maxCount) * graphHeight);
+
+		const intervalLabel = `${interval.start}-${interval.end - 1}`;
+
+		html += `
+			<div style="
+				display: flex;
+				flex: 1 0 30px;
+				flex-direction: column;
+				align-items: center;
+				justify-content: flex-end;
+				gap: 5px;
+				height: 100%;
+			">
+				<div
+					style="
+						width: 100%;
+						height: ${height}px;
+						background: #9aaabd;
+						cursor: pointer;
+					"
+					title="${intervalLabel}: ${interval.count}"
+				></div>
+
+				<span style="font-size: 0.7rem; white-space: nowrap;">
+					${intervalLabel}
+				</span>
+			</div>
+		`;
+	});
+
+	html += `
+			</div>
+		</div>
+	`;
+
+	container.innerHTML = html;
+}
+
+document.querySelectorAll('[data-histogram-control]').forEach((select) => {
+	select.addEventListener('change', () => {
+		const containerId = select.dataset.histogramControl;
+		const container = document.getElementById(containerId);
+		const dataAttr = container.dataset.histogramData;
+		const data = JSON.parse(dataAttr);
+		const intervalWidth = Number(select.value);
+		const title = container.dataset.histogramTitle || '';
+		const min = container.dataset.histogramMin ? Number(container.dataset.histogramMin) : Math.min(...data);
+		const max = container.dataset.histogramMax ? Number(container.dataset.histogramMax) : Math.max(...data);
+		const startPoint = container.dataset.histogramStart ? Number(container.dataset.histogramStart) : Math.floor(min / intervalWidth) * intervalWidth;
+
+		renderHistogram(containerId, data, intervalWidth, { min, max, title, startPoint });
+	});
+});
