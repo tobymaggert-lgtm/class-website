@@ -125,8 +125,8 @@
               <div id="lesson-5-investigation-3-answers" class="possible-answer" hidden><p><strong>What changes when intervals become wider?</strong> Wider intervals combine more observations into each bar, making the overall pattern simpler but hiding some detail.</p><p><strong>What becomes easier to see?</strong> The broad overall shape of the distribution may become clearer.</p><p><strong>What becomes harder to see?</strong> Smaller clusters, gaps, and differences between nearby values.</p><p><strong>Can two histograms of the same data look different?</strong> Yes. Changing interval width or starting point changes the appearance.</p><p><strong>Does one have to be "wrong"?</strong> No. Different reasonable choices can show the same data in different ways.</p><p><strong>Why is choosing appropriate graphs part of statistical thinking?</strong> How data are displayed affects which patterns we notice.</p></div>
 
               <h5>Investigation 4: Compare Two Distributions</h5>
-              <p><strong>Team A Scores</strong><br>68, 70, 72, 73, 74, 75, 75, 76, 77, 78, 80</p>
-              <p><strong>Team B Scores</strong><br>45, 55, 62, 68, 72, 75, 78, 82, 88, 95, 100</p>
+              <p><strong>Team A Scores</strong><br>72, 73, 74, 74, 75, 75, 75, 76, 76, 77, 78</p>
+              <p><strong>Team B Scores</strong><br>65, 68, 70, 72, 74, 75, 76, 78, 80, 82, 85</p>
               <div id="comparison-graph-a" style="margin: 20px 0;"></div>
               <div id="comparison-graph-b" style="margin: 20px 0;"></div>
               <script> document.addEventListener('DOMContentLoaded', function() { renderDotplot( 'comparison-graph-a', [72, 73, 74, 74, 75, 75, 75, 76, 76, 77, 78], { min: 65, max: 85, title: 'Team A Scores' } ); renderDotplot( 'comparison-graph-b', [65, 68, 70, 72, 74, 75, 76, 78, 80, 82, 85], { min: 65, max: 85, title: 'Team B Scores' } ); }); </script>
@@ -197,12 +197,159 @@
           <section id="lesson-6" class="lesson">
             <div class="lesson-header">
               <p class="lesson-number">Lesson 6</p>
-              <h3>Lesson 6 Title</h3>
+              <h3>Numerical Summaries</h3>
             </div>
-            <p>
-              Add the final lesson content here, including summaries, exit tickets, or extension activities.
-            </p>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p><strong>Two Classes, Same Average</strong></p></div>
+              <p><strong>Class A:</strong> 72, 73, 74, 74, 75, 75, 75, 76, 76, 77, 78</p>
+              <p><strong>Class B:</strong> 68, 70, 72, 74, 75, 75, 76, 78, 80, 82, 95</p>
+              <div id="lesson-6-bellringer-graph-a" style="margin: 20px 0;"></div>
+              <div id="lesson-6-bellringer-graph-b" style="margin: 20px 0;"></div>
+              <ul class="lesson-list"><li>Which class appears to have the higher typical score?</li><li>Which class has more variability?</li><li>Could two groups have the same or similar mean but look very different?</li><li>Is one number enough to describe an entire distribution?</li></ul>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>I can interpret the <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">mean<span class="glossary-definition">The arithmetic average of a set of numerical data.</span></span> and <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">median<span class="glossary-definition">The middle value of a data set when the values are ordered from least to greatest.</span></span> as measures of center.</li>
+                <li>I can explain when the mean and median may give different impressions of data.</li>
+                <li>I can describe <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">standard deviation<span class="glossary-definition">A measure of the typical distance of observations from the mean.</span></span> as a measure of typical distance from the mean.</li>
+                <li>I can interpret the <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">IQR<span class="glossary-definition">The interquartile range, or the difference between Q3 and Q1; it measures the spread of the middle 50% of the data.</span></span> as a measure of spread for the middle 50% of the data.</li>
+                <li>I can interpret a <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">five-number summary<span class="glossary-definition">The minimum, Q1, median, Q3, and maximum values of a data set.</span></span>.</li>
+                <li>I can explain why numerical summaries do not describe everything about a distribution.</li>
+                <li>I can interpret a <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">z-score<span class="glossary-definition">A standardized value that tells how many standard deviations a data value is from the mean.</span></span> conceptually.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore: Mean or Median?</h4>
+              <p>Use a small data set with one unusually high value.</p>
+              <p><strong>5, 6, 6, 7, 7, 8, 8, 9, 10, 30</strong></p>
+              <div id="lesson-6-explore-graph" style="margin: 20px 0;"></div>
+              <ul class="lesson-list"><li>What seems like a typical value?</li><li>Would the mean represent a typical observation?</li><li>Would the median represent a typical observation?</li><li>How does the value of 30 affect the mean?</li><li>Does it affect the median as much?</li></ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-6-explore-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-6-explore-answers" class="possible-answer" hidden>
+                <p><strong>What seems like a typical value?</strong> Most values are between 5 and 10, so a typical value appears to be around 7 or 8.</p>
+                <p><strong>Would the mean represent a typical observation?</strong> Not very well, because the unusually high value of 30 pulls the mean upward.</p>
+                <p><strong>Would the median represent a typical observation?</strong> The median is much more representative because it is based on the middle of the ordered data.</p>
+                <p><strong>How does the value of 30 affect the mean?</strong> It increases the mean substantially, making it less representative of the rest of the data.</p>
+                <p><strong>Does it affect the median as much?</strong> No. The median stays near the center of the distribution and is much more resistant to the extreme value.</p>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Investigation 1: Center</h4>
+              <p>Compare two distributions that have similar centers but different shapes.</p>
+              <div style="margin: 20px 0;"><div id="lesson-6-center-graph-a" style="margin: 20px 0;"></div></div>
+              <div style="margin: 20px 0;"><div id="lesson-6-center-graph-b" style="margin: 20px 0;"></div></div>
+              <ul class="lesson-list"><li>Which numerical summary better represents a typical value?</li><li>Does the graph change how useful the mean or median seems?</li><li>Why should we look at the distribution before relying on a summary number?</li></ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-6-center-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-6-center-answers" class="possible-answer" hidden>
+                <p><strong>Which numerical summary better represents a typical value?</strong> The median may be more useful when the distribution is skewed or contains an extreme value. The mean is useful when the data are fairly balanced and not strongly affected by outliers.</p>
+                <p><strong>Does the graph change how useful the mean or median seems?</strong> Yes. A graph shows whether the distribution is spread out, clustered, or skewed, which affects how much we trust a single center number.</p>
+                <p><strong>Why should we look at the distribution before relying on a summary number?</strong> A single summary can hide important features such as skewness, gaps, clusters, and outliers.</p>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Investigation 2: Measuring Variability</h4>
+              <p><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">Standard deviation<span class="glossary-definition">A measure of the typical distance of observations from the mean.</span></span> describes the typical distance of observations from the mean.</p>
+              <p>It is a measure of spread. A small standard deviation means most data values are close to the mean. A large standard deviation means the data are more spread out.</p>
+              <p><strong>Data Set A:</strong> 10, 11, 12, 12, 13, 13, 14, 14, 15, 15</p>
+              <p><strong>Data Set B:</strong> 2, 6, 9, 11, 13, 14, 15, 16, 18, 21</p>
+              <ul class="lesson-list"><li>Which distribution is more spread out?</li><li>Which has the larger standard deviation?</li><li>What does a small standard deviation suggest?</li><li>What does a large standard deviation suggest?</li><li>Can two distributions have the same mean but different standard deviations?</li></ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-6-variability-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-6-variability-answers" class="possible-answer" hidden>
+                <p><strong>Which distribution is more spread out?</strong> Data Set B is more spread out because its values are much farther from the center.</p>
+                <p><strong>Which has the larger standard deviation?</strong> Data Set B has the larger standard deviation.</p>
+                <p><strong>What does a small standard deviation suggest?</strong> The data values are close to the mean.</p>
+                <p><strong>What does a large standard deviation suggest?</strong> The data vary more and are more spread out from the center.</p>
+                <p><strong>Can two distributions have the same mean but different standard deviations?</strong> Yes. Two groups can have the same average but different amounts of variability.</p>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Investigation 3: Five-Number Summary and IQR</h4>
+              <p>The <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">five-number summary<span class="glossary-definition">The minimum, Q1, median, Q3, and maximum values of a data set.</span></span> includes:</p>
+              <ul class="lesson-list">
+                <li>Minimum</li>
+                <li>Q1</li>
+                <li>Median</li>
+                <li>Q3</li>
+                <li>Maximum</li>
+              </ul>
+              <p>For example, a data set might have a five-number summary of:</p>
+              <p><strong>Min = 12, Q1 = 18, Median = 24, Q3 = 30, Max = 38</strong></p>
+              <p>The <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">IQR<span class="glossary-definition">The interquartile range, or the distance between Q3 and Q1; it describes the spread of the middle 50% of the data.</span></span> is calculated as:</p>
+              <p><strong>IQR = Q3 − Q1</strong></p>
+              <p>Here, IQR = 30 − 18 = 12.</p>
+              <ul class="lesson-list"><li>What does the median tell us?</li><li>Where is the middle 50% of the data?</li><li>What does a larger IQR suggest?</li><li>Why might the IQR be useful when extreme values exist?</li></ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-6-iqr-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-6-iqr-answers" class="possible-answer" hidden>
+                <p><strong>What does the median tell us?</strong> It tells us about the center of the data, with half the values below it and half above it.</p>
+                <p><strong>Where is the middle 50% of the data?</strong> It lies between Q1 and Q3.</p>
+                <p><strong>What does a larger IQR suggest?</strong> The middle 50% of the data are more spread out.</p>
+                <p><strong>Why might the IQR be useful when extreme values exist?</strong> The IQR focuses on the middle of the distribution, so extreme values have less effect on it than they do on the range.</p>
+              </div>
+            </div>
+
+      
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ul class="lesson-list">
+                <li>What is the difference between the mean and median?<button type="button" class="answer-toggle" data-answer-target="lesson-6-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-6-guiding-1" class="possible-answer" hidden>The mean is the arithmetic average, while the median is the middle value. The mean is more affected by extreme values, while the median is more resistant.</p></li>
+                <li>Why can an outlier affect the mean?<button type="button" class="answer-toggle" data-answer-target="lesson-6-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-6-guiding-2" class="possible-answer" hidden>An outlier adds a value that is far from the others, which can pull the average up or down.</p></li>
+                <li>Why is the median more resistant to extreme values?<button type="button" class="answer-toggle" data-answer-target="lesson-6-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-6-guiding-3" class="possible-answer" hidden>The median depends on the position of the middle value rather than the size of all values.</p></li>
+                <li>Can two distributions have the same mean but different variability?<button type="button" class="answer-toggle" data-answer-target="lesson-6-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-6-guiding-4" class="possible-answer" hidden>Yes. Two distributions can share the same center but differ in how spread out they are.</p></li>
+                <li>What does standard deviation describe?<button type="button" class="answer-toggle" data-answer-target="lesson-6-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-6-guiding-5" class="possible-answer" hidden>It describes the typical distance of values from the mean.</p></li>
+                <li>What does a small standard deviation suggest?<button type="button" class="answer-toggle" data-answer-target="lesson-6-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-6-guiding-6" class="possible-answer" hidden>Values tend to be close together and close to the mean.</p></li>
+                <li>What does a large standard deviation suggest?<button type="button" class="answer-toggle" data-answer-target="lesson-6-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-6-guiding-7" class="possible-answer" hidden>Values are more spread out and farther from the mean.</p></li>
+                <li>What information does the IQR describe?<button type="button" class="answer-toggle" data-answer-target="lesson-6-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-6-guiding-8" class="possible-answer" hidden>It describes the spread of the middle 50% of the data.</p></li>
+                <li>What are the five numbers in a five-number summary?<button type="button" class="answer-toggle" data-answer-target="lesson-6-guiding-9" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-6-guiding-9" class="possible-answer" hidden>Minimum, Q1, median, Q3, and maximum.</p></li>
+                <li>Why should we look at a graph as well as numerical summaries?<button type="button" class="answer-toggle" data-answer-target="lesson-6-guiding-10" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-6-guiding-10" class="possible-answer" hidden>Graphs reveal shape, clusters, gaps, and outliers that a single number can hide.</p></li>
+                <li>Can numerical summaries hide important features of a distribution?<button type="button" class="answer-toggle" data-answer-target="lesson-6-guiding-11" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-6-guiding-11" class="possible-answer" hidden>Yes. A summary can hide skewness, gaps, clusters, and unusual values.</p></li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>Numbers summarize distributions imperfectly.</strong></p></div>
+              <p>Measures such as the <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">mean<span class="glossary-definition">The arithmetic average of a set of data values.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">median<span class="glossary-definition">The middle value of a data set when ordered from least to greatest.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">standard deviation<span class="glossary-definition">A measure of the typical distance of observations from the mean.</span></span>, and <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">IQR<span class="glossary-definition">The interquartile range, which measures the spread of the middle 50% of the data.</span></span> help us describe important features of a distribution. The mean and median describe <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">center<span class="glossary-definition">A typical or middle location of the data.</span></span>, while standard deviation and IQR help describe <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">variability<span class="glossary-definition">The extent to which individual values differ from one another.</span></span>.</p>
+              <p>However, no single number tells the entire story. Two distributions can have the same center but very different spreads or shapes. Extreme values, clusters, gaps, and outliers may also be hidden by numerical summaries.</p>
+              <p>A <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">z-score<span class="glossary-definition">A standardized value that tells how many standard deviations a value is from the mean.</span></span> allows us to describe a value relative to its distribution by considering both the mean and the standard deviation.</p>
+              <p>Statistical thinking requires us to use <strong>graphs and numerical summaries together</strong>.</p>
+              <div style="margin-top: 20px;"><p><strong>Vocabulary:</strong></p><p><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">mean<span class="glossary-definition">The arithmetic average of a data set.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">median<span class="glossary-definition">The middle value in an ordered data set.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">standard deviation<span class="glossary-definition">A measure of the typical distance of values from the mean.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">quartile<span class="glossary-definition">A value that divides a data set into four equal parts.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">IQR<span class="glossary-definition">The spread of the middle 50% of the data, calculated as Q3 − Q1.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">five-number summary<span class="glossary-definition">The minimum, Q1, median, Q3, and maximum values.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false"></span>.</p></div>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p><strong>Two distributions with numerical summaries</strong></p>
+              <p><strong>Group 1:</strong> Mean = 78, Median = 77, Standard deviation = 4, IQR = 6</p>
+              <p><strong>Group 2:</strong> Mean = 78, Median = 76, Standard deviation = 12, IQR = 18</p>
+              <ol class="lesson-list lesson-ordered-list"><li>Which group has the higher typical value?</li><li>Which group has more variability?</li><li>Which numerical summary is most useful for comparing the groups?</li><li>What information might still be missing?</li><li>Why would you want to see a graph before making a conclusion?</li></ol>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p><strong>Two students each score 85% on different tests.</strong></p>
+              <p><strong>Does that mean they performed equally well compared with their classmates? Explain why or why not.</strong></p>
+              <p>Students should connect their answer to <strong>center</strong>, <strong>variability</strong>, and <strong>standardization</strong>.</p>
+              <div class="lesson-callout emphasis"><p><strong>One sentence to remember:</strong></p><p><strong>"A number can summarize a distribution, but it cannot replace understanding the distribution."</strong></p></div>
+            </div>
           </section>
+
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              renderDotplot('lesson-6-bellringer-graph-a', [72, 73, 74, 74, 75, 75, 75, 76, 76, 77, 78], { min: 65, max: 100, title: 'Class A Scores' });
+              renderDotplot('lesson-6-bellringer-graph-b', [68, 70, 72, 74, 75, 75, 76, 78, 80, 82, 95], { min: 65, max: 100, title: 'Class B Scores' });
+              renderDotplot('lesson-6-explore-graph', [5, 6, 6, 7, 7, 8, 8, 9, 10, 30], { min: 5, max: 30, title: 'Example Data' });
+              renderDotplot('lesson-6-center-graph-a', [4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10], { min: 4, max: 10, title: 'Distribution A' });
+              renderDotplot('lesson-6-center-graph-b', [1, 2, 3, 4, 7, 7, 8, 8, 9, 10, 11, 12, 13], { min: 1, max: 13, title: 'Distribution B' });
+            });
+          </script>
 
           <section id="lesson-7" class="lesson">
             <div class="lesson-header">

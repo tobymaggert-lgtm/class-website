@@ -117,7 +117,7 @@ function renderDotplot(containerId, data, options = {}) {
 		for (let dot = 0; dot < count; dot += 1) {
 			html += `<div style="width: 12px; height: 12px; border-radius: 50%; background: #9aaabd; cursor: pointer;" title="${val}"></div>`;
 		}
-		html += `<span style="font-size: 0.75rem; font-weight: 600; min-width: 30px; text-align: center;">${val}</span>`;
+		html += `<span style="font-size: 0.75rem; font-weight: 600; min-width: 10px; text-align: center;">${val}</span>`;
 		html += `</div>`;
 	}
 	html += `</div></div>`;
