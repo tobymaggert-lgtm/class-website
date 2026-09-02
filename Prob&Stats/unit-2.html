@@ -219,7 +219,6 @@
                 <li>I can interpret the <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">IQR<span class="glossary-definition">The interquartile range, or the difference between Q3 and Q1; it measures the spread of the middle 50% of the data.</span></span> as a measure of spread for the middle 50% of the data.</li>
                 <li>I can interpret a <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">five-number summary<span class="glossary-definition">The minimum, Q1, median, Q3, and maximum values of a data set.</span></span>.</li>
                 <li>I can explain why numerical summaries do not describe everything about a distribution.</li>
-                <li>I can interpret a <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">z-score<span class="glossary-definition">A standardized value that tells how many standard deviations a data value is from the mean.</span></span> conceptually.</li>
               </ul>
             </div>
 
@@ -319,7 +318,6 @@
               <div class="lesson-callout emphasis"><p><strong>Numbers summarize distributions imperfectly.</strong></p></div>
               <p>Measures such as the <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">mean<span class="glossary-definition">The arithmetic average of a set of data values.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">median<span class="glossary-definition">The middle value of a data set when ordered from least to greatest.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">standard deviation<span class="glossary-definition">A measure of the typical distance of observations from the mean.</span></span>, and <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">IQR<span class="glossary-definition">The interquartile range, which measures the spread of the middle 50% of the data.</span></span> help us describe important features of a distribution. The mean and median describe <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">center<span class="glossary-definition">A typical or middle location of the data.</span></span>, while standard deviation and IQR help describe <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">variability<span class="glossary-definition">The extent to which individual values differ from one another.</span></span>.</p>
               <p>However, no single number tells the entire story. Two distributions can have the same center but very different spreads or shapes. Extreme values, clusters, gaps, and outliers may also be hidden by numerical summaries.</p>
-              <p>A <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">z-score<span class="glossary-definition">A standardized value that tells how many standard deviations a value is from the mean.</span></span> allows us to describe a value relative to its distribution by considering both the mean and the standard deviation.</p>
               <p>Statistical thinking requires us to use <strong>graphs and numerical summaries together</strong>.</p>
               <div style="margin-top: 20px;"><p><strong>Vocabulary:</strong></p><p><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">mean<span class="glossary-definition">The arithmetic average of a data set.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">median<span class="glossary-definition">The middle value in an ordered data set.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">standard deviation<span class="glossary-definition">A measure of the typical distance of values from the mean.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">quartile<span class="glossary-definition">A value that divides a data set into four equal parts.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">IQR<span class="glossary-definition">The spread of the middle 50% of the data, calculated as Q3 − Q1.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">five-number summary<span class="glossary-definition">The minimum, Q1, median, Q3, and maximum values.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false"></span>.</p></div>
             </div>
@@ -354,12 +352,172 @@
           <section id="lesson-7" class="lesson">
             <div class="lesson-header">
               <p class="lesson-number">Lesson 7</p>
-              <h3>Lesson 7 Title</h3>
+              <h3>Comparing Groups</h3>
             </div>
-            <p>
-              Use this section to include learning targets, guided practice, or discussion prompts for the next lesson.
-            </p>
-          </section>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p><strong>Which Group Did Better?</strong></p></div>
+              <p><strong>Group A:</strong> 72, 73, 74, 74, 75, 75, 75, 76, 76, 77</p>
+              <p><strong>Group B:</strong> 68, 70, 72, 74, 75, 75, 76, 78, 80, 82</p>
+              <div id="lesson-7-bellringer-graph-a" style="margin: 20px 0;"></div>
+              <div id="lesson-7-bellringer-graph-b" style="margin: 20px 0;"></div>
+              <ul class="lesson-list"><li>Which group appears to have the higher typical value?</li><li>Which group has more variability?</li><li>Do the groups overlap?</li><li>Can we say one group clearly performed better?</li><li>What information besides the average might matter?</li></ul>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>I can compare the centers of two distributions.</li>
+                <li>I can compare the <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">variability<span class="glossary-definition">The extent to which individual values differ from one another.</span></span> of two distributions.</li>
+                <li>I can interpret side-by-side boxplots.</li>
+                <li>I can describe <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">overlap<span class="glossary-definition">The range of values that appears in both distributions.</span></span> between groups.</li>
+                <li>I can explain why a difference between averages does not automatically mean an important difference exists.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore: Do Students Who Sleep More Score Higher?</h4>
+              <p>Suppose students are divided into two groups based on their typical amount of sleep and we then checked their scores on a test.</p>
+              <p><strong>Less Sleep:</strong> 72, 74, 75, 76, 78, 79, 80, 81, 83, 84</p>
+              <p><strong>More Sleep:</strong> 74, 76, 78, 80, 81, 82, 84, 85, 86, 88</p>
+              <div id="lesson-7-explore-graph-a" style="margin: 20px 0;"></div>
+              <div id="lesson-7-explore-graph-b" style="margin: 20px 0;"></div>
+              <ul class="lesson-list"><li>Which group has the higher center?</li><li>How much do the groups overlap?</li><li>Which group has more variability?</li><li>Does every student who sleeps more score higher?</li><li>Is the difference between the groups large?</li><li>What conclusions can we reasonably make?</li></ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-7-explore-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-7-explore-answers" class="possible-answer" hidden>
+                <p><strong>Which group has the higher center?</strong> The "More Sleep" group has a higher center, around 82 compared to about 79 for "Less Sleep."</p>
+                <p><strong>How much do the groups overlap?</strong> The groups overlap substantially. Several students in the "Less Sleep" group scored higher than some students in the "More Sleep" group.</p>
+                <p><strong>Which group has more variability?</strong> The "Less Sleep" group has slightly more variability.</p>
+                <p><strong>Does every student who sleeps more score higher?</strong> No. Some students with less sleep scored higher than some students with more sleep.</p>
+                <p><strong>Is the difference between the groups large?</strong> The difference in centers is about 3-4 points, which is modest compared to the variability within groups.</p>
+                <p><strong>What conclusions can we reasonably make?</strong> While students who sleep more tend to score slightly higher on average, the groups overlap so much that sleep is not a strong predictor of test score for individuals.</p>
+              </div>            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Investigation 1: Comparing Distributions</h4>
+              <p>When comparing two groups, we should examine the <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">center<span class="glossary-definition">A typical or middle location of the data.</span></span> and <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">spread<span class="glossary-definition">The amount of variability in a distribution.</span></span> of each distribution.</p>
+              <p><strong>Group 1:</strong> 60, 62, 64, 66, 68, 70, 72, 74, 76, 78</p>
+              <p><strong>Group 2:</strong> 64, 65, 66, 67, 68, 69, 70, 71, 72, 73</p>
+              <div id="lesson-7-investigation-1-graph-a" style="margin: 20px 0;"></div>
+              <div id="lesson-7-investigation-1-graph-b" style="margin: 20px 0;"></div>
+              <ul class="lesson-list"><li>Which group has a higher <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">median<span class="glossary-definition">The middle value of a data set when ordered from least to greatest.</span></span>?</li><li>Which group has a larger <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">IQR<span class="glossary-definition">The interquartile range, measuring the spread of the middle 50% of the data.</span></span>?</li><li>Do the groups overlap?</li><li>What does the <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">overlap<span class="glossary-definition">The range of values that appears in both distributions.</span></span> tell us?</li></ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-7-investigation-1-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-7-investigation-1-answers" class="possible-answer" hidden>
+                <p><strong>Which group has a higher median?</strong> 
+                          Group 1 has a median around 69, while Group 2 has a median around 68-69. The centers are very similar.</p>
+                <p><strong>Which group has a larger IQR?</strong> Group 1 has much greater spread.</p>
+                <p><strong>Do the groups overlap?</strong> Yes, substantially. Values from Group 2 are spread throughout the range of Group 1.</p>
+                <p><strong>What does the overlap tell us?</strong> Even though Group 1 is more spread out, the two groups are very similar in their typical values. Knowing a student's group does not strongly predict an individual score.</p>
+              </div> 
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Investigation 2: Same Difference, Different Overlap</h4>
+              <p>Compare two scenarios where the difference in centers is similar but the variability is different.</p>
+              <p><strong>Scenario A:</strong></p>
+              <p><strong>Group A:</strong> 78, 79, 80, 81, 82</p>
+              <p><strong>Group B:</strong> 83, 84, 85, 86, 87</p>
+              <p><strong>Scenario B:</strong></p>
+              <p><strong>Group C:</strong> 75, 78, 80, 82, 85</p>
+              <p><strong>Group D:</strong> 80, 83, 85, 87, 90</p>
+              <div id="lesson-7-scenario-a-graph-1" style="margin: 20px 0;"></div>
+              <div id="lesson-7-scenario-a-graph-2" style="margin: 20px 0;"></div>
+              <div id="lesson-7-scenario-b-graph-1" style="margin: 20px 0;"></div>
+              <div id="lesson-7-scenario-b-graph-2" style="margin: 20px 0;"></div>
+              <ul class="lesson-list"><li>Which comparison provides stronger visual evidence of a difference?</li><li>In which comparison do the groups overlap more?</li><li>Why does <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">variability<span class="glossary-definition">The extent to which individual values differ from one another.</span></span> matter when comparing groups?</li><li>Can the same difference in averages tell different stories?</li></ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-7-investigation-2-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-7-investigation-2-answers" class="possible-answer" hidden>
+                <p><strong>Which comparison provides stronger visual evidence of a difference?</strong> Scenario A shows a clearer separation. Groups A and B do not overlap at all.</p>
+                <p><strong>In which comparison do the groups overlap more?</strong> Scenario B shows substantial overlap between Groups C and D.</p>
+                <p><strong>Why does variability matter?</strong> Even when group averages differ, high variability within groups means individuals can be very similar across groups.</p>
+                <p><strong>Can the same difference tell different stories?</strong> Yes. A 5-point difference looks convincing when variability is low but less convincing when variability is high.</p>
+              </div>
+             </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Investigation 3: Practical Differences</h4>
+              <p>A numerical difference can exist without being important in practice.</p>
+              <p><strong>Scenario 1:</strong> Group A average = 79, Group B average = 80</p>
+              <p><strong>Scenario 2:</strong> Group A average = 65, Group B average = 80</p>
+              <ul class=\"lesson-list\">
+                <li>Which difference is larger?</li>
+                <li>Which difference is more likely to matter in practice?</li>
+                <li>Does a numerical difference automatically mean the difference is important?</li>
+                <li>What role does context play?</li>
+              </ul>
+                 <button type=\"button\" class=\"answer-toggle\" data-answer-target=\"lesson-7-investigation-3-answers\" aria-expanded=\"false\">Show Possible Answers</button>
+                 <div id=\"lesson-7-investigation-3-answers\" class=\"possible-answer\" hidden>
+                  <p><strong>Which difference is larger?</strong> Scenario 2 shows a much larger difference (15 points vs. 1 point).</p>
+                  <p><strong>Which is more likely to matter in practice?</strong> Scenario 2's 15-point difference is substantial. Scenario 1's 1-point difference may be too small to matter depending on the context.</p>
+                  <p><strong>Does a numerical difference automatically mean importance?</strong> No. The size of the difference and the context must be considered.</p>
+                  <p><strong>What role does context play?</strong> On a 100-point scale, a 1-point difference might be negligible. In other contexts, even small differences might matter.</p>
+                </div>
+              </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ul class="lesson-list">            
+                <li>Why should we compare more than just the means of two groups?<button type=\"button\" class=\"answer-toggle\" data-answer-target=\"lesson-7-guiding-1\" data-show-label=\"Show Possible Answer\" data-hide-label=\"Hide Possible Answer\" aria-expanded=\"false\">Show Possible Answer</button>
+                  <p id=\"lesson-7-guiding-1\" class=\"possible-answer\" hidden>The mean alone can hide important information about spread, shape, and overlap between groups.</p></li>
+                <li>What does the <span class=\"glossary-term\" tabindex=\"0\" role=\"button\" aria-expanded=\"false\">median<span class=\"glossary-definition\">The middle value of a data set.</span></span> help us compare?<button type=\"button\" class=\"answer-toggle\" data-answer-target=\"lesson-7-guiding-2\" data-show-label=\"Show Possible Answer\" data-hide-label=\"Hide Possible Answer\" aria-expanded=\"false\">Show Possible Answer</button><p id=\"lesson-7-guiding-2\" class=\"possible-answer\" hidden>The median helps us compare the centers of the distributions and is resistant to extreme values.</p></li>
+                <li>What does the <span class=\"glossary-term\" tabindex=\"0\" role=\"button\" aria-expanded=\"false\">IQR<span class=\"glossary-definition\">The interquartile range, measuring spread.</span></span> help us compare?<button type=\"button\" class=\"answer-toggle\" data-answer-target=\"lesson-7-guiding-3\" data-show-label=\"Show Possible Answer\" data-hide-label=\"Hide Possible Answer\" aria-expanded=\"false\">Show Possible Answer</button><p id=\"lesson-7-guiding-3\" class=\"possible-answer\" hidden>The IQR helps us compare the spread of the middle 50% of each distribution.</p></li>
+                <li>Why is <span class=\"glossary-term\" tabindex=\"0\" role=\"button\" aria-expanded=\"false\">overlap<span class=\"glossary-definition\">The range of values that appears in both groups.</span></span> important?<button type=\"button\" class=\"answer-toggle\" data-answer-target=\"lesson-7-guiding-4\" data-show-label=\"Show Possible Answer\" data-hide-label=\"Hide Possible Answer\" aria-expanded=\"false\">Show Possible Answer</button><p id=\"lesson-7-guiding-4\" class=\"possible-answer\" hidden>Overlap shows how similar individuals in the two groups are. Large overlap means knowing a person's group does not strongly predict their value.</p></li>
+                <li>Can two groups have different averages and still have many similar individuals?<button type=\"button\" class=\"answer-toggle\" data-answer-target=\"lesson-7-guiding-5\" data-show-label=\"Show Possible Answer\" data-hide-label=\"Hide Possible Answer\" aria-expanded=\"false\">Show Possible Answer</button><p id=\"lesson-7-guiding-5\" class=\"possible-answer\" hidden>Yes. If groups have high variability, there can be substantial overlap even if the averages differ.</p></li>
+                <li>Why does greater variability make group comparisons more difficult?<button type=\"button\" class=\"answer-toggle\" data-answer-target=\"lesson-7-guiding-6\" data-show-label=\"Show Possible Answer\" data-hide-label=\"Hide Possible Answer\" aria-expanded=\"false\">Show Possible Answer</button><p id=\"lesson-7-guiding-6\" class=\"possible-answer\" hidden>High variability within groups increases overlap and makes it harder to distinguish between the groups based on individual values.</p></li>
+                <li>What can side-by-side boxplots help us see?<button type=\"button\" class=\"answer-toggle\" data-answer-target=\"lesson-7-guiding-7\" data-show-label=\"Show Possible Answer\" data-hide-label=\"Hide Possible Answer\" aria-expanded=\"false\">Show Possible Answer</button><p id=\"lesson-7-guiding-7\" class=\"possible-answer\" hidden>Boxplots show the median, IQR, overall range, and potential outliers for each group on the same scale.</p></li>
+                <li>Does a higher group average mean every individual in that group performed better?<button type=\"button\" class=\"answer-toggle\" data-answer-target=\"lesson-7-guiding-8\" data-show-label=\"Show Possible Answer\" data-hide-label=\"Hide Possible Answer\" aria-expanded=\"false\">Show Possible Answer</button><p id=\"lesson-7-guiding-8\" class=\"possible-answer\" hidden>No. Higher groups still contain individuals with lower values than some individuals in lower groups, especially if there is overlap.</p></li>
+                <li>What makes a difference practically important?<button type=\"button\" class=\"answer-toggle\" data-answer-target=\"lesson-7-guiding-9\" data-show-label=\"Show Possible Answer\" data-hide-label=\"Hide Possible Answer\" aria-expanded=\"false\">Show Possible Answer</button><p id=\"lesson-7-guiding-9\" class=\"possible-answer\" hidden>The context and scale matter. A difference must be both numerically large and meaningful in the real-world situation.</p></li>
+                <li>Why should we be careful about claiming that one variable causes another?<button type=\"button\" class=\"answer-toggle\" data-answer-target=\"lesson-7-guiding-10\" data-show-label=\"Show Possible Answer\" data-hide-label=\"Hide Possible Answer\" aria-expanded=\"false\">Show Possible Answer</button><p id=\"lesson-7-guiding-10\" class=\"possible-answer\" hidden>Observing a difference between groups does not prove causation. Other factors might explain the difference.</p></li>
+              </ul></div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class=\"lesson-callout emphasis\"><p><strong>Differences between groups must be considered alongside variability.</strong></p></div>
+              <p>When comparing groups, we should examine both the <span class="glossary-term" tabindex="0">center<span class="glossary-definition">A typical or middle location.</span></span> and the <span class="glossary-term" tabindex="0">spread<span class="glossary-definition">The amount of variability.</span></span> of each distribution. A difference between averages or medians may be meaningful, but <span class="glossary-term" tabindex="0">variability<span class="glossary-definition">The extent to which values differ.</span></span> and <span class="glossary-term" tabindex="0">overlap<span class="glossary-definition">The range of values appearing in both groups.</span></span> can make the groups less clearly different.</p>
+              <p>Graphs such as <strong>side-by-side dotplots or boxplots</strong> help us compare the <span class="glossary-term" tabindex="0">median<span class="glossary-definition">The middle value.</span></span>, <span class="glossary-term" tabindex="0">IQR<span class="glossary-definition">The spread of the middle 50%.</span></span>, overall spread, and possible overlap between groups.</p>
+              <p>A difference between groups does not automatically prove that the difference is important, and it does not prove that one variable caused the difference.</p>
+              <div style="margin-top: 20px;"><p><strong>Vocabulary:</strong></p><p><span class="glossary-term" tabindex="0">center<span class="glossary-definition">A typical location of data.</span></span>, <span class="glossary-term" tabindex="0">spread<span class="glossary-definition">The amount of variability in data.</span></span>, <span class="glossary-term" tabindex="0">overlap<span class="glossary-definition">The range appearing in both groups.</span></span>, <span class="glossary-term" tabindex="0">median<span class="glossary-definition">The middle value.</span></span>, <span class="glossary-term" tabindex="0">IQR<span class="glossary-definition">Interquartile range.</span></span>, <span class="glossary-term" tabindex="0">variability<span class="glossary-definition">Differences among values.</span></span>, and <span class="glossary-term" tabindex="0">practical significance<span class="glossary-definition">Whether a difference matters in real-world context.</span></span>.</p></div>
+            </div>
+
+            <div class=\"lesson-section lesson-apply\">
+              <h4>Apply</h4>
+              <p><strong>Comparing Two Groups</strong></p>
+              <p><strong>Group X:</strong> 85, 87, 88, 89, 90, 91, 92, 93, 94, 96</p>
+              <p><strong>Group Y:</strong> 80, 82, 84, 86, 88, 90, 92, 94, 96, 98</p>
+              <ol class=\"lesson-list lesson-ordered-list\"><li>Compare the centers.</li>
+                <li>Compare the spreads.</li><li>Describe the overlap.</li>
+                <li>Decide whether the groups appear meaningfully different.</li>
+                <li>Write a conclusion using evidence from the distributions. Be sure to mention both center and variability.</li>
+              </ol>
+            </div>
+
+            <div class=\"lesson-section lesson-closure\">
+              <h4>Closure</h4>
+              <p><strong>Students who sleep more in our sample had higher test scores on average.</strong></p>
+              <ul class=\"lesson-list\"><li>What does this evidence suggest?</li>
+                <li>What can we not conclude?</li>
+                <li>Why is it important to consider variability?</li>
+              </ul>
+            <div class=\"lesson-callout emphasis\"><p><strong>One sentence to remember:</strong></p><p><strong>"A difference between groups is only meaningful when considered in the context of variability."</strong></p>
+            </div>
+          </div>
+        </section>
+
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              renderDotplot('lesson-7-bellringer-graph-a', [72, 73, 74, 74, 75, 75, 75, 76, 76, 77], { min: 65, max: 85, title: 'Group A' });
+              renderDotplot('lesson-7-bellringer-graph-b', [68, 70, 72, 74, 75, 75, 76, 78, 80, 82], { min: 65, max: 85, title: 'Group B' });
+              renderDotplot('lesson-7-explore-graph-a', [72, 74, 75, 76, 78, 79, 80, 81, 83, 84], { min: 70, max: 90, title: 'Less Sleep' });
+              renderDotplot('lesson-7-explore-graph-b', [74, 76, 78, 80, 81, 82, 84, 85, 86, 88], { min: 70, max: 90, title: 'More Sleep' });
+              renderDotplot('lesson-7-investigation-1-graph-a', [60, 62, 64, 66, 68, 70, 72, 74, 76, 78], { min: 58, max: 80, title: 'Group 1' });
+              renderDotplot('lesson-7-investigation-1-graph-b', [64, 65, 66, 67, 68, 69, 70, 71, 72, 73], { min: 58, max: 80, title: 'Group 2' });
+              renderDotplot('lesson-7-scenario-a-graph-1', [78, 79, 80, 81, 82], { min: 75, max: 90, title: 'Scenario A: Group A' });
+              renderDotplot('lesson-7-scenario-a-graph-2', [83, 84, 85, 86, 87], { min: 75, max: 90, title: 'Scenario A: Group B' });
+              renderDotplot('lesson-7-scenario-b-graph-1', [75, 78, 80, 82, 85], { min: 70, max: 92, title: 'Scenario B: Group C' });
+              renderDotplot('lesson-7-scenario-b-graph-2', [80, 83, 85, 87, 90], { min: 70, max: 92, title: 'Scenario B: Group D' });
+            });
+          </script>
 
           <section id="lesson-8" class="lesson">
             <div class="lesson-header">
