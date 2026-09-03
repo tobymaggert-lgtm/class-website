@@ -237,3 +237,80 @@ document.querySelectorAll('[data-histogram-control]').forEach((select) => {
 		renderHistogram(containerId, data, intervalWidth, { min, max, title, startPoint });
 	});
 });
+
+function initializeLineOfFitWidget() {
+	const container = document.getElementById("lesson-8-line-fit-widget");
+	if (!container) return;
+
+	const data = [
+		{ x: 4, y: 68 }, { x: 5, y: 70 }, { x: 5, y: 74 }, { x: 6, y: 72 },
+		{ x: 6, y: 76 }, { x: 7, y: 78 }, { x: 7, y: 80 }, { x: 7, y: 83 },
+		{ x: 8, y: 79 }, { x: 8, y: 84 }, { x: 8, y: 87 }, { x: 9, y: 85 },
+		{ x: 9, y: 89 }, { x: 10, y: 91 }, { x: 10, y: 88 }, { x: 11, y: 94 }
+	];
+	const meanX = data.reduce((sum, point) => sum + point.x, 0) / data.length;
+	const meanY = data.reduce((sum, point) => sum + point.y, 0) / data.length;
+	const sumXX = data.reduce((sum, point) => sum + (point.x - meanX) ** 2, 0);
+	const sumYY = data.reduce((sum, point) => sum + (point.y - meanY) ** 2, 0);
+	const sumXY = data.reduce((sum, point) => sum + (point.x - meanX) * (point.y - meanY), 0);
+	const regressionSlope = sumXY / sumXX;
+	const regressionIntercept = meanY - regressionSlope * meanX;
+	const correlation = sumXY / Math.sqrt(sumXX * sumYY);
+	let slope = 3;
+	let intercept = 52;
+
+	function formatNumber(value) {
+		return value.toFixed(2).replace(/\.00$/, "");
+	}
+
+	function correlationDescription(value) {
+		const strength = Math.abs(value) >= 0.8 ? "very strong" : Math.abs(value) >= 0.6 ? "strong" : Math.abs(value) >= 0.35 ? "moderate" : Math.abs(value) >= 0.15 ? "weak" : "little or no";
+		if (strength === "little or no") return "This indicates little or no linear association.";
+		return `This indicates a ${strength} ${value > 0 ? "positive" : "negative"} linear association.`;
+	}
+
+	function lineEquation(lineSlope, lineIntercept, symbol = "y") {
+		return `${symbol} = ${formatNumber(lineSlope)}x ${lineIntercept < 0 ? "-" : "+"} ${formatNumber(Math.abs(lineIntercept))}`;
+	}
+
+	container.innerHTML = `<div class="line-fit-controls"><label for="lesson-8-slope">Student slope: <output id="lesson-8-slope-value">3</output><input id="lesson-8-slope" type="range" min="0" max="6" step="0.1" value="3"></label><label for="lesson-8-intercept">Student y-intercept: <output id="lesson-8-intercept-value">52</output><input id="lesson-8-intercept" type="range" min="35" max="75" step="0.5" value="52"></label><label class="line-fit-check"><input id="lesson-8-regression" type="checkbox"> Show Regression Line</label></div><div class="line-fit-equations"><p><strong>Your line:</strong> <output id="lesson-8-student-equation">y = 3x + 52</output></p><p class="line-fit-regression-details" hidden><strong>Least-Squares Regression Line:</strong> <output>${lineEquation(regressionSlope, regressionIntercept, "ŷ")}</output></p><p class="line-fit-regression-details" hidden><strong>Regression slope:</strong> ${formatNumber(regressionSlope)} &nbsp; <strong>y-intercept:</strong> ${formatNumber(regressionIntercept)}</p><p><strong>r = </strong><output id="lesson-8-student-r"></output> <span id="lesson-8-student-r-description"></span></p></div><div class="line-fit-chart-wrap"><svg class="line-fit-chart" viewBox="0 0 720 390" role="img" aria-label="Scatterplot of hours of sleep and test scores with adjustable student line and optional regression line"></svg></div>`;
+
+	const chart = container.querySelector("svg");
+	const slopeControl = container.querySelector("#lesson-8-slope");
+	const interceptControl = container.querySelector("#lesson-8-intercept");
+	const regressionControl = container.querySelector("#lesson-8-regression");
+	const regressionDetails = container.querySelectorAll(".line-fit-regression-details");
+	const chartWidth = 720;
+	const chartHeight = 390;
+	const margin = { left: 62, right: 22, top: 22, bottom: 52 };
+	const xMin = 3;
+	const xMax = 12;
+	const yMin = 60;
+	const yMax = 100;
+	const xScale = (value) => margin.left + ((value - xMin) / (xMax - xMin)) * (chartWidth - margin.left - margin.right);
+	const yScale = (value) => chartHeight - margin.bottom - ((value - yMin) / (yMax - yMin)) * (chartHeight - margin.top - margin.bottom);
+
+	function render() {
+		const ticks = [4, 6, 8, 10, 12].map((value) => `<line class="line-fit-grid" x1="${xScale(value)}" y1="${margin.top}" x2="${xScale(value)}" y2="${chartHeight - margin.bottom}"></line><text x="${xScale(value)}" y="${chartHeight - 28}" text-anchor="middle">${value}</text>`).join("") + [60, 70, 80, 90, 100].map((value) => `<line class="line-fit-grid" x1="${margin.left}" y1="${yScale(value)}" x2="${chartWidth - margin.right}" y2="${yScale(value)}"></line><text x="${margin.left - 10}" y="${yScale(value) + 4}" text-anchor="end">${value}</text>`).join("");
+		const regressionLine = `<line class="line-fit-regression" x1="${xScale(xMin)}" y1="${yScale(regressionSlope * xMin + regressionIntercept)}" x2="${xScale(xMax)}" y2="${yScale(regressionSlope * xMax + regressionIntercept)}"></line>`;
+		const studentLine = `<line class="line-fit-student" x1="${xScale(xMin)}" y1="${yScale(slope * xMin + intercept)}" x2="${xScale(xMax)}" y2="${yScale(slope * xMax + intercept)}"></line>`;
+		const regression = regressionControl.checked ? regressionLine : "";
+		const squaredError = data.reduce((sum, point) => sum + (point.y - (slope * point.x + intercept)) ** 2, 0);
+		const studentR = Math.sqrt(Math.max(0, 1 - squaredError / sumYY));
+		const points = data.map((point) => `<circle class="line-fit-point" cx="${xScale(point.x)}" cy="${yScale(point.y)}" r="5"><title>${point.x} hours, ${point.y} points</title></circle>`).join("");
+		chart.innerHTML = `${ticks}<line class="line-fit-axis" x1="${margin.left}" y1="${chartHeight - margin.bottom}" x2="${chartWidth - margin.right}" y2="${chartHeight - margin.bottom}"></line><line class="line-fit-axis" x1="${margin.left}" y1="${margin.top}" x2="${margin.left}" y2="${chartHeight - margin.bottom}"></line>${regression}${studentLine}${points}<text class="line-fit-axis-label" x="390" y="382" text-anchor="middle">Hours of Sleep</text><text class="line-fit-axis-label" transform="translate(16 205) rotate(-90)" text-anchor="middle">Test Score</text>`;
+		container.querySelector("#lesson-8-slope-value").value = formatNumber(slope);
+		container.querySelector("#lesson-8-intercept-value").value = formatNumber(intercept);
+		container.querySelector("#lesson-8-student-equation").value = lineEquation(slope, intercept);
+		container.querySelector("#lesson-8-student-r").value = formatNumber(studentR);
+		container.querySelector("#lesson-8-student-r-description").textContent = correlationDescription(studentR);
+		regressionDetails.forEach((detail) => { detail.hidden = !regressionControl.checked; });
+	}
+
+	slopeControl.addEventListener("input", () => { slope = Number(slopeControl.value); render(); });
+	interceptControl.addEventListener("input", () => { intercept = Number(interceptControl.value); render(); });
+	regressionControl.addEventListener("change", render);
+	render();
+}
+
+initializeLineOfFitWidget();

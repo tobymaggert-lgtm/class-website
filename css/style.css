@@ -632,3 +632,118 @@ header p {
         font-size: 1.5rem;
     }
 }
+
+.line-fit-widget {
+    margin: 18px 0;
+    padding: 16px;
+    border: 1px solid #dfe3e8;
+    background: #ffffff;
+}
+
+.line-fit-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 14px 22px;
+    align-items: end;
+}
+
+.line-fit-controls label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 700;
+}
+
+.line-fit-controls input[type="range"] {
+    width: 100%;
+    min-height: 28px;
+    accent-color: #3d5a80;
+}
+
+.line-fit-check {
+    flex-direction: row !important;
+    align-items: center;
+    grid-column: 1 / -1;
+}
+
+.line-fit-equations {
+    margin: 16px 0;
+    padding: 12px 14px;
+    border-left: 4px solid #3d5a80;
+    background: #f5f8fb;
+}
+
+.line-fit-equations p {
+    margin: 5px 0;
+}
+
+.line-fit-equations output {
+    font-weight: 700;
+}
+
+.line-fit-chart-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.line-fit-chart {
+    display: block;
+    width: 100%;
+    min-width: 520px;
+    height: auto;
+    background: #fbfcfe;
+    border: 1px solid #dfe3e8;
+}
+
+.line-fit-chart text {
+    fill: #334155;
+    font-size: 13px;
+}
+
+.line-fit-grid {
+    stroke: #e3e8ee;
+    stroke-width: 1;
+}
+
+.line-fit-axis {
+    stroke: #526273;
+    stroke-width: 1.5;
+}
+
+.line-fit-axis-label {
+    font-weight: 700;
+}
+
+.line-fit-point {
+    fill: #3d5a80;
+    stroke: #ffffff;
+    stroke-width: 2;
+}
+
+.line-fit-student {
+    stroke: #d97706;
+    stroke-width: 3;
+}
+
+.line-fit-regression {
+    stroke: #2d6a9f;
+    stroke-width: 3;
+    stroke-dasharray: 9 6;
+}
+
+.line-fit-residual {
+    stroke: #b45309;
+    stroke-width: 1.5;
+    stroke-dasharray: 4 3;
+}
+
+.line-fit-residual-note {
+    margin: 12px 0 0;
+    font-size: 0.92rem;
+}
+
+@media (max-width: 700px) {
+    .line-fit-controls {
+        grid-template-columns: 1fr;
+    }
+}

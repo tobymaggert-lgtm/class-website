@@ -522,11 +522,201 @@
           <section id="lesson-8" class="lesson">
             <div class="lesson-header">
               <p class="lesson-number">Lesson 8</p>
-              <h3>Lesson 8 Title</h3>
+              <h3>Relationships Between Quantitative Variables</h3>
             </div>
-            <p>
-              Placeholder content for Lesson 4. Add warm-ups, examples, or independent work as needed.
-            </p>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p><strong>Does studying more lead to higher test scores?</strong></p></div>
+              <p><strong>Hours Studied / Test Score</strong></p>
+              <p>1 / 68,   2 / 72,   2 / 70,   3 / 78,   4 / 81,   5 / 86,   6 / 88,   8 / 92</p>
+              <ul class="lesson-list"><li>What do you notice about the relationship?</li><li>As one variable increases, what appears to happen to the other?</li><li>Would every student who studies more necessarily score higher?</li><li>Could two students study the same amount and receive different scores?</li><li>How could we graph these paired data?</li><li>Would a line help us describe the relationship?</li></ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-8-bellringer-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-8-bellringer-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The scores generally increase as study hours increase, suggesting a positive association.</li>
+                  <li>As study hours increase, test scores generally increase, although the relationship is not perfect.</li>
+                  <li>No. Studying more does not guarantee that every student will earn a higher score because other factors can affect test performance.</li>
+                  <li>Yes. Two students can study the same amount and receive different scores because there is variability in the data.</li>
+                  <li>A scatterplot could display each pair of study hours and test scores, with study hours on the x-axis and test score on the y-axis.</li>
+                  <li>Yes. A line of best fit could summarize the overall trend and help us describe or make predictions about the relationship.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>I can create and interpret a scatterplot.</li>
+                <li>I can describe the direction and strength of an association.</li>
+                <li>I can distinguish between linear and nonlinear relationships.</li>
+                <li>I can use a line of best fit to describe a relationship.</li>
+                <li>I can use a line of best fit to make predictions.</li>
+                <li>I can explain what a residual represents.</li>
+                <li>I can explain why correlation does not imply causation.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore: Two Measurements for Each Person</h4>
+              <p>Sometimes each student has two quantitative measurements, such as hours of sleep and a GPA or test score. Each pair of measurements belongs to one student.</p>
+              <ul class="lesson-list">
+                <li>What would one row of data represent?</li>
+                <li>Why can't we graph this relationship using a histogram?</li>
+                <li>What should each point on a graph represent?</li>
+                <li>What would the horizontal axis represent?</li>
+                <li>What would the vertical axis represent?</li>
+                <li>If the points generally move upward from left to right, what might that suggest?</li>
+                <li>What if the points generally move downward?</li>
+                <li>What if the points appear scattered randomly?</li>
+              </ul>
+              <p>A <span class="glossary-term" tabindex="0">scatterplot<span class="glossary-definition">A graph in which each point represents a pair of quantitative measurements.</span></span> helps us visualize the relationship between two quantitative variables.</p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-8-explore-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-8-explore-answers" class="possible-answer" hidden>
+               <ul class="lesson-list">
+                <li>One row represents one student and the two measurements collected for that student: hours of sleep and GPA.</li>
+                <li>A histogram displays the distribution of one quantitative variable, while a scatterplot is used to examine the relationship between two quantitative variables.</li>
+                <li>Each point should represent one student and show both of that student's measurements.</li>
+                <li>The horizontal axis should represent the explanatory variable, such as hours of sleep.</li>
+                <li>The vertical axis should represent the response variable, such as GPA.</li>
+                <li>An upward pattern from left to right suggests a positive association, meaning that larger values of one variable tend to be associated with larger values of the other.</li>
+                <li>A downward pattern from left to right suggests a negative association, meaning that larger values of one variable tend to be associated with smaller values of the other.</li>
+                <li>A random-looking cloud of points suggests little or no association between the two variables.</li>
+              </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology / Data Investigation</h4>
+              <h5>Investigation 1: Creating and Interpreting Scatterplots</h5>
+              <p>Use this data set about hours of sleep and test score. Each pair represents one student.</p>
+              <p><a href="https://docs.google.com/spreadsheets/d/143o8_H0diawXu0Vcdvdi2EjwsAfXDKJFt2PXKYN9Tio/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">
+                View the Data in Google Sheets</a></p>
+              <p><strong>Hours of Sleep:</strong> 4, 5, 5, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 10, 10, 11</p>
+              <p><strong>Test Score:</strong> 68, 70, 74, 72, 76, 78, 80, 83, 79, 84, 87, 85, 89, 91, 88, 94</p>
+              <ul class="lesson-list">
+                <li>Create or view a scatterplot of the paired data.</li>
+                <li>Identify the explanatory variable and response variable.</li>
+                <li>Describe the direction of the association.</li>
+                <li>Describe the strength of the association.</li>
+                <li>Determine whether the relationship appears approximately linear.</li>
+                <li>Identify any possible unusual points.</li>
+                <li>Explain what the scatterplot suggests.</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-8-investigation-1-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-8-investigation-1-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>Create or view a scatterplot of the paired data to see whether a pattern exists between the two variables.</li>
+                  <li>Hours of sleep is the explanatory variable, and test score is the response variable.</li>
+                  <li>The association is positive because the points generally rise from left to right.</li>
+                  <li>The association is moderately strong to strong because the points tend to follow a clear overall pattern, although there is some scatter.</li>
+                  <li>The relationship appears approximately linear because the points generally follow a straight-line pattern rather than a curved pattern.</li>
+                  <li>The point near 5 hours and 74 is somewhat lower than nearby values, but there is no obvious extreme outlier.</li>
+                  <li>The scatterplot suggests that students who sleep more tend to score higher in this sample, but it does not show that sleep determines every student's score.</li>
+                </ul>
+              </div>
+
+              <h5>Investigation 2: Interactive Line of Best Fit</h5>
+              <p><strong>Try to create your own line of best fit.</strong> Adjust the slope and y-intercept until you think the line describes the overall pattern. Then compare your line to the least-squares regression line.</p>
+              <div id="lesson-8-line-fit-widget" class="line-fit-widget"></div>
+              <ul class="lesson-list"><li>How close is your slope to the regression slope?</li><li>How close is your y-intercept to the regression y-intercept?</li><li>Is there only one reasonable line of best fit?</li><li>What makes one line fit the data better than another?</li><li>Which points are farthest from your line?</li><li>What do you notice about the residuals?</li></ul>
+                            
+              <button type="button" class="answer-toggle" data-answer-target="lesson-8-investigation-3-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-8-investigation-3-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>Your slope should be reasonably close to the regression slope, although it may not be exactly the same because your line was estimated by eye.</li>
+                  <li>Your y-intercept should be reasonably close to the regression y-intercept, but it may differ because your line was estimated rather than calculated.</li>
+                  <li>No. There can be several reasonable lines of best fit, especially when the data have some scatter. Different students may draw slightly different lines.</li>
+                  <li>A line fits the data better when it follows the overall pattern closely and keeps the points, or prediction errors, as close to the line as possible.</li>
+                  <li>The points farthest from your line are the observations with the largest vertical distances between the actual values and the values predicted by your line.</li>
+                  <li>The residuals show how far the actual values are from the values predicted by the line. Points above the line have positive residuals, while points below the line have negative residuals.</li>
+                </ul>
+              </div>
+              
+              <h5>Investigation 3: Using Technology to Find Regression</h5>
+              <p>Use the widget or another approved technology to generate a regression line. Compare your manually created line with the technology-generated line, including their slopes, y-intercepts, and predictions.</p>
+              <ul class="lesson-list"><li>Which line appears to better represent the overall data?</li><li>Does the regression line pass through every point?</li><li>Should we expect a line of best fit to pass through every point?</li><li>What does the slope tell us in context?</li><li>What does the y-intercept tell us in context?</li><li>Is the y-intercept meaningful in this situation?</li><li>What prediction would the line make for 9 hours of sleep?</li><li>Would that prediction be interpolation or extrapolation?</li></ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-8-investigation-3-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-8-investigation-3-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The technology-generated least-squares regression line generally represents the overall pattern better because it is calculated to minimize the overall prediction errors.</li>
+                  <li>No. The regression line does not usually pass through every point because the data contain variability.</li>
+                  <li>No. A line of best fit is meant to summarize the overall pattern, not connect every individual observation.</li>
+                  <li>The slope tells us how much the predicted test score changes, on average, for each additional hour of sleep.</li>
+                  <li>The y-intercept represents the predicted test score when hours of sleep is 0.</li>
+                  <li>The y-intercept is not meaningful in this situation because 0 hours of sleep is outside the practical context of the data.</li>
+                  <li>Using the regression equation, the predicted test score for a student who gets 9 hours of sleep can be calculated by substituting 9 for the explanatory variable.</li>
+                  <li>A prediction for 9 hours of sleep is interpolation if 9 hours falls within the observed range of sleep values. A prediction outside the observed range would be extrapolation.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ul class="lesson-list">
+                <li>What does each point on a scatterplot represent?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-1" class="possible-answer" hidden>One pair of quantitative measurements, usually from one individual or object.</p></li>
+                <li>Why must both variables be quantitative?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-2" class="possible-answer" hidden>Scatterplots place both variables on numerical axes so their paired values can be plotted.</p></li>
+                <li>What does a positive association look like?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-3" class="possible-answer" hidden>Points generally rise from left to right.</p></li>
+                <li>What does a negative association look like?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-4" class="possible-answer" hidden>Points generally fall from left to right.</p></li>
+                <li>What does little or no association look like?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-5" class="possible-answer" hidden>The points form a scattered cloud without a clear upward or downward pattern.</p></li>
+                <li>What does the strength of an association describe?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-6" class="possible-answer" hidden>Strength describes how closely the points follow a consistent pattern.</p></li>
+                <li>What makes a relationship linear?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-7" class="possible-answer" hidden>A roughly straight-line pattern, with a fairly consistent rate of change.</p></li>
+                <li>Can a relationship be strong but nonlinear?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-8" class="possible-answer" hidden>Yes. A close curved pattern can be strong even though a line does not describe it well.</p></li>
+                <li>What does the slope of a line of best fit represent?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-9" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-9" class="possible-answer" hidden>It estimates the change in predicted response for a one-unit increase in the explanatory variable.</p></li>
+                <li>What does the y-intercept represent?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-10" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-10" class="possible-answer" hidden>It is the predicted response when the explanatory variable equals zero.</p></li>
+                <li>Why might a y-intercept not make sense in context?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-11" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-11" class="possible-answer" hidden>Zero may be impossible, unreasonable, or far outside the data used to build the model.</p></li>
+                <li>What is a predicted value?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-12" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-12" class="possible-answer" hidden>A value estimated by a model for a chosen explanatory-variable value.</p></li>
+                <li>What is a residual?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-13" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-13" class="possible-answer" hidden>A residual is actual value minus predicted value.</p></li>
+                <li>What does a positive residual mean?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-14" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-14" class="possible-answer" hidden>The observed point is above the line because the actual response is greater than predicted.</p></li>
+                <li>What does a negative residual mean?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-15" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-15" class="possible-answer" hidden>The observed point is below the line because the actual response is less than predicted.</p></li>
+                <li>Why doesn't a line of best fit need to pass through every point?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-16" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-16" class="possible-answer" hidden>Real data vary, so the line summarizes the trend rather than matching every observation.</p></li>
+                <li>Why might two people draw slightly different reasonable lines of best fit?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-17" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-17" class="possible-answer" hidden>Visual estimates can differ slightly, especially when several lines describe the pattern similarly.</p></li>
+                <li>What does correlation measure?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-18" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-18" class="possible-answer" hidden>Correlation measures the direction and strength of a linear association.</p></li>
+                <li>Can a strong correlation prove causation?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-19" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-19" class="possible-answer" hidden>No. Correlation describes an association and does not by itself establish cause and effect.</p></li>
+                <li>What are possible explanations for an association besides causation?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-20" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-20" class="possible-answer" hidden>The relationship may be reversed, caused by a third variable, or a coincidence.</p></li>
+                <li>What is interpolation?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-21" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-21" class="possible-answer" hidden>Interpolation predicts within the range of explanatory-variable values observed in the data.</p></li>
+                <li>What is extrapolation?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-22" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-22" class="possible-answer" hidden>Extrapolation predicts outside the observed range.</p></li>
+                <li>Why can extrapolation be risky?<button type="button" class="answer-toggle" data-answer-target="lesson-8-guiding-23" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-8-guiding-23" class="possible-answer" hidden>The relationship may change outside the observed range, making the prediction unreliable.</p></li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>Relationships between quantitative variables can be described and modeled.</strong></p></div>
+              <p>A <span class="glossary-term" tabindex="0">scatterplot<span class="glossary-definition">A graph that displays pairs of quantitative measurements as points.</span></span> helps us visualize the relationship between two quantitative variables. A <span class="glossary-term" tabindex="0">positive association<span class="glossary-definition">A relationship in which larger values of one variable tend to occur with larger values of the other.</span></span> rises from left to right, while a <span class="glossary-term" tabindex="0">negative association<span class="glossary-definition">A relationship in which larger values of one variable tend to occur with smaller values of the other.</span></span> falls from left to right. Relationships can vary in strength. Some relationships are approximately <span class="glossary-term" tabindex="0">linear<span class="glossary-definition">Following an approximately straight-line pattern.</span></span>, allowing us to use a <span class="glossary-term" tabindex="0">line of best fit<span class="glossary-definition">A line that summarizes the overall pattern of a scatterplot.</span></span> or <span class="glossary-term" tabindex="0">regression line<span class="glossary-definition">A calculated line used to model the relationship between two quantitative variables.</span></span> to describe the pattern and make predictions.</p>
+              <p><span class="glossary-term" tabindex="0">Correlation<span class="glossary-definition">A measure of the direction and strength of a linear association.</span></span> describes linear association, but individual observations usually do not fall exactly on the line because of <span class="glossary-term" tabindex="0">variability<span class="glossary-definition">The fact that data values differ from one another.</span></span>. The difference between an actual value and the <span class="glossary-term" tabindex="0">predicted value<span class="glossary-definition">A value estimated by a model for a chosen explanatory-variable value.</span></span> is a <span class="glossary-term" tabindex="0">residual<span class="glossary-definition">Actual value minus predicted value.</span></span>. The <span class="glossary-term" tabindex="0">slope<span class="glossary-definition">The estimated change in predicted response for a one-unit increase in the explanatory variable.</span></span> describes the model's rate of change, while the <span class="glossary-term" tabindex="0">y-intercept<span class="glossary-definition">The predicted response when the explanatory variable equals zero.</span></span> is the predicted response at zero.</p>
+              <p>Predictions within the observed range are called <span class="glossary-term" tabindex="0">interpolation<span class="glossary-definition">A prediction made within the range of observed explanatory-variable values.</span></span>; predictions outside it are <span class="glossary-term" tabindex="0">extrapolation<span class="glossary-definition">A prediction made outside the range of observed explanatory-variable values.</span></span> and can be risky. <span class="glossary-term" tabindex="0">Association<span class="glossary-definition">A relationship or pattern between variables.</span></span> does not automatically mean <span class="glossary-term" tabindex="0">causation<span class="glossary-definition">A cause-and-effect relationship in which one variable produces a change in another.</span></span>. Two variables may be associated because one causes the other, because the second causes the first, because of another variable, or simply because of coincidence.</p>
+              <div style="margin-top: 20px;"><p><strong>Vocabulary:</strong></p><p><span class="glossary-term" tabindex="0">scatterplot<span class="glossary-definition">A graph of paired quantitative data.</span></span>, <span class="glossary-term" tabindex="0">association<span class="glossary-definition">A relationship or pattern between variables.</span></span>, <span class="glossary-term" tabindex="0">correlation<span class="glossary-definition">The direction and strength of a linear association.</span></span>, <span class="glossary-term" tabindex="0">predicted value<span class="glossary-definition">A value estimated by a model.</span></span>, <span class="glossary-term" tabindex="0">residual<span class="glossary-definition">Actual value minus predicted value.</span></span>, and <span class="glossary-term" tabindex="0">causation<span class="glossary-definition">A cause-and-effect relationship.</span></span>.</p></div>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p><strong>Hours of Video Game Play per Week vs. Hours of Sleep</strong></p>
+              <p>Use the paired data below to investigate whether students who spend more time playing video games tend to sleep more or less.</p>
+              <p><strong>Video Game Hours:</strong> 2, 4, 5, 6, 8, 9, 10, 12, 14, 15, 17, 20</p>
+              <p><strong>Sleep Hours:</strong> 9, 8.5, 8, 8.2, 7.8, 7.5, 7.2, 7, 6.8, 6.5, 6.2, 5.8</p>
+              <ol class="lesson-list lesson-ordered-list"><li>Create or examine a scatterplot.</li><li>Describe the direction and strength of the association.</li><li>Decide whether the relationship appears approximately linear.</li><li>Estimate a reasonable line of best fit.</li><li>Use the line to predict sleep for a student who plays 10 hours per week.</li><li>Identify whether your prediction is interpolation or extrapolation.</li><li>Explain whether the association proves that video game play causes changes in sleep.</li></ol>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-8-apply-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-8-apply-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>A scatterplot can be used to display the paired data and examine the relationship between video game hours and sleep.</li>
+                  <li>The association is strong and negative because sleep generally decreases as video game hours increase.</li>
+                  <li>The relationship appears approximately linear because the points generally follow a straight-line pattern.</li>
+                  <li>A reasonable line of best fit should follow the center of the overall pattern, with roughly equal amounts of data above and below the line.</li>
+                  <li>The line of best fit can be used to predict the amount of sleep for a student who plays 10 hours of video games per week by substituting 10 for the video game hours.</li>
+                  <li>The prediction is interpolation if 10 hours falls within the observed range of video game hours. If 10 hours is outside the observed range, the prediction would be extrapolation.</li>
+                  <li>No. The association does not prove that video game play causes changes in sleep. Other variables, such as school demands, schedules, health, or other habits, could help explain the relationship.</li>
+                </ul>            
+              </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p><strong>"The more time students spend studying, the higher their test scores will be."</strong></p>
+              <ul class="lesson-list"><li>Does a positive association automatically prove this statement?</li><li>What could a scatterplot tell us?</li><li>What could it not tell us?</li></ul>
+              <p>Complete this sentence:</p>
+              <p><strong>"A scatterplot helps us see __________, but it cannot automatically tell us __________."</strong></p>
+              <div class="lesson-callout emphasis"><p><strong>One sentence to remember:</strong></p><p><strong>"Association can reveal a pattern, but it does not by itself prove causation."</strong></p></div>
+            </div>
           </section>
 
         </div>
