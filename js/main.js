@@ -92,12 +92,51 @@ function createSimulation(panel) {
 
 document.querySelectorAll("[data-simulation]").forEach(createSimulation);
 
+function createSignificanceSimulation(panel, index) {
+	const trials = Number(panel.dataset.trials);
+	const observed = Number(panel.dataset.observed);
+	const singleOutput = panel.querySelector('[data-output="single"]');
+	const summaryOutput = panel.querySelector('[data-output="summary"]');
+	const chartOutput = panel.querySelector('[data-output="chart"]');
+	const chartId = `significance-chart-${index}`;
+	let results = [];
+
+	chartOutput.id = chartId;
+
+	function runOne() {
+		let makes = 0;
+		for (let throwNumber = 0; throwNumber < trials; throwNumber += 1) {
+			if (Math.random() < 0.5) makes += 1;
+		}
+		return makes;
+	}
+
+	function updateDisplay() {
+		const unusualCount = results.filter((result) => result >= observed).length;
+		const proportion = (unusualCount / results.length * 100).toFixed(1);
+		summaryOutput.textContent = `${unusualCount} of ${results.length} simulations produced ${observed} or more makes (${proportion}%).`;
+		renderDotplot(chartId, results, { min: 0, max: trials, title: `${trials} Free-Throw Simulation Results` });
+	}
+
+	panel.querySelector('[data-action="single"]').addEventListener("click", () => {
+		const makes = runOne();
+		singleOutput.textContent = `This simulation produced ${makes} makes out of ${trials}.`;
+	});
+
+	panel.querySelector('[data-action="batch"]').addEventListener("click", () => {
+		results = Array.from({ length: 100 }, runOne);
+		updateDisplay();
+	});
+}
+
+document.querySelectorAll("[data-significance-simulation]").forEach(createSignificanceSimulation);
+
 function renderDotplot(containerId, data, options = {}) {
 	const container = document.getElementById(containerId);
 	if (!container) return;
 
-	const min = options.min ?? Math.min(...data);
-	const max = options.max ?? Math.max(...data);
+	const min = 10;
+	const max = 40;
 	const label = options.label ?? 'Value';
 	const title = options.title ?? '';
 

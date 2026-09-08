@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Probability & Statistics - Unit 3: Simulation Inference</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/main.js" defer></script>
   </head>
   <body>
     <header class="site-header unit-header">
@@ -29,20 +30,195 @@
           </div>
 
           <nav class="lesson-nav">
-            <a href="#lesson-1">Lesson 1</a>
-            <a href="#lesson-2">Lesson 2</a>
-            <a href="#lesson-3">Lesson 3</a>
-            <a href="#lesson-4">Lesson 4</a>
-            <a href="#lesson-5">Lesson 5</a>
-            <a href="#lesson-6">Lesson 6</a>
+            
+            <a href="#lesson-9">Lesson 9</a>
+            <a href="#lesson-1">Lesson 10</a>
+            <a href="#lesson-2">Lesson 11</a>
+            <a href="#lesson-3">Lesson 12</a>
+            <a href="#lesson-4">Lesson 13</a>
+            <a href="#lesson-5">Lesson 14</a>
           </nav>
         </aside>
 
         <div class="unit-content">
-          <section id="lesson-1" class="lesson">
+        
+
+          <section id="lesson-9" class="lesson">
+            <div class="lesson-header">
+              <p class="lesson-number">Lesson 9</p>
+              <h3>What Does "Statistically Significant" Mean?</h3>
+            </div>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p><strong>Is this result surprising?</strong></p></div>
+              <p>A basketball player normally makes about 50% of their free throws. In one game, they make 9 out of 10.</p>
+              <ul class="lesson-list">
+                <li>Is 9 out of 10 surprising?</li>
+                <li>Could this happen just by chance?</li>
+                <li>Does this prove the player has become a better free-throw shooter?</li>
+                <li>How could we investigate whether a result like this is unusual?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-9-bellringer-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-9-bellringer-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>9 out of 10 is higher than the player's usual rate, so it may seem surprising. </li>
+                  <li>It could still happen by chance, especially in a small sample. </li>
+                  <li>It does not prove the player has improved. </li>
+                  <li>We could simulate many sets of 10 free throws with a 50% success rate and compare the simulated results with 9 out of 10.</p>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>Explain the idea of a <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">null hypothesis<span class="glossary-definition">An informal assumption that nothing unusual or changed is happening.</span></span>.</li>
+                <li>Distinguish an observed result from results produced by chance.</li>
+                <li>Use simulation to investigate whether an observed result is surprising.</li>
+                <li>Explain <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">statistical significance<span class="glossary-definition">Evidence that an observed result would be unusual if the null hypothesis were true.</span></span> conceptually.</li>
+                <li>Explain why an unusual result does not automatically prove that something caused it.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore: What Could Chance Produce?</h4>
+              <p>Start with the assumption that the player's true free-throw probability is still 50%.</p>
+              <p>This is our informal <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">null hypothesis<span class="glossary-definition">The assumption that nothing unusual is happening or that the player's true success rate is still 50%.</span></span>: nothing has changed.</p>
+              <p>If we repeatedly simulate 10 free throws with a 50% success rate, the number of makes will vary from simulation to simulation.</p>
+              <ul class="lesson-list">
+                <li>What number of makes would you expect?</li>
+                <li>Would 7 out of 10 be unusual?</li>
+                <li>What about 9 out of 10?</li>
+                <li>What about 10 out of 10?</li>
+                <li>How can we determine how unusual 9 out of 10 really is?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-9-explore-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-9-explore-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>We would expect results near 5 makes, although other results can occur.</li>
+                  <li>Seven out of 10 is possible and may not be especially unusual.</li>
+                  <li>Nine out of 10 and 10 out of 10 should occur less often.</li>
+                  <li>We can determine how unusual 9 out of 10 is by simulating many groups of 10 free throws under the 50% assumption and counting how often the simulations produce 9 or more makes.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology / Simulation / Data Investigation</h4>
+              <h5>Simulation: How Surprising Is 9 Out of 10?</h5>
+              <p>Simulate 10 free throws for a player who makes 50% of free throws. . Run at least 100 simulations, recording the number of makes each time.</p>
+              <div class="simulation-widget significance-simulation" data-significance-simulation data-trials="10" data-observed="9">
+                <p><strong>10 free throws, 50% success rate</strong></p>
+                <div class="simulation-controls">
+                  <button type="button" data-action="single">Run One Simulation</button>
+                  <button type="button" data-action="batch">Run 100 Simulations</button>
+                </div>
+                <p data-output="single">No single simulation yet.</p>
+                <p data-output="summary">No batch simulations yet.</p>
+                <div data-output="chart" class="chart-output" aria-live="polite"></div>
+              </div>
+              <ul class="lesson-list">
+                <li>What results occur most often?</li>
+                <li>How often do you get 9 or more makes?</li>
+                <li>Does 9/10 appear common or unusual?</li>
+                <li>What would make you more suspicious that the player's success rate had changed?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-9-simulation-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-9-simulation-answers" class="possible-answer" hidden>
+                <ul class="lesson-list"></ul>
+                  <li>Results near 5 makes occur most often.</li>
+                  <li>Nine or more makes should occur only occasionally in 100 simulations</li>
+                  <li>9/10 appears unusual under the 50% assumption.</li>
+                  <li>A much larger number of simulations, repeated real games, or a consistent pattern of results above 50% would make us more suspicious that the success rate had changed.</li>
+                </ul>
+              </div>
+
+              <h5>Second Simulation: Change the Sample Size</h5>
+              <p>Repeat the simulation with 50 free throws and a 50% success rate. Compare the result 45 out of 50 with the simulated distribution.</p>
+              <div class="simulation-widget significance-simulation" data-significance-simulation data-trials="50" data-observed="45">
+                <p><strong>50 free throws, 50% success rate</strong></p>
+                <div class="simulation-controls">
+                  <button type="button" data-action="single">Run One Simulation</button>
+                  <button type="button" data-action="batch">Run 100 Simulations</button>
+                </div>
+                <p data-output="single">No single simulation yet.</p>
+                <p data-output="summary">No batch simulations yet.</p>
+                <div data-output="chart" class="chart-output" aria-live="polite"></div>
+              </div>
+              <ul class="lesson-list">
+                <li>What happens to the variability?</li>
+                <li>Is 45 out of 50 unusual if the true success rate is 50%?</li>
+                <li>Why does having more observations change how we judge an unusual result?</li>
+                <li>Why might a result that seems impressive in a small sample be less convincing than it appears?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-9-sample-size-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-9-sample-size-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The variability is smaller, so the results are more tightly concentrated around 25 out of 50.</li>
+                  <li>45 out of 50 is very unusual under a 50% success rate.</li>
+                  <li>More observations give us a clearer picture of the long-term rate, so an extreme result in a larger sample is stronger evidence than a similar-looking result from only a few observations.</li>
+                  <li>A small sample can produce an impressive result through ordinary chance variation.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ul class="lesson-list">
+                <li>What is the observed result?<button type="button" class="answer-toggle" data-answer-target="lesson-9-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-9-guiding-1" class="possible-answer" hidden>The observed result is the result we actually saw, such as 9 makes in 10 free throws.</p></li>
+                <li>What does the null hypothesis assume?<button type="button" class="answer-toggle" data-answer-target="lesson-9-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-9-guiding-2" class="possible-answer" hidden>It assumes that nothing unusual has changed. In this investigation, the player's true free-throw probability is still 50%.</p></li>
+                <li>Why do we need a null hypothesis before running the simulation?<button type="button" class="answer-toggle" data-answer-target="lesson-9-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-9-guiding-3" class="possible-answer" hidden>It gives us a chance-based model to use as a comparison for deciding whether the observed result is unusual.</p></li>
+                <li>What does each simulation represent?<button type="button" class="answer-toggle" data-answer-target="lesson-9-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-9-guiding-4" class="possible-answer" hidden>Each simulation represents one possible result if the null hypothesis were true.</p></li>
+                <li>Why do we run many simulations?<button type="button" class="answer-toggle" data-answer-target="lesson-9-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-9-guiding-5" class="possible-answer" hidden>Many simulations show the range and frequency of results that chance alone can produce.</p></li>
+                <li>What does it mean for a result to be surprising?<button type="button" class="answer-toggle" data-answer-target="lesson-9-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-9-guiding-6" class="possible-answer" hidden>A surprising result occurs rarely in simulations conducted under the null hypothesis.</p></li>
+                <li>Is an unusual result impossible under the null hypothesis?<button type="button" class="answer-toggle" data-answer-target="lesson-9-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-9-guiding-7" class="possible-answer" hidden>No. An unusual result can still happen by chance; it is just less common.</p></li>
+                <li>If an observed result is very unusual under the null hypothesis, what might that suggest?<button type="button" class="answer-toggle" data-answer-target="lesson-9-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-9-guiding-8" class="possible-answer" hidden>It may suggest that the null hypothesis does not explain the observed result very well and that something may have changed.</p></li>
+                <li>Does statistical significance prove that the null hypothesis is false?<button type="button" class="answer-toggle" data-answer-target="lesson-9-guiding-9" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-9-guiding-9" class="possible-answer" hidden>No. Statistical significance is evidence against the null hypothesis, not absolute proof that it is false.</p></li>
+                <li>Why should we consider the amount of data when deciding whether a result is convincing?<button type="button" class="answer-toggle" data-answer-target="lesson-9-guiding-10" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-9-guiding-10" class="possible-answer" hidden>Larger samples usually have less random variability, so an unusual result in a larger sample can be more convincing.</p></li>
+                <li>How is this investigation connected to Lesson 3?<button type="button" class="answer-toggle" data-answer-target="lesson-9-guiding-11" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-9-guiding-11" class="possible-answer" hidden>Both lessons use simulation to investigate what results are possible when a chance process or null model is assumed.</p></li>
+                <li>Why is "could this happen by chance?" such an important statistical question?<button type="button" class="answer-toggle" data-answer-target="lesson-9-guiding-12" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><p id="lesson-9-guiding-12" class="possible-answer" hidden>It helps us separate ordinary random variation from results that provide evidence that something unusual may be happening.</p></li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>We compare observed results to what chance alone might produce.</strong></p></div>
+              <p><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">Statistical significance<span class="glossary-definition">Evidence that an observed result would be unusual if the null hypothesis were true.</span></span> is about how unusual an observed result would be if the null hypothesis were true. Randomness naturally produces variability, so even a fair process can sometimes produce an extreme result.</p>
+              <p>We use simulation to see what chance alone can produce. Common results are not surprising. Very unusual results provide evidence against the null hypothesis, but statistical significance is about evidence, not absolute proof. We do not yet calculate formal p-values; we first build the idea by comparing the observed result with simulated results.</p>
+              <p>The reasoning pattern is:</p>
+              <p><strong>Observed result &rarr; Assume nothing unusual &rarr; Simulate chance &rarr; Compare &rarr; Decide how surprising the result is</strong></p>
+              <div style="margin-top: 20px;"><p><strong>Vocabulary:</strong></p><p><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">null hypothesis<span class="glossary-definition">The assumption that nothing unusual or changed is happening.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">observed result<span class="glossary-definition">The result actually seen in the data.</span></span>, <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">simulation<span class="glossary-definition">A model or repeated random process used to investigate what results chance can produce.</span></span>, and <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">statistical significance<span class="glossary-definition">Evidence that a result is unusual under the null hypothesis.</span></span>.</p></div>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p>For each scenario, state the null hypothesis, identify the observed result, explain how simulation could be used, and decide whether the result appears common, unusual, or very unusual.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A fair coin produces 7 heads in 10 flips.</li>
+                <li>A fair coin produces 10 heads in 10 flips.</li>
+                <li>A student randomly guesses on 20 true/false questions and gets 17 correct.</li>
+              </ol>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-9-apply-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-9-apply-answers" class="possible-answer" hidden>
+                <p><strong>1.</strong> The null hypothesis is that the coin is fair. The observed result is 7 heads in 10 flips. Simulate many sets of 10 fair flips and count how often 7 or more heads occur. This result is possible and fairly common, so it would usually be described as common or not especially surprising.</p>
+                <p><strong>2.</strong> The null hypothesis is that the coin is fair. The observed result is 10 heads in 10 flips. Simulate many sets of 10 fair flips and count how often all 10 are heads. This result is very unusual under the null hypothesis, although it is not impossible.</p>
+                <p><strong>3.</strong> The null hypothesis is that the student is guessing randomly, so each answer has a 50% chance of being correct. The observed result is 17 correct out of 20. Simulate many groups of 20 random true/false guesses and count how often 17 or more are correct. This result would generally be unusual or very unusual and may provide evidence that random guessing is not the whole explanation.</p>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p><strong>A researcher says, "This result is statistically significant, so chance could not have caused it." Do you agree? Explain.</strong></p>
+              <p>Statistical significance does not mean chance was impossible. It means the observed result would be unusual if chance alone, under the null hypothesis, were the explanation.</p>
+              <div class="lesson-callout emphasis"><p><strong>One sentence to remember:</strong></p><p><strong>"A statistically significant result is unusual under the null hypothesis, but unusual does not mean impossible or proven."</strong></p></div>
+            </div>
+          </section>
+
+          <section id="lesson-10" class="lesson">
             <div class="lesson-header">
               <p class="lesson-number">Lesson 1</p>
-              <h3>Lesson 1 Title</h3>
+              <h3>Lesson 10 Title</h3>
             </div>
             <p>
               This is a placeholder lesson section for Unit 3. Replace this content with the first lesson's objectives,
@@ -50,53 +226,43 @@
             </p>
           </section>
 
-          <section id="lesson-2" class="lesson">
+          <section id="lesson-11" class="lesson">
             <div class="lesson-header">
               <p class="lesson-number">Lesson 2</p>
-              <h3>Lesson 2 Title</h3>
+              <h3>Lesson 11 Title</h3>
             </div>
             <p>
               Add a short overview, class notes, examples, and any key vocabulary for Lesson 2 here.
             </p>
           </section>
 
-          <section id="lesson-3" class="lesson">
+          <section id="lesson-12" class="lesson">
             <div class="lesson-header">
               <p class="lesson-number">Lesson 3</p>
-              <h3>Lesson 3 Title</h3>
+              <h3>Lesson 12 Title</h3>
             </div>
             <p>
               Use this section to include learning targets, guided practice, or discussion prompts for the next lesson.
             </p>
           </section>
 
-          <section id="lesson-4" class="lesson">
+          <section id="lesson-13" class="lesson">
             <div class="lesson-header">
               <p class="lesson-number">Lesson 4</p>
-              <h3>Lesson 4 Title</h3>
+              <h3>Lesson 13 Title</h3>
             </div>
             <p>
               Placeholder content for Lesson 4. Add warm-ups, examples, or independent work as needed.
             </p>
           </section>
 
-          <section id="lesson-5" class="lesson">
+          <section id="lesson-14" class="lesson">
             <div class="lesson-header">
               <p class="lesson-number">Lesson 5</p>
-              <h3>Lesson 5 Title</h3>
+              <h3>Lesson 14 Title</h3>
             </div>
             <p>
               This section can later hold assessment information, classwork, and review questions for Lesson 5.
-            </p>
-          </section>
-
-          <section id="lesson-6" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 6</p>
-              <h3>Lesson 6 Title</h3>
-            </div>
-            <p>
-              Add the final lesson content here, including summaries, exit tickets, or extension activities.
             </p>
           </section>
         </div>
