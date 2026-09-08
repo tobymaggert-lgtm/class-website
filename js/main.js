@@ -135,8 +135,8 @@ function renderDotplot(containerId, data, options = {}) {
 	const container = document.getElementById(containerId);
 	if (!container) return;
 
-	const min = 10;
-	const max = 40;
+	const min = options.min ?? Math.min(...data);
+	const max = options.max ?? Math.max(...data);
 	const label = options.label ?? 'Value';
 	const title = options.title ?? '';
 
