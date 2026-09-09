@@ -115,8 +115,9 @@ function createSignificanceSimulation(panel, index) {
 		const unusualCount = results.filter((result) => result >= observed).length;
 		const proportion = (unusualCount / results.length * 100).toFixed(1);
 		summaryOutput.textContent = `${unusualCount} of ${results.length} simulations produced ${observed} or more makes (${proportion}%).`;
-		renderDotplot(chartId, results, { min: 0, max: trials, title: `${trials} Free-Throw Simulation Results` });
-	}
+		renderDotplot(chartId, results, {
+			title: `${trials} Free-Throw Simulation Results`
+		});	}
 
 	panel.querySelector('[data-action="single"]').addEventListener("click", () => {
 		const makes = runOne();
@@ -131,12 +132,141 @@ function createSignificanceSimulation(panel, index) {
 
 document.querySelectorAll("[data-significance-simulation]").forEach(createSignificanceSimulation);
 
+function createPValueSimulation(panel) {
+	const trials = Number(panel.dataset.trials);
+	const defaultObserved = Number(panel.dataset.observed);
+	const simulationCount = panel.querySelector("#lesson-10-simulation-count");
+	const observedControl = panel.querySelector("#lesson-10-observed");
+	const summaryOutput = panel.querySelector('[data-output="p-value-summary"]');
+	const chartOutput = panel.querySelector('[data-output="p-value-chart"]');
+
+	function runSimulation() {
+		const count = Math.max(100, Number(simulationCount.value) || 1000);
+		const observed = Math.min(
+			trials,
+			Math.max(0, Number(observedControl.value) || defaultObserved)
+		);
+
+		const results = [];
+
+		// Run simulations
+		for (let simulation = 0; simulation < count; simulation += 1) {
+			let heads = 0;
+
+			for (let flip = 0; flip < trials; flip += 1) {
+				if (Math.random() < 0.5) heads += 1;
+			}
+
+			results.push(heads);
+		}
+
+		// Calculate p-value
+		const extremeCount = results.filter(
+			(result) => result >= observed
+		).length;
+
+		const pValue = extremeCount / results.length;
+
+		summaryOutput.textContent =
+			`${extremeCount} of ${results.length} simulations produced ` +
+			`${observed} or more heads. Estimated p-value = ${pValue.toFixed(3)}.`;
+
+		// Count results
+		const counts = Array.from(
+			{ length: trials + 1 },
+			() => 0
+		);
+
+		results.forEach((result) => {
+			counts[result] += 1;
+		});
+
+		const maximum = Math.max(...counts, 1);
+
+		// Build frequency bar graph
+		let html = `
+			<div style="margin-top: 20px;">
+				<h5>Number of Heads in ${trials} Flips</h5>
+
+				<div style="
+					display: flex;
+					align-items: flex-end;
+					gap: 2px;
+					height: 220px;
+					padding: 10px 6px 0;
+					border-bottom: 1px solid #b8c2cc;
+				">
+		`;
+
+		counts.forEach((frequency, result) => {
+			const height = frequency > 0
+				? Math.max(3, (frequency / maximum) * 180)
+				: 0;
+
+			const qualifying = result >= observed;
+
+			html += `
+				<div style="
+					flex: 1;
+					height: 100%;
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-end;
+					align-items: center;
+				">
+					<div
+						style="
+							width: 100%;
+							height: ${height}px;
+							background: ${qualifying ? "#d58a8a" : "#9aaabd"};
+							cursor: pointer;
+						"
+						title="${result} heads: ${frequency} simulations"
+					></div>
+
+					<span style="
+						font-size: 0.75rem;
+						font-weight: 600;
+						margin-top: 5px;
+					">${result}</span>
+				</div>
+			`;
+		});
+
+		html += `
+				</div>
+
+				<div style="
+					text-align: center;
+					font-size: 0.8rem;
+					margin-top: 8px;
+				">
+					Number of Heads
+				</div>
+			</div>
+		`;
+
+		chartOutput.innerHTML = html;
+	}
+
+	panel
+		.querySelector('[data-action="run-p-value"]')
+		.addEventListener("click", runSimulation);
+}
+
+document.querySelectorAll("[data-p-value-simulation]").forEach(createPValueSimulation);
+
 function renderDotplot(containerId, data, options = {}) {
 	const container = document.getElementById(containerId);
 	if (!container) return;
 
-	const min = options.min ?? Math.min(...data);
-	const max = options.max ?? Math.max(...data);
+	const dataMin = Math.min(...data);
+	const dataMax = Math.max(...data);
+
+	// Default to 2 values beyond the observed range
+	const min = options.min ?? dataMin - 2;
+	const max = options.max ?? dataMax + 2;
+
 	const label = options.label ?? 'Value';
 	const title = options.title ?? '';
 
@@ -146,20 +276,60 @@ function renderDotplot(containerId, data, options = {}) {
 	});
 
 	let html = '';
+
 	if (title) html += `<h5>${title}</h5>`;
-	html += `<div class="dotplot" role="img" aria-label="${title || label} dotplot">
-		<div style="display: flex; align-items: flex-end; gap: 8px; min-height: 120px; padding: 12px 6px; border-bottom: 1px solid #b8c2cc;">`;
+
+	html += `
+		<div class="dotplot" role="img" aria-label="${title || label} dotplot">
+			<div style="
+				display: flex;
+				align-items: flex-end;
+				gap: 8px;
+				min-height: 120px;
+				padding: 12px 6px;
+				border-bottom: 1px solid #b8c2cc;
+			">
+	`;
 
 	for (let val = min; val <= max; val += 1) {
 		const count = counts[val] || 0;
-		html += `<div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">`;
+
+		html += `
+			<div style="
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 4px;
+			">
+		`;
+
 		for (let dot = 0; dot < count; dot += 1) {
-			html += `<div style="width: 12px; height: 12px; border-radius: 50%; background: #9aaabd; cursor: pointer;" title="${val}"></div>`;
+			html += `
+				<div style="
+					width: 12px;
+					height: 12px;
+					border-radius: 50%;
+					background: #9aaabd;
+					cursor: pointer;
+				" title="${val}"></div>
+			`;
 		}
-		html += `<span style="font-size: 0.75rem; font-weight: 600; min-width: 10px; text-align: center;">${val}</span>`;
-		html += `</div>`;
+
+		html += `
+				<span style="
+					font-size: 0.75rem;
+					font-weight: 600;
+					min-width: 10px;
+					text-align: center;
+				">${val}</span>
+			</div>
+		`;
 	}
-	html += `</div></div>`;
+
+	html += `
+			</div>
+		</div>
+	`;
 
 	container.innerHTML = html;
 
@@ -254,6 +424,119 @@ function renderHistogram(containerId, data, intervalWidth, options = {}) {
 	});
 
 	html += `
+			</div>
+		</div>
+	`;
+
+	container.innerHTML = html;
+}
+
+function renderBarGraph(containerId, data, options = {}) {
+	const container = document.getElementById(containerId);
+	if (!container) return;
+
+	const min = options.min ?? Math.min(...data);
+	const max = options.max ?? Math.max(...data);
+	const label = options.label ?? 'Value';
+	const title = options.title ?? '';
+
+	// Count frequency of each value
+	const counts = {};
+	for (let val = min; val <= max; val += 1) {
+		counts[val] = 0;
+	}
+
+	data.forEach((val) => {
+		if (counts[val] !== undefined) {
+			counts[val] += 1;
+		}
+	});
+
+	const maxCount = Math.max(...Object.values(counts), 1);
+	const graphHeight = 180;
+
+	let html = '';
+
+	if (title) {
+		html += `<h5>${title}</h5>`;
+	}
+
+	html += `
+		<div class="bar-graph" role="img" aria-label="${title || label} frequency bar graph">
+			<div style="
+				display: flex;
+				align-items: flex-end;
+				height: ${graphHeight}px;
+				gap: 2px;
+				padding: 10px 6px 0;
+				border-bottom: 1px solid #b8c2cc;
+			">
+	`;
+
+	for (let val = min; val <= max; val += 1) {
+		const count = counts[val] || 0;
+		const height = count > 0
+			? Math.max(2, (count / maxCount) * graphHeight)
+			: 0;
+
+		html += `
+			<div style="
+				flex: 1;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				align-items: center;
+			">
+				<div
+					style="
+						width: 100%;
+						height: ${height}px;
+						background: #9aaabd;
+						cursor: pointer;
+						position: relative;
+					"
+					title="${val} heads: ${count} simulations"
+					onmouseenter="this.querySelector('.bar-tooltip').style.display='block'"
+					onmouseleave="this.querySelector('.bar-tooltip').style.display='none'"
+				>
+					<span class="bar-tooltip" style="
+						display: none;
+						position: absolute;
+						bottom: calc(100% + 6px);
+						left: 50%;
+						transform: translateX(-50%);
+						background: #333;
+						color: white;
+						padding: 4px 7px;
+						border-radius: 4px;
+						font-size: 0.75rem;
+						white-space: nowrap;
+						z-index: 100;
+						pointer-events: none;
+					">
+						${val} heads: ${count} simulations
+					</span>
+				</div>
+
+				<span style="
+					font-size: 0.75rem;
+					font-weight: 600;
+					margin-top: 5px;
+				">${val}</span>
+			</div>
+		`;
+	}
+
+	html += `
+			</div>
+
+			<div style="
+				text-align: center;
+				font-size: 0.8rem;
+				margin-top: 8px;
+			">
+				Number of Heads
 			</div>
 		</div>
 	`;

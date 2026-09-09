@@ -32,7 +32,7 @@
           <nav class="lesson-nav">
             
             <a href="#lesson-9">Lesson 9</a>
-            <a href="#lesson-1">Lesson 10</a>
+            <a href="#lesson-10">Lesson 10</a>
             <a href="#lesson-2">Lesson 11</a>
             <a href="#lesson-3">Lesson 12</a>
             <a href="#lesson-4">Lesson 13</a>
@@ -217,13 +217,379 @@
 
           <section id="lesson-10" class="lesson">
             <div class="lesson-header">
-              <p class="lesson-number">Lesson 1</p>
-              <h3>Lesson 10 Title</h3>
+              <p class="lesson-number">Lesson 10</p>
+              <h3>Introducing P-Values</h3>
             </div>
-            <p>
-              This is a placeholder lesson section for Unit 3. Replace this content with the first lesson's objectives,
-              notes, activities, and assignments.
-            </p>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p><strong>How unusual is unusual?</strong></p></div>
+              <p>A basketball player normally makes about 50% of their free throws. In a particular game, they make <strong>9 out of 10</strong>.</p>
+              <ul class="lesson-list">
+                <li>If the player's true success rate is 50%, how surprising is 9 out of 10?</li>
+                <li>How could we use simulation to investigate?</li>
+                <li>Suppose we run 1,000 simulations and 52 produce 9 or more makes. What does 52 out of 1,000 tell us?</li>
+                <li>How could we turn "how surprising" into a number?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-10-bellringer-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-10-bellringer-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>It is somewhat unusual because 9 makes is far above the expected 5 makes.</li>
+                  <li>Simulate many sets of 10 free throws with a 50% success rate and compare the simulated results with 9 makes.</li>
+                  <li>About 52 out of every 1,000 null-model simulations produced a result at least as extreme, so the estimated proportion is 0.052.</li>
+                  <li>We can count the simulated results at least as extreme as the observed result and divide by the total number of simulations.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>Explain what a <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">p-value<span class="glossary-definition">The proportion of results from the null model that are at least as extreme as the observed result.</span></span> represents.</li>
+                <li>Calculate or estimate a p-value using simulation.</li>
+                <li>Interpret a p-value in context.</li>
+                <li>Explain how p-values provide evidence against a null hypothesis.</li>
+                <li>Explain why a small p-value does not prove that a claim is true or that one variable caused another.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore: From Surprising to a Number</h4>
+              <p>Return to the Lesson 9 free-throw investigation. The observed result was <strong>9 makes out of 10</strong>.</p>
+              <p>Assume the null hypothesis: <strong>The player's true free-throw success rate is 50%.</strong></p>
+              <p>Suppose 1,000 simulated sets of 10 free throws are generated, and 52 simulations produce 9 or more makes.</p>
+              <ul class="lesson-list">
+                <li>What does each simulation represent?</li>
+                <li>Why are we interested in results of 9 or more rather than only exactly 9?</li>
+                <li>What proportion of simulations produced a result at least as extreme as the observed result?</li>
+                <li>What does that proportion tell us?</li>
+                <li>Would you consider 52 out of 1,000 to be a common or unusual result?</li>
+                <li>How could this proportion be used as evidence against the null hypothesis?</li>
+              </ul>
+              <div class="lesson-callout"><p><strong>p-value = the proportion of results from the null model that are at least as extreme as the observed result.</strong></p><p>For this example, the estimated p-value is <strong>52 / 1000 = 0.052</strong>.</p></div>
+              <p>The p-value measures how surprising the observed result is under the null hypothesis.</p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-10-explore-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-10-explore-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>Each simulation represents one possible result if the player's true success rate were 50%.</li>
+                  <li>Results of 9 or more are at least as extreme as 9, so counting them includes results even farther from what the null hypothesis predicts.</li>
+                  <li>The proportion is 52 / 1000 = 0.052.</li>
+                  <li>It estimates how often chance alone would produce a result at least this extreme under the null hypothesis.</li>
+                  <li>It is an unusual result because only about 5.2% of the simulations were at least this extreme.</li>
+                  <li>A small proportion provides evidence that the null hypothesis may not explain the observed result well, although it does not prove the null hypothesis false.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology / Simulation / Data Investigation</h4>
+              <h5>Investigation 1: Build a P-Value From a Simulation</h5>
+              <p>Simulate 1,000 sets of 10 fair coin flips. Suppose the observed result is 9 heads out of 10. Run the simulation, record the number of heads, create a dotplot or histogram, identify the observed result, count simulations with 9 or more heads, divide that count by 1,000, and interpret the estimated p-value.</p>
+              <div class="simulation-widget p-value-simulation" data-p-value-simulation data-trials="10" data-observed="9" data-simulation-count="1000">
+                <p><strong>Null model:</strong> fair coin, 10 flips per simulation</p>
+                <div class="simulation-controls">
+                  <label for="lesson-10-simulation-count">Simulations: <input id="lesson-10-simulation-count" type="number" min="100" max="5000" step="100" value="1000"></label>
+                  <label for="lesson-10-observed">Observed heads: <input id="lesson-10-observed" type="number" min="0" max="10" step="1" value="9"></label>
+                  <button type="button" data-action="run-p-value">Run Simulation</button>
+                </div>
+                <p data-output="p-value-summary">No simulation run yet.</p>
+                <div data-output="p-value-chart" class="chart-output" aria-live="polite"></div>
+              </div>
+              <ul class="lesson-list">
+                <li>What is the null hypothesis?</li>
+                <li>What is the observed result?</li>
+                <li>What counts as "at least as extreme"?</li>
+                <li>What is your estimated p-value?</li>
+                <li>What does your p-value mean in context?</li>
+                <li>Does the p-value prove the coin is unfair?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-10-investigation-1-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-10-investigation-1-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The null hypothesis is that the coin is fair, so each flip has a 50% chance of heads.</li>
+                  <li>The observed result is 9 heads out of 10 flips.</li>
+                  <li>Results with 9 or 10 heads are at least as extreme as 9 heads in the high direction.</li>
+                  <li>Your estimated p-value is the number of simulations with 9 or more heads divided by the total number of simulations.</li>
+                  <li>It estimates how often a fair coin would produce at least 9 heads in 10 flips.</li>
+                  <li>No. A small p-value provides evidence against fairness, but it does not prove the coin is unfair.</li>
+                </ul>
+              </div>
+
+              <h5>Investigation 2: Compare P-Values</h5>
+              <p>Compare these simulation scenarios, each based on 1,000 simulations.</p>
+              <p><strong>Scenario A:</strong> 8 out of 1,000 simulations are as extreme as the observed result.</p>
+              <p><strong>Scenario B:</strong> 47 out of 1,000 simulations are as extreme.</p>
+              <p><strong>Scenario C:</strong> 310 out of 1,000 simulations are as extreme.</p>
+              <ul class="lesson-list">
+                <li>Which scenario has the smallest p-value?</li>
+                <li>Which result provides the strongest evidence against the null hypothesis?</li>
+                <li>Which result is least surprising under the null hypothesis?</li>
+                <li>What general relationship do you notice between p-values and evidence against the null hypothesis?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-10-investigation-2-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-10-investigation-2-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>Scenario A has the smallest p-value: 8 / 1000 = 0.008.</li>
+                  <li>Scenario A provides the strongest evidence because its observed result is most unusual under the null hypothesis.</li>
+                  <li>Scenario C is least surprising because 31% of simulations were at least as extreme.</li>
+                  <li>Smaller p-values correspond to more unusual results and stronger evidence against the null hypothesis.</li>
+                </ul>
+              </div>
+
+              <h5>Investigation 3: Statistical Significance</h5>
+              <p>Researchers often use <strong>p &lt; 0.05</strong> as a guideline for calling a result <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">statistically significant<span class="glossary-definition">A result considered sufficiently unusual under the null hypothesis to provide notable evidence against it.</span></span>. This is a guideline, not a magical boundary or proof threshold.</p>
+              <p>Consider the p-values 0.42, 0.18, 0.071, 0.049, and 0.008.</p>
+              <ul class="lesson-list">
+                <li>Which p-values are statistically significant using the 0.05 guideline?</li>
+                <li>What does a p-value below 0.05 mean?</li>
+                <li>What does a p-value below 0.05 not mean?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-10-investigation-3-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-10-investigation-3-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The statistically significant values are 0.049 and 0.008 because they are below 0.05.</li>
+                  <li>It means the result would be fairly unusual if the null hypothesis were true.</li>
+                  <li>It does not mean there is less than a 5% chance that the null hypothesis is true, and it does not prove causation.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+<ul class="lesson-list">
+  <li>
+    What is the null hypothesis?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-1"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-1" class="possible-answer" hidden>
+      The null hypothesis is the assumption about the ordinary or chance process being used for comparison.
+    </div>
+  </li>
+
+  <li>
+    What is the observed result?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-2"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-2" class="possible-answer" hidden>
+      The observed result is the result actually seen in the data.
+    </div>
+  </li>
+
+  <li>
+    What does a p-value measure?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-3"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-3" class="possible-answer" hidden>
+      A p-value is the proportion of null-model results at least as extreme as the observed result.
+    </div>
+  </li>
+
+  <li>
+    Why do we count results that are at least as extreme as the observed result?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-4"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-4" class="possible-answer" hidden>
+      Counting all results at least as extreme measures how often chance produces a result this unusual or more unusual.
+    </div>
+  </li>
+
+  <li>
+    Why do we use a simulation to calculate a p-value?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-5"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-5" class="possible-answer" hidden>
+      Simulation creates a null distribution showing what results chance alone can produce.
+    </div>
+  </li>
+
+  <li>
+    What does a small p-value suggest?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-6"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-6" class="possible-answer" hidden>
+      A small p-value suggests the observed result is unusual under the null hypothesis and provides stronger evidence against it.
+    </div>
+  </li>
+
+  <li>
+    What does a large p-value suggest?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-7"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-7" class="possible-answer" hidden>
+      A large p-value suggests the observed result is not especially unusual under the null hypothesis.
+    </div>
+  </li>
+
+  <li>
+    Does a small p-value prove the null hypothesis is false?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-8"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-8" class="possible-answer" hidden>
+      No. It provides evidence against the null hypothesis but does not prove it false.
+    </div>
+  </li>
+
+  <li>
+    Does a p-value tell us the probability that the null hypothesis is true?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-9"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-9" class="possible-answer" hidden>
+      No. A p-value is not the probability that the null hypothesis is true.
+    </div>
+  </li>
+
+  <li>
+    Why is p = 0.01 stronger evidence against the null hypothesis than p = 0.30?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-10"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-10" class="possible-answer" hidden>
+      Results with p = 0.01 are less common under the null hypothesis than results with p = 0.30, so they provide stronger evidence against it.
+    </div>
+  </li>
+
+  <li>
+    What does statistical significance mean?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-11"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-11" class="possible-answer" hidden>
+      Statistical significance means an observed result is sufficiently unusual under the null hypothesis to provide notable evidence against it.
+    </div>
+  </li>
+
+  <li>
+    Why is 0.05 commonly used?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-12"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-12" class="possible-answer" hidden>
+      It is a commonly used guideline for judging evidence, not a universal law or proof threshold.
+    </div>
+  </li>
+
+  <li>
+    Does p = 0.06 prove that nothing is happening?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-13"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-13" class="possible-answer" hidden>
+      No. It means the result did not meet that guideline; it does not prove that nothing is happening.
+    </div>
+  </li>
+
+  <li>
+    Does statistical significance prove causation?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-14"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-14" class="possible-answer" hidden>
+      No. Statistical significance can show evidence of an association or difference, but it does not establish cause and effect.
+    </div>
+  </li>
+
+  <li>
+    Why should we interpret a p-value in the context of the original question?
+    <button type="button" class="answer-toggle"
+      data-answer-target="lesson-10-guiding-15"
+      data-show-label="Show Possible Answer"
+      data-hide-label="Hide Possible Answer"
+      aria-expanded="false">Show Possible Answer</button>
+    <div id="lesson-10-guiding-15" class="possible-answer" hidden>
+      Context identifies the variables, comparison, null hypothesis, and practical meaning of the evidence.
+    </div>
+  </li>
+</ul>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>A p-value measures how unusual an observed result would be if the null hypothesis were true.</strong></p></div>
+              <p>We generate a <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">null distribution<span class="glossary-definition">The distribution of results produced by randomization or simulation under the null hypothesis.</span></span> through randomization or simulation, then determine the proportion of simulated results that are at least as extreme as the observed result.</p>
+              <p><strong>Small p-value &rarr; observed result is unusual under the null hypothesis &rarr; stronger evidence against the null hypothesis.</strong></p>
+              <p><strong>Large p-value &rarr; observed result is not especially unusual under the null hypothesis &rarr; weaker evidence against the null hypothesis.</strong></p>
+              <p>A p-value is <strong>not</strong> the probability that the null hypothesis is true. A small p-value also does <strong>not</strong> prove causation.</p>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p>For each scenario, interpret the p-value and decide what evidence it provides.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A researcher investigates whether a new study strategy changes test performance. The null hypothesis says there is no difference. The simulation produces a p-value of 0.018.</li>
+                <li>A health researcher compares two exercise plans. The null hypothesis says the plans have the same average effect. The simulation produces a p-value of 0.24.</li>
+                <li>A school tests whether a new tutoring program is associated with improved attendance. The null hypothesis says there is no association. The simulation produces a p-value of 0.049.</li>
+              </ol>
+              <ul class="lesson-list">
+                <li>What does the p-value mean in the study-strategy scenario?</li>
+                <li>Would the study-strategy result be statistically significant using 0.05?</li>
+                <li>What does this provide evidence for?</li>
+                <li>Does it prove the study strategy caused the change?</li>
+                <li>How should the exercise-plan p-value of 0.24 be interpreted?</li>
+                <li>How should the tutoring-program p-value of 0.049 be interpreted?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-10-apply-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-10-apply-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>If the strategy truly made no difference, about 1.8% of null-model simulations produced a result at least as extreme as the observed change.</li>
+                  <li>Yes. Since 0.018 is below 0.05, it meets that commonly used guideline.</li>
+                  <li>It provides evidence against no difference and in favor of a difference in test performance.</li>
+                  <li>No. It does not prove causation; other explanations or study-design limits may remain.</li>
+                  <li>A p-value of 0.24 means the observed difference is not especially unusual under the null hypothesis and provides weak evidence against equal effects.</li>
+                  <li>A p-value of 0.049 is just below 0.05, so it meets the guideline but should still be interpreted with context rather than treated as proof.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p><strong>A student says, "The p-value was 0.02, so there is only a 2% chance that the null hypothesis is true." Do you agree or disagree? Explain what the p-value actually means.</strong></p>
+              <p>Complete: <strong>"A p-value tells us __________ if the null hypothesis is true."</strong></p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-10-closure-answers" aria-expanded="false">Show Possible Answer</button>
+              <div id="lesson-10-closure-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>Disagree. A p-value of 0.02 says that about 2% of results from the null model would be at least as extreme as the observed result; it does not say there is a 2% chance that the null hypothesis is true.</li>
+                  <li>A p-value tells us how unusual the observed result would be if the null hypothesis is true.</li>
+                </ul>
+              </div>
+              <div class="lesson-callout emphasis"><p><strong>One sentence to remember:</strong></p><p><strong>"A p-value measures how surprising the data are under the null hypothesis, not how likely the null hypothesis is to be true."</strong></p></div>
+            </div>
           </section>
 
           <section id="lesson-11" class="lesson">
