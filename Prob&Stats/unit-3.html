@@ -30,13 +30,12 @@
           </div>
 
           <nav class="lesson-nav">
-            
             <a href="#lesson-9">Lesson 9</a>
             <a href="#lesson-10">Lesson 10</a>
-            <a href="#lesson-2">Lesson 11</a>
-            <a href="#lesson-3">Lesson 12</a>
-            <a href="#lesson-4">Lesson 13</a>
-            <a href="#lesson-5">Lesson 14</a>
+            <a href="#lesson-11">Lesson 11</a>
+            <a href="#lesson-12">Lesson 12</a>
+            <a href="#lesson-13">Lesson 13</a>
+            <a href="#lesson-14">Lesson 14</a>
           </nav>
         </aside>
 
@@ -594,42 +593,1022 @@
 
           <section id="lesson-11" class="lesson">
             <div class="lesson-header">
-              <p class="lesson-number">Lesson 2</p>
-              <h3>Lesson 11 Title</h3>
+              <p class="lesson-number">Lesson 11</p>
+              <h3>Randomization Tests for Two Groups</h3>
             </div>
-            <p>
-              Add a short overview, class notes, examples, and any key vocabulary for Lesson 2 here.
-            </p>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p><strong>Did the treatment work?</strong></p></div>
+              <p>A new study strategy is tested with two groups of students.</p>
+              <p>Treatment group: average test score = 84</p>
+              <p>Control group: average test score = 78</p>
+
+              <ul class="lesson-list">
+                <li>Is an observed difference of 6 points large?</li>
+                <li>Could two groups have different averages just because different students were placed in each group?</li>
+                <li>What would we expect to see if the treatment had no effect?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-11-bellringer-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-11-bellringer-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>A 6-point difference could be meaningful, but it is not automatically large enough to prove the treatment worked.</li>
+                  <li>Yes. Different students can be placed in different groups by chance, which can create a difference even when the treatment has no effect.</li>
+                  <li>If the treatment had no effect, we would expect the group averages to be fairly close most of the time, even though some chance differences will occur.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>Compare two groups using a difference in means or proportions.</li>
+                <li>Explain the null hypothesis for a two-group comparison.</li>
+                <li>Use randomization to model what differences could occur by chance.</li>
+                <li>Explain how shuffling group labels creates a null model.</li>
+                <li>Interpret a simulated p-value informally.</li>
+                <li>Explain why an observed difference does not automatically imply a real treatment effect.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore</h4>
+              <p>Use the treatment/control example.</p>
+              <p><strong>Treatment group average = 84</strong></p>
+              <p><strong>Control group average = 78</strong></p>
+              <p><strong>Observed difference: 84 − 78 = 6 points</strong></p>
+              <ul class="lesson-list">
+                <li>What does this difference tell us?</li>
+                <li>Does a 6-point difference prove that the treatment worked?</li>
+                <li>What if the treatment actually had no effect?</li>
+                <li>If the treatment had no effect, would we still sometimes see one group perform better than the other?</li>
+                <li>How could we recreate the situation assuming the treatment has no effect?</li>
+              </ul>
+              <p> <strong>The null hypothesis: </strong> The treatment has no effect; any observed difference is due to chance variation.</p>
+              <p> <strong>Key randomization idea: </strong>If the treatment had no effect, the group labels should not matter. We can shuffle the labels and see what differences occur just by chance.</p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-11-explore-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-11-explore-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>It tells us that the treatment group scored higher on average, but it does not by itself tell us whether the difference is larger than chance variation.</li>
+                  <li>No. A 6-point difference is evidence to investigate, but it does not prove a treatment effect by itself.</li>
+                  <li>Then the two groups might still differ because of random assignment or natural variation in the students.</li>
+                  <li>Yes. Random chance can place stronger students in one group, even when the treatment is not actually effective.</li>
+                  <li>We can assume the treatment has no effect and randomly reassign the same scores to two groups of the same size many times to see what differences happen by chance.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology / Simulation / Data Investigation</h4>
+
+              <h5>Investigation 1: Hands-On Card Shuffle Simulation</h5>
+              <p>Use a small data set of individual test scores from two groups.</p>
+              <p><strong>Treatment:</strong> 82, 85, 88, 79, 91, 84, 87, 86</p>
+              <p><strong>Control:</strong> 75, 81, 78, 83, 76, 80, 79, 77</p>
+              <p>Calculate the observed difference in means.</p>
+              <br>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Shuffle all cards together.</li>
+                <li>Randomly deal the cards into two groups of 8.</li>
+                <li>Calculate the difference in group means and record the difference.</li>
+                <li>Repeat 5 times per group.</li>
+                <li>Add to the class dotplot of the simulated differences.</li>
+              </ol>
+              <br>
+              <p>Note: shuffling the labels assumes the treatment labels do not matter.</p>
+              <ul class="lesson-list">
+                <li>What does one shuffle represent?</li>
+                <li>Why do we keep the group sizes the same?</li>
+                <li>Why are we mixing all of the scores together?</li>
+                <li>What does the center of the simulated distribution represent?</li>
+                <li>How often do we get a difference at least as large as the observed difference?</li>
+                <li>What does that tell us?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-11-investigation-1-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-11-investigation-1-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>One shuffle represents one possible arrangement of the scores if the treatment labels had no effect.</li>
+                  <li>We keep the group sizes the same so the simulation matches the real study design.</li>
+                  <li>Mixing all scores together creates a null model in which every student is treated as part of the same group before labels are reassigned.</li>
+                  <li>The center of the simulated distribution represents the typical difference we would expect by chance when there is no treatment effect.</li>
+                  <li>We count how many randomizations produce a difference as large or larger than the observed difference.</li>
+                  <li>If the observed difference is unusual in this distribution, it suggests the treatment effect may be real or at least not easily explained by chance alone.</li>
+                </ul>
+              </div>
+
+              <h5>Investigation 2: Technology Randomization Test</h5>
+              <p>Use technology to repeat the card-shuffling process many more times.</p>
+              <p>Run at least 1,000 randomizations.</p>
+              <div class="simulation-widget" data-randomization-test data-group-a="82,85,88,79,91,84,87,86" data-group-b="75,81,78,83,76,80,79,77" data-simulation-count="1000">
+                <p><strong>Observed comparison:</strong> treatment mean minus control mean</p>
+                <div class="simulation-controls">
+                  <button type="button" class="simulation-button" data-action="run-randomization">Run Randomizations</button>
+                </div>
+                <p data-output="observed">Observed difference in means: not calculated yet.</p>
+                <p data-output="summary">No randomizations run yet.</p>
+                <div data-output="chart" class="chart-output" aria-live="polite"></div>
+              </div>
+              <ul class="lesson-list">
+                <li>Is the observed difference near the center of the randomization distribution or in the tail?</li>
+                <li>What does a p-value near 0.50 suggest?</li>
+                <li>What does a p-value near 0.05 suggest?</li>
+                <li>What does a very small p-value suggest?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-11-investigation-2-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-11-investigation-2-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>If the observed difference is near the middle of the distribution, it is common under the null hypothesis; if it is far into the tail, it is unusual.</li>
+                  <li>A p-value near 0.50 suggests the observed difference is quite common under the null hypothesis and would not be surprising by chance alone.</li>
+                  <li>A p-value near 0.05 suggests the observed difference is uncommon under the null hypothesis and provides moderate evidence against the null.</li>
+                  <li>A very small p-value suggests the observed difference is highly unusual under the null model and provides stronger evidence against the idea of no treatment effect.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ul class="lesson-list">
+                <li>What is the observed difference between the groups?<button type="button" class="answer-toggle" data-answer-target="lesson-11-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-11-guiding-1" class="possible-answer" hidden><ul class="lesson-list"><li>The observed difference is the actual difference between the two group summaries, such as 84 − 78 = 6 points.</li></ul></div></li>
+                <li>Why might two groups differ even when the treatment has no effect?<button type="button" class="answer-toggle" data-answer-target="lesson-11-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-11-guiding-2" class="possible-answer" hidden><ul class="lesson-list"><li>Differences can happen because the students in the groups are different and random assignment can produce different outcomes even without a treatment effect.</li></ul></div></li>
+                <li>What is the null hypothesis in a two-group comparison?<button type="button" class="answer-toggle" data-answer-target="lesson-11-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-11-guiding-3" class="possible-answer" hidden><ul class="lesson-list"><li>The null hypothesis says the treatment has no effect, so any observed difference is due to chance variation.</li></ul></div></li>
+                <li>Why do we shuffle the group labels?<button type="button" class="answer-toggle" data-answer-target="lesson-11-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-11-guiding-4" class="possible-answer" hidden><ul class="lesson-list"><li>We shuffle the labels to create a model of what differences could happen when the treatment has no effect and group labels do not matter.</li></ul></div></li>
+                <li>What does one shuffle represent?<button type="button" class="answer-toggle" data-answer-target="lesson-11-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-11-guiding-5" class="possible-answer" hidden><ul class="lesson-list"><li>One shuffle represents one possible random assignment of the same scores to two groups under the null hypothesis.</li></ul></div></li>
+                <li>Why do we keep the original group sizes?<button type="button" class="answer-toggle" data-answer-target="lesson-11-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-11-guiding-6" class="possible-answer" hidden><ul class="lesson-list"><li>We keep the group sizes the same so the simulation matches the real study and does not change the design of the comparison.</li></ul></div></li>
+                <li>What does the randomization distribution represent?<button type="button" class="answer-toggle" data-answer-target="lesson-11-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-11-guiding-7" class="possible-answer" hidden><ul class="lesson-list"><li>It represents the differences that could happen by random chance when there is no real treatment effect.</li></ul></div></li>
+                <li>What does it mean if the observed difference is near the center of the randomization distribution?<button type="button" class="answer-toggle" data-answer-target="lesson-11-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-11-guiding-8" class="possible-answer" hidden><ul class="lesson-list"><li>It means the observed difference is very common under the null hypothesis and is not especially surprising.</li></ul></div></li>
+                <li>What does it mean if the observed difference is far into the tail?<button type="button" class="answer-toggle" data-answer-target="lesson-11-guiding-9" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-11-guiding-9" class="possible-answer" hidden><ul class="lesson-list"><li>It means the observed difference is rare under the null model and provides stronger evidence against the null hypothesis.</li></ul></div></li>
+                <li>Why do we count simulated differences that are at least as extreme as the observed difference?<button type="button" class="answer-toggle" data-answer-target="lesson-11-guiding-10" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-11-guiding-10" class="possible-answer" hidden><ul class="lesson-list"><li>We count them because the p-value measures how often chance alone produces a result this unusual or more unusual.</li></ul></div></li>
+                <li>How does this produce a p-value?<button type="button" class="answer-toggle" data-answer-target="lesson-11-guiding-11" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-11-guiding-11" class="possible-answer" hidden><ul class="lesson-list"><li>We divide the number of simulated differences at least as extreme as the observed difference by the total number of simulations.</li></ul></div></li>
+                <li>Why does randomization allow us to investigate whether a difference could be explained by chance?<button type="button" class="answer-toggle" data-answer-target="lesson-11-guiding-13" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-11-guiding-13" class="possible-answer" hidden><ul class="lesson-list"><li>Because it creates many realistic chance-only assignments that let us see how often the observed kind of difference would arise without a real treatment effect.</li></ul></div></li>
+                <li>Does a statistically significant difference automatically prove that the treatment caused the outcome?<button type="button" class="answer-toggle" data-answer-target="lesson-11-guiding-14" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-11-guiding-14" class="possible-answer" hidden><ul class="lesson-list"><li>No. It is evidence of a difference or association, but it does not automatically establish causation.</li></ul></div></li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>We can use randomization to determine whether an observed difference between two groups is larger than we would expect from chance variation.</strong></p></div>
+              <p>When the null hypothesis says there is <strong>no real difference</strong>, we can shuffle group labels to create many simulated versions of what could happen by chance.</p>
+              <p>If the observed difference is common in the randomization distribution, the difference is not particularly surprising under the null hypothesis.</p>
+              <p>If the observed difference is very unusual, this provides stronger evidence against the null hypothesis.</p>
+  
+              <p><strong>A statistically significant difference is evidence of an association or difference, but it does not automatically establish causation.</strong></p>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p>A new two-group scenario.</p>
+              <p><strong>A teacher wants to know whether a new review method improves quiz performance.</strong></p>
+              <ul class="lesson-list">
+                <li>New method: 22 of 30 students passed.</li>
+                <li>Traditional method: 16 of 30 students passed.</li>
+              </ul>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Identify the two groups.</li>
+                <li>Identify the response variable.</li>
+                <li>Calculate the observed difference in proportions.</li>
+                <li>State the null hypothesis.</li>
+                <li>Explain how they could perform a randomization test.</li>
+                <li>Explain what a small p-value would mean.</li>
+                <li>Explain whether a small p-value would prove the review method caused the improvement.</li>
+              </ol>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-11-apply-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-11-apply-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The two groups are the students using the new review method and the students using the traditional method.</li>
+                  <li>The response variable is whether each student passed the quiz.</li>
+                  <li>The observed difference in proportions is 22/30 − 16/30 = 6/30 = 0.20, or 20 percentage points.</li>
+                  <li>The null hypothesis is that the review method has no effect and any difference is due to chance.</li>
+                  <li>To perform a randomization test, combine all 60 quiz outcomes, shuffle them, randomly assign them back into groups of 30 and 30, and repeat many times to build a null distribution.</li>
+                  <li>A small p-value would mean the observed difference is unusual under the null model; it is rare to see a difference this large by chance alone.</li>
+                  <li>No. A small p-value is strong evidence against the no-effect model, but it does not automatically prove that the review method caused the improvement.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p><strong>Two groups have noticeably different results. How can we determine whether the difference is larger than what we might reasonably expect from chance alone?</strong></p>
+              <p>Then have students complete:</p>
+              <p><strong>“A randomization test works by __________ so that we can see __________.”</strong></p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-11-closure-answers" aria-expanded="false">Show Possible Answer</button>
+              <div id="lesson-11-closure-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>A randomization test works by shuffling the group labels so that we can see how often differences as large as the observed difference happen by chance alone.</li>
+                </ul>
+              </div>
+            </div>
           </section>
 
           <section id="lesson-12" class="lesson">
             <div class="lesson-header">
-              <p class="lesson-number">Lesson 3</p>
-              <h3>Lesson 12 Title</h3>
+              <p class="lesson-number">Lesson 12</p>
+              <h3>Confidence Intervals Through Simulation</h3>
             </div>
-            <p>
-              Use this section to include learning targets, guided practice, or discussion prompts for the next lesson.
-            </p>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p><strong>How much do students sleep?</strong></p></div>
+              <p>Suppose we randomly survey 40 students and find that the average student reports <strong>6.8 hours of sleep per night</strong>.</p>
+              <ul class="lesson-list">
+                <li>Is 6.8 hours probably the exact average for every student in the school?</li>
+                <li>If we randomly selected another 40 students, would we get exactly 6.8?</li>
+                <li>What might happen to the sample mean from sample to sample?</li>
+                <li>How could we use our sample to estimate the true average for the entire school?</li>
+                <li>Would you rather report a single number or a reasonable range of values? Why?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-12-bellringer-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-12-bellringer-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>No. 6.8 is an estimate from one sample, not necessarily the exact population average.</li>
+                  <li>No. A different random sample of 40 students would likely produce a slightly different sample mean.</li>
+                  <li>The sample mean would vary from sample to sample because of sampling variability.</li>
+                  <li>We could use bootstrap resampling to simulate many possible samples and estimate a range of plausible values for the population mean.</li>
+                  <li>A reasonable range is usually more informative because it reflects uncertainty instead of pretending the estimate is exact.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>Explain why a sample statistic varies from sample to sample.</li>
+                <li>Explain the purpose of bootstrap sampling.</li>
+                <li>Use simulation to create a bootstrap distribution.</li>
+                <li>Use a bootstrap distribution to construct a confidence interval.</li>
+                <li>Interpret a confidence interval in context.</li>
+                <li>Explain the relationship between confidence level and margin of error.</li>
+                <li>Explain why statistical estimates are uncertain.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore</h4>
+              <p>Return to the sleep example.</p>
+              <p>Suppose the sample of 40 students has a mean of <strong>6.8 hours</strong>.</p>
+              <p>We want to estimate the unknown population mean, but we only have one sample.</p>
+              <ul class="lesson-list">
+                <li>What makes us uncertain about 6.8?</li>
+                <li>How could we investigate how much the sample mean might vary?</li>
+                <li>What if we repeatedly sampled students from the population?</li>
+                <li>Why might that be difficult or impossible?</li>
+              </ul>
+              <p>Introduce the bootstrap idea: <strong>We can use the sample we already have to simulate many new samples.</strong></p>
+              <p>Explain that a bootstrap sample is created by randomly selecting observations <strong>with replacement</strong> from the original sample until we have the same number of observations as the original sample.</p>
+              <ul class="lesson-list">
+                <li>What does “with replacement” mean?</li>
+                <li>Why can a bootstrap sample contain the same student more than once?</li>
+                <li>Why do bootstrap samples have the same sample size as the original sample?</li>
+                <li>What does each bootstrap sample represent?</li>
+                <li>Why should the bootstrap sample means vary?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-12-explore-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-12-explore-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>We are uncertain because sample statistics change from sample to sample, and we only have one estimate from one sample.</li>
+                  <li>We could simulate repeated samples by resampling from the data we already have.</li>
+                  <li>Repeatedly sampling from the population would reveal the range of possible sample means, but it may be too expensive or impossible to do in practice.</li>
+                  <li>It may be difficult or impossible because collecting many new samples from the actual population is time-consuming or not accessible.</li>
+                  <li>With replacement means a selected observation is placed back before the next draw, so it can be chosen again in the same bootstrap sample.</li>
+                  <li>Because with replacement allows the same student to appear more than once, we are basically building a simulated sample from the original sample.</li>
+                  <li>The sample size stays the same so the bootstrap sample matches the size of the original study.</li>
+                  <li>Each bootstrap sample represents one possible sample we could have gotten from the same population if the original sample were the best available guide.</li>
+                  <li>Bootstrap sample means vary because the sample draws are random and different selections produce different averages.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology / Simulation / Data Investigation</h4>
+
+              <h5>Investigation 1: Hands-On Bootstrap Sampling</h5>
+              <p>Provide a small sample of quantitative data so students can physically perform bootstrap sampling.</p>
+              <p><strong>5, 6, 7, 7, 8, 6, 5, 9, 7, 6</strong></p>
+              <p>The original sample mean is <strong>6.6</strong>.</p>
+              <p>Have students:</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Write the observations on cards.</li>
+                <li>Randomly select a card.</li>
+                <li>Record its value.</li>
+                <li>Replace the card.</li>
+                <li>Repeat until they have 10 observations.</li>
+                <li>Calculate the bootstrap sample mean.</li>
+                <li>Repeat many times.</li>
+                <li>Record the bootstrap means.</li>
+              </ol>
+              <ul class="lesson-list">
+                <li>Why do we replace the card after each selection?</li>
+                <li>Why can the same value appear several times?</li>
+                <li>Why might a bootstrap sample mean differ from 6.6?</li>
+                <li>What does the collection of bootstrap means show us?</li>
+                <li>What would happen if we performed 1,000 bootstrap samples?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-12-investigation-1-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-12-investigation-1-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>We replace the card so each draw is equally likely and the bootstrap sample follows the same resampling process.</li>
+                  <li>The same value can appear several times because a drawn observation is returned to the pool before the next draw.</li>
+                  <li>A bootstrap sample mean differs from 6.6 because different samples contain different selections and therefore different averages.</li>
+                  <li>The collection of bootstrap means shows the amount of sampling variability in the sample mean.</li>
+                  <li>With 1,000 bootstrap samples, we would get a more stable picture of the typical variation in the sample mean, making the interval estimate more reliable.</li>
+                </ul>
+              </div>
+
+              <h5>Investigation 2: Build a Bootstrap Distribution</h5>
+              <p>Use technology to generate <strong>1,000 or more bootstrap samples</strong> from the original data.</p>
+              <div class="simulation-widget" data-bootstrap-widget data-sample-data="5, 6, 7, 7, 8, 6, 5, 9, 7, 6">
+                <p><strong>Original sample:</strong> 5, 6, 7, 7, 8, 6, 5, 9, 7, 6</p>
+                <div class="simulation-controls">
+                  <label for="lesson-12-confidence-level">Confidence level:
+                    <select id="lesson-12-confidence-level" data-control="confidence-level">
+                      <option value="90">90%</option>
+                      <option value="95" selected>95%</option>
+                      <option value="99">99%</option>
+                    </select>
+                  </label>
+                  <button type="button" class="simulation-button" data-action="run-bootstrap">Run Bootstrap Simulation</button>
+                </div>
+                <p data-output="sample-mean">Original sample mean: not calculated yet.</p>
+                <p data-output="summary">No bootstrap distribution yet.</p>
+                <p data-output="interval">No interval yet.</p>
+                <p data-output="margin">No margin of error yet.</p>
+                <div data-output="chart" class="chart-output" aria-live="polite"></div>
+              </div>
+              <ul class="lesson-list">
+                <li>Where is the bootstrap distribution centered?</li>
+                <li>How much variability is present?</li>
+                <li>What range contains approximately the middle 95% of bootstrap means?</li>
+                <li>What does that range tell us about the unknown population mean?</li>
+                <li>Why isn't the interval exactly the same every time we run the simulation?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-12-investigation-2-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-12-investigation-2-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The bootstrap distribution is centered near the original sample mean because the bootstrap samples are built from that sample.</li>
+                  <li>There is variability because different bootstrap resamples select different values and produce different sample means.</li>
+                  <li>The middle 95% of bootstrap means gives a central region that captures most of the simulated values.</li>
+                  <li>That range gives a plausible set of values for the unknown population mean based on the sample and the usual level of sampling variability.</li>
+                  <li>The interval changes because bootstrap samples are random, so each resampling process produces a slightly different distribution.</li>
+                </ul>
+              </div>
+
+              <h5>Investigation 3: Confidence Interval</h5>
+              <p>Introduce the <strong>95% confidence interval</strong> as a range constructed from the bootstrap distribution.</p>
+              <p>Use the bootstrap example to create an interval using the middle 95% of bootstrap sample means.</p>
+              <p>Explain: <strong>A 95% confidence interval gives a range of plausible values for the population parameter based on our sample and method.</strong></p>
+              <p>Do NOT say: <strong>“There is a 95% probability that the population mean is in this particular interval.”</strong></p>
+              <p>Instead emphasize the repeated-sampling interpretation: <strong>A method that produces 95% confidence intervals will capture the true population parameter about 95% of the time in repeated sampling.</strong></p>
+              <ul class="lesson-list">
+                <li>What is the population parameter we are trying to estimate?</li>
+                <li>What is our point estimate?</li>
+                <li>What does the confidence interval represent?</li>
+                <li>Why is a range more informative than a single estimate?</li>
+                <li>What does 95% confidence mean?</li>
+                <li>Does a 95% confidence interval guarantee that the true value is inside it?</li>
+                <li>Why will different samples produce different confidence intervals?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-12-investigation-3-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-12-investigation-3-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The population parameter is the true population mean number of hours of sleep.</li>
+                  <li>The point estimate is the sample mean, which is 6.8 hours.</li>
+                  <li>A confidence interval is a set of plausible values for the population parameter based on the sample and the bootstrap distribution.</li>
+                  <li>A range is more informative than a single estimate because it communicates the uncertainty in the estimate.</li>
+                  <li>95% confidence means that a method using this procedure would capture the true parameter in about 95% of repeated samples.</li>
+                  <li>No. A 95% confidence interval does not guarantee that the true value is in this particular interval.</li>
+                  <li>Different samples produce different confidence intervals because each sample is slightly different and sampling variability is always present.</li>
+                </ul>
+              </div>
+
+              <h5>Investigation 4: Margin of Error</h5>
+              <p>Introduce: <strong>Margin of error = the distance from the estimate to an endpoint of the confidence interval.</strong></p>
+              <p>For example, if the confidence interval is: <strong>6.4 to 7.0 hours</strong> and the estimate is 6.7 hours, the margin of error is approximately <strong>0.3 hours</strong>.</p>
+              <p>Compare confidence intervals with different widths.</p>
+              <ul class="lesson-list">
+                <li>Which interval gives a more precise estimate?</li>
+                <li>Which has the smaller margin of error?</li>
+                <li>What happens to the margin of error when the interval gets wider?</li>
+                <li>Why might we prefer a smaller margin of error?</li>
+                <li>What happens to the margin of error when sample size increases?</li>
+                <li>Why can't we make the margin of error exactly zero?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-12-investigation-4-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-12-investigation-4-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The narrower interval gives the more precise estimate because it indicates less uncertainty.</li>
+                  <li>The interval with the smaller width has the smaller margin of error.</li>
+                  <li>The margin of error increases when the interval gets wider because the endpoints are farther from the estimate.</li>
+                  <li>A smaller margin of error is preferred because it gives a more precise estimate of the unknown parameter.</li>
+                  <li>As sample size increases, the sampling variability generally decreases, so the margin of error often gets smaller.</li>
+                  <li>We cannot make the margin of error exactly zero because sampling variability is always present unless we had complete information about the entire population.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ul class="lesson-list">
+                <li>What is a population parameter?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-1" class="possible-answer" hidden><ul class="lesson-list"><li>A population parameter is a numerical value that describes the entire population, such as the true mean sleep time for all students.</li></ul></div></li>
+                <li>What is a sample statistic?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-2" class="possible-answer" hidden><ul class="lesson-list"><li>A sample statistic is a numerical summary computed from a sample, such as the mean of 40 students.</li></ul></div></li>
+                <li>Why does a sample statistic vary from sample to sample?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-3" class="possible-answer" hidden><ul class="lesson-list"><li>Because different random samples include different individuals, and this produces different sample statistics.</li></ul></div></li>
+                <li>What is bootstrap sampling?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-4" class="possible-answer" hidden><ul class="lesson-list"><li>Bootstrap sampling is a resampling method in which we repeatedly draw observations from the original sample with replacement to create many simulated samples.</li></ul></div></li>
+                <li>Why do we sample with replacement?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-5" class="possible-answer" hidden><ul class="lesson-list"><li>We sample with replacement so the bootstrap sample can mimic repeated sampling from the population while keeping the original sample as the best available information.</li></ul></div></li>
+                <li>Why do bootstrap samples have the same size as the original sample?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-6" class="possible-answer" hidden><ul class="lesson-list"><li>Because each bootstrap sample is meant to represent a sample of the same size as the original study design.</li></ul></div></li>
+                <li>What does a bootstrap distribution represent?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-7" class="possible-answer" hidden><ul class="lesson-list"><li>A bootstrap distribution shows the values of the statistic that occur across many bootstrap resamples, representing the sampling variability in the estimate.</li></ul></div></li>
+                <li>Why is the bootstrap distribution useful for estimating uncertainty?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-8" class="possible-answer" hidden><ul class="lesson-list"><li>It helps us see how much the statistic changes from sample to sample and gives us a range of plausible values for the parameter.</li></ul></div></li>
+                <li>What is a confidence interval?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-9" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-9" class="possible-answer" hidden><ul class="lesson-list"><li>A confidence interval is a range of plausible values for a population parameter.</li></ul></div></li>
+                <li>What does a 95% confidence interval mean?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-10" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-10" class="possible-answer" hidden><ul class="lesson-list"><li>It means that a method producing 95% confidence intervals would capture the true parameter about 95% of the time in repeated sampling.</li></ul></div></li>
+                <li>What does a confidence interval NOT mean?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-11" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-11" class="possible-answer" hidden><ul class="lesson-list"><li>It does not mean there is a 95% probability that the population parameter lies in this particular interval.</li></ul></div></li>
+                <li>Why can two samples produce different confidence intervals?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-12" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-12" class="possible-answer" hidden><ul class="lesson-list"><li>Because each sample yields a different estimate and therefore a different set of bootstrap resamples, leading to a different interval.</li></ul></div></li>
+                <li>What is margin of error?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-13" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-13" class="possible-answer" hidden><ul class="lesson-list"><li>Margin of error is the distance from the estimate to the endpoint of a confidence interval.</li></ul></div></li>
+                <li>What does a smaller margin of error tell us?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-14" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-14" class="possible-answer" hidden><ul class="lesson-list"><li>It tells us the estimate is more precise and the uncertainty is lower.</li></ul></div></li>
+                <li>How does sample size affect margin of error?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-15" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-15" class="possible-answer" hidden><ul class="lesson-list"><li>Larger samples typically produce smaller margins of error because they have less sampling variability.</li></ul></div></li>
+                <li>Why is estimation inherently uncertain?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-16" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-16" class="possible-answer" hidden><ul class="lesson-list"><li>Because we usually estimate a population parameter from a sample, and samples vary from one random sample to another.</li></ul></div></li>
+                <li>Why is reporting a range sometimes better than reporting a single number?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-17" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-17" class="possible-answer" hidden><ul class="lesson-list"><li>A range explains the uncertainty in the estimate and gives a more realistic picture than pretending the estimate is exact.</li></ul></div></li>
+                <li>How is confidence-interval reasoning different from the p-value reasoning in Lessons 9–11?<button type="button" class="answer-toggle" data-answer-target="lesson-12-guiding-18" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-12-guiding-18" class="possible-answer" hidden><ul class="lesson-list"><li>In Lessons 9–11, we ask whether an observed result is surprising under a null hypothesis; in Lesson 12, we ask how much uncertainty there is in our estimate and what range of values is plausible for the parameter.</li></ul></div></li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>Estimation matters more than certainty.</strong></p></div>
+              <p>We rarely know the exact value of a population parameter because we usually study a sample. The sample statistic gives us an estimate, but that estimate varies because of sampling variability.</p>
+              <p>Bootstrap sampling allows us to use the sample itself to investigate how much the statistic might vary.</p>
+              <p>A confidence interval gives us a <strong>range of plausible values</strong> for the population parameter.</p>
+              <p>A wider interval represents more uncertainty, while a narrower interval represents greater precision.</p>
+              <p><strong>A confidence interval is not a guarantee. It is a method for quantifying uncertainty.</strong></p>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p>Give students a new context.</p>
+              <p><strong>A random sample of 50 students is used to estimate the average amount of time students spend on social media each day. The sample mean is 3.4 hours. A bootstrap simulation produces a 95% confidence interval of 3.1 to 3.7 hours.</strong></p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>What is the population parameter?</li>
+                <li>What is the point estimate?</li>
+                <li>Interpret the confidence interval in context.</li>
+                <li>What is the margin of error?</li>
+                <li>Would an interval of 3.3 to 3.5 hours be more or less precise?</li>
+                <li>What would happen to the margin of error if the sample size increased?</li>
+                <li>Does the confidence interval guarantee that the true population mean is between 3.1 and 3.7 hours?</li>
+              </ol>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-12-apply-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-12-apply-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The population parameter is the true mean number of hours students spend on social media each day.</li>
+                  <li>The point estimate is 3.4 hours.</li>
+                  <li>The confidence interval suggests that a reasonable range for the true mean is from 3.1 to 3.7 hours based on the sample and the bootstrap method.</li>
+                  <li>The margin of error is about 0.3 hours because 3.4 is centered in the interval 3.1 to 3.7.</li>
+                  <li>An interval of 3.3 to 3.5 hours would be more precise because it is narrower and has a smaller margin of error.</li>
+                  <li>If the sample size increased, the sampling variability would usually decrease and the margin of error would typically become smaller.</li>
+                  <li>No. It does not guarantee the true population mean lies in that interval; it is a method-based range of plausible values.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p><strong>A student says: “Our sample mean was 6.8 hours, so the true population mean must be 6.8 hours.”</strong></p>
+              <p>Do you agree or disagree? Explain.</p>
+              <p>Complete: <strong>“A confidence interval is useful because it __________.”</strong></p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-12-closure-answers" aria-expanded="false">Show Possible Answer</button>
+              <div id="lesson-12-closure-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>Disagree. A sample mean is an estimate, not a guarantee. The true population mean is likely near 6.8, but sampling variability means it may be somewhat higher or lower.</li>
+                  <li>A confidence interval is useful because it gives a range of plausible values and communicates uncertainty.</li>
+                </ul>
+              </div>
+            </div>
           </section>
 
           <section id="lesson-13" class="lesson">
             <div class="lesson-header">
-              <p class="lesson-number">Lesson 4</p>
-              <h3>Lesson 13 Title</h3>
+              <p class="lesson-number">Lesson 13</p>
+              <h3>Interpreting P-Values and Confidence Intervals</h3>
             </div>
-            <p>
-              Placeholder content for Lesson 4. Add warm-ups, examples, or independent work as needed.
-            </p>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p><strong>Can you trust this headline?</strong></p></div>
+              <p>Read: <strong>“New Study Proves That Coffee Makes Students Smarter!”</strong></p>
+              <p>Then read the fact: <strong>“Researchers found a statistically significant relationship between coffee consumption and test performance (p = 0.02).”</strong></p>
+              <ul class="lesson-list">
+                <li>What does “statistically significant” mean?</li>
+                <li>Does p = 0.02 prove that coffee makes students smarter?</li>
+                <li>What information is missing from the claim?</li>
+                <li>Could a relationship be statistically significant but still not important?</li>
+                <li>What would you want to know before believing the headline?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-13-bellringer-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-13-bellringer-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>Statistically significant means the result is unusual under the null hypothesis and is hard to explain by random chance alone.</li>
+                  <li>No. A p-value of 0.02 does not prove a causal effect or a strong practical benefit.</li>
+                  <li>We would want to know the size of the effect, sample size, study design, and whether the claim is causal or only associational.</li>
+                  <li>Yes. A very small effect can be statistically significant in a large sample even if it is not practically important.</li>
+                  <li>We would want the effect size, the confidence interval, and context for whether the result matters in real life.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>Correctly interpret a p-value in context.</li>
+                <li>Identify common incorrect interpretations of p-values.</li>
+                <li>Correctly interpret a confidence interval.</li>
+                <li>Distinguish statistical significance from practical significance.</li>
+                <li>Explain how sample size can affect statistical significance.</li>
+                <li>Critique misleading statistical claims.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore</h4>
+
+              <h5>Part 1: What Does a P-Value Mean?</h5>
+              <p>Suppose a study tests whether a new teaching method changes average test scores.</p>
+              <p>The null hypothesis says there is no change.</p>
+              <p>The study produces a p-value of <strong>0.03</strong>.</p>
+              <ul class="lesson-list">
+                <li>What does p = 0.03 mean?</li>
+                <li>Does it mean there is a 3% chance the null hypothesis is true?</li>
+                <li>Does it mean there is a 3% chance the result happened by chance?</li>
+                <li>Does it prove the teaching method works?</li>
+                <li>What does it actually tell us?</li>
+              </ul>
+              <p>Correct statement: <strong>“If the null hypothesis were true, results this unusual or more unusual would happen about 3% of the time.”</strong></p>
+              <p>Incorrect statement: <strong>“There is a 3% chance the null hypothesis is true.”</strong></p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-13-explore-1-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-13-explore-1-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>A p-value of 0.03 means that if the null hypothesis were true, results at least as extreme would happen about 3% of the time.</li>
+                  <li>No. It does not mean there is a 3% chance the null hypothesis is true.</li>
+                  <li>No. It does not mean there is a 3% chance the result happened by chance alone.</li>
+                  <li>No. It does not prove the teaching method works.</li>
+                  <li>It tells us the data would be unusual under the null model, but it does not tell us the probability the null is true or whether the effect is important.</li>
+                </ul>
+              </div>
+
+              <h5>Part 2: What Does a Confidence Interval Mean?</h5>
+              <p>Suppose a study reports that students sleep an average of <strong>6.7 hours per night</strong>.</p>
+              <p>A 95% confidence interval is <strong>6.4 to 7.0 hours</strong>.</p>
+              <ul class="lesson-list">
+                <li>What is the point estimate?</li>
+                <li>What does the interval tell us?</li>
+                <li>Why is a range more informative than just 6.7?</li>
+                <li>Does this mean there is a 95% probability that the true mean is between 6.4 and 7.0?</li>
+                <li>What is the correct interpretation of 95% confidence?</li>
+                <li>What does the width of the interval tell us?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-13-explore-2-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-13-explore-2-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The point estimate is 6.7 hours.</li>
+                  <li>The interval gives a range of plausible values for the true mean based on the sample and the method.</li>
+                  <li>A range is more informative because it shows the uncertainty in the estimate.</li>
+                  <li>No. It does not mean there is a 95% probability that the true mean is between 6.4 and 7.0.</li>
+                  <li>The correct interpretation is that a method producing 95% confidence intervals would capture the true mean about 95% of the time in repeated sampling.</li>
+                  <li>The width tells us how precise the estimate is: a narrow interval means less uncertainty, and a wide interval means more uncertainty.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology / Data Investigation</h4>
+
+              <h5>Investigation 1: Critique Misleading Claims</h5>
+              <p>Read each claim and decide whether it is <strong>Correct, Misleading, or Incorrect</strong>.</p>
+              <p><strong>Claim A:</strong> “A p-value of 0.01 means there is only a 1% chance that the treatment does not work.”</p>
+              <p><strong>Claim B:</strong> “The study found a statistically significant difference, proving that the treatment caused the improvement.”</p>
+              <p><strong>Claim C:</strong> “We are 95% confident that the population mean is between 72 and 78.”</p>
+              <p><strong>Claim D:</strong> “Because the confidence interval includes 0, the treatment has no effect.”</p>
+              <p><strong>Claim E:</strong> “The treatment increased scores by only 0.2 points, but the result was statistically significant.”</p>
+              <p><strong>Claim F:</strong> “A study with 10,000 participants found a statistically significant difference of 0.1 points.”</p>
+              <ul class="lesson-list">
+                <li>What is wrong with Claim A?</li>
+                <li>What is wrong with Claim B?</li>
+                <li>What is wrong with Claim C?</li>
+                <li>What is wrong with Claim D?</li>
+                <li>What is important about Claim E?</li>
+                <li>What is important about Claim F?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-13-investigation-1-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-13-investigation-1-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>Claim A is incorrect because a p-value does not mean there is a 1% chance the treatment does not work.</li>
+                  <li>Claim B is incorrect because statistical significance does not prove causation.</li>
+                  <li>Claim C is common but slightly misleading; the better statement is that the method produces intervals that capture the true value about 95% of the time in repeated sampling.</li>
+                  <li>Claim D is incorrect because a confidence interval containing 0 only tells us the data are consistent with no effect or a small effect; it does not prove there is absolutely no effect.</li>
+                  <li>Claim E is a reminder that a tiny effect can be statistically significant but not practically important.</li>
+                  <li>Claim F is a reminder that very large samples can produce small p-values for very small effects, so practical significance still matters.</li>
+                </ul>
+              </div>
+
+              <h5>Investigation 2: Statistical vs. Practical Significance</h5>
+              <p>Compare two studies.</p>
+              <p><strong>Study A:</strong> New teaching method increases average scores by <strong>0.3 points</strong>, sample size = <strong>5,000</strong>, p-value = <strong>0.001</strong>.</p>
+              <p><strong>Study B:</strong> New teaching method increases average scores by <strong>8 points</strong>, sample size = <strong>40</strong>, p-value = <strong>0.04</strong>.</p>
+              <ul class="lesson-list">
+                <li>Which study has stronger evidence against the null hypothesis?</li>
+                <li>Which study has the larger practical effect?</li>
+                <li>Could a result be statistically significant but not practically important?</li>
+                <li>Why might a very large sample produce a small p-value for a tiny effect?</li>
+                <li>Why should we consider both statistical and practical significance?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-13-investigation-2-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-13-investigation-2-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>Study A has stronger evidence against the null hypothesis because its p-value is smaller.</li>
+                  <li>Study B has the larger practical effect because the increase is 8 points instead of 0.3 points.</li>
+                  <li>Yes. A result can be statistically significant yet still not important in context.</li>
+                  <li>A very large sample can detect a tiny effect and produce a small p-value even when the effect is not meaningful in practice.</li>
+                  <li>We should consider both because the result may be statistically significant but still too small to matter, and a large effect may be inconclusive in a small study.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ul class="lesson-list">
+                <li>What does a p-value actually measure?<button type="button" class="answer-toggle" data-answer-target="lesson-13-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-13-guiding-1" class="possible-answer" hidden><ul class="lesson-list"><li>A p-value measures how unusual the observed result would be if the null hypothesis were true.</li></ul></div></li>
+                <li>What does a p-value not tell us?<button type="button" class="answer-toggle" data-answer-target="lesson-13-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-13-guiding-2" class="possible-answer" hidden><ul class="lesson-list"><li>A p-value does not tell us the probability that the null hypothesis is true, and it does not automatically prove causation or importance.</li></ul></div></li>
+                <li>Does a small p-value prove that a treatment works?<button type="button" class="answer-toggle" data-answer-target="lesson-13-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-13-guiding-3" class="possible-answer" hidden><ul class="lesson-list"><li>No. A small p-value provides evidence against the null hypothesis, but it does not prove the treatment works or establish causation by itself.</li></ul></div></li>
+                <li>What does statistical significance mean?<button type="button" class="answer-toggle" data-answer-target="lesson-13-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-13-guiding-4" class="possible-answer" hidden><ul class="lesson-list"><li>Statistical significance means the observed result is unusual compared with what chance alone would produce under the null hypothesis.</li></ul></div></li>
+                <li>What is a confidence interval?<button type="button" class="answer-toggle" data-answer-target="lesson-13-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-13-guiding-5" class="possible-answer" hidden><ul class="lesson-list"><li>A confidence interval is a range of plausible values for the population parameter.</li></ul></div></li>
+                <li>What does a 95% confidence interval mean?<button type="button" class="answer-toggle" data-answer-target="lesson-13-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-13-guiding-6" class="possible-answer" hidden><ul class="lesson-list"><li>A 95% confidence interval means that a method producing such intervals would capture the true parameter about 95% of the time in repeated sampling.</li></ul></div></li>
+                <li>What does a confidence interval not mean?<button type="button" class="answer-toggle" data-answer-target="lesson-13-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-13-guiding-7" class="possible-answer" hidden><ul class="lesson-list"><li>It does not mean there is a 95% probability that the fixed population parameter lies in this interval.</li></ul></div></li>
+                <li>Why is a confidence interval a range instead of a single number?<button type="button" class="answer-toggle" data-answer-target="lesson-13-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-13-guiding-8" class="possible-answer" hidden><ul class="lesson-list"><li>Because the estimate is uncertain and varies from sample to sample, so a range of plausible values is more informative.</li></ul></div></li>
+                <li>What is practical significance?<button type="button" class="answer-toggle" data-answer-target="lesson-13-guiding-9" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-13-guiding-9" class="possible-answer" hidden><ul class="lesson-list"><li>Practical significance asks whether the effect is large enough to matter in context.</li></ul></div></li>
+                <li>Can a result be statistically significant but not practically important?<button type="button" class="answer-toggle" data-answer-target="lesson-13-guiding-10" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-13-guiding-10" class="possible-answer" hidden><ul class="lesson-list"><li>Yes. A tiny effect can be statistically significant in a large sample or with a very precise study.</li></ul></div></li>
+                <li>Why does sample size matter?<button type="button" class="answer-toggle" data-answer-target="lesson-13-guiding-11" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-13-guiding-11" class="possible-answer" hidden><ul class="lesson-list"><li>Large samples usually reduce variability and make it easier to detect small differences, while small samples can make effects harder to distinguish from noise.</li></ul></div></li>
+                <li>What should we look at before trusting a statistical claim?<button type="button" class="answer-toggle" data-answer-target="lesson-13-guiding-12" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-13-guiding-12" class="possible-answer" hidden><ul class="lesson-list"><li>We should consider effect size, uncertainty, confidence interval, sample size, context, and whether the claim is causal or merely associational.</li></ul></div></li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>Statistical language is often misunderstood.</strong></p></div>
+              <p>A p-value tells us how unusual the observed result would be if the null hypothesis were true. It does <strong>not</strong> tell us the probability that the null hypothesis is true.</p>
+              <p>A confidence interval gives a range of plausible values for a population parameter and reflects uncertainty in the estimate.</p>
+              <p>Statistical significance answers the question, <strong>“Is this result unusual under a chance model?”</strong></p>
+              <p>Practical significance asks, <strong>“Does the size of the effect matter in context?”</strong></p>
+              <p>Good statistical communication considers <strong>effect size, uncertainty, study design, and context</strong> — not just whether p is less than 0.05.</p>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p><strong>Example:</strong> “The new medication was statistically significant (p = 0.004), so patients have a 99.6% chance of benefiting from it.”</p>
+              <p>Rewrite this statement using correct statistical language.</p>
+              <p>Then evaluate: <strong>“We are 95% confident that the average improvement is between 1 and 2 points.”</strong></p>
+              <ul class="lesson-list">
+                <li>Is this wording correct?</li>
+                <li>What does it mean in context?</li>
+                <li>Does it guarantee the effect is important?</li>
+                <li>What additional information would you want before deciding whether the effect matters?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-13-apply-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-13-apply-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The correct rewrite is: “The study found evidence against the null hypothesis, with a p-value of 0.004, suggesting a statistically significant difference; it does not mean there is a 99.6% chance of benefit.”</li>
+                  <li>The confidence-interval statement means the method would capture the true average improvement about 95% of the time in repeated sampling, and the plausible range is from 1 to 2 points.</li>
+                  <li>No. A statistically significant result may still be too small to matter in practice.</li>
+                  <li>We would want the actual effect size, sample size, confidence interval width, and context for whether the improvement is meaningful.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p><strong>“The study found p = 0.02, so there is only a 2% chance that the researchers are wrong.”</strong></p>
+              <p>What is wrong with this statement? Rewrite it correctly.</p>
+              <p>Complete: <strong>“A statistically significant result tells us __________, but it does not automatically tell us __________.”</strong></p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-13-closure-answers" aria-expanded="false">Show Possible Answer</button>
+              <div id="lesson-13-closure-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>This is wrong because a p-value does not tell us the probability that the researchers are wrong; it tells us how unusual the data would be if the null hypothesis were true.</li>
+                  <li>A statistically significant result tells us the observed result is unlikely under the null hypothesis, but it does not automatically tell us that the effect is large, important, or caused by the treatment.</li>
+                </ul>
+              </div>
+            </div>
           </section>
 
           <section id="lesson-14" class="lesson">
             <div class="lesson-header">
-              <p class="lesson-number">Lesson 5</p>
-              <h3>Lesson 14 Title</h3>
+              <p class="lesson-number">Lesson 14</p>
+              <h3>Inference Review Investigation</h3>
             </div>
-            <p>
-              This section can later hold assessment information, classwork, and review questions for Lesson 5.
-            </p>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p><strong>What makes a statistical conclusion convincing?</strong></p></div>
+              <ul class="lesson-list">
+                <li>What makes a statistical question different from a regular question?</li>
+                <li>Why do we need data?</li>
+                <li>Why does variability matter?</li>
+                <li>Why might we use simulation?</li>
+                <li>What does a p-value help us decide?</li>
+                <li>What does a confidence interval help us estimate?</li>
+                <li>Why isn't a statistical conclusion absolute proof?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-14-bellringer-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-14-bellringer-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>A statistical question is about variability in a population or sample, not just one fixed fact.</li>
+                  <li>We need data because conclusions are based on evidence instead of guesses.</li>
+                  <li>Variability matters because results change from sample to sample, and we need to account for that uncertainty.</li>
+                  <li>We may use simulation to model what random chance could produce.</li>
+                  <li>A p-value helps us decide whether the observed result is unusual under a null model.</li>
+                  <li>A confidence interval helps us estimate a plausible range for an unknown population parameter.</li>
+                  <li>A statistical conclusion is not absolute proof because data and sampling are uncertain.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>Complete a statistical investigation from beginning to end.</li>
+                <li>Identify the statistical question, individuals, variables, and groups.</li>
+                <li>Identify an appropriate parameter or statistic.</li>
+                <li>State an informal null hypothesis when appropriate.</li>
+                <li>Use simulation or randomization to investigate a question.</li>
+                <li>Interpret a p-value or confidence interval in context.</li>
+                <li>Distinguish statistical significance from practical significance.</li>
+                <li>Communicate a conclusion using appropriate statistical language.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore</h4>
+              <p><strong>Full Investigation: Does a New Study Strategy Improve Test Scores?</strong></p>
+              <p>Use this realistic two-group scenario.</p>
+              <p><strong>Traditional Method:</strong> 72, 75, 78, 80, 74, 77, 81, 76, 73, 79</p>
+              <p><strong>New Study Strategy:</strong> 78, 82, 85, 80, 84, 87, 81, 83, 86, 82</p>
+              <p>Students investigate whether the new study strategy appears to improve test performance.</p>
+
+              <h5>Step 1 — Ask a Question</h5>
+              <p><strong>Does the new study strategy improve students' test scores compared with the traditional method?</strong></p>
+              <ul class="lesson-list">
+                <li>What is the statistical question?</li>
+                <li>Who are the individuals?</li>
+                <li>What is the explanatory variable?</li>
+                <li>What is the response variable?</li>
+                <li>Is the response variable quantitative or categorical?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-14-step-1-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-14-step-1-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The statistical question is whether the new study strategy changes students' average test scores compared with the traditional method.</li>
+                  <li>The individuals are the students in the study.</li>
+                  <li>The explanatory variable is the study method used: traditional or new strategy.</li>
+                  <li>The response variable is the test score.</li>
+                  <li>The response variable is quantitative because it is a numerical score.</li>
+                </ul>
+              </div>
+
+              <h5>Step 2 — Examine the Data</h5>
+              <p>Have students calculate or use technology to find the mean of each group and the observed difference in means.</p>
+              <ul class="lesson-list">
+                <li>Which group has the higher mean?</li>
+                <li>What is the observed difference?</li>
+                <li>Is the difference large enough to immediately conclude that the new strategy works?</li>
+                <li>Why might two groups have different means even if the strategy has no effect?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-14-step-2-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-14-step-2-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The new strategy group has the higher mean.</li>
+                  <li>The observed difference is about 82.8 − 76.5 = 6.3 points.</li>
+                  <li>No. A difference is evidence to investigate, but it is not enough by itself to prove the strategy works.</li>
+                  <li>Different groups can have different means because of natural variation and random assignment, even when the strategy has no effect.</li>
+                </ul>
+              </div>
+
+              <h5>Step 3 — State the Null Hypothesis</h5>
+              <p><strong>Null hypothesis:</strong> The new study strategy does not improve test scores; any observed difference is due to chance variation.</p>
+              <ul class="lesson-list">
+                <li>What does the null hypothesis assume?</li>
+                <li>Why do we need a null hypothesis?</li>
+                <li>What would we expect to see if the null hypothesis were true?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-14-step-3-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-14-step-3-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The null hypothesis assumes the strategy has no effect and the observed difference is due to random variation.</li>
+                  <li>We need a null hypothesis because it gives us a model for what results could happen by chance alone.</li>
+                  <li>If the null hypothesis were true, we would expect most random differences to be small and centered near 0.</li>
+                </ul>
+              </div>
+
+              <h5>Step 4 — Simulate</h5>
+              <p>Students perform a randomization test.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Combine all test scores.</li>
+                <li>Shuffle the group labels.</li>
+                <li>Reassign the scores to groups of the original sizes.</li>
+                <li>Calculate the difference in means.</li>
+                <li>Repeat at least 1,000 times.</li>
+                <li>Compare the observed difference with the simulated differences.</li>
+              </ol>
+              <ul class="lesson-list">
+                <li>What does one randomization represent?</li>
+                <li>Why are we shuffling labels?</li>
+                <li>What does the randomization distribution represent?</li>
+                <li>Is the observed difference common or unusual?</li>
+                <li>How could we estimate a p-value?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-14-step-4-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-14-step-4-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>One randomization is one possible arrangement of the scores if the study method had no effect.</li>
+                  <li>We shuffle labels to create a null model where the group names do not matter.</li>
+                  <li>The randomization distribution represents the differences that could happen by chance alone.</li>
+                  <li>The observed difference is unusual if it falls far into the tail of the randomization distribution.</li>
+                  <li>We estimate a p-value by counting the proportion of randomizations with a difference at least as large as the observed difference.</li>
+                </ul>
+              </div>
+
+              <h5>Step 5 — Interpret the P-Value</h5>
+              <p>Use the technology-generated p-value from the randomization test.</p>
+              <ul class="lesson-list">
+                <li>What does the p-value mean in this context?</li>
+                <li>Would the result be statistically significant using 0.05?</li>
+                <li>What evidence does the p-value provide?</li>
+                <li>Does the p-value prove that the new study strategy works?</li>
+                <li>Does it prove causation?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-14-step-5-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-14-step-5-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The p-value tells us how unusual the observed difference would be if the null hypothesis were true.</li>
+                  <li>It would be statistically significant if the p-value were below 0.05.</li>
+                  <li>The p-value provides evidence against the no-effect model.</li>
+                  <li>No. A p-value does not prove the strategy works.</li>
+                  <li>No. A p-value does not by itself prove causation.</li>
+                </ul>
+              </div>
+
+              <h5>Step 6 — Consider Practical Significance</h5>
+              <ul class="lesson-list">
+                <li>How large is the observed difference?</li>
+                <li>Is the difference large enough to matter in a real classroom?</li>
+                <li>Why should we consider the size of an effect in addition to the p-value?</li>
+                <li>Could a result be statistically significant but not practically important?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-14-step-6-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-14-step-6-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The observed difference is about 6.3 points.</li>
+                  <li>It may matter depending on the teacher's grading scale and classroom context.</li>
+                  <li>Because a small effect can be statistically significant in a large sample and still not be meaningful in practice.</li>
+                  <li>Yes. A result can be statistically significant but still not practically important.</li>
+                </ul>
+              </div>
+
+              <h5>Step 7 — Confidence Interval Extension</h5>
+              <p>Use the same data to introduce an estimation perspective.</p>
+              <ul class="lesson-list">
+                <li>What population quantity are we trying to estimate?</li>
+                <li>What is the point estimate?</li>
+                <li>What does the confidence interval tell us?</li>
+                <li>What does the margin of error tell us?</li>
+                <li>Does the interval suggest that a meaningful difference is plausible?</li>
+                <li>How does the confidence interval complement the p-value?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-14-step-7-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-14-step-7-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>We are estimating the difference in mean test scores between the population of students using the new strategy and the population using the traditional method.</li>
+                  <li>The point estimate is the observed difference in sample means.</li>
+                  <li>A confidence interval gives a range of plausible values for the true difference in means.</li>
+                  <li>The margin of error tells us how far the estimate could vary from the population difference.</li>
+                  <li>If the interval is well above 0, it suggests a meaningful positive difference is plausible.</li>
+                  <li>The confidence interval gives a range of plausible values, while the p-value tells us how surprising the result is under the null model.</li>
+                </ul>
+              </div>
+
+              <h5>Step 8 — Draw a Conclusion</h5>
+              <p>Students write a conclusion that addresses whether the evidence supports the claim that the new study strategy improves test scores.</p>
+              <p>Require students to include:</p>
+              <ul class="lesson-list">
+                <li>the observed difference</li>
+                <li>evidence from the simulation and p-value</li>
+                <li>the confidence interval if used</li>
+                <li>a statement about practical significance</li>
+                <li>a statement avoiding overclaiming</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-14-step-8-answers" aria-expanded="false">Show Possible Answer</button>
+              <div id="lesson-14-step-8-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>A strong conclusion should say that the sample data suggest the new strategy may improve scores, based on the observed difference and simulation evidence, but that the conclusion should be stated with uncertainty and context rather than as proof.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology / Simulation / Data Investigation</h4>
+              <p>Use the existing randomization-test technology from Lesson 11 for the main investigation.</p>
+              <div class="simulation-widget" data-randomization-test data-group-a="72,75,78,80,74,77,81,76,73,79" data-group-b="78,82,85,80,84,87,81,83,86,82" data-simulation-count="1000">
+                <p><strong>Observed comparison:</strong> new strategy mean minus traditional mean</p>
+                <div class="simulation-controls">
+                  <button type="button" class="simulation-button" data-action="run-randomization">Run Randomizations</button>
+                </div>
+                <p data-output="observed">Observed difference in means: not calculated yet.</p>
+                <p data-output="summary">No randomizations run yet.</p>
+                <div data-output="chart" class="chart-output" aria-live="polite"></div>
+              </div>
+              <p>Use the existing bootstrap confidence-interval workflow from Lesson 12 when students shift from “Is this surprising?” to “What range of plausible values is reasonable?”</p>
+              <ul class="lesson-list">
+                <li>What does one randomization represent?</li>
+                <li>Why do we compare the observed difference to a randomization distribution?</li>
+                <li>How is the bootstrap perspective different from the randomization perspective?</li>
+                <li>What does the p-value tell us?</li>
+                <li>How does the confidence interval help us communicate uncertainty?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-14-simulation-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-14-simulation-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>One randomization represents one possible assignment of scores to groups if the strategy had no effect.</li>
+                  <li>We compare the observed difference to the randomization distribution to see how unusual it is under the no-effect model.</li>
+                  <li>The bootstrap perspective estimates a range of plausible values for the population difference, while the randomization perspective asks whether the observed difference is surprising under the null model.</li>
+                  <li>The p-value tells us how often a result at least this extreme would happen by chance alone if the null hypothesis were true.</li>
+                  <li>The confidence interval communicates a range of plausible values and shows the uncertainty in the estimate.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ul class="lesson-list">
+                <li>What is the statistical question?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-1" class="possible-answer" hidden><ul class="lesson-list"><li>The statistical question asks whether the new strategy changes the typical test score compared with the traditional method.</li></ul></div></li>
+                <li>Who are the individuals?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-2" class="possible-answer" hidden><ul class="lesson-list"><li>The individuals are the students in the study.</li></ul></div></li>
+                <li>What are the variables?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-3" class="possible-answer" hidden><ul class="lesson-list"><li>The variables are the study method and the test scores.</li></ul></div></li>
+                <li>What is the observed difference?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-4" class="possible-answer" hidden><ul class="lesson-list"><li>The observed difference is the difference in mean test scores between the two groups.</li></ul></div></li>
+                <li>What does the null hypothesis assume?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-5" class="possible-answer" hidden><ul class="lesson-list"><li>The null hypothesis assumes the study method has no effect and any difference is due to chance.</li></ul></div></li>
+                <li>Why do we shuffle labels?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-6" class="possible-answer" hidden><ul class="lesson-list"><li>We shuffle labels to create the distribution of differences that could happen by chance if the null hypothesis were true.</li></ul></div></li>
+                <li>What does a randomization distribution represent?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-7" class="possible-answer" hidden><ul class="lesson-list"><li>A randomization distribution shows the differences that would occur when the study method has no effect.</li></ul></div></li>
+                <li>What does a p-value tell us?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-8" class="possible-answer" hidden><ul class="lesson-list"><li>A p-value tells us how unusual the observed result would be under the null hypothesis.</li></ul></div></li>
+                <li>What does a p-value not tell us?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-9" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-9" class="possible-answer" hidden><ul class="lesson-list"><li>A p-value does not tell us the probability that the null hypothesis is true, and it does not prove causation or practical importance.</li></ul></div></li>
+                <li>What does a confidence interval estimate?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-10" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-10" class="possible-answer" hidden><ul class="lesson-list"><li>A confidence interval estimates a plausible range for the population difference in means.</li></ul></div></li>
+                <li>What does the margin of error tell us?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-11" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-11" class="possible-answer" hidden><ul class="lesson-list"><li>Margin of error tells us how much uncertainty there is in the estimate.</li></ul></div></li>
+                <li>How are hypothesis testing and confidence intervals related?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-12" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-12" class="possible-answer" hidden><ul class="lesson-list"><li>Both are based on the same data and variability, but a p-value asks whether the result is surprising while a confidence interval estimates a plausible range of values.</li></ul></div></li>
+                <li>What is the difference between statistical and practical significance?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-13" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-13" class="possible-answer" hidden><ul class="lesson-list"><li>Statistical significance asks whether the result is unusual under chance, while practical significance asks whether the effect matters in context.</li></ul></div></li>
+                <li>Why doesn't statistical significance automatically prove causation?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-14" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-14" class="possible-answer" hidden><ul class="lesson-list"><li>Because a result can be unusual by chance, and because observational studies and other factors may explain the difference.</li></ul></div></li>
+                <li>Why should conclusions be written in context?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-15" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-15" class="possible-answer" hidden><ul class="lesson-list"><li>Because the setting, sample, and real-world meaning affect how we interpret the evidence.</li></ul></div></li>
+                <li>Why is inference a process rather than a formula?<button type="button" class="answer-toggle" data-answer-target="lesson-14-guiding-16" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-14-guiding-16" class="possible-answer" hidden><ul class="lesson-list"><li>Because inference involves asking good questions, using data, accounting for variability, interpreting evidence, and communicating a careful conclusion.</li></ul></div></li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>Inference is a process, not a formula.</strong></p></div>
+              <p>Statistical inference involves asking a meaningful question, using appropriate data, accounting for variability, and using simulation to understand what chance could produce.</p>
+              <p>We compare the observed result to a simulated null distribution, interpret the evidence, and then communicate a careful conclusion in context.</p>
+              <p>The full process is: <strong>Question → Data → Variability → Simulation → Evidence → Conclusion → Communication</strong>.</p>
+              <p>The goal is not simply to calculate a p-value or confidence interval. The goal is to reason thoughtfully under uncertainty.</p>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply — Independent Investigation</h4>
+              <p>Choose one of the following questions and complete the full investigation process.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Does listening to music affect test performance?</li>
+                <li>Do students who exercise more sleep more?</li>
+                <li>Does a particular study method improve quiz scores?</li>
+                <li>Do students who participate in a school activity have different GPAs?</li>
+              </ol>
+              <p>For the chosen question, students should identify:</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Statistical question</li>
+                <li>Individuals</li>
+                <li>Variables</li>
+                <li>Groups, if applicable</li>
+                <li>Observed statistic or difference</li>
+                <li>Null hypothesis</li>
+                <li>Appropriate simulation method</li>
+                <li>Simulation results</li>
+                <li>P-value or confidence interval</li>
+                <li>Interpretation</li>
+                <li>Statistical significance</li>
+                <li>Practical significance</li>
+                <li>Final conclusion</li>
+                <li>One limitation or possible confounding variable</li>
+              </ol>
+              <p><strong>Checklist for completion:</strong> Check each item before finalizing the conclusion.</p>
+              <p><strong>Example of a strong conclusion:</strong> “The two groups differed by about 6 points on average, and the randomization distribution showed that a difference this large would be uncommon if the study method had no effect. This suggests evidence of a possible improvement, but the practical importance depends on how large an effect is needed in the classroom setting.”</p>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p><strong>Imagine you are explaining statistical inference to a student who has never taken statistics. How would you describe the process without using formulas?</strong></p>
+              <p>Complete: <strong>“Statistical inference is the process of __________.”</strong></p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-14-closure-answers" aria-expanded="false">Show Possible Answer</button>
+              <div id="lesson-14-closure-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>Statistical inference is the process of using data and variability to draw careful conclusions about a larger population or process.</li>
+                </ul>
+              </div>
+            </div>
           </section>
         </div>
       </div>

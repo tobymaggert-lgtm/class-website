@@ -256,6 +256,193 @@ function createPValueSimulation(panel) {
 
 document.querySelectorAll("[data-p-value-simulation]").forEach(createPValueSimulation);
 
+function createRandomizationTestWidget(panel) {
+	const groupA = (panel.dataset.groupA || "")
+		.split(",")
+		.map((value) => Number(value.trim()))
+		.filter((value) => Number.isFinite(value));
+	const groupB = (panel.dataset.groupB || "")
+		.split(",")
+		.map((value) => Number(value.trim()))
+		.filter((value) => Number.isFinite(value));
+	const observedOutput = panel.querySelector('[data-output="observed"]');
+	const summaryOutput = panel.querySelector('[data-output="summary"]');
+	const chartOutput = panel.querySelector('[data-output="chart"]');
+	const simulationCount = Number(panel.dataset.simulationCount || 1000);
+	const observedDifference = mean(groupA) - mean(groupB);
+
+	function mean(values) {
+		return values.reduce((sum, value) => sum + value, 0) / values.length;
+	}
+
+	function shuffle(values) {
+		const array = [...values];
+		for (let index = array.length - 1; index > 0; index -= 1) {
+			const swapIndex = Math.floor(Math.random() * (index + 1));
+			[array[index], array[swapIndex]] = [array[swapIndex], array[index]];
+		}
+		return array;
+	}
+
+	function buildHistogram(values) {
+		const min = Math.min(...values, observedDifference, -observedDifference);
+		const max = Math.max(...values, observedDifference, -observedDifference);
+		const intervalWidth = 0.5;
+		const start = Math.floor(min / intervalWidth) * intervalWidth;
+		const end = Math.ceil(max / intervalWidth) * intervalWidth;
+		const intervals = [];
+
+		for (let value = start; value <= end + intervalWidth / 2; value += intervalWidth) {
+			intervals.push({
+				start: value,
+				end: value + intervalWidth,
+				count: 0
+			});
+		}
+
+		values.forEach((value) => {
+			for (const interval of intervals) {
+				if (value >= interval.start && value < interval.end) {
+					interval.count += 1;
+					break;
+				}
+			}
+		});
+
+		const maxCount = Math.max(...intervals.map((interval) => interval.count), 1);
+		const html = `
+			<div style="margin-top: 20px;">
+				<div style="display: flex; align-items: flex-end; gap: 2px; height: 220px; padding: 10px 6px 0; border-bottom: 1px solid #b8c2cc;">
+					${intervals.map((interval) => {
+						const height = interval.count === 0 ? 0 : Math.max(4, (interval.count / maxCount) * 180);
+						const label = `${interval.start.toFixed(1)} to ${interval.end.toFixed(1)}`;
+						return `
+							<div style="display: flex; flex: 1 0 20px; flex-direction: column; justify-content: flex-end; align-items: center; gap: 5px; height: 100%;">
+								<div style="width: 100%; height: ${height}px; background: #9aaabd; cursor: pointer;" title="${label}: ${interval.count} randomizations"></div>
+								<span style="font-size: 0.7rem; white-space: nowrap;">${interval.start.toFixed(1)}</span>
+							</div>
+						`;
+					}).join("")}
+				</div>
+			</div>
+		`;
+		return html;
+	}
+
+	function runRandomization() {
+		const combined = [...groupA, ...groupB];
+		const groupASize = groupA.length;
+		const groupBSize = groupB.length;
+		const results = [];
+
+		for (let simulation = 0; simulation < simulationCount; simulation += 1) {
+			const shuffled = shuffle(combined);
+			const simulatedA = shuffled.slice(0, groupASize);
+			const simulatedB = shuffled.slice(groupASize, groupASize + groupBSize);
+			const simulatedDifference = mean(simulatedA) - mean(simulatedB);
+			results.push(simulatedDifference);
+		}
+
+		const extremeCount = results.filter((value) => Math.abs(value) >= Math.abs(observedDifference)).length;
+		const pValue = extremeCount / results.length;
+		observedOutput.textContent = `Observed difference in means: ${observedDifference.toFixed(2)} points`;
+		summaryOutput.textContent = `${extremeCount} of ${results.length} randomizations produced a difference at least as extreme as ${observedDifference.toFixed(2)} points. Estimated p-value = ${pValue.toFixed(3)}.`;
+		chartOutput.innerHTML = buildHistogram(results);
+	}
+
+	panel.querySelector('[data-action="run-randomization"]').addEventListener("click", runRandomization);
+	runRandomization();
+}
+
+document.querySelectorAll("[data-randomization-test]").forEach(createRandomizationTestWidget);
+
+function createBootstrapConfidenceIntervalWidget(panel) {
+	const sampleData = (panel.dataset.sampleData || "5, 6, 7, 7, 8, 6, 5, 9, 7, 6")
+		.split(",")
+		.map((value) => Number(value.trim()))
+		.filter((value) => Number.isFinite(value));
+	const sampleMean = sampleData.reduce((sum, value) => sum + value, 0) / sampleData.length;
+	const summaryOutput = panel.querySelector('[data-output="summary"]');
+	const intervalOutput = panel.querySelector('[data-output="interval"]');
+	const marginOutput = panel.querySelector('[data-output="margin"]');
+	const chartOutput = panel.querySelector('[data-output="chart"]');
+	const confidenceControl = panel.querySelector('[data-control="confidence-level"]');
+	const sampleMeanOutput = panel.querySelector('[data-output="sample-mean"]');
+
+	function bootstrapMean() {
+		const values = [];
+		for (let index = 0; index < sampleData.length; index += 1) {
+			const randomIndex = Math.floor(Math.random() * sampleData.length);
+			values.push(sampleData[randomIndex]);
+		}
+		return values.reduce((sum, value) => sum + value, 0) / values.length;
+	}
+
+	function buildDistribution(values) {
+		const min = Math.min(...values);
+		const max = Math.max(...values);
+		const intervalWidth = 0.25;
+		const start = Math.floor(min / intervalWidth) * intervalWidth;
+		const end = Math.ceil(max / intervalWidth) * intervalWidth;
+		const intervals = [];
+
+		for (let value = start; value <= end; value += intervalWidth) {
+			intervals.push({
+				start: value,
+				end: value + intervalWidth,
+				count: 0
+			});
+		}
+
+		values.forEach((value) => {
+			for (const interval of intervals) {
+				if (value >= interval.start && value < interval.end) {
+					interval.count += 1;
+					break;
+				}
+			}
+		});
+
+		const maxCount = Math.max(...intervals.map((interval) => interval.count), 1);
+		return `
+			<div style="display: flex; align-items: flex-end; gap: 2px; height: 220px; padding: 10px 6px 0; border-bottom: 1px solid #b8c2cc;">
+				${intervals.map((interval) => {
+					const height = interval.count === 0 ? 0 : Math.max(4, (interval.count / maxCount) * 180);
+					return `
+						<div style="display: flex; flex: 1 0 20px; flex-direction: column; justify-content: flex-end; align-items: center; gap: 5px; height: 100%;">
+							<div style="width: 100%; height: ${height}px; background: #9aaabd; cursor: pointer;" title="${interval.start.toFixed(2)} to ${interval.end.toFixed(2)}: ${interval.count} bootstrap samples"></div>
+							<span style="font-size: 0.7rem; white-space: nowrap;">${interval.start.toFixed(1)}</span>
+						</div>
+					`;
+				}).join("")}
+			</div>
+		`;
+	}
+
+	function updateDisplay() {
+		const confidenceLevel = Number(confidenceControl.value || 95);
+		const distribution = Array.from({ length: 1000 }, bootstrapMean);
+		const sorted = [...distribution].sort((a, b) => a - b);
+		const lowerPercentile = (100 - confidenceLevel) / 2;
+		const lowerIndex = Math.floor((lowerPercentile / 100) * (sorted.length - 1));
+		const upperIndex = Math.ceil((100 - lowerPercentile) / 100 * (sorted.length - 1));
+		const lower = sorted[lowerIndex];
+		const upper = sorted[upperIndex];
+		const margin = (upper - lower) / 2;
+		sampleMeanOutput.textContent = `Original sample mean: ${sampleMean.toFixed(2)} hours`;
+		summaryOutput.textContent = `Bootstrap distribution from 1000 resamples (${confidenceLevel}% confidence interval).`;
+		intervalOutput.textContent = `Approximate ${confidenceLevel}% confidence interval: ${lower.toFixed(2)} to ${upper.toFixed(2)} hours.`;
+		marginOutput.textContent = `Margin of error: about ${margin.toFixed(2)} hours.`;
+		chartOutput.innerHTML = buildDistribution(distribution);
+	}
+
+	panel.querySelector('[data-action="run-bootstrap"]').addEventListener("click", updateDisplay);
+	confidenceControl.addEventListener("change", updateDisplay);
+	updateDisplay();
+}
+
+document.querySelectorAll("[data-bootstrap-widget]").forEach(createBootstrapConfidenceIntervalWidget);
+
 function renderDotplot(containerId, data, options = {}) {
 	const container = document.getElementById(containerId);
 	if (!container) return;
