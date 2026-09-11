@@ -813,7 +813,6 @@
                 <li>Is 6.8 hours probably the exact average for every student in the school?</li>
                 <li>If we randomly selected another 40 students, would we get exactly 6.8?</li>
                 <li>What might happen to the sample mean from sample to sample?</li>
-                <li>How could we use our sample to estimate the true average for the entire school?</li>
                 <li>Would you rather report a single number or a reasonable range of values? Why?</li>
               </ul>
               <button type="button" class="answer-toggle" data-answer-target="lesson-12-bellringer-answers" aria-expanded="false">Show Possible Answers</button>
@@ -822,7 +821,6 @@
                   <li>No. 6.8 is an estimate from one sample, not necessarily the exact population average.</li>
                   <li>No. A different random sample of 40 students would likely produce a slightly different sample mean.</li>
                   <li>The sample mean would vary from sample to sample because of sampling variability.</li>
-                  <li>We could use bootstrap resampling to simulate many possible samples and estimate a range of plausible values for the population mean.</li>
                   <li>A reasonable range is usually more informative because it reflects uncertainty instead of pretending the estimate is exact.</li>
                 </ul>
               </div>
@@ -852,8 +850,9 @@
                 <li>What if we repeatedly sampled students from the population?</li>
                 <li>Why might that be difficult or impossible?</li>
               </ul>
-              <p>Introduce the bootstrap idea: <strong>We can use the sample we already have to simulate many new samples.</strong></p>
-              <p>Explain that a bootstrap sample is created by randomly selecting observations <strong>with replacement</strong> from the original sample until we have the same number of observations as the original sample.</p>
+              <br>
+              <p> <strong>The bootstrap idea:</strong>We can use the sample we already have to simulate many new samples.</p>
+              <p>A bootstrap sample is created by randomly selecting observations <strong>with replacement</strong> from the original sample until we have the same number of observations as the original sample.</p>
               <ul class="lesson-list">
                 <li>What does “with replacement” mean?</li>
                 <li>Why can a bootstrap sample contain the same student more than once?</li>
@@ -881,10 +880,11 @@
               <h4>Technology / Simulation / Data Investigation</h4>
 
               <h5>Investigation 1: Hands-On Bootstrap Sampling</h5>
-              <p>Provide a small sample of quantitative data so students can physically perform bootstrap sampling.</p>
+              <p>Let's use flash cards again to physically perform bootstrap sampling.</p>
               <p><strong>5, 6, 7, 7, 8, 6, 5, 9, 7, 6</strong></p>
               <p>The original sample mean is <strong>6.6</strong>.</p>
-              <p>Have students:</p>
+              <p>The task:</p>
+              <br>
               <ol class="lesson-list lesson-ordered-list">
                 <li>Write the observations on cards.</li>
                 <li>Randomly select a card.</li>
@@ -895,6 +895,7 @@
                 <li>Repeat many times.</li>
                 <li>Record the bootstrap means.</li>
               </ol>
+              <br>
               <ul class="lesson-list">
                 <li>Why do we replace the card after each selection?</li>
                 <li>Why can the same value appear several times?</li>
@@ -952,11 +953,13 @@
               </div>
 
               <h5>Investigation 3: Confidence Interval</h5>
-              <p>Introduce the <strong>95% confidence interval</strong> as a range constructed from the bootstrap distribution.</p>
+              <p>The <strong>confidence interval</strong> is a range constructed from the bootstrap distribution.</p>
               <p>Use the bootstrap example to create an interval using the middle 95% of bootstrap sample means.</p>
-              <p>Explain: <strong>A 95% confidence interval gives a range of plausible values for the population parameter based on our sample and method.</strong></p>
-              <p>Do NOT say: <strong>“There is a 95% probability that the population mean is in this particular interval.”</strong></p>
-              <p>Instead emphasize the repeated-sampling interpretation: <strong>A method that produces 95% confidence intervals will capture the true population parameter about 95% of the time in repeated sampling.</strong></p>
+              <p>Correct Statement: <strong>A 95% confidence interval gives a range of plausible values for the population parameter based on our sample and method.</strong></p>
+              <p>Incorrect statement: <strong>“There is a 95% probability that the population mean is in this particular interval.”</strong></p>
+              <br>
+              <p><strong>A method that produces 95% confidence intervals will capture the true population parameter about 95% of the time in repeated sampling.</strong></p>
+              <br>
               <ul class="lesson-list">
                 <li>What is the population parameter we are trying to estimate?</li>
                 <li>What is our point estimate?</li>
@@ -1040,7 +1043,6 @@
 
             <div class="lesson-section lesson-apply">
               <h4>Apply</h4>
-              <p>Give students a new context.</p>
               <p><strong>A random sample of 50 students is used to estimate the average amount of time students spend on social media each day. The sample mean is 3.4 hours. A bootstrap simulation produces a 95% confidence interval of 3.1 to 3.7 hours.</strong></p>
               <ol class="lesson-list lesson-ordered-list">
                 <li>What is the population parameter?</li>
