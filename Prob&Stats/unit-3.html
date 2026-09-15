@@ -1362,7 +1362,7 @@
               </div>
 
               <h5>Step 2 — Examine the Data</h5>
-              <p>Have students calculate or use technology to find the mean of each group and the observed difference in means.</p>
+              <p>Calculate or use technology to find the mean of each group and the observed difference in means.</p>
               <ul class="lesson-list">
                 <li>Which group has the higher mean?</li>
                 <li>What is the observed difference?</li>
@@ -1396,7 +1396,7 @@
               </div>
 
               <h5>Step 4 — Simulate</h5>
-              <p>Students perform a randomization test.</p>
+              <p>Perform the bootstrap randomization test.</p>
               <ol class="lesson-list lesson-ordered-list">
                 <li>Combine all test scores.</li>
                 <li>Shuffle the group labels.</li>
@@ -1405,6 +1405,15 @@
                 <li>Repeat at least 1,000 times.</li>
                 <li>Compare the observed difference with the simulated differences.</li>
               </ol>
+              <div class="simulation-widget" data-randomization-test data-group-a="78,82,85,80,84,87,81,83,86,82" data-group-b="72,75,78,80,74,77,81,76,73,79" data-simulation-count="1000">
+                <p><strong>Observed comparison:</strong> new strategy mean minus traditional method mean</p>
+                <div class="simulation-controls">
+                  <button type="button" class="simulation-button" data-action="run-randomization">Run Randomizations</button>
+                </div>
+                <p data-output="observed">Observed difference in means: not calculated yet.</p>
+                <p data-output="summary">No randomizations run yet.</p>
+                <div data-output="chart" class="chart-output" aria-live="polite"></div>
+              </div>
               <ul class="lesson-list">
                 <li>What does one randomization represent?</li>
                 <li>Why are we shuffling labels?</li>
@@ -1483,8 +1492,8 @@
               </div>
 
               <h5>Step 8 — Draw a Conclusion</h5>
-              <p>Students write a conclusion that addresses whether the evidence supports the claim that the new study strategy improves test scores.</p>
-              <p>Require students to include:</p>
+              <p>Write a conclusion that addresses whether the evidence supports the claim that the new study strategy improves test scores.</p>
+              <p>Be sure to include:</p>
               <ul class="lesson-list">
                 <li>the observed difference</li>
                 <li>evidence from the simulation and p-value</li>
@@ -1502,34 +1511,7 @@
 
             <div class="lesson-section lesson-simulation">
               <h4>Technology / Simulation / Data Investigation</h4>
-              <p>Use the existing randomization-test technology from Lesson 11 for the main investigation.</p>
-              <div class="simulation-widget" data-randomization-test data-group-a="72,75,78,80,74,77,81,76,73,79" data-group-b="78,82,85,80,84,87,81,83,86,82" data-simulation-count="1000">
-                <p><strong>Observed comparison:</strong> new strategy mean minus traditional mean</p>
-                <div class="simulation-controls">
-                  <button type="button" class="simulation-button" data-action="run-randomization">Run Randomizations</button>
-                </div>
-                <p data-output="observed">Observed difference in means: not calculated yet.</p>
-                <p data-output="summary">No randomizations run yet.</p>
-                <div data-output="chart" class="chart-output" aria-live="polite"></div>
-              </div>
-              <p>Use the existing bootstrap confidence-interval workflow from Lesson 12 when students shift from “Is this surprising?” to “What range of plausible values is reasonable?”</p>
-              <ul class="lesson-list">
-                <li>What does one randomization represent?</li>
-                <li>Why do we compare the observed difference to a randomization distribution?</li>
-                <li>How is the bootstrap perspective different from the randomization perspective?</li>
-                <li>What does the p-value tell us?</li>
-                <li>How does the confidence interval help us communicate uncertainty?</li>
-              </ul>
-              <button type="button" class="answer-toggle" data-answer-target="lesson-14-simulation-answers" aria-expanded="false">Show Possible Answers</button>
-              <div id="lesson-14-simulation-answers" class="possible-answer" hidden>
-                <ul class="lesson-list">
-                  <li>One randomization represents one possible assignment of scores to groups if the strategy had no effect.</li>
-                  <li>We compare the observed difference to the randomization distribution to see how unusual it is under the no-effect model.</li>
-                  <li>The bootstrap perspective estimates a range of plausible values for the population difference, while the randomization perspective asks whether the observed difference is surprising under the null model.</li>
-                  <li>The p-value tells us how often a result at least this extreme would happen by chance alone if the null hypothesis were true.</li>
-                  <li>The confidence interval communicates a range of plausible values and shows the uncertainty in the estimate.</li>
-                </ul>
-              </div>
+              <p>Included in the Explore section.</p>
             </div>
 
             <div class="lesson-section lesson-questions">
