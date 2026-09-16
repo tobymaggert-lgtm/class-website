@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Probability & Statistics - Unit 4: Probability</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/main.js" defer></script>
   </head>
   <body>
     <header class="site-header unit-header">
@@ -29,71 +30,180 @@
           </div>
 
           <nav class="lesson-nav">
-            <a href="#lesson-1">Lesson 1</a>
-            <a href="#lesson-2">Lesson 2</a>
-            <a href="#lesson-3">Lesson 3</a>
-            <a href="#lesson-4">Lesson 4</a>
-            <a href="#lesson-5">Lesson 5</a>
-            <a href="#lesson-6">Lesson 6</a>
+            <a href="#lesson-15">Lesson 15</a>
+            <a href="#lesson-16">Lesson 16</a>
+            <a href="#lesson-17">Lesson 17</a>
           </nav>
         </aside>
 
         <div class="unit-content">
-          <section id="lesson-1" class="lesson">
+
+
+          <section id="lesson-15" class="lesson">
             <div class="lesson-header">
-              <p class="lesson-number">Lesson 1</p>
-              <h3>Lesson 1 Title</h3>
+              <p class="lesson-number">Lesson 15</p>
+              <h3>Basic Probability Through Simulation</h3>
             </div>
-            <p>
-              This is a placeholder lesson section for Unit 4. Replace this content with the first lesson's objectives,
-              notes, activities, and assignments.
-            </p>
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p><strong>What is the chance of rolling a 6?</strong></p></div>
+              <p>Predict the probability of rolling a 6 on a fair six-sided die. Explain how you could investigate your prediction by rolling a die repeatedly.</p>
+              <ul class="lesson-list">
+                <li>What is the theoretical probability of rolling a 6?</li>
+                <li>How could you investigate this probability experimentally?</li>
+                <li>Would 10 rolls always contain exactly the expected number of 6s?</li>
+                <li>What might happen if you used 100 or 1,000 rolls?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-15-bellringer-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-15-bellringer-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The theoretical probability is 1/6 because one of the six equally likely outcomes is a 6.</li>
+                  <li>Roll a die many times, count the 6s, and divide the number of 6s by the total number of rolls.</li>
+                  <li>No. A small number of rolls can produce more or fewer 6s than expected because of random variation.</li>
+                  <li>With more rolls, the experimental probability will usually move closer to 1/6 and become more stable.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>Distinguish experimental probability from theoretical probability.</li>
+                <li>Calculate relative frequency.</li>
+                <li>Use simulation to investigate probability.</li>
+                <li>Explain the law of large numbers conceptually.</li>
+                <li>Recognize that experimental probabilities tend to stabilize toward theoretical probabilities as the number of trials increases.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore</h4>
+              <p>Use a fair six-sided die. The event <strong>A</strong> is rolling a 6.</p>
+              <div class="lesson-callout emphasis"><p><strong>Probability rule:</strong></p><p><strong>P(A) = <span class="fraction"><span>favorable outcomes</span><span>total outcomes</span></span></strong></p></div>
+              <p>Theoretical probability describes what we expect from the structure of a chance process. For a fair die, <strong>P(rolling a 6) = 1/6</strong>.</p>
+              <p><strong>Simulate 10 rolls of a die.</strong> <strong>Record the number of 6s.</strong> <strong>Calculate the experimental probability of rolling a 6.</strong></p>
+              <p><strong>Repeat the simulation with 100 trials.</strong> <strong>Compare the results.</strong></p>
+              <p><strong>Repeat with 1,000 trials.</strong> <strong>Describe what happens to the relative frequency.</strong></p>
+              <ul class="lesson-list">
+                <li>How close was each experimental probability to 1/6?</li>
+                <li>Which trial count produced the most variable result?</li>
+                <li>What happens to the relative frequency as the number of trials increases?</li>
+                <li>Does a larger number of trials guarantee exactly 1/6?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-15-explore-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-15-explore-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>Each experimental probability may be different from 1/6, but larger simulations often get closer.</li>
+                  <li>The 10-trial simulation usually produces the most variable result because each roll has a larger effect on the proportion.</li>
+                  <li>The relative frequency tends to stabilize near 1/6 as the number of trials increases.</li>
+                  <li>No. More trials make an exact result more likely, but random variation can still remain.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology / Simulation</h4>
+              <p><strong>Choose the number of trials.</strong> <strong>Simulate die rolls.</strong> <strong>Count favorable outcomes.</strong> <strong>Calculate the probability.</strong></p>
+              <div class="simulation-widget" data-die-probability-widget>
+                <p><strong>Event A:</strong> rolling a 6 on a fair die</p>
+                <div class="simulation-controls">
+                  <label for="lesson-15-trials">Number of trials:
+                    <select id="lesson-15-trials">
+                      <option value="10">10</option>
+                      <option value="100" selected>100</option>
+                      <option value="1000">1,000</option>
+                      <option value="5000">5,000</option>
+                    </select>
+                  </label>
+                  <button type="button" class="simulation-button" data-action="run-die">Simulate Trials</button>
+                </div>
+                <p data-output="die-summary">No die rolls simulated yet.</p>
+                <p data-output="die-comparison">Theoretical probability: 0.1667 (1/6).</p>
+                <div data-output="die-chart" class="chart-output" aria-live="polite"></div>
+              </div>
+              <ul class="lesson-list">
+                <li>How does the experimental probability compare with 1/6?</li>
+                <li>What changes when you increase the number of trials?</li>
+                <li>Which face appears most often in this run?</li>
+                <li>Would another simulation produce exactly the same results?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-15-simulation-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-15-simulation-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The experimental probability should be reasonably close to 1/6, although it may be higher or lower.</li>
+                  <li>With more trials, the relative frequency usually becomes more stable and tends to move closer to 1/6.</li>
+                  <li>Any face could appear most often in one run because the individual rolls are random.</li>
+                  <li>No. Random simulations can produce different counts and relative frequencies each time.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ul class="lesson-list">
+                <li>How are experimental and theoretical probability different?<button type="button" class="answer-toggle" data-answer-target="lesson-15-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-15-guiding-1" class="possible-answer" hidden><ul class="lesson-list"><li>Theoretical probability comes from the structure of the chance process, while experimental probability comes from observed results.</li></ul></div></li>
+                <li>Why can a small sample be far from the theoretical probability?<button type="button" class="answer-toggle" data-answer-target="lesson-15-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-15-guiding-2" class="possible-answer" hidden><ul class="lesson-list"><li>Random variation has a larger effect when there are only a few trials.</li></ul></div></li>
+                <li>What tends to happen as the number of trials increases?<button type="button" class="answer-toggle" data-answer-target="lesson-15-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-15-guiding-3" class="possible-answer" hidden><ul class="lesson-list"><li>Experimental probabilities usually become less variable and tend to move closer to the theoretical probability.</li></ul></div></li>
+                <li>Why does relative frequency tend to stabilize?<button type="button" class="answer-toggle" data-answer-target="lesson-15-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-15-guiding-4" class="possible-answer" hidden><ul class="lesson-list"><li>Each new trial has less influence on the overall proportion when the total number of trials is large.</li></ul></div></li>
+                <li>What does the law of large numbers mean?<button type="button" class="answer-toggle" data-answer-target="lesson-15-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-15-guiding-5" class="possible-answer" hidden><ul class="lesson-list"><li>Over many repetitions, the relative frequency of an event tends to get closer to its theoretical probability.</li></ul></div></li>
+                <li>Does the law of large numbers guarantee an exact probability after a certain number of trials?<button type="button" class="answer-toggle" data-answer-target="lesson-15-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-15-guiding-6" class="possible-answer" hidden><ul class="lesson-list"><li>No. It describes a long-run tendency, not a guarantee that one simulation will equal the theoretical probability.</li></ul></div></li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>Probability describes long-run behavior.</strong></p></div>
+              <p>Experimental probability can vary substantially in a small number of trials. As the number of trials becomes large, relative frequencies tend to stabilize near the theoretical probability.</p>
+              <p>The law of large numbers describes this long-run pattern. It does not promise that every short experiment, or even one large experiment, will produce the exact theoretical probability.</p>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A bag has 3 red marbles and 2 blue marbles. Find the theoretical probability of drawing a red marble.</li>
+                <li>A coin is flipped 80 times and lands heads 46 times. Calculate the experimental probability of heads and compare it with the theoretical probability.</li>
+                <li>A spinner has 4 equal sections. In 20 spins, the blue section appears 9 times. Explain one reason the experimental probability differs from the theoretical probability.</li>
+                <li>A die is rolled 1,000 times and a 6 appears 171 times. Describe how the law of large numbers applies.</li>
+              </ol>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-15-apply-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-15-apply-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The theoretical probability of red is 3/5, or 0.6.</li>
+                  <li>The experimental probability is 46/80 = 0.575, which is close to the theoretical probability of 0.5 but not exactly equal.</li>
+                  <li>The difference can be caused by random variation in the small number of spins.</li>
+                  <li>The experimental probability is 171/1,000 = 0.171, which is close to 1/6, or about 0.167; this illustrates long-run stabilization without guaranteeing an exact match.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p>Explain, in your own words, why probability is better understood as long-run behavior rather than a guarantee about what happens in a small number of trials.</p>
+              <p>Complete: <strong>“Probability is the study of __________ over many repetitions.”</strong></p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-15-closure-answers" aria-expanded="false">Show Possible Answer</button>
+              <div id="lesson-15-closure-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>Probability describes the patterns and relative frequencies that tend to appear over many repetitions, but random variation means it cannot guarantee the result of a small experiment.</li>
+                </ul>
+              </div>
+            </div>
           </section>
 
-          <section id="lesson-2" class="lesson">
+          
+          <section id="lesson-16" class="lesson">
             <div class="lesson-header">
-              <p class="lesson-number">Lesson 2</p>
-              <h3>Lesson 2 Title</h3>
-            </div>
-            <p>
-              Add a short overview, class notes, examples, and any key vocabulary for Lesson 2 here.
-            </p>
-          </section>
-
-          <section id="lesson-3" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 3</p>
-              <h3>Lesson 3 Title</h3>
-            </div>
-            <p>
-              Use this section to include learning targets, guided practice, or discussion prompts for the next lesson.
-            </p>
-          </section>
-
-          <section id="lesson-4" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 4</p>
-              <h3>Lesson 4 Title</h3>
-            </div>
-            <p>
-              Placeholder content for Lesson 4. Add warm-ups, examples, or independent work as needed.
-            </p>
-          </section>
-
-          <section id="lesson-5" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 5</p>
-              <h3>Lesson 5 Title</h3>
+              <p class="lesson-number">Lesson 16</p>
+              <h3>Lesson 16 Title</h3>
             </div>
             <p>
               This section can later hold assessment information, classwork, and review questions for Lesson 5.
             </p>
           </section>
 
-          <section id="lesson-6" class="lesson">
+          <section id="lesson-17" class="lesson">
             <div class="lesson-header">
-              <p class="lesson-number">Lesson 6</p>
-              <h3>Lesson 6 Title</h3>
+              <p class="lesson-number">Lesson 17</p>
+              <h3>Lesson 17 Title</h3>
             </div>
             <p>
               Add the final lesson content here, including summaries, exit tickets, or extension activities.
@@ -102,5 +212,31 @@
         </div>
       </div>
     </main>
+    <script>
+      const dieWidget = document.querySelector("[data-die-probability-widget]");
+      const trialControl = document.getElementById("lesson-15-trials");
+      const dieSummary = dieWidget.querySelector('[data-output="die-summary"]');
+      const dieComparison = dieWidget.querySelector('[data-output="die-comparison"]');
+      const dieChart = dieWidget.querySelector('[data-output="die-chart"]');
+
+      dieWidget.querySelector('[data-action="run-die"]').addEventListener("click", () => {
+        const trials = Number(trialControl.value);
+        const counts = [0, 0, 0, 0, 0, 0];
+
+        for (let roll = 0; roll < trials; roll += 1) {
+          counts[Math.floor(Math.random() * 6)] += 1;
+        }
+
+        const sixes = counts[5];
+        const experimental = sixes / trials;
+        dieSummary.textContent = `${sixes} of ${trials} rolls were 6s. Experimental probability = ${experimental.toFixed(4)}.`;
+        dieComparison.textContent = `Theoretical probability = 0.1667 (1/6). Difference from theory = ${(experimental - 1 / 6).toFixed(4)}.`;
+        const maximum = Math.max(...counts, 1);
+        dieChart.innerHTML = `<div style="display: flex; align-items: flex-end; gap: 2px; height: 220px; padding: 10px 6px 0; border-bottom: 1px solid #b8c2cc;">${counts.map((count, index) => {
+          const height = count === 0 ? 0 : Math.max(4, (count / maximum) * 180);
+          return `<div style="display: flex; flex: 1 0 20px; flex-direction: column; justify-content: flex-end; align-items: center; gap: 5px; height: 100%;"><div style="width: 100%; height: ${height}px; background: #9aaabd; cursor: pointer;" title="Face ${index + 1}: ${count}"></div><span style="font-size: 0.7rem; white-space: nowrap;">${index + 1}</span></div>`;
+        }).join("")}</div>`;
+      });
+    </script>
   </body>
 </html>
