@@ -748,3 +748,22 @@ header p {
     }
 }
 
+.fraction {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 1.1;
+  margin: 0 4px;
+}
+
+.fraction .numerator {
+  display: block;
+  padding: 0 4px 2px;
+  border-bottom: 1px solid currentColor;
+}
+
+.fraction .denominator {
+  display: block;
+  padding: 2px 4px 0;
+}

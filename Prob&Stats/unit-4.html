@@ -189,15 +189,174 @@
             </div>
           </section>
 
-          
           <section id="lesson-16" class="lesson">
             <div class="lesson-header">
               <p class="lesson-number">Lesson 16</p>
-              <h3>Lesson 16 Title</h3>
+              <h3>Conditional Probability and Association</h3>
             </div>
-            <p>
-              This section can later hold assessment information, classwork, and review questions for Lesson 5.
-            </p>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p><strong>Does participation relate to meeting a goal?</strong></p></div>
+              <p>Use this two-way table about 100 students. Each student participated in an activity and either met a goal or did not meet the goal.</p>
+              <table class="mini-table">
+                <caption>Activity participation and goal status</caption>
+                <thead><tr><th></th><th>Goal met</th><th>Goal not met</th><th>Total</th></tr></thead>
+                <tbody><tr><th>Participated</th><td>29</td><td>30</td><td>59</td></tr><tr><th>Did not participate</th><td>21</td><td>20</td><td>41</td></tr><tr><th>Total</th><td>50</td><td>50</td><td>100</td></tr></tbody>
+              </table>
+              <ul class="lesson-list">
+                <li>What number is in the participated and goal-met cell?</li>
+                <li>What are the row and column totals?</li>
+                <li>What is the joint probability that a student participated and met the goal?</li>
+                <li>What changes when you restrict attention to students who participated?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-16-bellringer-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-16-bellringer-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The participated and goal-met cell contains 29 students.</li>
+                  <li>The row totals are 59 and 41, the column totals are 50 and 50, and the grand total is 100.</li>
+                  <li>The joint probability is 29/100 = 0.29.</li>
+                  <li>After restricting attention to participants, the denominator changes from 100 students to 59 participants.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>Read and interpret two-way tables.</li>
+                <li>Calculate conditional probabilities.</li>
+                <li>Explain conditional probability as a restricted sample space.</li>
+                <li>Use visual representations to compare conditional probabilities.</li>
+                <li>Determine conceptually whether two events appear independent.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore</h4>
+              <p>Let <strong>A</strong> mean “the student met the goal” and <strong>B</strong> mean “the student participated.”</p>
+              <p><strong>Find the total number of observations.</strong> <strong>Find the probability of A.</strong> <strong>Find the probability of B.</strong> <strong>Find the probability of A and B.</strong></p>
+              <p><strong>Restrict your attention to the cases where B occurs.</strong> <strong>Calculate the proportion of those cases where A also occurs.</strong></p>
+              <p><strong>Compare this conditional probability with the overall probability of A.</strong> <strong>Explain what changed when you conditioned on B.</strong></p>
+              <div class="lesson-callout emphasis">
+                <p><strong>P(A|B) means the probability of A among the cases where B has occurred.</strong></p>
+                <p>
+                  <strong>
+                    P(B) = 0.59, P(A and B) = 0.29, and
+                    P(A|B) =
+                    <span class="fraction">
+                      <span class="numerator">P(A and B)</span>
+                      <span class="denominator">P(B)</span>
+                    </span>
+                    = 0.29/0.59 &asymp; 0.49
+                  </strong>
+                </p>
+              </div>              
+              <p>The highlighted portion of the visualization is <strong>A and B</strong>: the students who participated and met the goal. It is part of the group where B occurred.</p>
+              <ul class="lesson-list">
+                <li>What is the overall probability of meeting the goal?</li>
+                <li>What is the probability of meeting the goal among students who participated?</li>
+                <li>Why is 59 the denominator for the conditional probability?</li>
+                <li>How does the restricted probability compare with the overall probability?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-16-explore-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-16-explore-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The overall probability of meeting the goal is 50/100 = 0.50.</li>
+                  <li>The probability of meeting the goal among students who participated is 29/59 &asymp; 0.49.</li>
+                  <li>The denominator is 59 because there are 59 students in the group who participated.</li>
+                  <li>The restricted probability is close to the overall probability, so conditioning on participation changes the proportion only slightly in this example.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology / Visualization</h4>
+              <p><strong>Select a condition to restrict the sample space.</strong> <strong>Compare the conditional proportion with the overall proportion.</strong></p>
+              <div class="simulation-widget" data-conditional-widget>
+                <p><strong>Data:</strong> 100 students classified by participation and goal status</p>
+                <div class="simulation-controls">
+                  <label for="lesson-16-condition">Restrict attention to:
+                    <select id="lesson-16-condition" data-control="condition">
+                      <option value="all">All students</option>
+                      <option value="goal">Students who met the goal</option>
+                      <option value="no-goal">Students who did not meet the goal</option>
+                      <option value="participated" selected>Students who participated</option>
+                      <option value="no-participation">Students who did not participate</option>
+                    </select>
+                  </label>
+                </div>
+                <div data-output="table" aria-live="polite"></div>
+                <p data-output="conditional">Overall participation probability: 0.59.</p>
+                <div data-output="visual" aria-live="polite"></div>
+              </div>
+              <p>The highlighted cell shows <strong>A and B</strong> when the condition is “students who met the goal.” This is the part of the restricted group where participation also occurred.</p>
+              <ul class="lesson-list">
+                <li>What changes when you restrict attention to a condition?</li>
+                <li>How does the conditional proportion compare with the overall proportion?</li>
+                <li>What does the highlighted intersection represent?</li>
+                <li>How can comparing the conditional and overall proportions help you see whether the variables are associated?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-16-simulation-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-16-simulation-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The selected condition changes the denominator to the total number of students in that restricted group.</li>
+                  <li>The conditional proportion is the share of the selected group who also belong to the other category.</li>
+                  <li>The highlighted intersection is the students who satisfy both conditions at the same time.</li>
+                  <li>Comparing the conditional proportion with the overall proportion helps us see whether knowing one variable changes the probability of the other.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ul class="lesson-list">
+                <li>What does “given that B occurred” mean?<button type="button" class="answer-toggle" data-answer-target="lesson-16-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-16-guiding-1" class="possible-answer" hidden><ul class="lesson-list"><li>It means we focus only on the observations where B occurred.</li></ul></div></li>
+                <li>Why does the denominator change when calculating P(A|B)?<button type="button" class="answer-toggle" data-answer-target="lesson-16-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-16-guiding-2" class="possible-answer" hidden><ul class="lesson-list"><li>The denominator changes because the sample space is restricted to the cases where B occurred.</li></ul></div></li>
+                <li>How is conditional probability different from P(A)?<button type="button" class="answer-toggle" data-answer-target="lesson-16-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-16-guiding-3" class="possible-answer" hidden><ul class="lesson-list"><li>P(A) uses all observations, while P(A|B) uses only observations where B occurred.</li></ul></div></li>
+                <li>When does knowing B change the probability of A?<button type="button" class="answer-toggle" data-answer-target="lesson-16-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-16-guiding-4" class="possible-answer" hidden><ul class="lesson-list"><li>Knowing B changes the probability of A when the proportion of A among B cases differs from the overall proportion of A.</li></ul></div></li>
+                <li>What would it look like if A and B were independent?<button type="button" class="answer-toggle" data-answer-target="lesson-16-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-16-guiding-5" class="possible-answer" hidden><ul class="lesson-list"><li>If A and B were independent, the probability of A would stay about the same whether or not we knew B.</li></ul></div></li>
+                <li>How can a two-way table help reveal association?<button type="button" class="answer-toggle" data-answer-target="lesson-16-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-16-guiding-6" class="possible-answer" hidden><ul class="lesson-list"><li>A two-way table lets us compare proportions within groups and see whether the variables appear related.</li></ul></div></li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>Probabilities can depend on conditions.</strong></p></div>
+              <p>Conditional probability changes the sample space. Instead of considering all observations, focus only on those satisfying the condition.</p>
+              <p>If the conditional probability of A changes depending on whether B occurred, the variables are associated. If the relevant probabilities remain about the same, the events appear independent.</p>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p>Use each two-way table. <strong>Find the joint probability.</strong> <strong>Calculate the conditional probability.</strong> <strong>Compare P(A) and P(A|B).</strong></p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A table has 18 students in both the music and passed cells out of 60 students. What is the joint probability of music and passed?</li>
+                <li>Of 40 students who exercised, 28 slept at least 8 hours. What is the conditional probability of sleeping at least 8 hours given exercise?</li>
+                <li>In a table, P(A) = 0.40 and P(A|B) = 0.65. Is there evidence that A and B are associated?</li>
+                <li>In a table, P(A) = 0.50 and P(A|B) = 0.50. What does this suggest?</li>
+              </ol>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-16-apply-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-16-apply-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The joint probability is 18/60 = 0.30.</li>
+                  <li>The conditional probability is 28/40 = 0.70.</li>
+                  <li>Yes. The difference between 0.40 and 0.65 suggests that knowing B changes the probability of A, which is evidence of association.</li>
+                  <li>This is consistent with independence because the conditional probability is the same as the overall probability, although a full conclusion depends on the data and context.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p>Explain: <strong>“What does P(A|B) mean, and why does the condition B change the group we are considering?”</strong></p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-16-closure-answers" aria-expanded="false">Show Possible Answer</button>
+              <div id="lesson-16-closure-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>P(A|B) means the probability of A among the cases where B occurred; condition B changes the group because we ignore cases where B did not occur.</li>
+                </ul>
+              </div>
+            </div>
           </section>
 
           <section id="lesson-17" class="lesson">
@@ -213,6 +372,49 @@
       </div>
     </main>
     <script>
+      const conditionalWidget = document.querySelector("[data-conditional-widget]");
+      const conditionControl = conditionalWidget.querySelector('[data-control="condition"]');
+      const conditionalTable = conditionalWidget.querySelector('[data-output="table"]');
+      const conditionalOutput = conditionalWidget.querySelector('[data-output="conditional"]');
+      const conditionalVisual = conditionalWidget.querySelector('[data-output="visual"]');
+      const tableData = {
+        participatedGoal: 29,
+        participatedNoGoal: 30,
+        noParticipationGoal: 21,
+        noParticipationNoGoal: 20
+      };
+
+      function updateConditionalDisplay() {
+        const condition = conditionControl.value;
+        const selectedCells = condition === "goal"
+          ? ["participatedGoal", "noParticipationGoal"]
+          : condition === "no-goal"
+            ? ["participatedNoGoal", "noParticipationNoGoal"]
+            : condition === "participated"
+              ? ["participatedGoal", "participatedNoGoal"]
+              : condition === "no-participation"
+                ? ["noParticipationGoal", "noParticipationNoGoal"]
+                : [];
+        const participatedTotal = tableData.participatedGoal + tableData.participatedNoGoal;
+        const noParticipationTotal = tableData.noParticipationGoal + tableData.noParticipationNoGoal;
+        const goalTotal = tableData.participatedGoal + tableData.noParticipationGoal;
+        const noGoalTotal = tableData.participatedNoGoal + tableData.noParticipationNoGoal;
+        const restrictedTotal = condition === "goal" ? goalTotal : condition === "no-goal" ? noGoalTotal : condition === "participated" ? participatedTotal : condition === "no-participation" ? noParticipationTotal : 100;
+        const favorableTotal = condition === "goal" ? tableData.participatedGoal : condition === "no-goal" ? tableData.participatedNoGoal : condition === "participated" ? tableData.participatedGoal : condition === "no-participation" ? tableData.noParticipationGoal : participatedTotal;
+        const restrictedLabel = condition === "goal" ? "participation among goal-met students" : condition === "no-goal" ? "participation among students who did not meet the goal" : condition === "participated" ? "meeting the goal among participants" : condition === "no-participation" ? "meeting the goal among nonparticipants" : "overall participation";
+        const conditionalProbability = favorableTotal / restrictedTotal;
+        const overallProbability = condition === "goal" || condition === "no-goal" ? participatedTotal / 100 : goalTotal / 100;
+        const overallLabel = condition === "goal" || condition === "no-goal" ? "overall participation" : "overall goal-meeting";
+        const cell = (value, key) => `<td style="${key === "participatedGoal" ? "background: #c96b4b; color: #ffffff; font-weight: 700;" : selectedCells.includes(key) ? "background: #dcecf0; font-weight: 700;" : ""}">${value}</td>`;
+
+        conditionalTable.innerHTML = `<table class="mini-table"><caption>Participation and goal status</caption><thead><tr><th></th><th>Goal met</th><th>Goal not met</th><th>Total</th></tr></thead><tbody><tr><th>Participated</th>${cell(tableData.participatedGoal, "participatedGoal")}${cell(tableData.participatedNoGoal, "participatedNoGoal")}<td>${participatedTotal}</td></tr><tr><th>Did not participate</th>${cell(tableData.noParticipationGoal, "noParticipationGoal")}${cell(tableData.noParticipationNoGoal, "noParticipationNoGoal")}<td>${noParticipationTotal}</td></tr><tr><th>Total</th><td>${goalTotal}</td><td>${noGoalTotal}</td><td>100</td></tr></tbody></table>`;
+        conditionalOutput.textContent = `${restrictedLabel}: ${favorableTotal}/${restrictedTotal} = ${conditionalProbability.toFixed(2)}. ${overallLabel}: ${overallProbability.toFixed(2)}.`;
+        conditionalVisual.innerHTML = `<div style="display: grid; gap: 10px; margin-top: 14px;"><div><strong>${overallLabel} = ${overallProbability.toFixed(2)}</strong><div style="height: 24px; background: #dfe8ec;"><div style="width: ${overallProbability * 100}%; height: 100%; background: #9aaabd;"></div></div></div><div><strong>${restrictedLabel} = ${conditionalProbability.toFixed(2)}</strong><div style="height: 24px; background: #dfe8ec;"><div style="width: ${conditionalProbability * 100}%; height: 100%; background: #c96b4b;"></div></div></div><p style="margin: 0;">The dark cell is A and B, the intersection. The lighter highlighted cells show the restricted group.</p></div>`;
+      }
+
+      conditionControl.addEventListener("change", updateConditionalDisplay);
+      updateConditionalDisplay();
+
       const dieWidget = document.querySelector("[data-die-probability-widget]");
       const trialControl = document.getElementById("lesson-15-trials");
       const dieSummary = dieWidget.querySelector('[data-output="die-summary"]');
