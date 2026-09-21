@@ -362,16 +362,200 @@
           <section id="lesson-17" class="lesson">
             <div class="lesson-header">
               <p class="lesson-number">Lesson 17</p>
-              <h3>Lesson 17 Title</h3>
+              <h3>Normal Distributions and Standardization</h3>
             </div>
-            <p>
-              Add the final lesson content here, including summaries, exit tickets, or extension activities.
-            </p>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p><strong>How unusual is a test score?</strong></p></div>
+              <p>A test has a mean score of 75 and a standard deviation of 10.</p>
+              <ul class="lesson-list">
+                <li>What does it mean for a score to be above or below the mean?</li>
+                <li>Would a score 2 points above the mean or 20 points above the mean be more unusual?</li>
+                <li>How could you compare scores from different tests or classes?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-17-bellringer-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-17-bellringer-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>A score above the mean is higher than typical, while a score below the mean is lower than typical.</li>
+                  <li>A score 20 points above the mean is more unusual because it is farther from the mean in standard-deviation units.</li>
+                  <li>Use z-scores to describe each score's location relative to its own mean and standard deviation.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>Recognize the general shape and features of a normal distribution.</li>
+                <li>Interpret a z-score as the number of standard deviations a value is from the mean.</li>
+                <li>Calculate and interpret z-scores.</li>
+                <li>Connect z-scores to percentiles.</li>
+                <li>Use a normal model to estimate proportions conceptually.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore</h4>
+              <p>A normal distribution is approximately symmetric and mound-shaped. Values near the mean are common; values far from the mean are less common.</p>
+              <p><strong>Identify the mean and standard deviation.</strong> <strong>Locate the given value on the distribution.</strong> <strong>Determine whether the value is above or below the mean.</strong></p>
+              <p>Use this example: mean = 75, standard deviation = 10, and score = 87.</p>
+              <p><strong>Calculate the z-score:</strong> <strong>z = <span class="fraction"><span class="numerator">x - &mu;</span><span class="denominator">&sigma;</span></span> = <span class="fraction"><span class="numerator">87 - 75</span><span class="denominator">10</span></span> = 1.2</strong></p>              
+              <p><strong>Explain what the z-score means in context.</strong> A score of 87 is approximately <strong>1.2 standard deviations above the mean</strong>, which is around the 88.5th percentile in a normal model.</p>
+              <p><strong>Compare two z-scores.</strong> <strong>Determine which value is more unusual.</strong></p>
+              <ul class="lesson-list">
+                <li>What does a z-score of 1.2 tell us about the score of 87?</li>
+                <li>Is a score with z = 1.2 above or below the mean?</li>
+                <li>Which is farther from its mean: z = 0.5 or z = 2.0?</li>
+                <li>What does the percentile tell us?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-17-explore-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-17-explore-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The score of 87 is 1.2 standard deviations above its distribution's mean.</li>
+                  <li>A positive z-score means the value is above the mean.</li>
+                  <li>z = 2.0 is farther from the mean and is more unusual.</li>
+                  <li>The percentile estimates the percentage of values at or below the given value.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology / Visualization</h4>
+              <p><strong>Change x, the mean &mu;, or the standard deviation &sigma;.</strong> <strong>Locate the value.</strong> <strong>Interpret the z-score and approximate percentile.</strong></p>
+              <div class="simulation-widget" data-normal-widget>
+                <div class="simulation-controls">
+                  <label for="lesson-17-x">Value x: <input id="lesson-17-x" data-control="normal-x" type="number" value="87" step="1"></label>
+                  <label for="lesson-17-mean">Mean &mu;: <input id="lesson-17-mean" data-control="normal-mean" type="number" value="75" step="1"></label>
+                  <label for="lesson-17-sd">Standard deviation &sigma;: <input id="lesson-17-sd" data-control="normal-sd" type="number" value="10" min="0.1" step="1"></label>
+                </div>
+                <div data-output="normal-curve" aria-live="polite"></div>
+                <p data-output="normal-summary">z-score: 1.20. Approximate percentile: 88.5th.</p>
+              </div>
+              <ul class="lesson-list">
+                <li>What happens to the z-score when x moves above the mean?</li>
+                <li>What happens when the standard deviation becomes larger?</li>
+                <li>How does the selected value's location compare with the mean?</li>
+                <li>What does the shaded area to the left of x represent?</li>
+              </ul>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-17-simulation-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-17-simulation-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The z-score becomes more positive as x moves farther above the mean.</li>
+                  <li>A larger standard deviation makes the same distance from the mean a smaller number of standard deviations.</li>
+                  <li>The value is 1.2 standard deviations above the mean in the example.</li>
+                  <li>The shaded area represents the approximate proportion of values at or below x.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ul class="lesson-list">
+                <li>What does a z-score of 0 mean?<button type="button" class="answer-toggle" data-answer-target="lesson-17-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-17-guiding-1" class="possible-answer" hidden><ul class="lesson-list"><li>The value is exactly at the mean.</li></ul></div></li>
+                <li>What does a positive z-score mean?<button type="button" class="answer-toggle" data-answer-target="lesson-17-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-17-guiding-2" class="possible-answer" hidden><ul class="lesson-list"><li>The value is above the mean.</li></ul></div></li>
+                <li>What does a negative z-score mean?<button type="button" class="answer-toggle" data-answer-target="lesson-17-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-17-guiding-3" class="possible-answer" hidden><ul class="lesson-list"><li>The value is below the mean.</li></ul></div></li>
+                <li>What does a z-score of 1.2 mean in context?<button type="button" class="answer-toggle" data-answer-target="lesson-17-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-17-guiding-4" class="possible-answer" hidden><ul class="lesson-list"><li>The value is 1.2 standard deviations above its distribution's mean.</li></ul></div></li>
+                <li>Which is more unusual: z = 0.5 or z = 2.0?<button type="button" class="answer-toggle" data-answer-target="lesson-17-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-17-guiding-5" class="possible-answer" hidden><ul class="lesson-list"><li>z = 2.0 is more unusual because it is farther from the mean.</li></ul></div></li>
+                <li>What does the percentile tell us?<button type="button" class="answer-toggle" data-answer-target="lesson-17-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-17-guiding-6" class="possible-answer" hidden><ul class="lesson-list"><li>It estimates the percentage of values at or below a given value.</li></ul></div></li>
+                <li>Can two different raw scores have the same z-score?<button type="button" class="answer-toggle" data-answer-target="lesson-17-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-17-guiding-7" class="possible-answer" hidden><ul class="lesson-list"><li>Yes, if they are the same number of standard deviations from their respective means.</li></ul></div></li>
+                <li>Why are z-scores useful for comparing values from different distributions?<button type="button" class="answer-toggle" data-answer-target="lesson-17-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-17-guiding-8" class="possible-answer" hidden><ul class="lesson-list"><li>They put values from different scales into the same standard-deviation units.</li></ul></div></li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>Some processes follow predictable patterns.</strong></p></div>
+              <p>A z-score standardizes a value by describing its location relative to the mean in standard-deviation units.</p>
+              <p>A z-score tells how far a value is from the mean, uses standard deviations as the unit, is positive above the mean, negative below the mean, and allows values from different distributions to be compared.</p>
+              <p>A normal model helps us estimate proportions conceptually: values near the center are common, while values far from the mean are less common.</p>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p><strong>Calculate the z-score.</strong> <strong>Interpret the result.</strong> <strong>Compare the values relative to their own distributions.</strong></p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A score of 70 comes from a distribution with mean 65 and standard deviation 5. Find and interpret its z-score.</li>
+                <li>A score of 42 comes from a distribution with mean 50 and standard deviation 4. Is its z-score positive, negative, or zero?</li>
+                <li>Alex scores 84 on a test with mean 75 and standard deviation 6. Jordan scores 91 on a test with mean 80 and standard deviation 10. Who performed better relative to their own distribution?</li>
+                <li>About what percentile corresponds to z = 0?</li>
+                <li>Why can a normal model estimate proportions without guaranteeing the result for every individual?</li>
+              </ol>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-17-apply-answers" aria-expanded="false">Show Possible Answers</button>
+              <div id="lesson-17-apply-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>The z-score is (70 - 65)/5 = 1, so the score is 1 standard deviation above its mean.</li>
+                  <li>The z-score is (42 - 50)/4 = -2, so it is negative and the score is 2 standard deviations below the mean.</li>
+                  <li>Alex performed better relative to the distribution because Alex's z-score is 1.5, while Jordan's is 1.1.</li>
+                  <li>z = 0 corresponds to approximately the 50th percentile because it is at the mean.</li>
+                  <li>A normal model describes patterns and proportions across many observations, not a guarantee about one individual outcome.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p><strong>What does a z-score tell us that the original score does not?</strong></p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-17-closure-answers" aria-expanded="false">Show Possible Answer</button>
+              <div id="lesson-17-closure-answers" class="possible-answer" hidden>
+                <ul class="lesson-list">
+                  <li>A z-score tells us how far the value is from its mean in standard-deviation units, making its relative position easier to interpret and compare.</li>
+                </ul>
+              </div>
+            </div>
           </section>
         </div>
       </div>
     </main>
     <script>
+      const normalWidget = document.querySelector("[data-normal-widget]");
+      const normalX = normalWidget.querySelector('[data-control="normal-x"]');
+      const normalMean = normalWidget.querySelector('[data-control="normal-mean"]');
+      const normalSd = normalWidget.querySelector('[data-control="normal-sd"]');
+      const normalCurve = normalWidget.querySelector('[data-output="normal-curve"]');
+      const normalSummary = normalWidget.querySelector('[data-output="normal-summary"]');
+
+      function normalCdf(z) {
+        const sign = z < 0 ? -1 : 1;
+        const absoluteZ = Math.abs(z);
+        const t = 1 / (1 + 0.2316419 * absoluteZ);
+        const density = Math.exp(-absoluteZ * absoluteZ / 2) / Math.sqrt(2 * Math.PI);
+        const probability = 1 - density * (((((1.330274429 * t - 1.821255978) * t) + 1.781477937) * t - 0.356563782) * t + 0.319381530) * t;
+        return 0.5 * (1 + sign * (2 * probability - 1));
+      }
+
+      function updateNormalDisplay() {
+        const x = Number(normalX.value);
+        const mean = Number(normalMean.value);
+        const sd = Math.max(Number(normalSd.value), 0.1);
+        const z = (x - mean) / sd;
+        const percentile = normalCdf(z) * 100;
+        const width = 520;
+        const height = 240;
+        const baseline = 190;
+        const left = 25;
+        const right = 495;
+        const domainMin = mean - 4 * sd;
+        const domainMax = mean + 4 * sd;
+        const curvePoints = [];
+        const areaPoints = [`${left},${baseline}`];
+        for (let step = 0; step <= 100; step += 1) {
+          const value = domainMin + (domainMax - domainMin) * step / 100;
+          const density = Math.exp(-0.5 * ((value - mean) / sd) ** 2);
+          const px = left + (right - left) * step / 100;
+          const py = baseline - density * 125;
+          curvePoints.push(`${px},${py}`);
+          if (value <= x) areaPoints.push(`${px},${py}`);
+        }
+        const valuePosition = Math.max(left, Math.min(right, left + (x - domainMin) / (domainMax - domainMin) * (right - left)));
+        areaPoints.push(`${valuePosition},${baseline}`);
+        normalCurve.innerHTML = `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Normal curve with selected value and shaded percentile" style="width: 100%; max-width: 620px; height: auto; background: #ffffff; border: 1px solid #dfe3e8;"><polygon points="${areaPoints.join(" ")}" fill="#dcecf0"></polygon><polyline points="${curvePoints.join(" ")}" fill="none" stroke="#3d5a80" stroke-width="3"></polyline><line x1="${valuePosition}" x2="${valuePosition}" y1="${baseline}" y2="${baseline - 125 * Math.exp(-0.5 * z * z)}" stroke="#c96b4b" stroke-width="3"></line><line x1="${left}" x2="${right}" y1="${baseline}" y2="${baseline}" stroke="#6f7f89"></line><text x="${left}" y="215" font-size="12">${domainMin.toFixed(0)}</text><text x="${right - 25}" y="215" font-size="12">${domainMax.toFixed(0)}</text><text x="${Math.max(left, valuePosition - 12)}" y="${baseline - 135}" font-size="12" fill="#a34f36">x</text><text x="${(left + right) / 2 - 16}" y="215" font-size="12">mean</text></svg>`;
+        normalSummary.textContent = `z-score: ${z.toFixed(2)}. Approximate percentile: ${percentile.toFixed(1)}th. This value is ${z >= 0 ? "above" : "below"} the mean.`;
+      }
+
+      [normalX, normalMean, normalSd].forEach((control) => control.addEventListener("input", updateNormalDisplay));
+      updateNormalDisplay();
+
       const conditionalWidget = document.querySelector("[data-conditional-widget]");
       const conditionControl = conditionalWidget.querySelector('[data-control="condition"]');
       const conditionalTable = conditionalWidget.querySelector('[data-output="table"]');
