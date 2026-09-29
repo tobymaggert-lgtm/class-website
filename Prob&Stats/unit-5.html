@@ -3,8 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Probability & Statistics - Unit 5: Applications</title>
+      <title>Probability & Statistics - Unit 5: Statistical Calculations - Lesson 19</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/main.js" defer></script>
+    <style>
+      .binomial-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px; }
+      .binomial-controls label { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; align-items: center; font-weight: 700; }
+      .binomial-controls input { grid-column: 1 / -1; width: 100%; accent-color: #3d5a80; }
+      .binomial-controls output { min-width: 3.5em; text-align: right; font-variant-numeric: tabular-nums; }
+      .binomial-chart-wrap { overflow-x: auto; padding: 8px 2px 0; }
+      .binomial-chart { display: grid; grid-template-columns: repeat(var(--bar-count), minmax(26px, 1fr)); align-items: end; gap: 6px; min-width: 360px; height: 220px; padding: 12px 8px 0; border-bottom: 1px solid #78838d; }
+      .binomial-column { display: grid; grid-template-rows: 1fr auto; gap: 6px; height: 100%; text-align: center; font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+      .binomial-bar-track { display: flex; align-items: end; height: 100%; }
+      .binomial-bar { width: 100%; min-height: 2px; background: #4f8a78; }
+      .binomial-column.is-near-mean .binomial-bar { background: #d17b4a; }
+      .binomial-probabilities { display: grid; grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+      .binomial-probabilities li { padding: 8px 10px; background: #fff; border: 1px solid #dfe3e8; font-variant-numeric: tabular-nums; }
+      .formula-block { overflow-wrap: anywhere; font-size: 1.15rem; font-weight: 700; }
+      .lesson-questions .lesson-list > li, .lesson-apply .lesson-list > li, .lesson-explore .lesson-list > li, .lesson-practice .lesson-list > li { margin-bottom: 12px; }
+      .question-answer { margin: 10px 0 0 !important; }
+      .question-answer .lesson-list { padding-left: 20px; }
+      @media (max-width: 600px) { .binomial-controls { grid-template-columns: 1fr; } }
+    </style>
   </head>
   <body>
     <header class="site-header unit-header">
@@ -22,85 +42,171 @@
 
     <main class="unit-page">
       <div class="unit-shell">
-        <aside class="unit-sidebar" aria-label="Unit 5: Applications navigation">
+        <aside class="unit-sidebar" aria-label="Unit 5: Statistical Calculations navigation">
           <div class="sidebar-header">
             <p class="sidebar-label">Unit 5</p>
-            <h2>Unit 5: Applications</h2>
+            <h2>Unit 5: Statistical Calculations</h2>
           </div>
 
           <nav class="lesson-nav">
-            <a href="#lesson-1">Lesson 1</a>
-            <a href="#lesson-2">Lesson 2</a>
-            <a href="#lesson-3">Lesson 3</a>
-            <a href="#lesson-4">Lesson 4</a>
-            <a href="#lesson-5">Lesson 5</a>
-            <a href="#lesson-6">Lesson 6</a>
+            <a href="#lesson-19" aria-current="page">Lesson 19</a>
           </nav>
         </aside>
 
         <div class="unit-content">
-          <section id="lesson-1" class="lesson">
+          <section id="lesson-19" class="lesson">
             <div class="lesson-header">
-              <p class="lesson-number">Lesson 1</p>
-              <h3>Lesson 1 Title</h3>
+              <p class="lesson-number">Lesson 19</p>
+              <h3>Binomial Distribution</h3>
             </div>
-            <p>
-              This is a placeholder lesson section for Unit 5. Replace this content with the first lesson's objectives,
-              notes, activities, and assignments.
-            </p>
-          </section>
 
-          <section id="lesson-2" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 2</p>
-              <h3>Lesson 2 Title</h3>
+            <div class="lesson-section lesson-bellringer">
+              <h4>Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>A binomial distribution describes the number of successes we would expect when an experiment has a fixed number of trials and a constant probability of success.</strong></p></div>
+              <p>We will calculate what chance alone can produce when the same two-outcome process is repeated.</p>
             </div>
-            <p>
-              Add a short overview, class notes, examples, and any key vocabulary for Lesson 2 here.
-            </p>
-          </section>
 
-          <section id="lesson-3" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 3</p>
-              <h3>Lesson 3 Title</h3>
+            <div class="lesson-section lesson-objectives">
+              <h4>Learning Goals</h4>
+              <ul class="lesson-list">
+                <li>Identify whether a situation is binomial using all four conditions.</li>
+                <li>Calculate the probability of exactly <em>x</em> successes and of a small range of successes.</li>
+                <li>Find and interpret expected successes using <em>np</em>.</li>
+                <li>Connect a binomial model to a null hypothesis and what chance alone would produce.</li>
+              </ul>
             </div>
-            <p>
-              Use this section to include learning targets, guided practice, or discussion prompts for the next lesson.
-            </p>
-          </section>
 
-          <section id="lesson-4" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 4</p>
-              <h3>Lesson 4 Title</h3>
+            <div class="lesson-section lesson-explore">
+              <h4>Explore: What Could Chance Produce?</h4>
+              <p>Assume a basketball player has a <strong>50% chance</strong> of making each free throw. Imagine <strong>10 free throws</strong>.</p>
+              <ul class="lesson-list">
+                <li>What numbers of made shots are possible?<button type="button" class="answer-toggle" data-answer-target="lesson-19-explore-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-explore-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Any whole number from 0 through 10 makes is possible.</li></ul></div></li>
+                <li>Which numbers seem most likely? Which numbers seem unusual?<button type="button" class="answer-toggle" data-answer-target="lesson-19-explore-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-explore-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Results near 5 makes seem most likely; very low or high totals such as 0 or 10 seem unusual, but remain possible.</li></ul></div></li>
+                <li>How could simulation help investigate what chance would produce?<button type="button" class="answer-toggle" data-answer-target="lesson-19-explore-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-explore-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Simulate 10 independent attempts with a 0.50 chance of a make, repeat the group many times, and record the number of makes each time.</li></ul></div></li>
+              </ul>
+              <div class="lesson-callout"><p><strong>From simulation to calculation:</strong> Instead of simulating thousands of trials to see what chance would produce, we can sometimes calculate those probabilities directly.</p></div>
+              <h5>Hand calculation: exactly 3 successes in 5 trials</h5>
+              <p>Let success mean making a free throw. Here, <strong><em>n</em> = 5</strong> trials, <strong><em>r</em> = 3</strong> successes, and <strong><em>p</em> = 0.5</strong>.</p>
+              <div class="lesson-callout"><p class="formula-block">P(3) = 5C3 · (0.5)<sup>3</sup> · (1 − 0.5)<sup>5−3</sup></p><p>= 10 · 0.125 · 0.25 = <strong>0.3125</strong></p></div>
+              <p>There is a <strong>31.25% chance</strong> of exactly 3 makes in 5 attempts under these assumptions.</p>
             </div>
-            <p>
-              Placeholder content for Lesson 4. Add warm-ups, examples, or independent work as needed.
-            </p>
-          </section>
 
-          <section id="lesson-5" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 5</p>
-              <h3>Lesson 5 Title</h3>
+            <div class="lesson-section lesson-simulation">
+              <h4>Binomial Model and Formula</h4>
+              <div class="lesson-callout emphasis"><p class="formula-block">P(r) = nCr · p<sup>r</sup> · (1 − p)<sup>n−r</sup></p><p><strong>Expected number of successes = np</strong></p></div>
+              <ul class="lesson-list">
+                <li><strong><em>n</em></strong> = number of trials</li>
+                <li><strong><em>x</em></strong> = number of successes whose probability we want</li>
+                <li><strong><em>p</em></strong> = probability of success on each trial</li>
+                <li><strong>nCr</strong> = number of ways to choose <em>x</em> successes from <em>n</em> trials</li>
+              </ul>
+              <p>The four conditions are a <strong>fixed number of trials</strong>, <strong>two outcomes per trial</strong>, <strong>independent trials</strong>, and <strong>constant probability of success</strong>.</p>
+              <p><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">Independent trials<span class="glossary-definition">The outcome of one trial does not change the probabilities for another trial.</span></span> keep the probability at <em>p</em> each time. The <em>nCr</em> counts how many different trial-orders can produce exactly <em>x</em> successes.</p>
+              <div class="simulation-widget" data-binomial-widget>
+                <h5>Explore the Distribution</h5>
+                <p>Adjust the number of trials and success probability. The bars show the probability of each possible number of successes.</p>
+                <div class="binomial-controls">
+                  <label for="binomial-n">Number of trials, n <output data-binomial-output="n" for="binomial-n">10</output><input id="binomial-n" data-binomial-control="n" type="range" min="1" max="20" step="1" value="10" /></label>
+                  <label for="binomial-p">Probability of success, p <output data-binomial-output="p" for="binomial-p">0.50</output><input id="binomial-p" data-binomial-control="p" type="range" min="0" max="1" step="0.05" value="0.5" /></label>
+                </div>
+                <p class="simulation-summary" data-binomial-output="expected" aria-live="polite">Expected successes: 5.00</p>
+                <div class="binomial-chart-wrap"><div class="binomial-chart" data-binomial-output="chart" role="img" aria-label="Binomial distribution probabilities"></div></div>
+                <p>Number of successes</p>
+                <ul class="binomial-probabilities" data-binomial-output="probabilities" aria-label="Probability for each success count"></ul>
+              </div>
             </div>
-            <p>
-              This section can later hold assessment information, classwork, and review questions for Lesson 5.
-            </p>
-          </section>
 
-          <section id="lesson-6" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 6</p>
-              <h3>Lesson 6 Title</h3>
+            <div class="lesson-section lesson-practice">
+              <h4>Hand Calculation Practice</h4>
+              <p>Identify <em>n</em>, <em>x</em>, and <em>p</em> before substituting.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Four independent trials have success probability 0.5. Find the probability of exactly 1 success.<button type="button" class="answer-toggle" data-answer-target="lesson-19-practice-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-practice-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li><em>n</em> = 4, <em>x</em> = 1, <em>p</em> = 0.5. P(1) = 4C1(0.5)<sup>1</sup>(0.5)<sup>3</sup> = 4(0.0625) = <strong>0.25</strong>.</li></ul></div></li>
+                <li>In 4 trials with <em>p</em> = 0.5, find the probability of 2 or 3 successes by adding individual probabilities.<button type="button" class="answer-toggle" data-answer-target="lesson-19-practice-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-practice-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>P(2) + P(3) = 4C2(0.5)<sup>4</sup> + 4C3(0.5)<sup>4</sup> = 6/16 + 4/16 = <strong>10/16 = 0.625</strong>.</li></ul></div></li>
+                <li>A player makes 25% of shots. In 8 independent attempts, how many successes should we expect?<button type="button" class="answer-toggle" data-answer-target="lesson-19-practice-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-practice-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li><em>n</em> = 8 and <em>p</em> = 0.25, so <em>np</em> = 8(0.25) = <strong>2 successes</strong>.</li></ul></div></li>
+              </ol>
             </div>
-            <p>
-              Add the final lesson content here, including summaries, exit tickets, or extension activities.
-            </p>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>What four conditions must be true for a setting to be binomial?<button type="button" class="answer-toggle" data-answer-target="lesson-19-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-guiding-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>A fixed number of trials, two outcomes per trial, independent trials, and a constant probability of success.</li></ul></div></li>
+                <li>A bag has 4 red and 6 blue tiles. You draw 3 without replacement and count red tiles. Is this binomial? Which condition fails?<button type="button" class="answer-toggle" data-answer-target="lesson-19-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-guiding-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>No. Draws are dependent and the chance of red changes after each draw, so independence and constant probability fail.</li></ul></div></li>
+                <li>In the formula, what do <em>n</em>, <em>x</em>, and <em>p</em> represent?<button type="button" class="answer-toggle" data-answer-target="lesson-19-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-guiding-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li><em>n</em> is the fixed number of trials, <em>x</em> is the number of successes of interest, and <em>p</em> is the success probability on each trial.</li></ul></div></li>
+                <li>Why does the formula include <em>nCr</em>?<button type="button" class="answer-toggle" data-answer-target="lesson-19-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-guiding-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It counts the different orders in which exactly <em>x</em> successes can occur among <em>n</em> trials.</li></ul></div></li>
+                <li>For 5 trials with <em>p</em> = 0.5, what is the probability of exactly 3 successes?<button type="button" class="answer-toggle" data-answer-target="lesson-19-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-guiding-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>5C3(0.5)<sup>3</sup>(0.5)<sup>2</sup> = 10/32 = <strong>0.3125</strong>, or 31.25%.</li></ul></div></li>
+                <li>For that same model, how would you find the probability of 2 or 3 successes?<button type="button" class="answer-toggle" data-answer-target="lesson-19-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-guiding-6" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Find P(2) and P(3), then add: 10/32 + 10/32 = <strong>0.625</strong>.</li></ul></div></li>
+                <li>What does <em>np</em> tell us? Interpret it for 10 trials with <em>p</em> = 0.5.<button type="button" class="answer-toggle" data-answer-target="lesson-19-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-guiding-7" class="possible-answer question-answer" hidden><ul class="lesson-list"><li><em>np</em> is the expected number of successes. Here it is 10(0.5) = 5 successes on average over many groups, not necessarily exactly 5 each time.</li></ul></div></li>
+                <li>How does a binomial distribution connect a null hypothesis to simulations from Lessons 9–14?<button type="button" class="answer-toggle" data-answer-target="lesson-19-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-guiding-8" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>If the null hypothesis specifies a success rate, the binomial model calculates how likely different counts are just from chance, like the chance model explored through repeated simulations.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>A binomial distribution tells us what numbers of successes are reasonably expected when the same two-outcome process is repeated under consistent conditions.</strong></p></div>
+              <p>In Lessons 9–14, simulations showed what results were common or unusual if a null hypothesis were true. If the null hypothesis says a certain success rate is true, a binomial distribution tells us how likely different success counts would be <strong>just from chance</strong>. Calculation and simulation both ask what results a chance model can produce.</p>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p>For each situation, decide whether it is binomial. When it is, identify <em>n</em>, <em>p</em>, and the requested <em>x</em>, then calculate and interpret.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A player makes each free throw with probability 0.7. For 6 independent free throws, find the probability of exactly 4 makes and interpret it.<button type="button" class="answer-toggle" data-answer-target="lesson-19-apply-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-apply-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>This is binomial: fixed <em>n</em> = 6, two outcomes, independent attempts, constant <em>p</em> = 0.7. For <em>x</em> = 4, P(4) = 6C4(0.7)<sup>4</sup>(0.3)<sup>2</sup> = <strong>0.3241</strong>. Under this model, there is about a 32.4% chance the player makes exactly 4 of these 6 free throws.</li></ul></div></li>
+                <li>A seed has a 0.2 chance of sprouting. If 5 seeds sprout independently, find the probability exactly 2 sprout.<button type="button" class="answer-toggle" data-answer-target="lesson-19-apply-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-apply-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>This is binomial with <em>n</em> = 5, <em>x</em> = 2, and <em>p</em> = 0.2. P(2) = 5C2(0.2)<sup>2</sup>(0.8)<sup>3</sup> = 10(0.04)(0.512) = <strong>0.2048</strong>. About 20.48% of groups of 5 would have exactly 2 sprouts.</li></ul></div></li>
+                <li>A player makes 50% of free throws. Over 10 independent attempts, what is the expected number of makes? Interpret it.<button type="button" class="answer-toggle" data-answer-target="lesson-19-apply-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-apply-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li><em>n</em> = 10 and <em>p</em> = 0.5, so <em>np</em> = 10(0.5) = <strong>5 makes</strong> on average over many sets of 10 attempts. One set need not have exactly 5.</li></ul></div></li>
+                <li>You draw 5 cards without replacement from a standard deck and count the hearts. Is this binomial? Explain which condition fails.<button type="button" class="answer-toggle" data-answer-target="lesson-19-apply-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-19-apply-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>This is not binomial. Draws without replacement are dependent and the probability of a heart changes each time.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p><strong>How is a binomial calculation similar to the simulations we used earlier to understand statistical significance?</strong></p>
+              <p>Explain in your own words what is held constant, what outcomes are counted, and what an unusual result suggests.</p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-19-closure" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button>
+              <div id="lesson-19-closure" class="possible-answer" hidden><ul class="lesson-list"><li>Both start with a chance model, such as a null-hypothesis success rate, and ask what results could happen if it were true. Simulation estimates how often results occur by repeating the process; a binomial calculation finds those probabilities directly. A very small probability marks a result as unusual under the model, not impossible.</li></ul></div>
+            </div>
           </section>
         </div>
       </div>
     </main>
+    <script>
+      const binomialWidget = document.querySelector("[data-binomial-widget]");
+      const trialControl = binomialWidget.querySelector('[data-binomial-control="n"]');
+      const probabilityControl = binomialWidget.querySelector('[data-binomial-control="p"]');
+      const chartOutput = binomialWidget.querySelector('[data-binomial-output="chart"]');
+      const probabilityOutput = binomialWidget.querySelector('[data-binomial-output="probabilities"]');
+      const expectedOutput = binomialWidget.querySelector('[data-binomial-output="expected"]');
+
+      function choose(n, x) {
+        let result = 1;
+        for (let factor = 1; factor <= x; factor += 1) result = result * (n - factor + 1) / factor;
+        return result;
+      }
+
+      function binomialProbability(n, x, p) {
+        return choose(n, x) * p ** x * (1 - p) ** (n - x);
+      }
+
+      function updateBinomialDisplay() {
+        const n = Number(trialControl.value);
+        const p = Number(probabilityControl.value);
+        const expected = n * p;
+        const probabilities = Array.from({ length: n + 1 }, (_, x) => binomialProbability(n, x, p));
+        const maximum = Math.max(...probabilities, 0.0001);
+        binomialWidget.querySelector('[data-binomial-output="n"]').textContent = n;
+        binomialWidget.querySelector('[data-binomial-output="p"]').textContent = p.toFixed(2);
+        expectedOutput.textContent = `Expected successes: np = ${expected.toFixed(2)}`;
+        chartOutput.style.setProperty("--bar-count", n + 1);
+        chartOutput.setAttribute("aria-label", `Binomial distribution with ${n} trials and success probability ${p.toFixed(2)}. Expected successes: ${expected.toFixed(2)}.`);
+        chartOutput.innerHTML = probabilities.map((value, x) => {
+          const height = Math.max(2, value / maximum * 100);
+          const nearMean = Math.abs(x - expected) < 0.51 ? " is-near-mean" : "";
+          return `<div class="binomial-column${nearMean}" title="${x} successes: ${(value * 100).toFixed(2)}%"><div class="binomial-bar-track"><span class="binomial-bar" style="height: ${height}%"></span></div><span>${x}</span></div>`;
+        }).join("");
+        probabilityOutput.innerHTML = probabilities.map((value, x) => `<li><strong>x = ${x}</strong><br>${(value * 100).toFixed(2)}%</li>`).join("");
+      }
+
+      [trialControl, probabilityControl].forEach((control) => control.addEventListener("input", updateBinomialDisplay));
+      updateBinomialDisplay();
+    </script>
   </body>
 </html>
