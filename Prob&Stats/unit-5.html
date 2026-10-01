@@ -29,7 +29,29 @@
       .sd-entry { min-width: 78px; color: #68737d; }
       .calculation-steps { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; padding: 0; list-style: none; }
       .calculation-steps li { padding: 8px 10px; border: 1px solid #dfe3e8; background: #fff; font-weight: 700; }
+      .normal-visual-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 14px 0; }
+      .normal-visual { min-width: 0; padding: 10px; background: #fff; border: 1px solid #dfe3e8; }
+      .normal-visual svg, .empirical-curve svg, .interactive-normal svg { display: block; width: 100%; height: auto; }
+      .normal-visual figcaption { margin-top: 8px; font-size: 0.92rem; font-weight: 700; }
+      .empirical-curve, .interactive-normal { overflow-x: auto; margin: 14px 0; padding: 10px; background: #fff; border: 1px solid #dfe3e8; }
+      .empirical-curve svg { min-width: 520px; }
+      .normal-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px; }
+      .normal-controls label { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; align-items: center; font-weight: 700; }
+      .normal-controls input { grid-column: 1 / -1; width: 100%; accent-color: #3d5a80; }
+      .normal-controls output { min-width: 4em; text-align: right; font-variant-numeric: tabular-nums; }
+      .normal-curve-svg { min-width: 520px; }
+      .normal-svg-label { fill: #334155; font: 12px Arial, sans-serif; }
+      .normal-tick { stroke: #6f7f89; stroke-width: 1; }
+      .normal-curve-line { fill: none; stroke: #3d5a80; stroke-width: 3; }
+      .normal-mean-line { stroke: #c96b4b; stroke-width: 2; stroke-dasharray: 5 4; }
+      .normal-band-one { fill: #d9eadf; }
+      .normal-band-two { fill: #dcecf0; }
+      .normal-band-three { fill: #f2e6cf; }
+        .normal-tail { fill: #edf0f2; }
+      .normal-interval-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 8px; margin: 12px 0 0; }
+      .normal-interval-summary p { padding: 8px 10px; background: #fff; border: 1px solid #dfe3e8; font-variant-numeric: tabular-nums; }
       @media (max-width: 600px) { .binomial-controls { grid-template-columns: 1fr; } }
+      @media (max-width: 600px) { .normal-controls { grid-template-columns: 1fr; } }
     </style>
   </head>
   <body>
@@ -55,8 +77,9 @@
           </div>
 
           <nav class="lesson-nav">
-            <a href="#lesson-19" aria-current="page">Lesson 19</a>
+            <a href="#lesson-19">Lesson 19</a>
             <a href="#lesson-20">Lesson 20</a>
+            <a href="#lesson-21" aria-current="page">Lesson 21</a>
           </nav>
         </aside>
 
@@ -305,6 +328,169 @@
               <div id="lesson-20-closure" class="possible-answer" hidden><ul class="lesson-list"><li>Both start with a chance model, such as a null-hypothesis success rate, and ask what results could happen if it were true. Simulation estimates how often results occur by repeating the process; a binomial calculation finds those probabilities directly. A very small probability marks a result as unusual under the model, not impossible.</li></ul></div>
             </div>
           </section>
+
+          <section id="lesson-21" class="lesson">
+            <div class="lesson-header">
+              <p class="lesson-number">Lesson 21</p>
+              <h3>Introduction to the Normal Distribution &amp; Empirical Rule</h3>
+            </div>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>Many quantitative measurements have a roughly symmetric, bell-shaped distribution, and the normal model gives us a predictable way to describe how values are distributed.</strong></p></div>
+              <p>Today we will describe a distribution using its center and spread, then estimate how much data lie near the mean.</p>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Learning Goals</h4>
+              <ul class="lesson-list">
+                <li>Recognize a distribution that is approximately bell-shaped and symmetric.</li>
+                <li>Explain how the mean describes center and standard deviation describes spread.</li>
+                <li>Use the Empirical Rule (68–95–99.7 rule) to estimate percentages and values.</li>
+                <li>Recognize that the rule is an approximation for distributions that are reasonably normal.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore: What Does a Normal Distribution Look Like?</h4>
+              <p>Compare these simple distribution sketches. Which one looks approximately normal?</p>
+              <div class="normal-visual-grid">
+                <figure class="normal-visual">
+                  <svg viewBox="0 0 240 125" role="img" aria-label="A symmetric bell-shaped distribution">
+                    <line x1="16" y1="103" x2="224" y2="103" stroke="#6f7f89" />
+                    <path d="M20 101 C48 100 58 94 75 72 C91 50 103 18 120 17 C137 18 149 50 165 72 C182 94 192 100 220 101" fill="none" stroke="#3d5a80" stroke-width="3" />
+                    <line x1="120" y1="18" x2="120" y2="103" stroke="#c96b4b" stroke-dasharray="4 3" />
+                    <text x="110" y="119" fill="#334155" font-size="12">center</text>
+                  </svg>
+                  <figcaption>Distribution A</figcaption>
+                </figure>
+                <figure class="normal-visual">
+                  <svg viewBox="0 0 240 125" role="img" aria-label="A right-skewed distribution with a long tail to the right">
+                    <line x1="16" y1="103" x2="224" y2="103" stroke="#6f7f89" />
+                    <path d="M20 101 C35 100 42 95 50 65 C57 37 68 25 82 48 C98 75 108 92 128 98 C154 102 182 101 220 101" fill="none" stroke="#4f8a78" stroke-width="3" />
+                  </svg>
+                  <figcaption>Distribution B</figcaption>
+                </figure>
+                <figure class="normal-visual">
+                  <svg viewBox="0 0 240 125" role="img" aria-label="A bimodal distribution with two peaks">
+                    <line x1="16" y1="103" x2="224" y2="103" stroke="#6f7f89" />
+                    <path d="M20 101 C39 100 44 89 53 60 C62 32 76 32 86 60 C96 87 104 99 120 100 C136 99 144 87 154 60 C164 32 178 32 187 60 C196 89 201 100 220 101" fill="none" stroke="#d17b4a" stroke-width="3" />
+                  </svg>
+                  <figcaption>Distribution C</figcaption>
+                </figure>
+              </div>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Which sketch is most symmetric and bell-shaped?<button type="button" class="answer-toggle" data-answer-target="lesson-21-explore-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-explore-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Distribution A is approximately symmetric with one central peak, so it is the best match for a normal shape.</li></ul></div></li>
+                <li>Where is the center of Distribution A, and how could you describe its spread?<button type="button" class="answer-toggle" data-answer-target="lesson-21-explore-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-explore-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The center is near the middle of the horizontal axis, where the peak is. Spread describes how broadly values fan out around that center.</li></ul></div></li>
+                <li>Which values might appear unusual in an approximately normal distribution?<button type="button" class="answer-toggle" data-answer-target="lesson-21-explore-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-explore-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Values far out in either tail, several standard deviations from the mean, are less common and may appear unusual.</li></ul></div></li>
+              </ol>
+              <p>For a normal model, the <strong>mean</strong> marks the center. The <strong>standard deviation</strong> describes the spread: a larger standard deviation makes the curve wider, while a smaller one makes it narrower.</p>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>The Empirical Rule</h4>
+              <p>For a distribution that is reasonably normal, these approximate percentages fall within each distance from the mean:</p>
+              <div class="normal-interval-summary" aria-label="Empirical Rule percentages">
+                <p><strong>68%</strong><br>within 1 standard deviation</p>
+                <p><strong>95%</strong><br>within 2 standard deviations</p>
+                <p><strong>99.7%</strong><br>within 3 standard deviations</p>
+              </div>
+              <div class="lesson-callout"><p><strong>Outside those intervals:</strong> about <strong>32%</strong> outside ±1 SD, <strong>5%</strong> outside ±2 SD, and <strong>0.3%</strong> outside ±3 SD.</p><p>Outside percentages combine both tails. If the distribution is symmetric, about half of each outside percentage lies in either tail.</p></div>
+              <div class="empirical-curve">
+                <svg viewBox="0 0 720 290" role="img" aria-labelledby="empirical-title empirical-desc">
+                  <title id="empirical-title">Empirical Rule bell curve</title>
+                  <desc id="empirical-desc">A normal-shaped curve centered at the mean. Shading marks approximately 68 percent within one standard deviation, 95 percent within two, and 99.7 percent within three.</desc>
+                  <defs>
+                    <clipPath id="empirical-curve-clip"><path d="M40 218 C120 216 158 205 205 168 C251 132 280 55 360 43 C440 55 469 132 515 168 C562 205 600 216 680 218 L680 220 L40 220 Z" /></clipPath>
+                  </defs>
+                  <rect x="40" y="30" width="640" height="190" fill="#f2e6cf" clip-path="url(#empirical-curve-clip)" />
+                  <rect x="200" y="30" width="320" height="190" fill="#dcecf0" clip-path="url(#empirical-curve-clip)" />
+                  <rect x="280" y="30" width="160" height="190" fill="#d9eadf" clip-path="url(#empirical-curve-clip)" />
+                  <path d="M40 218 C120 216 158 205 205 168 C251 132 280 55 360 43 C440 55 469 132 515 168 C562 205 600 216 680 218" fill="none" stroke="#3d5a80" stroke-width="4" />
+                  <line x1="40" y1="220" x2="680" y2="220" stroke="#6f7f89" />
+                  <g class="normal-svg-label" text-anchor="middle">
+                    <text x="360" y="111">68%</text><text x="232" y="155">95%</text><text x="104" y="205">99.7%</text>
+                    <text x="40" y="243">μ − 3σ</text><text x="146.7" y="243">μ − 2σ</text><text x="253.3" y="243">μ − 1σ</text>
+                    <text x="360" y="243">mean μ</text><text x="466.7" y="243">μ + 1σ</text><text x="573.3" y="243">μ + 2σ</text><text x="680" y="243">μ + 3σ</text>
+                    <text x="360" y="275">About 0.15% in each tail is more than 3 standard deviations from the mean.</text>
+                  </g>
+                  <g class="normal-tick"><line x1="40" y1="216" x2="40" y2="226" /><line x1="146.7" y1="216" x2="146.7" y2="226" /><line x1="253.3" y1="216" x2="253.3" y2="226" /><line x1="360" y1="216" x2="360" y2="226" /><line x1="466.7" y1="216" x2="466.7" y2="226" /><line x1="573.3" y1="216" x2="573.3" y2="226" /><line x1="680" y1="216" x2="680" y2="226" /></g>
+                </svg>
+              </div>
+              <p><strong>Approximate does not mean exact.</strong> Use the Empirical Rule only when the distribution is reasonably bell-shaped and symmetric. It is not a rule for every data set.</p>
+            </div>
+
+            <div class="lesson-section lesson-practice">
+              <h4>Hand Calculation Practice</h4>
+              <p>Suppose the <strong>mean is 70</strong> and the <strong>standard deviation is 5</strong>. To find a value one standard deviation from the mean, add or subtract 5. For two standard deviations, add or subtract 2 × 5.</p>
+              <div class="lesson-table-wrap">
+                <table class="mini-table">
+                  <caption>Values around a mean of 70 with standard deviation 5</caption>
+                  <thead><tr><th scope="col">Distance from mean</th><th scope="col">Below the mean</th><th scope="col">Mean</th><th scope="col">Above the mean</th></tr></thead>
+                  <tbody><tr><th scope="row">1 SD</th><td>65</td><td>70</td><td>75</td></tr><tr><th scope="row">2 SD</th><td>60</td><td>70</td><td>80</td></tr><tr><th scope="row">3 SD</th><td>55</td><td>70</td><td>85</td></tr></tbody>
+                </table>
+              </div>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Approximately what percentage of values are between 60 and 80?<button type="button" class="answer-toggle" data-answer-target="lesson-21-practice-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-practice-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>60 and 80 are 2 standard deviations below and above 70, so about <strong>95%</strong> of values fall in that interval.</li></ul></div></li>
+                <li>Approximately what percentage is above 80?<button type="button" class="answer-toggle" data-answer-target="lesson-21-practice-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-practice-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>About 5% is outside ±2 SD altogether. By symmetry, half is above 80, so approximately <strong>2.5%</strong>.</li></ul></div></li>
+                <li>Approximately what percentage is below 55?<button type="button" class="answer-toggle" data-answer-target="lesson-21-practice-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-practice-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>55 is 3 standard deviations below the mean. About 0.3% lies outside ±3 SD, with half in the lower tail: approximately <strong>0.15%</strong>.</li></ul></div></li>
+                <li>Approximately what percentage is between 65 and 75?<button type="button" class="answer-toggle" data-answer-target="lesson-21-practice-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-practice-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>65 and 75 are 1 standard deviation below and above the mean, so about <strong>68%</strong> lies between them.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Interactive Normal Curve</h4>
+              <p>Change the mean and standard deviation. The curve stays centered at the mean, while the labeled values one, two, and three standard deviations away update.</p>
+              <div class="simulation-widget" data-normal-rule-widget>
+                <div class="normal-controls">
+                  <label for="normal-rule-mean">Mean, μ <output data-normal-rule-output="mean" for="normal-rule-mean">70</output><input id="normal-rule-mean" data-normal-rule-control="mean" type="range" min="0" max="200" step="1" value="70" /></label>
+                  <label for="normal-rule-sd">Standard deviation, σ <output data-normal-rule-output="sd" for="normal-rule-sd">5</output><input id="normal-rule-sd" data-normal-rule-control="sd" type="range" min="1" max="30" step="1" value="5" /></label>
+                </div>
+                <div class="interactive-normal"><svg class="normal-curve-svg" data-normal-rule-output="curve" viewBox="0 0 720 250" role="img" aria-label="Normal curve with mean and standard-deviation marks"></svg></div>
+                <div class="normal-interval-summary" data-normal-rule-output="intervals" aria-live="polite"></div>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>What shape and symmetry describe a distribution that is approximately normal?<button type="button" class="answer-toggle" data-answer-target="lesson-21-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-guiding-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It is roughly bell-shaped, with one central peak and sides that are approximately mirror images.</li></ul></div></li>
+                <li>Where is the center of a normal distribution?<button type="button" class="answer-toggle" data-answer-target="lesson-21-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-guiding-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The mean is at the center of the normal distribution.</li></ul></div></li>
+                <li>What does the standard deviation tell us about the distribution?<button type="button" class="answer-toggle" data-answer-target="lesson-21-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-guiding-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It describes the spread of values around the mean; a larger standard deviation means a wider distribution.</li></ul></div></li>
+                <li>What does the 68% in the Empirical Rule mean?<button type="button" class="answer-toggle" data-answer-target="lesson-21-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-guiding-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>About 68% of values in a reasonably normal distribution fall between one standard deviation below and one above the mean.</li></ul></div></li>
+                <li>What does the 95% mean?<button type="button" class="answer-toggle" data-answer-target="lesson-21-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-guiding-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>About 95% of values fall within two standard deviations of the mean.</li></ul></div></li>
+                <li>What does the 99.7% mean?<button type="button" class="answer-toggle" data-answer-target="lesson-21-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-guiding-6" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>About 99.7% of values fall within three standard deviations of the mean.</li></ul></div></li>
+                <li>How do you find values one, two, or three standard deviations from the mean?<button type="button" class="answer-toggle" data-answer-target="lesson-21-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-guiding-7" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Multiply the standard deviation by 1, 2, or 3, then add that amount to the mean for values above it or subtract it for values below it.</li></ul></div></li>
+                <li>Why is the Empirical Rule only an approximation?<button type="button" class="answer-toggle" data-answer-target="lesson-21-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-guiding-8" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Real distributions are not perfectly normal, and the rule describes approximate percentages only for distributions that are reasonably bell-shaped and symmetric.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>A normal distribution is approximately symmetric and bell-shaped. The mean tells us where the distribution is centered, while the standard deviation tells us how spread out it is. The Empirical Rule lets us estimate how much data fall within 1, 2, and 3 standard deviations of the mean.</strong></p></div>
+              <p>The rule is useful when the distribution is reasonably normal, but it is not exact and should not be applied to strongly skewed or irregular data.</p>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p>Use the Empirical Rule only for the contexts described as reasonably normal. A value more than 2 standard deviations from the mean is relatively unusual; beyond 3 standard deviations is very unusual.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Adult heights in a group are reasonably normal with mean 170 cm and standard deviation 7 cm. Find the values 1, 2, and 3 standard deviations from the mean, then estimate the percentage between 156 cm and 184 cm.<button type="button" class="answer-toggle" data-answer-target="lesson-21-apply-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-apply-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The 1-SD values are 163 and 177 cm; 2-SD values are 156 and 184 cm; 3-SD values are 149 and 191 cm. The interval 156–184 cm is within 2 SD, so it contains about <strong>95%</strong> of the heights.</li></ul></div></li>
+                <li>Test scores are reasonably normal with mean 75 points and standard deviation 8 points. Estimate the percentage between 67 and 83, and decide whether a score of 99 is unusual.<button type="button" class="answer-toggle" data-answer-target="lesson-21-apply-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-apply-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>67 and 83 are 1 SD from the mean, so about <strong>68%</strong> of scores fall in that interval. A score of 99 is 3 SD above the mean (75 + 3 × 8), so it is very unusual under this model.</li></ul></div></li>
+                <li>Measurement errors are reasonably normal with mean 0 mm and standard deviation 2 mm. Estimate the percentage of errors between −4 mm and 4 mm, and the percentage greater than 4 mm.<button type="button" class="answer-toggle" data-answer-target="lesson-21-apply-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-apply-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>−4 and 4 are 2 SD from the mean, so about <strong>95%</strong> of errors are in that interval. About 5% is outside both ends, so approximately <strong>2.5%</strong> is greater than 4 mm.</li></ul></div></li>
+                <li>A machine's fill amounts are reasonably normal with mean 500 mL and standard deviation 10 mL. Find the 3-SD interval and identify whether 525 mL is unusual.<button type="button" class="answer-toggle" data-answer-target="lesson-21-apply-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-apply-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The 3-SD interval is 500 ± 30, or <strong>470 to 530 mL</strong>. A fill of 525 mL is 2.5 SD above the mean, so it is uncommon and lies beyond the 2-SD interval, though still within 3 SD.</li></ul></div></li>
+                <li>Household incomes in a region have many values clustered at the low end and a long tail toward very high incomes. Should the Empirical Rule be used? Explain.<button type="button" class="answer-toggle" data-answer-target="lesson-21-apply-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-21-apply-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>No. This distribution is strongly right-skewed rather than approximately symmetric and bell-shaped, so the Empirical Rule percentages are not appropriate.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p><strong>If you know the mean and standard deviation of a reasonably normal distribution, what can you predict about where most of the data will fall?</strong></p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-21-closure" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button>
+              <div id="lesson-21-closure" class="possible-answer" hidden><ul class="lesson-list"><li>You can estimate that about 68% of values fall within 1 standard deviation, 95% within 2, and 99.7% within 3 standard deviations of the mean.</li></ul></div>
+              <p><strong>Next lesson:</strong> We will use z-scores to describe exactly how far a value is from the mean and use a z-table to find probabilities.</p>
+            </div>
+          </section>
         </div>
       </div>
     </main>
@@ -363,6 +549,69 @@
         const sampleStandardDeviation = Math.sqrt(squaredDifferenceSum / (values.length - 1));
         sdOutput.textContent = `Mean: ${mean.toFixed(2)}. Sample standard deviation: ${sampleStandardDeviation.toFixed(2)}.`;
       });
+
+      const normalRuleWidget = document.querySelector("[data-normal-rule-widget]");
+      const normalMeanControl = normalRuleWidget.querySelector('[data-normal-rule-control="mean"]');
+      const normalSdControl = normalRuleWidget.querySelector('[data-normal-rule-control="sd"]');
+      const normalCurveOutput = normalRuleWidget.querySelector('[data-normal-rule-output="curve"]');
+      const normalIntervalsOutput = normalRuleWidget.querySelector('[data-normal-rule-output="intervals"]');
+
+      function updateNormalRuleDisplay() {
+        const mean = Number(normalMeanControl.value);
+        const standardDeviation = Number(normalSdControl.value);
+        const left = 48;
+        const right = 672;
+        const baseline = 188;
+        const domainStart = -3.5;
+        const domainEnd = 3.5;
+        const positionFor = (standardDeviations) => left + (standardDeviations - domainStart) / (domainEnd - domainStart) * (right - left);
+        const curvePoints = [];
+
+        for (let step = 0; step <= 100; step += 1) {
+          const z = domainStart + (domainEnd - domainStart) * step / 100;
+          const x = left + (right - left) * step / 100;
+          const y = baseline - Math.exp(-0.5 * z * z) * 125;
+          curvePoints.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+        }
+
+        const bands = [
+          { start: domainStart, end: -3, className: "normal-band-three" },
+          { start: domainStart, end: -3, className: "normal-tail" },
+          { start: -3, end: -2, className: "normal-band-three" },
+          { start: -2, end: -1, className: "normal-band-two" },
+          { start: -1, end: 1, className: "normal-band-one" },
+          { start: 1, end: 2, className: "normal-band-two" },
+          { start: 2, end: 3, className: "normal-band-three" },
+          { start: 3, end: domainEnd, className: "normal-tail" }
+        ];
+        const bandMarkup = bands.map((band) => {
+          const x = positionFor(band.start);
+          const width = positionFor(band.end) - x;
+          return `<rect class="${band.className}" x="${x}" y="24" width="${width}" height="166" />`;
+        }).join("");
+        const tickMarkup = Array.from({ length: 7 }, (_, index) => {
+          const sigmaPosition = index - 3;
+          const x = positionFor(sigmaPosition);
+          const value = mean + sigmaPosition * standardDeviation;
+          const label = sigmaPosition === 0 ? `mean ${value}` : `${value}`;
+          const marker = sigmaPosition === 0 ? `<line class="normal-mean-line" x1="${x}" x2="${x}" y1="34" y2="${baseline}" />` : "";
+          return `${marker}<line class="normal-tick" x1="${x}" x2="${x}" y1="${baseline}" y2="${baseline + 8}" /><text class="normal-svg-label" x="${x}" y="${baseline + 27}" text-anchor="middle">${label}</text><text class="normal-svg-label" x="${x}" y="${baseline + 45}" text-anchor="middle">${sigmaPosition === 0 ? "μ" : `${sigmaPosition > 0 ? "+" : "−"}${Math.abs(sigmaPosition)}σ`}</text>`;
+        }).join("");
+
+        normalRuleWidget.querySelector('[data-normal-rule-output="mean"]').textContent = mean;
+        normalRuleWidget.querySelector('[data-normal-rule-output="sd"]').textContent = standardDeviation;
+        normalCurveOutput.setAttribute("aria-label", `Bell-shaped normal model with mean ${mean} and standard deviation ${standardDeviation}. Values are marked at one, two, and three standard deviations above and below the mean.`);
+        normalCurveOutput.innerHTML = `${bandMarkup}<path class="normal-curve-line" d="M${curvePoints.join(" L")}" /><line x1="${left}" y1="${baseline}" x2="${right}" y2="${baseline}" stroke="#6f7f89" />${tickMarkup}`;
+        normalIntervalsOutput.innerHTML = [1, 2, 3].map((multiple) => {
+          const lower = mean - multiple * standardDeviation;
+          const upper = mean + multiple * standardDeviation;
+          const percentage = ["68%", "95%", "99.7%"][multiple - 1];
+          return `<p><strong>${percentage} within ${multiple} SD</strong><br>${lower} to ${upper}</p>`;
+        }).join("");
+      }
+
+      [normalMeanControl, normalSdControl].forEach((control) => control.addEventListener("input", updateNormalRuleDisplay));
+      updateNormalRuleDisplay();
     </script>
   </body>
 </html>
