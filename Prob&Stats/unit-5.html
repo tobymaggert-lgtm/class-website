@@ -50,6 +50,17 @@
         .normal-tail { fill: #edf0f2; }
       .normal-interval-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 8px; margin: 12px 0 0; }
       .normal-interval-summary p { padding: 8px 10px; background: #fff; border: 1px solid #dfe3e8; font-variant-numeric: tabular-nums; }
+        .z-score-controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 18px; align-items: end; }
+        .z-score-controls label { display: grid; gap: 6px; font-weight: 700; }
+        .z-score-controls input { width: 100%; min-height: 42px; padding: 8px 10px; border: 1px solid #b8c2cc; border-radius: 4px; font: inherit; }
+        .z-score-visual { overflow-x: auto; margin: 14px 0; padding: 10px; background: #fff; border: 1px solid #dfe3e8; }
+        .z-score-visual svg { display: block; width: 100%; min-width: 500px; height: auto; }
+        .z-score-readout { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 8px; margin: 12px 0 0; }
+        .z-score-readout p { padding: 8px 10px; background: #fff; border: 1px solid #dfe3e8; font-variant-numeric: tabular-nums; }
+        .z-area { fill: #d9eadf; }
+        .z-curve { fill: none; stroke: #3d5a80; stroke-width: 3; }
+        .z-marker { stroke: #c96b4b; stroke-width: 2; stroke-dasharray: 5 4; }
+        @media (max-width: 700px) { .z-score-controls { grid-template-columns: 1fr; } }
       @media (max-width: 600px) { .binomial-controls { grid-template-columns: 1fr; } }
       @media (max-width: 600px) { .normal-controls { grid-template-columns: 1fr; } }
     </style>
@@ -79,7 +90,8 @@
           <nav class="lesson-nav">
             <a href="#lesson-19">Lesson 19</a>
             <a href="#lesson-20">Lesson 20</a>
-            <a href="#lesson-21" aria-current="page">Lesson 21</a>
+            <a href="#lesson-21">Lesson 21</a>
+            <a href="#lesson-22" aria-current="page">Lesson 22</a>
           </nav>
         </aside>
 
@@ -491,6 +503,129 @@
               <p><strong>Next lesson:</strong> We will use z-scores to describe exactly how far a value is from the mean and use a z-table to find probabilities.</p>
             </div>
           </section>
+
+          <section id="lesson-22" class="lesson">
+            <div class="lesson-header">
+              <p class="lesson-number">Lesson 22</p>
+              <h3>Normal Distribution &amp; Z-Scores</h3>
+            </div>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>A z-score standardizes a value by telling us how many standard deviations it is above or below the mean.</strong></p></div>
+              <p>Once a value is expressed as a z-score, a z-table lets us find the proportion of a normal distribution below, above, or between values.</p>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Learning Goals</h4>
+              <ul class="lesson-list">
+                <li>Calculate and interpret positive, negative, and zero z-scores.</li>
+                <li>Use a printed z-table to find proportions and convert them to percentages or percentiles.</li>
+                <li>Find probabilities above and between values, and work backward from a percentile to a z-score.</li>
+                <li>Use StatLab to verify, not replace, hand calculations.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore: Standardizing a Score</h4>
+              <p>A test has a <strong>mean of 75</strong> and a <strong>standard deviation of 10</strong>. Jordan scores <strong>87</strong>.</p>
+              <div class="lesson-callout emphasis"><p class="formula-block">z = (x − μ) / σ = (87 − 75) / 10 = 12 / 10 = 1.2</p></div>
+              <p>The score is 1.2 standard deviations above the mean. Notice that <em>z</em> is a location measured in standard deviations, not another test score.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Explain what z = 1.2 means for Jordan's score.<button type="button" class="answer-toggle" data-answer-target="lesson-22-explore-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-explore-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Jordan's score is 1.2 standard deviations above the class mean of 75.</li></ul></div></li>
+                <li>Use your printed z-table to find the area to the left of z = 1.20. Convert it to a percentile.<button type="button" class="answer-toggle" data-answer-target="lesson-22-explore-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-explore-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The left-tail area is about 0.8849. As a percentage, that is 88.49%, so Jordan is around the 88th percentile in this normal model.</li></ul></div></li>
+              </ol>
+              <div class="lesson-callout"><p><strong>Complete process:</strong> value → z-score → z-table → probability or percentile</p></div>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>The Z-Score Formula</h4>
+              <div class="lesson-callout emphasis"><p class="formula-block">z = (x − μ) / σ</p></div>
+              <ul class="lesson-list">
+                <li><strong><em>x</em></strong> = individual value</li>
+                <li><strong><em>μ</em></strong> = population mean</li>
+                <li><strong><em>σ</em></strong> = population standard deviation</li>
+                <li><strong><em>z</em></strong> = number of standard deviations the value is from the mean</li>
+              </ul>
+              <div class="normal-visual-grid">
+                <figure class="normal-visual"><svg viewBox="0 0 240 105" role="img" aria-label="A value with positive z lies above the mean"><line x1="16" y1="82" x2="224" y2="82" stroke="#6f7f89"/><path d="M20 81 C72 80 88 69 104 43 C112 29 118 22 122 21 C141 29 148 55 163 69 C178 79 195 81 220 81" fill="none" stroke="#3d5a80" stroke-width="3"/><line x1="122" y1="21" x2="122" y2="83" stroke="#6f7f89" stroke-dasharray="4 3"/><line x1="162" y1="45" x2="162" y2="83" stroke="#c96b4b" stroke-width="2"/><text x="111" y="99" fill="#334155" font-size="12">mean</text><text x="155" y="99" fill="#334155" font-size="12">x</text></svg><figcaption>Positive z: value above the mean</figcaption></figure>
+                <figure class="normal-visual"><svg viewBox="0 0 240 105" role="img" aria-label="A value with negative z lies below the mean"><line x1="16" y1="82" x2="224" y2="82" stroke="#6f7f89"/><path d="M20 81 C45 81 62 79 77 69 C92 56 99 29 118 21 C122 21 128 29 136 43 C152 69 168 80 220 81" fill="none" stroke="#3d5a80" stroke-width="3"/><line x1="118" y1="21" x2="118" y2="83" stroke="#6f7f89" stroke-dasharray="4 3"/><line x1="78" y1="45" x2="78" y2="83" stroke="#c96b4b" stroke-width="2"/><text x="107" y="99" fill="#334155" font-size="12">mean</text><text x="72" y="99" fill="#334155" font-size="12">x</text></svg><figcaption>Negative z: value below the mean</figcaption></figure>
+                <figure class="normal-visual"><svg viewBox="0 0 240 105" role="img" aria-label="A value with z equal to zero is exactly at the mean"><line x1="16" y1="82" x2="224" y2="82" stroke="#6f7f89"/><path d="M20 81 C72 80 88 69 104 43 C112 29 118 22 122 21 C141 29 148 55 163 69 C178 79 195 81 220 81" fill="none" stroke="#3d5a80" stroke-width="3"/><line x1="122" y1="21" x2="122" y2="83" stroke="#c96b4b" stroke-width="2"/><text x="109" y="99" fill="#334155" font-size="12">x = mean</text></svg><figcaption>Zero z: value exactly at the mean</figcaption></figure>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-practice">
+              <h4>Hand Calculation Practice</h4>
+              <p>Use your printed z-table. Answers may be rounded to four decimal places or the nearest hundredth of a percent.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A class has mean score 80 and standard deviation 5. Find the z-score for a score of 74 and interpret its sign.<button type="button" class="answer-toggle" data-answer-target="lesson-22-practice-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-practice-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>z = (74 − 80) / 5 = <strong>−1.2</strong>. The score is 1.2 standard deviations below the mean.</li></ul></div></li>
+                <li>For the standard normal model, use the table to find the proportion below z = 0.50. Convert it to a percentage and percentile.<button type="button" class="answer-toggle" data-answer-target="lesson-22-practice-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-practice-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The area to the left is about 0.6915 = <strong>69.15%</strong>. This is about the 69th percentile.</li></ul></div></li>
+                <li>For a normal model, what proportion is above z = 1.00?<button type="button" class="answer-toggle" data-answer-target="lesson-22-practice-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-practice-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The table gives about 0.8413 to the left. Above is 1 − 0.8413 = <strong>0.1587</strong>, or 15.87%.</li></ul></div></li>
+                <li>Find the proportion between z = −1.00 and z = 1.00.<button type="button" class="answer-toggle" data-answer-target="lesson-22-practice-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-practice-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Area between = area left of 1.00 minus area left of −1.00 = 0.8413 − 0.1587 = <strong>0.6826</strong>, or 68.26%.</li></ul></div></li>
+                <li>A running time is at the 90th percentile in a normal model. Use the z-table to estimate its z-score.<button type="button" class="answer-toggle" data-answer-target="lesson-22-practice-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-practice-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Look for an area near 0.9000 in the table. The corresponding z-score is about <strong>1.28</strong>, meaning 1.28 standard deviations above the mean.</li></ul></div></li>
+                <li>Adult heights are modeled with mean 170 cm and standard deviation 6 cm. Find the z-score for a height of 158 cm, then estimate the proportion below that height.<button type="button" class="answer-toggle" data-answer-target="lesson-22-practice-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-practice-6" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>z = (158 − 170) / 6 = <strong>−2</strong>. The table gives an area to the left of about <strong>0.0228</strong>, or 2.28%.</li></ul></div></li>
+                <li>Manufacturing measurements have mean 50 mm and standard deviation 2 mm. Find the proportion between 48 mm and 52 mm.<button type="button" class="answer-toggle" data-answer-target="lesson-22-practice-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-practice-7" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The endpoints have z-scores −1 and +1. Subtract table areas: 0.8413 − 0.1587 = <strong>0.6826</strong>, or 68.26%.</li></ul></div></li>
+              </ol>
+            </div>
+
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Interactive Normal Curve</h4>
+              <p>Change the raw value, mean, or standard deviation. The marker shows the value's location and the shaded region shows the proportion below it.</p>
+              <div class="simulation-widget" data-z-score-widget>
+                <div class="z-score-controls">
+                  <label for="z-score-value">Value, x<input id="z-score-value" data-z-control="value" type="number" value="87" step="1" /></label>
+                  <label for="z-score-mean">Mean, μ<input id="z-score-mean" data-z-control="mean" type="number" value="75" step="1" /></label>
+                  <label for="z-score-sd">Standard deviation, σ<input id="z-score-sd" data-z-control="sd" type="number" value="10" min="0.01" step="1" /></label>
+                </div>
+                <p class="simulation-summary" data-z-output="summary" aria-live="polite">z = 1.20. Area below x ≈ 0.8849 (88.49%).</p>
+                <div class="z-score-visual"><svg data-z-output="curve" viewBox="0 0 720 260" role="img" aria-label="Normal curve with mean, selected value, z-score, and shaded probability below the selected value"></svg></div>
+                <div class="z-score-readout" data-z-output="details" aria-live="polite"></div>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>What does a z-score measure?<button type="button" class="answer-toggle" data-answer-target="lesson-22-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-guiding-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It measures how many standard deviations a value is above or below the mean.</li></ul></div></li>
+                <li>What does a positive z-score mean?<button type="button" class="answer-toggle" data-answer-target="lesson-22-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-guiding-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The value is above the mean.</li></ul></div></li>
+                <li>What does a negative z-score mean?<button type="button" class="answer-toggle" data-answer-target="lesson-22-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-guiding-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The value is below the mean.</li></ul></div></li>
+                <li>What does z = 0 mean?<button type="button" class="answer-toggle" data-answer-target="lesson-22-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-guiding-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The value is exactly at the mean, so it is zero standard deviations from the mean.</li></ul></div></li>
+                <li>How do you calculate a z-score from a value, mean, and standard deviation?<button type="button" class="answer-toggle" data-answer-target="lesson-22-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-guiding-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Subtract the mean from the value, then divide that difference by the standard deviation: z = (x − μ) / σ.</li></ul></div></li>
+                <li>How does a z-table help find probabilities?<button type="button" class="answer-toggle" data-answer-target="lesson-22-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-guiding-6" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>After converting a value to a z-score, the table gives the area or proportion to the left of that z-score for a normal model.</li></ul></div></li>
+                <li>How do you find the probability above a value when your table gives area to the left?<button type="button" class="answer-toggle" data-answer-target="lesson-22-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-guiding-7" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Subtract the left-tail area from 1: area above = 1 − area below.</li></ul></div></li>
+                <li>How do you find the probability between two values?<button type="button" class="answer-toggle" data-answer-target="lesson-22-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-guiding-8" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Find a z-score and left-tail area for each endpoint, then subtract the smaller left-tail area from the larger one.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>A z-score puts a value on a common scale by measuring how many standard deviations it is from the mean. Once a value is standardized, a z-table can be used to determine probabilities and percentiles.</strong></p></div>
+              <p>A z-score keeps the value's relative location while removing the original measurement scale. The sign tells direction, and the size tells distance in standard-deviation units.</p>
+            </div>
+
+             <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p>Show the z-score and z-table work by hand first. Then check your probability in StatLab.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Test scores are normal with μ = 500 and σ = 100. Find and interpret the z-score for a score of 650.<button type="button" class="answer-toggle" data-answer-target="lesson-22-apply-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-apply-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>z = (650 − 500) / 100 = <strong>1.50</strong>. The score is 1.5 standard deviations above the mean.</li></ul></div></li>
+                <li>Adult heights are modeled with μ = 170 cm and σ = 6 cm. Find and interpret the z-score for a height of 161 cm.<button type="button" class="answer-toggle" data-answer-target="lesson-22-apply-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-apply-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>z = (161 − 170) / 6 = <strong>−1.50</strong>. The height is 1.5 standard deviations below the mean.</li></ul></div></li>
+                <li>Running times are normal with μ = 20 minutes and σ = 2 minutes. What proportion of times are below 18 minutes?<button type="button" class="answer-toggle" data-answer-target="lesson-22-apply-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-apply-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>z = (18 − 20) / 2 = −1.00. The area to the left is about <strong>0.1587</strong>, or 15.87%.</li></ul></div></li>
+                <li>Manufacturing measurements are normal with μ = 50 mm and σ = 2 mm. What proportion is above 53 mm?<button type="button" class="answer-toggle" data-answer-target="lesson-22-apply-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-apply-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>z = (53 − 50) / 2 = 1.50. Area above = 1 − 0.9332 = <strong>0.0668</strong>, or 6.68%.</li></ul></div></li>
+                <li>SAT-style scores are normal with μ = 1000 and σ = 100. Estimate the proportion between 900 and 1100.<button type="button" class="answer-toggle" data-answer-target="lesson-22-apply-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-apply-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The endpoints have z-scores −1 and +1. Subtract the left areas: 0.8413 − 0.1587 = <strong>0.6826</strong>, or 68.26%.</li></ul></div></li>
+                <li>A score has z = 1.28. Use the z-table to estimate its percentile and explain the meaning.<button type="button" class="answer-toggle" data-answer-target="lesson-22-apply-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-apply-6" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The area to the left of z = 1.28 is about 0.8997, or approximately the <strong>90th percentile</strong>. About 90% of values are at or below this score in the model.</li></ul></div></li>
+                <li>For a normal model with μ = 500 and σ = 20, find the raw value at the 90th percentile. Start with the z-table.<button type="button" class="answer-toggle" data-answer-target="lesson-22-apply-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-22-apply-7" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The table's area near 0.9000 corresponds to z ≈ 1.28. Solve x = μ + zσ = 500 + 1.28(20) = <strong>525.6</strong>. The raw value is about 525.6 units.</li></ul></div></li>
+              </ol>
+            </div>
+            
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p><strong>Why is a z-score more useful than simply knowing whether a score is above or below the mean?</strong></p>
+              <button type="button" class="answer-toggle" data-answer-target="lesson-22-closure" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button>
+              <div id="lesson-22-closure" class="possible-answer" hidden><ul class="lesson-list"><li>A z-score tells both the direction and how far the value is from the mean in standard-deviation units. That lets us compare values from different scales and use the z-table to estimate probabilities and percentiles.</li></ul></div>
+              <p><strong>Next lesson:</strong> We will use sample proportions to estimate population proportions with confidence intervals and determine how large a sample we need.</p>
+            </div>
+          </section>
         </div>
       </div>
     </main>
@@ -612,6 +747,67 @@
 
       [normalMeanControl, normalSdControl].forEach((control) => control.addEventListener("input", updateNormalRuleDisplay));
       updateNormalRuleDisplay();
+
+      const zScoreWidget = document.querySelector("[data-z-score-widget]");
+      const zValueControl = zScoreWidget.querySelector('[data-z-control="value"]');
+      const zMeanControl = zScoreWidget.querySelector('[data-z-control="mean"]');
+      const zSdControl = zScoreWidget.querySelector('[data-z-control="sd"]');
+      const zCurveOutput = zScoreWidget.querySelector('[data-z-output="curve"]');
+      const zSummaryOutput = zScoreWidget.querySelector('[data-z-output="summary"]');
+      const zDetailsOutput = zScoreWidget.querySelector('[data-z-output="details"]');
+
+      function zNormalCdf(z) {
+        const sign = z < 0 ? -1 : 1;
+        const absoluteZ = Math.abs(z);
+        const t = 1 / (1 + 0.2316419 * absoluteZ);
+        const density = Math.exp(-absoluteZ * absoluteZ / 2) / Math.sqrt(2 * Math.PI);
+        const tail = density * (((((1.330274429 * t - 1.821255978) * t) + 1.781477937) * t - 0.356563782) * t + 0.319381530) * t;
+        return sign < 0 ? tail : 1 - tail;
+      }
+
+      function updateZScoreDisplay() {
+        const value = Number(zValueControl.value);
+        const mean = Number(zMeanControl.value);
+        const standardDeviation = Number(zSdControl.value);
+        if (![value, mean, standardDeviation].every(Number.isFinite) || standardDeviation <= 0) {
+          zSummaryOutput.textContent = "Enter numeric values and a standard deviation greater than zero.";
+          zDetailsOutput.innerHTML = "";
+          zCurveOutput.innerHTML = "";
+          return;
+        }
+
+        const z = (value - mean) / standardDeviation;
+        const leftArea = zNormalCdf(z);
+        const rightArea = 1 - leftArea;
+        const domainMinimum = -3.5;
+        const domainMaximum = 3.5;
+        const left = 48;
+        const right = 672;
+        const baseline = 190;
+        const xForZ = (standardScore) => left + (standardScore - domainMinimum) / (domainMaximum - domainMinimum) * (right - left);
+        const yForZ = (standardScore) => baseline - Math.exp(-0.5 * standardScore * standardScore) * 128;
+        const clippedZ = Math.max(domainMinimum, Math.min(domainMaximum, z));
+        const markerX = xForZ(clippedZ);
+        const curvePoints = [];
+        const shadedPoints = [`${left},${baseline}`];
+
+        for (let step = 0; step <= 140; step += 1) {
+          const standardScore = domainMinimum + (domainMaximum - domainMinimum) * step / 140;
+          const point = `${xForZ(standardScore).toFixed(1)},${yForZ(standardScore).toFixed(1)}`;
+          curvePoints.push(point);
+          if (standardScore <= clippedZ) shadedPoints.push(point);
+        }
+        shadedPoints.push(`${markerX.toFixed(1)},${baseline}`);
+
+        const direction = z === 0 ? "exactly at the mean" : `${Math.abs(z).toFixed(2)} standard deviations ${z > 0 ? "above" : "below"} the mean`;
+        zSummaryOutput.textContent = `z = ${z.toFixed(2)}. The selected value is ${direction}.`;
+        zDetailsOutput.innerHTML = `<p><strong>Area below x</strong><br>${leftArea.toFixed(4)} (${(leftArea * 100).toFixed(2)}%)</p><p><strong>Area above x</strong><br>${rightArea.toFixed(4)} (${(rightArea * 100).toFixed(2)}%)</p><p><strong>Percentile</strong><br>About ${(leftArea * 100).toFixed(1)}th</p>`;
+        zCurveOutput.setAttribute("aria-label", `Normal curve with mean ${mean}, standard deviation ${standardDeviation}, selected value ${value}, z-score ${z.toFixed(2)}, and left-tail area ${leftArea.toFixed(4)}.`);
+        zCurveOutput.innerHTML = `<polygon class="z-area" points="${shadedPoints.join(" ")}" /><path class="z-curve" d="M${curvePoints.join(" L")}" /><line x1="${left}" y1="${baseline}" x2="${right}" y2="${baseline}" stroke="#6f7f89" /><line x1="${xForZ(0)}" y1="${baseline}" x2="${xForZ(0)}" y2="${baseline - 6}" stroke="#6f7f89" /><line class="z-marker" x1="${markerX}" x2="${markerX}" y1="${baseline}" y2="${yForZ(clippedZ)}" /><text class="normal-svg-label" x="${xForZ(0)}" y="${baseline + 24}" text-anchor="middle">mean μ = ${mean}</text><text class="normal-svg-label" x="${markerX}" y="${Math.min(baseline - 12, yForZ(clippedZ) - 8)}" text-anchor="middle">x = ${value}</text><text class="normal-svg-label" x="${markerX}" y="${baseline + 45}" text-anchor="middle">z = ${z.toFixed(2)}</text>`;
+      }
+
+      [zValueControl, zMeanControl, zSdControl].forEach((control) => control.addEventListener("input", updateZScoreDisplay));
+      updateZScoreDisplay();
     </script>
   </body>
 </html>
