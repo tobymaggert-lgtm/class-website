@@ -99,7 +99,9 @@
             <a href="#lesson-20">Lesson 20</a>
             <a href="#lesson-21">Lesson 21</a>
             <a href="#lesson-22">Lesson 22</a>
-            <a href="#lesson-23" aria-current="page">Lesson 23</a>
+            <a href="#lesson-23">Lesson 23</a>
+            <a href="#lesson-24">Lesson 24</a>
+            <a href="#lesson-25" aria-current="page">Lesson 25</a>
           </nav>
         </aside>
 
@@ -796,6 +798,380 @@
                 <li><strong>Why does increasing the sample size usually make a confidence interval narrower?</strong><button type="button" class="answer-toggle" data-answer-target="lesson-23-closure-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-closure-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>A larger n makes the standard error √<span class="fraction"><span class="numerator">p̂q̂</span><span class="denominator">n</span></span> smaller, which usually lowers the margin of error and narrows the interval.</li></ul></div></li>
               </ol>
               <p><strong>Next lesson:</strong> We will use the t-distribution for confidence intervals involving population means and begin working with chi-squared methods for categorical data.</p>
+            </div>
+          </section>
+
+          <section id="lesson-24" class="lesson">
+            <div class="lesson-header">
+              <p class="lesson-number">Lesson 24</p>
+              <h3>Confidence Intervals with the t-Distribution &amp; Chi-Squared</h3>
+            </div>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>Different types of data and unknown population information require different statistical models.</strong></p></div>
+              <p>Today we will estimate a population mean when its standard deviation is unknown, then compare categorical counts with what a model predicts.</p>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Learning Goals</h4>
+              <ul class="lesson-list">
+                <li>Choose a t-distribution when estimating a population mean and σ is unknown.</li>
+                <li>Distinguish population standard deviation σ from sample standard deviation s.</li>
+                <li>Calculate degrees of freedom, find a t-critical value, and construct and interpret a confidence interval for a population mean.</li>
+                <li>Find expected categorical counts and calculate contributions to a chi-squared statistic.</li>
+                <li>Determine degrees of freedom and use a table or technology to interpret a chi-squared goodness-of-fit result.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Part A: Confidence Intervals with the t-Distribution</h4>
+              <div class="lesson-callout emphasis"><p><strong>Use z when the population standard deviation is known; use t when it is estimated from the sample.</strong></p></div>
+              <p>When σ is unknown, we use the sample standard deviation s to estimate the population spread. The t-distribution accounts for the additional uncertainty created by estimating σ from the sample.</p>
+              <div class="lesson-callout emphasis"><p class="formula-block">x̄ ± t*<span class="fraction"><span class="numerator">s</span><span class="denominator">√n</span></span></p></div>
+              <ul class="lesson-list">
+                <li><strong>x̄</strong> = sample mean</li>
+                <li><strong>s</strong> = sample standard deviation</li>
+                <li><strong>n</strong> = sample size</li>
+                <li><strong>t*</strong> = t-critical value for the confidence level and degrees of freedom</li>
+                <li><strong>Degrees of freedom:</strong> df = n − 1</li>
+                <li><strong>Margin of error:</strong> ME = t* times the standard error, <span class="fraction"><span class="numerator">s</span><span class="denominator">√n</span></span></li>
+              </ul>
+              <h5>Choose z or t</h5>
+              <div class="lesson-table-wrap">
+                <table class="mini-table">
+                  <caption>Choosing a confidence-interval model for a mean</caption>
+                  <thead><tr><th scope="col">Method</th><th scope="col">Population SD</th><th scope="col">Spread used</th><th scope="col">Model</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">z</th><td>σ known</td><td>Population SD σ</td><td>Normal distribution</td></tr>
+                    <tr><th scope="row">t</th><td>σ unknown</td><td>Sample SD s</td><td>t-distribution accounts for extra uncertainty</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <figure class="normal-visual">
+                <svg viewBox="0 0 560 190" role="img" aria-label="Comparison of standard normal and t distributions with 8 degrees of freedom. The t curve is lower at the center and has heavier tails.">
+                  <line x1="28" y1="150" x2="532" y2="150" stroke="#78838d" />
+                  <path d="M35 149 C120 148 165 135 205 83 C226 56 244 28 280 24 C316 28 334 56 355 83 C395 135 440 148 525 149" fill="none" stroke="#3d5a80" stroke-width="3" />
+                  <path d="M35 143 C112 141 163 128 207 88 C233 64 251 44 280 41 C309 44 327 64 353 88 C397 128 448 141 525 143" fill="none" stroke="#c96b4b" stroke-width="3" />
+                  <line x1="45" y1="25" x2="75" y2="25" stroke="#3d5a80" stroke-width="3" /><text x="82" y="30" fill="#334155" font-size="13">Normal (z)</text>
+                  <line x1="190" y1="25" x2="220" y2="25" stroke="#c96b4b" stroke-width="3" /><text x="227" y="30" fill="#334155" font-size="13">t (df = 8)</text>
+                  <text x="280" y="174" text-anchor="middle" fill="#334155" font-size="13">The t curve has heavier tails to reflect extra uncertainty.</text>
+                </svg>
+                <figcaption>For larger degrees of freedom, the t-distribution becomes closer to the normal distribution.</figcaption>
+              </figure>
+              <h5>Guided Example: Student Sleep</h5>
+              <p>A sample of 9 students reported these hours of sleep on a school night: <strong>6, 7, 8, 7, 6, 9, 7, 8, 6</strong>. The sample mean is x̄ = <span class="fraction"><span class="numerator">64</span><span class="denominator">9</span></span> ≈ 7.11 hours and the sample standard deviation is s ≈ 1.05 hours. The population standard deviation σ is unknown.</p>
+              <p>For this guided calculation, use a t-table entry for a 95% confidence interval and df = 8: <strong>t* = 2.306</strong>.</p>
+              <div class="lesson-callout">
+                <p><strong>Sample size:</strong> n = 9, so <strong>df = n − 1 = 8</strong>.</p>
+                <p><strong>Standard error:</strong> <span class="fraction"><span class="numerator">s</span><span class="denominator">√n</span></span> = <span class="fraction"><span class="numerator">1.05</span><span class="denominator">√9</span></span> = 0.35 hours.</p>
+                <p><strong>Margin of error:</strong> ME = 2.306(0.35) ≈ 0.81 hours.</p>
+                <p><strong>Confidence interval:</strong> 7.11 ± 0.81 = <strong>(6.30, 7.92) hours</strong>.</p>
+              </div>
+              <p><strong>Interpretation:</strong> We are 95% confident that the mean amount of sleep for the population represented by these students is between about 6.30 and 7.92 hours per school night.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Why is t appropriate for the sleep example, and what are n and df?<button type="button" class="answer-toggle" data-answer-target="lesson-24-t-guided-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-t-guided-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>σ is unknown, so the sample standard deviation s is used and the t-distribution accounts for the extra uncertainty. n = 9 and df = 9 − 1 = 8.</li></ul></div></li>
+                <li>Using t* = 2.306, calculate the margin of error and state the interval's meaning in context.<button type="button" class="answer-toggle" data-answer-target="lesson-24-t-guided-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-t-guided-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>ME = 2.306(1.05 / √9) = 2.306(0.35) ≈ 0.81 hours. The 95% interval is (7.11 − 0.81, 7.11 + 0.81) = (6.30, 7.92); we are 95% confident the population mean sleep time is in this range.</li></ul></div></li>
+              </ol>
+              <p>A t-table lists critical values by degrees of freedom and confidence level. Find the df row and the confidence-level column; use technology to check longer calculations.</p>
+              <div class="lesson-table-wrap">
+                <table class="mini-table">
+                  <caption>Selected two-sided t-critical values</caption>
+                  <thead><tr><th scope="col">df</th><th scope="col">90% confidence</th><th scope="col">95% confidence</th><th scope="col">99% confidence</th></tr></thead>
+                  <tbody><tr><th scope="row">8</th><td>1.860</td><td>2.306</td><td>3.355</td></tr><tr><th scope="row">10</th><td>1.812</td><td>2.228</td><td>3.169</td></tr><tr><th scope="row">20</th><td>1.725</td><td>2.086</td><td>2.845</td></tr></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="lesson-section lesson-practice">
+              <h4>t-Distribution Practice</h4>
+              <p>Use the provided t-table values where needed. Show the standard error and margin of error; technology may check arithmetic.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A study reports a sample mean of 12.4 minutes, s = 2.0 minutes, and n = 16. Identify the method and calculate df.<button type="button" class="answer-toggle" data-answer-target="lesson-24-t-practice-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-t-practice-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Use t because σ is not given and s is used. df = n − 1 = 16 − 1 = <strong>15</strong>.</li></ul></div></li>
+                <li>For a 95% interval with df = 15, use t* = 2.131. Find ME for s = 2.0 and n = 16, then construct an interval around x̄ = 12.4 minutes.<button type="button" class="answer-toggle" data-answer-target="lesson-24-t-practice-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-t-practice-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Standard error = 2.0 / √16 = 0.5. ME = 2.131(0.5) = 1.066. The interval is 12.4 ± 1.066 = <strong>(11.334, 13.466) minutes</strong>, about (11.33, 13.47).</li></ul></div></li>
+                <li>A sample of 21 plants has mean height 18 cm and s = 3 cm. What critical-value distribution should be used when σ is unknown, and what are the degrees of freedom?<button type="button" class="answer-toggle" data-answer-target="lesson-24-t-practice-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-t-practice-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Use a t-distribution because the population standard deviation σ is unknown and s = 3 cm estimates it. df = 21 − 1 = <strong>20</strong>.</li></ul></div></li>
+                <li>For the plant sample, use t* = 2.086 for 95% confidence and df = 20. Calculate ME and a confidence interval for the population mean height.<button type="button" class="answer-toggle" data-answer-target="lesson-24-t-practice-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-t-practice-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>ME = 2.086(3 / √21) ≈ 1.37 cm. The interval is 18 ± 1.37 = <strong>(16.63, 19.37) cm</strong>.</li></ul></div></li>
+                <li>A report gives x̄ = 7.5 hours, s = 1.2 hours, n = 10, and a 95% interval (6.64, 8.36). Interpret this interval for the population mean.<button type="button" class="answer-toggle" data-answer-target="lesson-24-t-practice-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-t-practice-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>We are 95% confident that the population mean is between 6.64 and 8.36 hours. The interval estimates the mean, not the range containing 95% of individual observations.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Part B: Chi-Squared Goodness-of-Fit</h4>
+              <div class="lesson-callout emphasis"><p><strong>Chi-squared methods compare observed categorical data with what we would expect under a particular model.</strong></p></div>
+              <p>In a goodness-of-fit test, we compare the count observed in each category with the count predicted by a model.</p>
+              <div class="lesson-callout emphasis"><p class="formula-block">χ² = Σ <span class="fraction"><span class="numerator">(O − E)²</span><span class="denominator">E</span></span></p></div>
+              <ul class="lesson-list">
+                <li><strong>O</strong> = observed count in a category</li>
+                <li><strong>E</strong> = expected count in that category under the model</li>
+                <li><strong>Σ</strong> = add all category contributions</li>
+                <li><strong>Degrees of freedom:</strong> df = number of categories − 1</li>
+              </ul>
+              <h5>Guided Example: Is the Die Fair?</h5>
+              <p>A die is rolled 60 times. If the die is fair, each face is expected to appear equally often, so the expected count is 60 / 6 = <strong>10 per face</strong>.</p>
+              <div class="lesson-table-wrap">
+                <table class="mini-table">
+                  <caption>Observed and expected die outcomes</caption>
+                  <thead><tr><th scope="col">Face</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th><th scope="col">6</th></tr></thead>
+                  <tbody><tr><th scope="row">Observed (O)</th><td>8</td><td>12</td><td>9</td><td>11</td><td>7</td><td>13</td></tr><tr><th scope="row">Expected (E)</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr></tbody>
+                </table>
+              </div>
+              <figure class="normal-visual">
+                <svg viewBox="0 0 760 250" role="img" aria-label="Grouped bars compare observed die counts 8, 12, 9, 11, 7, and 13 against expected count 10 for each of six faces">
+                  <text x="16" y="26" fill="#334155" font-size="13" font-weight="700">Observed and expected counts (60 rolls)</text>
+                  <rect x="410" y="14" width="13" height="13" fill="#4f8a78" /><text x="430" y="25" fill="#334155" font-size="12">Observed</text>
+                  <rect x="520" y="14" width="13" height="13" fill="#d17b4a" /><text x="540" y="25" fill="#334155" font-size="12">Expected</text>
+                  <line x1="70" y1="200" x2="730" y2="200" stroke="#78838d" />
+                  <line x1="70" y1="100" x2="730" y2="100" stroke="#dfe3e8" stroke-dasharray="4 4" /><text x="44" y="104" fill="#334155" font-size="11">10</text>
+                  <rect x="111" y="120" width="25" height="80" fill="#4f8a78" /><rect x="140" y="100" width="25" height="100" fill="#d17b4a" />
+                  <rect x="216" y="80" width="25" height="120" fill="#4f8a78" /><rect x="245" y="100" width="25" height="100" fill="#d17b4a" />
+                  <rect x="321" y="110" width="25" height="90" fill="#4f8a78" /><rect x="350" y="100" width="25" height="100" fill="#d17b4a" />
+                  <rect x="426" y="90" width="25" height="110" fill="#4f8a78" /><rect x="455" y="100" width="25" height="100" fill="#d17b4a" />
+                  <rect x="531" y="130" width="25" height="70" fill="#4f8a78" /><rect x="560" y="100" width="25" height="100" fill="#d17b4a" />
+                  <rect x="636" y="70" width="25" height="130" fill="#4f8a78" /><rect x="665" y="100" width="25" height="100" fill="#d17b4a" />
+                  <text x="138" y="222" text-anchor="middle" fill="#334155" font-size="12">Face 1</text><text x="243" y="222" text-anchor="middle" fill="#334155" font-size="12">Face 2</text><text x="348" y="222" text-anchor="middle" fill="#334155" font-size="12">Face 3</text><text x="453" y="222" text-anchor="middle" fill="#334155" font-size="12">Face 4</text><text x="558" y="222" text-anchor="middle" fill="#334155" font-size="12">Face 5</text><text x="663" y="222" text-anchor="middle" fill="#334155" font-size="12">Face 6</text>
+                </svg>
+                <figcaption>Each gap between the observed and expected counts contributes to χ².</figcaption>
+              </figure>
+              <p>For face 1, O = 8 and E = 10, so its contribution is <span class="fraction"><span class="numerator">(8 − 10)²</span><span class="denominator">10</span></span> = 0.4. Calculate the remaining category contributions, then add them:</p>
+              <div class="lesson-callout">
+                <p>Face 2: <span class="fraction"><span class="numerator">(12 − 10)²</span><span class="denominator">10</span></span> = 0.4; face 3: <span class="fraction"><span class="numerator">(9 − 10)²</span><span class="denominator">10</span></span> = 0.1</p>
+                <p>Face 4: <span class="fraction"><span class="numerator">(11 − 10)²</span><span class="denominator">10</span></span> = 0.1; face 5: <span class="fraction"><span class="numerator">(7 − 10)²</span><span class="denominator">10</span></span> = 0.9; face 6: <span class="fraction"><span class="numerator">(13 − 10)²</span><span class="denominator">10</span></span> = 0.9</p>
+                <p><strong>χ² = 0.4 + 0.4 + 0.1 + 0.1 + 0.9 + 0.9 = 2.8</strong></p>
+                <p><strong>df = 6 − 1 = 5</strong>. For df = 5, a chi-squared table gives a 0.05 upper-tail critical value of about 11.07. Since 2.8 is smaller, the result is not unusually large (technology gives p ≈ 0.73).</p>
+              </div>
+              <p><strong>Interpretation:</strong> These observed counts are reasonably consistent with the fair-die model. A small χ² means the observed counts are relatively close to expected counts; a large χ² means larger differences and may be evidence against the model. It does not prove the die is fair.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Find the expected number of times each face should appear in 60 rolls of a fair die.<button type="button" class="answer-toggle" data-answer-target="lesson-24-chi-guided-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-chi-guided-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>There are 6 equally likely faces, so the expected count is 60 / 6 = <strong>10 rolls per face</strong>.</li></ul></div></li>
+                <li>Calculate the contribution for face 1, then state df and the total χ² for the six observed counts.<button type="button" class="answer-toggle" data-answer-target="lesson-24-chi-guided-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-chi-guided-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Face 1 contributes (8 − 10)² / 10 = 0.4. With 6 categories, df = 6 − 1 = 5; adding all six contributions gives χ² = <strong>2.8</strong>.</li></ul></div></li>
+                <li>Using the df = 5 critical value 11.07 at the 0.05 level, what does χ² = 2.8 suggest about the fair-die model?<button type="button" class="answer-toggle" data-answer-target="lesson-24-chi-guided-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-chi-guided-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Because 2.8 is below 11.07 (and the technology p-value is about 0.73), the counts are not unusually far from what a fair die predicts; they are reasonably consistent with the model.</li></ul></div></li>
+              </ol>
+              <p>For larger tests, use a calculator or statistical software to compute χ² and the p-value. The statistic summarizes the size of the observed-versus-expected differences; the p-value helps decide whether that amount of difference is unusual under the model.</p>
+            </div>
+
+            <div class="lesson-section lesson-practice">
+              <h4>Chi-Squared Practice</h4>
+              <p>Use a table or technology for the final inference when needed. Keep each category contribution separate before adding.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A spinner has 4 equal sections and is spun 40 times. What is the expected count for each section under the equal-sections model?<button type="button" class="answer-toggle" data-answer-target="lesson-24-chi-practice-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-chi-practice-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Each section has probability 1 / 4, so its expected count is 40(1 / 4) = <strong>10 spins</strong>.</li></ul></div></li>
+                <li>For one category, O = 14 and E = 10. Calculate its chi-squared contribution.<button type="button" class="answer-toggle" data-answer-target="lesson-24-chi-practice-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-chi-practice-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Contribution = <span class="fraction"><span class="numerator">(14 − 10)²</span><span class="denominator">10</span></span> = 16 / 10 = <strong>1.6</strong>.</li></ul></div></li>
+                <li>A three-category model has observed counts 18, 22, and 20; each expected count is 20. Find each contribution and the total χ².<button type="button" class="answer-toggle" data-answer-target="lesson-24-chi-practice-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-chi-practice-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The contributions are (18 − 20)² / 20 = 0.2, (22 − 20)² / 20 = 0.2, and (20 − 20)² / 20 = 0. The total is <strong>χ² = 0.4</strong>.</li></ul></div></li>
+                <li>How many degrees of freedom are used for a goodness-of-fit test with 3 categories?<button type="button" class="answer-toggle" data-answer-target="lesson-24-chi-practice-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-chi-practice-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>df = number of categories − 1 = 3 − 1 = <strong>2</strong>.</li></ul></div></li>
+                <li>A goodness-of-fit test has df = 2 and χ² = 8.0. A table gives the 0.05 upper-tail critical value 5.99. What does the comparison suggest?<button type="button" class="answer-toggle" data-answer-target="lesson-24-chi-practice-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-chi-practice-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Since 8.0 is greater than 5.99, the statistic is in the upper 5% tail under the model. The observed counts differ more than expected by chance alone at this cutoff, providing evidence against the model.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>When should we use t instead of z for a confidence interval for a mean?<button type="button" class="answer-toggle" data-answer-target="lesson-24-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-guiding-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Use t when the population standard deviation σ is unknown and is estimated with the sample standard deviation s.</li></ul></div></li>
+                <li>Why is s used when σ is unknown?<button type="button" class="answer-toggle" data-answer-target="lesson-24-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-guiding-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>s is calculated from the sample and estimates the unknown population spread; using an estimate adds uncertainty that t accounts for.</li></ul></div></li>
+                <li>What are degrees of freedom for a one-sample t interval?<button type="button" class="answer-toggle" data-answer-target="lesson-24-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-guiding-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>They are df = n − 1, the value used to select the appropriate t-distribution and critical value.</li></ul></div></li>
+                <li>What does the t-critical value t* represent?<button type="button" class="answer-toggle" data-answer-target="lesson-24-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-guiding-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It is the multiplier, selected by confidence level and df, that sets how many standard errors extend on each side of the sample mean.</li></ul></div></li>
+                <li>What does a confidence interval using t estimate?<button type="button" class="answer-toggle" data-answer-target="lesson-24-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-guiding-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It estimates a plausible range for the population mean μ.</li></ul></div></li>
+                <li>In a goodness-of-fit test, what do observed and expected counts mean?<button type="button" class="answer-toggle" data-answer-target="lesson-24-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-guiding-6" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Observed counts are the data collected in each category; expected counts are the counts predicted by the model being checked.</li></ul></div></li>
+                <li>What does the chi-squared statistic measure?<button type="button" class="answer-toggle" data-answer-target="lesson-24-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-guiding-7" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It adds up the squared observed-minus-expected differences, scaled by expected counts, to summarize how far the data are from the model.</li></ul></div></li>
+                <li>What does a large chi-squared statistic suggest?<button type="button" class="answer-toggle" data-answer-target="lesson-24-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-guiding-8" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It suggests the observed counts are far from expected counts; a sufficiently large value may be evidence against the model.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p>Show the model choice and setup. Use a t-table, chi-squared table, or technology for critical values and final inference.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A random sample of 12 runners has mean mile time x̄ = 8.4 minutes and sample SD s = 0.6 minutes. The population SD is unknown. Explain why t, not z, is appropriate and find df.<button type="button" class="answer-toggle" data-answer-target="lesson-24-apply-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-apply-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>σ is unknown, and s = 0.6 minutes estimates it, so use t to account for that extra uncertainty. df = 12 − 1 = <strong>11</strong>.</li></ul></div></li>
+                <li>For the runners, use t* = 2.201 for a 95% interval with df = 11. Find ME and construct the interval for mean mile time.<button type="button" class="answer-toggle" data-answer-target="lesson-24-apply-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-apply-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>ME = 2.201(0.6 / √12) ≈ 0.381 minutes. The interval is 8.4 ± 0.381 = <strong>(8.019, 8.781) minutes</strong>.</li></ul></div></li>
+                <li>Interpret the runners' 95% confidence interval in context.<button type="button" class="answer-toggle" data-answer-target="lesson-24-apply-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-apply-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>We are 95% confident that the population mean mile time for runners represented by this sample is between about 8.02 and 8.78 minutes.</li></ul></div></li>
+                <li>A fair four-color spinner is spun 80 times. Find the expected count for each color, then calculate the contribution for a color observed 16 times.<button type="button" class="answer-toggle" data-answer-target="lesson-24-apply-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-apply-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Expected count per color = 80 / 4 = 20. Contribution = <span class="fraction"><span class="numerator">(16 − 20)²</span><span class="denominator">20</span></span> = <strong>0.8</strong>.</li></ul></div></li>
+                <li>A three-category goodness-of-fit test has contributions 0.8, 0.2, and 1.0. Find χ² and df.<button type="button" class="answer-toggle" data-answer-target="lesson-24-apply-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-apply-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>χ² = 0.8 + 0.2 + 1.0 = <strong>2.0</strong>. With 3 categories, df = 3 − 1 = <strong>2</strong>.</li></ul></div></li>
+                <li>For the previous result, technology reports p = 0.37. At significance level 0.05, what is the conclusion about the expected model?<button type="button" class="answer-toggle" data-answer-target="lesson-24-apply-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-apply-6" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Since p = 0.37 is greater than 0.05, the observed differences are not statistically unusual under the model. We do not have sufficient evidence to conclude that the categorical distribution differs from the expected model.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>The statistical method should match the type of data and the information we know about the population.</strong></p></div>
+              <p><strong>For t:</strong> When estimating a population mean and the population standard deviation is unknown, the t-distribution accounts for the extra uncertainty.</p>
+              <p><strong>For chi-squared:</strong> Chi-squared measures how different the observed categorical counts are from the counts we would expect under a model.</p>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <ol class="lesson-list lesson-ordered-list">
+                <li><strong>Why can't we use exactly the same statistical method for every type of data?</strong><button type="button" class="answer-toggle" data-answer-target="lesson-24-closure-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-closure-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Different questions use different kinds of data and population information. A t interval estimates a mean using sample spread when σ is unknown, while chi-squared compares categorical counts with expected counts from a model.</li></ul></div></li>
+                <li><strong>How is a t-based confidence interval different from a chi-squared analysis?</strong><button type="button" class="answer-toggle" data-answer-target="lesson-24-closure-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-24-closure-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>A t-based confidence interval uses a sample mean and sample standard deviation to estimate a population mean; a chi-squared analysis uses observed and expected categorical counts to assess their difference from a model.</li></ul></div></li>
+              </ol>
+              <p><strong>Next lesson:</strong> We will use hypothesis testing to make formal decisions about statistical claims.</p>
+            </div>
+          </section>
+
+          <section id="lesson-25" class="lesson">
+            <div class="lesson-header">
+              <p class="lesson-number">Lesson 25</p>
+              <h3>Hypothesis Testing</h3>
+            </div>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>Hypothesis testing provides a structured way to determine whether sample evidence is strong enough to reject a null hypothesis.</strong></p></div>
+              <p>We will turn a sample result into a probability, compare that probability with a chosen cutoff, and make a conclusion about a claim.</p>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Learning Goals</h4>
+              <ul class="lesson-list">
+                <li>State a null hypothesis and an alternative hypothesis.</li>
+                <li>Identify a significance level, α, and distinguish one-sided from two-sided tests.</li>
+                <li>Calculate a test statistic and find and interpret a p-value.</li>
+                <li>Compare a p-value with α, decide whether to reject or fail to reject H₀, and conclude in context.</li>
+                <li>Connect hypothesis testing to simulation, binomial probability, and normal distributions.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Part 1: The Hypothesis Testing Process</h4>
+              <p>Hypothesis testing is a structured version of the inference process we have been using throughout the course.</p>
+              <ol class="calculation-steps" aria-label="Seven steps of hypothesis testing">
+                <li>1. State H₀ and Hₐ</li><li>2. Identify α</li><li>3. Calculate the test statistic</li><li>4. Find the p-value</li><li>5. Compare p-value with α</li><li>6. Decide</li><li>7. Conclude in context</li>
+              </ol>
+              <h5>Write the hypotheses</h5>
+              <ul class="lesson-list">
+                <li><strong>H₀, the null hypothesis:</strong> the starting claim or “no effect/no difference” model. It includes an equality.</li>
+                <li><strong>Hₐ, the alternative hypothesis:</strong> the direction or difference we are looking for evidence to support.</li>
+              </ul>
+              <div class="lesson-table-wrap">
+                <table class="mini-table">
+                  <caption>Alternative hypotheses for a population proportion</caption>
+                  <thead><tr><th scope="col">Question</th><th scope="col">Alternative</th><th scope="col">Test direction</th></tr></thead>
+                  <tbody><tr><td>Has the percentage changed?</td><td>Hₐ: p ≠ p₀</td><td>Two-sided</td></tr><tr><td>Has the percentage increased?</td><td>Hₐ: p &gt; p₀</td><td>Right-sided</td></tr><tr><td>Has the percentage decreased?</td><td>Hₐ: p &lt; p₀</td><td>Left-sided</td></tr></tbody>
+                </table>
+              </div>
+              <p>Choose the alternative from the research question <strong>before looking at the sample result</strong>. The direction tells us which outcomes count as evidence against H₀.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A company asks whether customer preference has changed from 50%. Write the alternative hypothesis and identify the test direction.<button type="button" class="answer-toggle" data-answer-target="lesson-25-hypothesis-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-hypothesis-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Hₐ: p ≠ 0.50. The question allows a change in either direction, so this is a two-sided test.</li></ul></div></li>
+                <li>A school asks whether support for a policy has increased above 40%. Write Hₐ and identify the direction.<button type="button" class="answer-toggle" data-answer-target="lesson-25-hypothesis-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-hypothesis-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Hₐ: p &gt; 0.40. The question looks for an increase, so this is a right-sided test.</li></ul></div></li>
+                <li>A survey asks whether customer satisfaction has decreased below 80%. Write Hₐ and identify the direction.<button type="button" class="answer-toggle" data-answer-target="lesson-25-hypothesis-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-hypothesis-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Hₐ: p &lt; 0.80. The question looks for a decrease, so this is a left-sided test.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Part 2: Significance Level and Decision</h4>
+              <p>A common significance level is <strong>α = 0.05</strong>. Alpha is the cutoff for deciding whether the sample result would be sufficiently unusual if H₀ were true.</p>
+              <div class="lesson-callout emphasis">
+                <p><strong>If p-value ≤ α: Reject H₀</strong></p>
+                <p><strong>If p-value &gt; α: Fail to reject H₀</strong></p>
+              </div>
+              <p><strong>Fail to reject does not mean “prove H₀ is true.”</strong> It means the sample did not provide strong enough evidence against H₀ at the chosen significance level.</p>
+              <div class="lesson-callout"><p><strong>p-value:</strong> Assuming H₀ is true, the probability of getting a result at least as extreme as the one observed, in the direction specified by Hₐ.</p></div>
+            </div>
+
+            <div class="lesson-section lesson-practice">
+              <h4>Part 3: Hand Calculation: One-Proportion Test</h4>
+              <p>A company claims that 50% of customers prefer its new product. In a random sample of 100 customers, 58 prefer the new product. Test the claim at the 5% significance level.</p>
+              <ol class="calculation-steps" aria-label="Seven steps for the product-preference test">
+                <li>Hypotheses</li><li>α</li><li>Sample data</li><li>z statistic</li><li>p-value</li><li>Decision</li><li>Conclusion</li>
+              </ol>
+              <ol class="lesson-list lesson-ordered-list">
+                <li><strong>Step 1: State the hypotheses.</strong> Because the claim asks whether preference differs from 50%, use H₀: p = 0.50 and Hₐ: p ≠ 0.50.</li>
+                <li><strong>Step 2: Identify α and sample information.</strong> α = 0.05, n = 100, x = 58, and p̂ = <span class="fraction"><span class="numerator">58</span><span class="denominator">100</span></span> = 0.58. Under H₀, p₀ = 0.50 and q₀ = 1 − p₀ = 0.50.</li>
+                <li><strong>Step 3: Calculate the test statistic.</strong>
+                  <div class="lesson-callout"><p class="formula-block">z = <span class="fraction"><span class="numerator">p̂ − p₀</span><span class="denominator">√<span class="fraction"><span class="numerator">p₀q₀</span><span class="denominator">n</span></span></span></span> = <span class="fraction"><span class="numerator">0.58 − 0.50</span><span class="denominator">√<span class="fraction"><span class="numerator">(0.50)(0.50)</span><span class="denominator">100</span></span></span></span> = <span class="fraction"><span class="numerator">0.08</span><span class="denominator">0.05</span></span> = 1.60</p></div>
+                </li>
+                <li><strong>Step 4: Find the p-value.</strong> This is two-sided, so use both tails: p-value = 2P(Z ≥ 1.60) ≈ 2(0.0548) = <strong>0.1096</strong>.</li>
+                <li><strong>Step 5: Compare.</strong> 0.1096 &gt; α = 0.05.</li>
+                <li><strong>Step 6: Decide.</strong> Fail to reject H₀.</li>
+                <li><strong>Step 7: Conclude in context.</strong> At the 5% significance level, the sample does not provide sufficient evidence that the proportion of all customers who prefer the new product differs from 50%.</li>
+              </ol>
+              <div class="lesson-table-wrap">
+                <table class="mini-table">
+                  <caption>Selected standard normal upper-tail areas</caption>
+                  <thead><tr><th scope="col">z</th><th scope="col">Area to the right, P(Z ≥ z)</th></tr></thead>
+                  <tbody><tr><th scope="row">0.80</th><td>0.2119</td></tr><tr><th scope="row">0.87</th><td>0.1922</td></tr><tr><th scope="row">1.60</th><td>0.0548</td></tr><tr><th scope="row">2.00</th><td>0.0228</td></tr><tr><th scope="row">2.20</th><td>0.0139</td></tr><tr><th scope="row">2.40</th><td>0.0082</td></tr></tbody>
+                </table>
+              </div>
+              <p>For a two-sided test, double one tail area. For a right-sided test, use the area to the right; for a left-sided test, use the area to the left.</p>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Part 4: Simulation → Probability → Hypothesis Test</h4>
+              <div class="normal-visual-grid">
+                <figure class="normal-visual"><figcaption>Lessons 9–14: Simulation</figcaption><p>“Would results this extreme happen often if the null were true?”</p><p>Simulate many results under the null model and count extreme outcomes.</p></figure>
+                <figure class="normal-visual"><figcaption>Lessons 19–22: Probability and Normal Models</figcaption><p>“We can calculate how often results this extreme would happen.”</p><p>Use probability models and tables to estimate the chance of extreme results.</p></figure>
+                <figure class="normal-visual"><figcaption>Lesson 25: Hypothesis Testing</figcaption><p>“We use that probability to make a formal statistical decision.”</p><p>Compare the p-value with α, then state a decision and conclusion.</p></figure>
+              </div>
+              <div class="lesson-callout emphasis"><p><strong>The p-value is still answering the same basic question students have asked since Lesson 9: if the null model were true, how often would results this extreme occur?</strong></p></div>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Part 5: One-Sided vs. Two-Sided Tests</h4>
+              <p>Match the alternative hypothesis to the question before calculating anything:</p>
+              <ul class="calculation-steps" aria-label="Matching questions to test directions">
+                <li>“Has the percentage changed?” → two-sided, Hₐ: p ≠ p₀</li>
+                <li>“Has the percentage increased?” → right-sided, Hₐ: p &gt; p₀</li>
+                <li>“Has the percentage decreased?” → left-sided, Hₐ: p &lt; p₀</li>
+              </ul>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A school survey asks whether support for a policy has decreased from 60%. Before seeing any sample data, write Hₐ and identify the test direction.<button type="button" class="answer-toggle" data-answer-target="lesson-25-direction-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-direction-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Hₐ: p &lt; 0.60. This is a left-sided test because the question asks about a decrease.</li></ul></div></li>
+                <li>A product team asks whether customer preference changed from 45%. Write Hₐ and identify the test direction.<button type="button" class="answer-toggle" data-answer-target="lesson-25-direction-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-direction-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Hₐ: p ≠ 0.45. “Changed” includes an increase or decrease, so this is two-sided.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-practice">
+              <h4>Hand Calculation Practice</h4>
+              <p>For every problem, write H₀ and Hₐ, identify α and the test direction, calculate p̂ and z, use a z-table for the p-value, compare with α, and conclude in context. Assume a random sample and use α = 0.05.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A school claims 50% of students support a schedule change. In a sample of 100 students, 62 support it. Test whether support has increased. Use a right-tail area of 0.0082 for z = 2.40.<button type="button" class="answer-toggle" data-answer-target="lesson-25-practice-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-practice-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>H₀: p = 0.50; Hₐ: p &gt; 0.50, right-sided. p̂ = <span class="fraction"><span class="numerator">62</span><span class="denominator">100</span></span> = 0.62. z = <span class="fraction"><span class="numerator">0.62 − 0.50</span><span class="denominator">√<span class="fraction"><span class="numerator">(0.50)(0.50)</span><span class="denominator">100</span></span></span></span> = <span class="fraction"><span class="numerator">0.12</span><span class="denominator">0.05</span></span> = 2.40. The p-value is 0.0082. Since 0.0082 ≤ 0.05, reject H₀. There is sufficient evidence that more than 50% of students support the schedule change.</li></ul></div></li>
+                <li>A company says 70% of customers are satisfied. In a sample of 100, 74 are satisfied. Test whether the satisfaction proportion has changed. Use z ≈ 0.87 and right-tail area 0.1922.<button type="button" class="answer-toggle" data-answer-target="lesson-25-practice-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-practice-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>H₀: p = 0.70; Hₐ: p ≠ 0.70, two-sided; α = 0.05. p̂ = <span class="fraction"><span class="numerator">74</span><span class="denominator">100</span></span> = 0.74. z = <span class="fraction"><span class="numerator">0.74 − 0.70</span><span class="denominator">√<span class="fraction"><span class="numerator">(0.70)(0.30)</span><span class="denominator">100</span></span></span></span> ≈ 0.87. The two-sided p-value is 2(0.1922) = 0.3844. Since 0.3844 &gt; 0.05, fail to reject H₀. There is not sufficient evidence that the satisfaction proportion has changed from 70%.</li></ul></div></li>
+                <li>A coin is claimed to be fair. In 100 tosses, it lands heads 61 times. Test whether the coin is unfair. Use a right-tail area of 0.0139 for z = 2.20.<button type="button" class="answer-toggle" data-answer-target="lesson-25-practice-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-practice-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>H₀: p = 0.50; Hₐ: p ≠ 0.50, two-sided. p̂ = <span class="fraction"><span class="numerator">61</span><span class="denominator">100</span></span> = 0.61. z = <span class="fraction"><span class="numerator">0.61 − 0.50</span><span class="denominator">√<span class="fraction"><span class="numerator">(0.50)(0.50)</span><span class="denominator">100</span></span></span></span> = <span class="fraction"><span class="numerator">0.11</span><span class="denominator">0.05</span></span> = 2.20. The p-value is 2(0.0139) = 0.0278. Since 0.0278 ≤ 0.05, reject H₀. There is evidence that the coin's probability of heads differs from 0.50.</li></ul></div></li>
+                <li>In a product survey, 54 of 100 customers prefer the new product. Test whether the true preference proportion differs from 50%. Use z = 0.80 and right-tail area 0.2119.<button type="button" class="answer-toggle" data-answer-target="lesson-25-practice-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-practice-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>H₀: p = 0.50; Hₐ: p ≠ 0.50, two-sided. p̂ = <span class="fraction"><span class="numerator">54</span><span class="denominator">100</span></span> = 0.54. z = <span class="fraction"><span class="numerator">0.54 − 0.50</span><span class="denominator">√<span class="fraction"><span class="numerator">(0.50)(0.50)</span><span class="denominator">100</span></span></span></span> = <span class="fraction"><span class="numerator">0.04</span><span class="denominator">0.05</span></span> = 0.80. The p-value is 2(0.2119) = 0.4238. Since 0.4238 &gt; 0.05, fail to reject H₀. Although the sample proportion is 0.04 higher than 0.50, that difference is not statistically significant at the 5% level.</li></ul></div></li>
+                <li>A school survey tests whether support has decreased below 50%. In a sample of 100 students, 42 support the policy. Use z = −1.60 and right-tail area 0.0548 for z = 1.60.<button type="button" class="answer-toggle" data-answer-target="lesson-25-practice-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-practice-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>H₀: p = 0.50; Hₐ: p &lt; 0.50, left-sided. p̂ = <span class="fraction"><span class="numerator">42</span><span class="denominator">100</span></span> = 0.42. z = <span class="fraction"><span class="numerator">0.42 − 0.50</span><span class="denominator">√<span class="fraction"><span class="numerator">(0.50)(0.50)</span><span class="denominator">100</span></span></span></span> = <span class="fraction"><span class="numerator">−0.08</span><span class="denominator">0.05</span></span> = −1.60. The left-tail p-value is 0.0548. Since 0.0548 &gt; 0.05, fail to reject H₀. There is not sufficient evidence that support has decreased below 50%.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology Check: StatLab</h4>
+              <div class="lesson-callout emphasis"><p><strong>By hand:</strong> calculate the statistic → use the table → find the p-value → make the decision.</p><p><strong>Technology:</strong> enter the same information → verify the statistic and p-value.</p></div>
+              <p>After completing a practice problem by hand, use StatLab to enter the null proportion, sample size, number of successes, and the correct one- or two-sided alternative. Compare StatLab's test statistic and p-value with your work. Technology checks the reasoning; it does not choose the hypotheses or write the conclusion for you.</p>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Common Mistakes</h4>
+              <ul class="lesson-list">
+                <li><strong>“The p-value is the probability that H₀ is true.”</strong> Incorrect. It is a probability of data this extreme or more extreme, assuming H₀ is true.</li>
+                <li><strong>“Fail to reject means H₀ is proven true.”</strong> Incorrect. It means the evidence was not strong enough to reject H₀ at the chosen α.</li>
+                <li><strong>“Statistically significant means practically important.”</strong> Not necessarily. Statistical significance does not by itself tell us whether an effect is large or meaningful in practice.</li>
+                <li><strong>Choosing Hₐ after seeing the data.</strong> Incorrect. Choose the alternative from the research question before examining the sample result.</li>
+                <li><strong>Forgetting to state the conclusion in context.</strong> Connect the decision to the original claim and population.</li>
+                <li><strong>Confusing one-sided and two-sided tests.</strong> Match the tail or tails to the wording of Hₐ.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>What is the purpose of a hypothesis test?<button type="button" class="answer-toggle" data-answer-target="lesson-25-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-guiding-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It provides a structured way to decide whether sample evidence is strong enough to reject a stated null hypothesis.</li></ul></div></li>
+                <li>What does H₀ represent?<button type="button" class="answer-toggle" data-answer-target="lesson-25-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-guiding-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>H₀ is the null model or starting claim, often representing no effect or no difference.</li></ul></div></li>
+                <li>What does Hₐ represent?<button type="button" class="answer-toggle" data-answer-target="lesson-25-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-guiding-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Hₐ is the alternative claim we are looking for evidence to support, such as a difference, increase, or decrease.</li></ul></div></li>
+                <li>What does α represent?<button type="button" class="answer-toggle" data-answer-target="lesson-25-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-guiding-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>α is the significance-level cutoff used to decide whether the p-value is small enough to reject H₀.</li></ul></div></li>
+                <li>How do you decide whether a test is one-sided or two-sided?<button type="button" class="answer-toggle" data-answer-target="lesson-25-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-guiding-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Use the research question: “different” uses two sides, “increased” uses the right side, and “decreased” uses the left side. Decide before looking at the data.</li></ul></div></li>
+                <li>What does the test statistic measure?<button type="button" class="answer-toggle" data-answer-target="lesson-25-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-guiding-6" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It measures how far the sample result is from the null value in standard-error units.</li></ul></div></li>
+                <li>What does the p-value tell us?<button type="button" class="answer-toggle" data-answer-target="lesson-25-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-guiding-7" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Assuming H₀ is true, it gives the probability of getting the observed result or one at least as extreme in the direction specified by Hₐ.</li></ul></div></li>
+                <li>Why does a small p-value provide evidence against H₀?<button type="button" class="answer-toggle" data-answer-target="lesson-25-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-guiding-8" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>A small p-value means the observed result would be unusual if H₀ were true, so the null model may not explain the data well.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>Hypothesis testing gives us a formal process for deciding whether sample evidence is strong enough to reject a null hypothesis. The p-value measures how unusual the observed result would be if the null hypothesis were true.</strong></p></div>
+              <p><strong>Statistics starts with variability and uncertainty. We collect data, describe the data, model chance, quantify uncertainty, and use evidence to make informed conclusions.</strong></p>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <ol class="lesson-list lesson-ordered-list">
+                <li><strong>How is a formal hypothesis test different from simply looking at two numbers and deciding that one is bigger?</strong><button type="button" class="answer-toggle" data-answer-target="lesson-25-closure-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-closure-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>A formal test accounts for sample variability, specifies hypotheses and a significance level, measures how unusual the result is under H₀, and uses that evidence to make a careful conclusion in context.</li></ul></div></li>
+                <li><strong>Explain the connection among simulation, p-values, and hypothesis testing.</strong><button type="button" class="answer-toggle" data-answer-target="lesson-25-closure-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-25-closure-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Simulation estimates how often extreme results occur under the null model; a p-value gives that probability using a model or calculation; hypothesis testing compares it with α to make a formal decision. The calculations are tools for answering the larger statistical question, not the goal by themselves.</li></ul></div></li>
+              </ol>
+              <div class="lesson-callout"><p><strong>Unit 5 complete:</strong> We have used counting, variability, probability, models, confidence intervals, and hypothesis tests to reason from data while accounting for uncertainty.</p></div>
             </div>
           </section>
         </div>
