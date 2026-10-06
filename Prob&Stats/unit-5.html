@@ -60,6 +60,13 @@
         .z-area { fill: #d9eadf; }
         .z-curve { fill: none; stroke: #3d5a80; stroke-width: 3; }
         .z-marker { stroke: #c96b4b; stroke-width: 2; stroke-dasharray: 5 4; }
+        .proportion-visual { overflow-x: auto; margin: 14px 0; padding: 10px; background: #fff; border: 1px solid #dfe3e8; }
+        .proportion-visual svg { display: block; width: 100%; height: auto; }
+        .proportion-visual text { fill: #334155; font: 13px Arial, sans-serif; }
+        .proportion-visual .interval-line { stroke: #4f8a78; stroke-width: 8; stroke-linecap: round; }
+        .proportion-visual .estimate-line { stroke: #c96b4b; stroke-width: 3; }
+        .proportion-visual .axis-line { stroke: #78838d; stroke-width: 1; }
+        .proportion-visual .axis-tick { stroke: #78838d; stroke-width: 1; }
         @media (max-width: 700px) { .z-score-controls { grid-template-columns: 1fr; } }
       @media (max-width: 600px) { .binomial-controls { grid-template-columns: 1fr; } }
       @media (max-width: 600px) { .normal-controls { grid-template-columns: 1fr; } }
@@ -91,7 +98,8 @@
             <a href="#lesson-19">Lesson 19</a>
             <a href="#lesson-20">Lesson 20</a>
             <a href="#lesson-21">Lesson 21</a>
-            <a href="#lesson-22" aria-current="page">Lesson 22</a>
+            <a href="#lesson-22">Lesson 22</a>
+            <a href="#lesson-23" aria-current="page">Lesson 23</a>
           </nav>
         </aside>
 
@@ -624,6 +632,170 @@
               <button type="button" class="answer-toggle" data-answer-target="lesson-22-closure" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button>
               <div id="lesson-22-closure" class="possible-answer" hidden><ul class="lesson-list"><li>A z-score tells both the direction and how far the value is from the mean in standard-deviation units. That lets us compare values from different scales and use the z-table to estimate probabilities and percentiles.</li></ul></div>
               <p><strong>Next lesson:</strong> We will use sample proportions to estimate population proportions with confidence intervals and determine how large a sample we need.</p>
+            </div>
+          </section>
+
+          <section id="lesson-23" class="lesson">
+            <div class="lesson-header">
+              <p class="lesson-number">Lesson 23</p>
+              <h3>Confidence Intervals for Proportions &amp; Sample Size</h3>
+            </div>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>We can use a sample proportion to estimate a population proportion while also quantifying the uncertainty in that estimate.</strong></p></div>
+              <p>A survey gives us a proportion from a sample. A confidence interval uses that sample result to estimate a range of plausible values for the population proportion.</p>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Learning Goals</h4>
+              <ul class="lesson-list">
+                <li>Calculate a sample proportion, p̂, and distinguish it from a population proportion, p.</li>
+                <li>Identify a point estimate and calculate a margin of error.</li>
+                <li>Construct and interpret a confidence interval for a population proportion.</li>
+                <li>Explain how sample size affects margin of error.</li>
+                <li>Calculate a required sample size for a desired margin of error.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Part 1: Sample Proportions</h4>
+              <div class="lesson-callout emphasis"><p class="formula-block">p̂ = <span class="fraction"><span class="numerator">x</span><span class="denominator">n</span></span></p></div>
+              <ul class="lesson-list">
+                <li><strong>x</strong> = number of successes, or sample members with the characteristic being counted</li>
+                <li><strong>n</strong> = sample size</li>
+                <li><strong>p̂</strong> = sample proportion, the fraction of the sample that had the characteristic; <strong>q̂ = 1 − p̂</strong> is the sample proportion without it, and <strong>q = 1 − p</strong> is the population proportion without it</li>
+              </ul>
+              <p><strong>Example:</strong> 72 of 120 students surveyed prefer a later school start time. Here x = 72 and n = 120, so <strong>p̂ = <span class="fraction"><span class="numerator">72</span><span class="denominator">120</span></span> = 0.60</strong>, or 60%.</p>
+              <p>The sample proportion p̂ is a <strong>point estimate</strong>: one best single-number estimate, based on this sample, for the unknown population proportion p.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>In the later-start survey, identify x and n, then calculate p̂ as a percent.<button type="button" class="answer-toggle" data-answer-target="lesson-23-sample-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-sample-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>x = 72 and n = 120. p̂ = <span class="fraction"><span class="numerator">72</span><span class="denominator">120</span></span> = 0.60, so 60% of the sampled students prefer a later start.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Part 2: Confidence Interval for a Proportion</h4>
+              <div class="lesson-callout emphasis"><p class="formula-block">p̂ ± z* √<span class="fraction"><span class="numerator">p̂q̂</span><span class="denominator">n</span></span></p></div>
+              <ul class="lesson-list">
+                <li><strong>p̂</strong> is the center of the interval and the sample estimate.</li>
+                <li><strong>z*</strong> is the confidence-level multiplier. For 90%, 95%, and 99% confidence, use approximately 1.645, 1.96, and 2.576.</li>
+                <li><strong>√<span class="fraction"><span class="numerator">p̂q̂</span><span class="denominator">n</span></span></strong> is the standard error.</li>
+                <li><strong>Margin of error (ME)</strong> is the entire amount added to and subtracted from p̂: z* times the standard error.</li>
+              </ul>
+              <div class="lesson-callout"><p><strong>Process:</strong> sample data → p̂ → margin of error → confidence interval → interpretation</p></div>
+              <h5>Build a 95% confidence interval</h5>
+              <p>For the 72 of 120 students, p̂ = 0.60, n = 120, and z* = 1.96.</p>
+              <div class="lesson-callout">
+                <p><strong>Standard error:</strong> √<span class="fraction"><span class="numerator">0.60(0.40)</span><span class="denominator">120</span></span> = √0.002 ≈ 0.0447</p>
+                <p><strong>Margin of error:</strong> ME = 1.96(0.0447) ≈ 0.0876, or 8.8 percentage points</p>
+                <p><strong>Confidence interval:</strong> 0.60 ± 0.0876 = (0.512, 0.688), or about 51.2% to 68.8%</p>
+              </div>
+              <p><strong>Interpretation:</strong> We are 95% confident that the proportion of all students who prefer a later start time is between about 51.2% and 68.8%. The 95% describes the long-run success rate of this interval method across repeated random samples; it does not mean that 95% of students are in the interval.</p>
+              <figure class="proportion-visual">
+                <svg viewBox="0 0 760 188" role="img" aria-label="95 percent confidence interval for the student survey: sample proportion 0.60, margin of error about 0.088, interval from 0.512 to 0.688">
+                  <text x="16" y="27" font-weight="700">95% confidence interval</text>
+                  <text x="16" y="53">Population proportion p</text>
+                  <line class="axis-line" x1="150" y1="106" x2="710" y2="106" />
+                  <line class="interval-line" x1="436.7" y1="106" x2="535.3" y2="106" />
+                  <line class="estimate-line" x1="486" y1="76" x2="486" y2="136" />
+                  <line class="axis-tick" x1="150" y1="101" x2="150" y2="112" /><text x="150" y="132" text-anchor="middle">0</text>
+                  <line class="axis-tick" x1="430" y1="101" x2="430" y2="112" /><text x="430" y="132" text-anchor="middle">0.50</text>
+                  <line class="axis-tick" x1="710" y1="101" x2="710" y2="112" /><text x="710" y="132" text-anchor="middle">1.00</text>
+                  <text x="436.7" y="160" text-anchor="middle">0.512</text><text x="535.3" y="160" text-anchor="middle">0.688</text>
+                  <text x="486" y="69" text-anchor="middle">p̂ = 0.60</text>
+                  <text x="16" y="181">Interval endpoints: p̂ − ME and p̂ + ME</text>
+                  <text x="580" y="181">ME ≈ 0.088</text>
+                </svg>
+                <figcaption>Center = sample proportion; interval width reflects the margin of error at 95% confidence.</figcaption>
+              </figure>
+            </div>
+
+            <div class="lesson-section lesson-practice">
+              <h4>Part 3: Hand Calculation Practice</h4>
+              <p>Use z* = 1.96 for each 95% interval. Show p̂, identify n, calculate ME, write both endpoints, and interpret the interval in context. Round proportions to three decimals.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A random sample of 75 students includes 45 who support a later school start. Find p̂, n, ME, and a 95% confidence interval. Interpret it for all students.<button type="button" class="answer-toggle" data-answer-target="lesson-23-practice-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-practice-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>p̂ = <span class="fraction"><span class="numerator">45</span><span class="denominator">75</span></span> = 0.60, q̂ = 0.40, and n = 75. ME = 1.96√<span class="fraction"><span class="numerator">0.60(0.40)</span><span class="denominator">75</span></span> ≈ 0.111. The interval is 0.60 ± 0.111 = (0.489, 0.711). We are 95% confident that 48.9% to 71.1% of all students support the later start.</li></ul></div></li>
+                <li>Of 50 customers surveyed, 36 say they are satisfied with a product. Calculate p̂, n, ME, and a 95% confidence interval. Interpret the endpoints.<button type="button" class="answer-toggle" data-answer-target="lesson-23-practice-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-practice-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>p̂ = <span class="fraction"><span class="numerator">36</span><span class="denominator">50</span></span> = 0.72, q̂ = 0.28, and n = 50. ME = 1.96√<span class="fraction"><span class="numerator">0.72(0.28)</span><span class="denominator">50</span></span> ≈ 0.124. The 95% interval is (0.596, 0.844). We estimate that 59.6% to 84.4% of all customers are satisfied.</li></ul></div></li>
+                <li>In a voter poll, 84 of 140 sampled voters support a candidate. Calculate p̂, n, ME, and a 95% confidence interval; interpret it for voters.<button type="button" class="answer-toggle" data-answer-target="lesson-23-practice-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-practice-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>p̂ = <span class="fraction"><span class="numerator">84</span><span class="denominator">140</span></span> = 0.60, q̂ = 0.40, and n = 140. ME = 1.96√<span class="fraction"><span class="numerator">0.60(0.40)</span><span class="denominator">140</span></span> ≈ 0.081. The interval is (0.519, 0.681). We are 95% confident that about 51.9% to 68.1% of all voters support the candidate.</li></ul></div></li>
+                <li>A survey finds that 30 of 60 students use a particular app. Find p̂, n, ME, and a 95% confidence interval. What population proportion is being estimated?<button type="button" class="answer-toggle" data-answer-target="lesson-23-practice-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-practice-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>p̂ = <span class="fraction"><span class="numerator">30</span><span class="denominator">60</span></span> = 0.50, q̂ = 0.50, and n = 60. ME = 1.96√<span class="fraction"><span class="numerator">0.50(0.50)</span><span class="denominator">60</span></span> ≈ 0.126. The 95% interval is (0.374, 0.626), estimating the proportion of all students who use the app.</li></ul></div></li>
+                <li>Of 90 people surveyed, 54 prefer a particular product. Calculate p̂, n, ME, and a 95% confidence interval. Explain what this interval does <strong>not</strong> mean.<button type="button" class="answer-toggle" data-answer-target="lesson-23-practice-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-practice-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>p̂ = <span class="fraction"><span class="numerator">54</span><span class="denominator">90</span></span> = 0.60, q̂ = 0.40, and n = 90. ME = 1.96√<span class="fraction"><span class="numerator">0.60(0.40)</span><span class="denominator">90</span></span> ≈ 0.101. The 95% interval is (0.499, 0.701), estimating the population proportion who prefer the product. It does not mean 95% of people prefer the product, nor that 95% of the population proportion lies in this one already-calculated interval.</li></ul></div></li>
+              </ol>
+              <p>Technology can check arithmetic after you show the hand calculation and explain what the interval estimates.</p>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Part 4: Sample Size</h4>
+              <div class="lesson-callout emphasis"><p><strong>Larger sample → smaller margin of error</strong></p></div>
+              <p>For a chosen confidence level and target margin of error, estimate the required sample size with:</p>
+              <div class="lesson-callout emphasis"><p class="formula-block">n = <span class="fraction"><span class="numerator">(z*)² p*q*</span><span class="denominator">ME²</span></span></p></div>
+              <ul class="lesson-list">
+                <li><strong>ME</strong> = desired margin of error, written as a decimal</li>
+                <li><strong>p*</strong> = prior estimate of the population proportion; <strong>q* = 1 − p*</strong></li>
+                <li><strong>z*</strong> = critical value for the desired confidence level</li>
+              </ul>
+              <p>If no prior estimate for p is available, use <strong>p* = 0.50</strong>, so <strong>q* = 0.50</strong>. Since p*q* is largest at 0.50, this choice gives the most conservative, or largest, required sample size. Always <strong>round n up</strong> to ensure the desired margin of error is met.</p>
+              <figure class="proportion-visual">
+                <svg viewBox="0 0 760 188" role="img" aria-label="Two 95 percent confidence intervals with the same sample proportion 0.60. The interval for sample size 50 is wider than for sample size 200.">
+                  <text x="16" y="27" font-weight="700">Same estimate and confidence, different sample sizes</text>
+                  <text x="16" y="72">n = 50</text><line class="axis-line" x1="150" y1="69" x2="710" y2="69" />
+                  <line class="interval-line" x1="409.8" y1="69" x2="562.2" y2="69" /><line class="estimate-line" x1="486" y1="48" x2="486" y2="90" />
+                  <text x="16" y="126">n = 200</text><line class="axis-line" x1="150" y1="123" x2="710" y2="123" />
+                  <line class="interval-line" x1="447.9" y1="123" x2="524.1" y2="123" /><line class="estimate-line" x1="486" y1="102" x2="486" y2="144" />
+                  <text x="150" y="166" text-anchor="middle">0</text><text x="430" y="166" text-anchor="middle">0.50</text><text x="710" y="166" text-anchor="middle">1.00</text>
+                  <text x="486" y="184" text-anchor="middle">p̂ = 0.60 for both; the larger sample has a narrower interval</text>
+                </svg>
+                <figcaption>Both intervals use the same sample proportion and 95% confidence level. A larger n reduces the standard error and margin of error.</figcaption>
+              </figure>
+              <h5>Sample Size Practice</h5>
+              <p>Substitute into the formula, then round each result up to a whole person.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Find the required sample size for 95% confidence, ME = 0.05, and no prior estimate for p.<button type="button" class="answer-toggle" data-answer-target="lesson-23-size-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-size-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Use z* = 1.96, p* = 0.50, and q* = 0.50: n = <span class="fraction"><span class="numerator">(1.96)²(0.50)(0.50)</span><span class="denominator">(0.05)²</span></span> = 384.16. Round up to <strong>385 people</strong>.</li></ul></div></li>
+                <li>Find the required sample size for 90% confidence, ME = 0.04, and no prior estimate for p. Use z* = 1.645.<button type="button" class="answer-toggle" data-answer-target="lesson-23-size-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-size-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Use p* = 0.50 and q* = 0.50: n = <span class="fraction"><span class="numerator">(1.645)²(0.50)(0.50)</span><span class="denominator">(0.04)²</span></span> ≈ 422.82. Round up to <strong>423 people</strong>.</li></ul></div></li>
+                <li>A prior study estimates p = 0.60. Find the required sample size for 95% confidence and ME = 0.05.<button type="button" class="answer-toggle" data-answer-target="lesson-23-size-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-size-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Use p* = 0.60, q* = 0.40, and z* = 1.96: n = <span class="fraction"><span class="numerator">(1.96)²(0.60)(0.40)</span><span class="denominator">(0.05)²</span></span> ≈ 368.79. Round up to <strong>369 people</strong>.</li></ul></div></li>
+                <li>There is no prior estimate for p. Find the sample size for 99% confidence and ME = 0.04. Use z* = 2.576.<button type="button" class="answer-toggle" data-answer-target="lesson-23-size-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-size-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Use p* = 0.50 and q* = 0.50: n = <span class="fraction"><span class="numerator">(2.576)²(0.50)(0.50)</span><span class="denominator">(0.04)²</span></span> ≈ 1036.84. Round up to <strong>1,037 people</strong>.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Guiding Questions</h4>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>What is p̂?<button type="button" class="answer-toggle" data-answer-target="lesson-23-guiding-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-guiding-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>p̂ is the sample proportion: the number of sampled successes divided by the sample size.</li></ul></div></li>
+                <li>How is a sample proportion different from a population proportion?<button type="button" class="answer-toggle" data-answer-target="lesson-23-guiding-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-guiding-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>p̂ describes the observed sample; p describes the usually unknown proportion in the whole population.</li></ul></div></li>
+                <li>What is a point estimate?<button type="button" class="answer-toggle" data-answer-target="lesson-23-guiding-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-guiding-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It is one sample-based number used as an estimate of a population parameter; here p̂ estimates p.</li></ul></div></li>
+                <li>What does a confidence interval estimate?<button type="button" class="answer-toggle" data-answer-target="lesson-23-guiding-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-guiding-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It estimates a range of plausible values for the population proportion p.</li></ul></div></li>
+                <li>What is the margin of error?<button type="button" class="answer-toggle" data-answer-target="lesson-23-guiding-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-guiding-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It is the amount added to and subtracted from p̂ to form the interval; it reflects the estimate's sampling uncertainty at the chosen confidence level.</li></ul></div></li>
+                <li>What generally happens to margin of error when sample size increases?<button type="button" class="answer-toggle" data-answer-target="lesson-23-guiding-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-guiding-6" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It gets smaller, so the interval is narrower and the estimate is more precise.</li></ul></div></li>
+                <li>Why use p* = 0.50 when no prior estimate is available?<button type="button" class="answer-toggle" data-answer-target="lesson-23-guiding-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-guiding-7" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>For a proportion, p*q* is largest at 0.50, so this choice gives the largest, most conservative required sample size.</li></ul></div></li>
+                <li>Why must a calculated sample size be rounded up?<button type="button" class="answer-toggle" data-answer-target="lesson-23-guiding-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-guiding-8" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Rounding down could leave too few observations and make the actual margin of error slightly larger than the target.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-apply">
+              <h4>Apply</h4>
+              <p>Show your calculations by hand, then use technology to check. State the confidence level and interpret intervals in context.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>In a survey, 42 of 70 students say they support a school policy. Calculate p̂ and n.<button type="button" class="answer-toggle" data-answer-target="lesson-23-apply-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-apply-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>p̂ = <span class="fraction"><span class="numerator">42</span><span class="denominator">70</span></span> = <strong>0.60</strong>, or 60%, and <strong>n = 70</strong>.</li></ul></div></li>
+                <li>For those 42 of 70 students, construct a 90% confidence interval and interpret it in context. Use z* = 1.645.<button type="button" class="answer-toggle" data-answer-target="lesson-23-apply-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-apply-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>ME = 1.645√<span class="fraction"><span class="numerator">0.60(0.40)</span><span class="denominator">70</span></span> ≈ 0.096. The interval is 0.60 ± 0.096 = <strong>(0.504, 0.696)</strong>. We are 90% confident that 50.4% to 69.6% of all students support the policy.</li></ul></div></li>
+                <li>A sample proportion is 0.50 from n = 100. Compare 90% and 99% confidence intervals using z* = 1.645 and 2.576. Which is wider, and why?<button type="button" class="answer-toggle" data-answer-target="lesson-23-apply-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-apply-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>For 90%, ME = 1.645√<span class="fraction"><span class="numerator">0.25</span><span class="denominator">100</span></span> ≈ 0.082, giving (0.418, 0.582). For 99%, ME = 2.576√<span class="fraction"><span class="numerator">0.25</span><span class="denominator">100</span></span> = 0.129, giving (0.371, 0.629). The 99% interval is wider because greater confidence needs a larger multiplier.</li></ul></div></li>
+                <li>For p̂ = 0.60 and 95% confidence, compare the margin of error for n = 100 with n = 400. How does precision change?<button type="button" class="answer-toggle" data-answer-target="lesson-23-apply-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-apply-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>At n = 100, ME = 1.96√<span class="fraction"><span class="numerator">0.60(0.40)</span><span class="denominator">100</span></span> ≈ 0.096. At n = 400, ME ≈ 0.048. Quadrupling n halves the margin of error, so the estimate is more precise.</li></ul></div></li>
+                <li>A community group wants 95% confidence with ME = 0.03 and has no prior estimate for p. Find the required sample size and explain your rounding.<button type="button" class="answer-toggle" data-answer-target="lesson-23-apply-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-apply-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Use z* = 1.96, p* = 0.50, and q* = 0.50: n = <span class="fraction"><span class="numerator">(1.96)²(0.25)</span><span class="denominator">(0.03)²</span></span> ≈ 1,067.11. Round up to <strong>1,068 people</strong> so the target margin of error is met.</li></ul></div></li>
+                <li>To keep the same margin of error, which needs a larger sample: raising confidence from 95% to 99%, or lowering the desired margin of error from 0.05 to 0.03? Explain.<button type="button" class="answer-toggle" data-answer-target="lesson-23-apply-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-apply-6" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Raising confidence increases z*, so it requires a larger sample if ME stays fixed. Lowering ME also increases required n because ME is squared in the denominator; for example, changing 0.05 to 0.03 multiplies n by <span class="fraction"><span class="numerator">0.05</span><span class="denominator">0.03</span></span>² ≈ 2.78. Which change requires more depends on the exact comparison; with 95% to 99%, z* changes from 1.96 to 2.576, multiplying n by about 1.73, so reducing ME from 0.05 to 0.03 requires the larger sample.</li></ul></div></li>
+                <li>A 95% interval estimates the proportion of customers satisfied with a product as (0.62, 0.78). Interpret this interval in context.<button type="button" class="answer-toggle" data-answer-target="lesson-23-apply-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-apply-7" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>We are 95% confident that between 62% and 78% of all customers are satisfied with the product.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-big-idea">
+              <h4>The Big Idea</h4>
+              <div class="lesson-callout emphasis"><p><strong>A sample proportion gives us an estimate of a population proportion. A confidence interval adds a measure of uncertainty to that estimate. Larger samples generally produce more precise estimates, while higher confidence requires a wider interval or a larger sample.</strong></p></div>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <ol class="lesson-list lesson-ordered-list">
+                <li><strong>How does a confidence interval improve on reporting only a sample proportion?</strong><button type="button" class="answer-toggle" data-answer-target="lesson-23-closure-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-closure-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It reports the sample estimate along with a range of plausible population proportions and a measure of the estimate's uncertainty.</li></ul></div></li>
+                <li><strong>Why does increasing the sample size usually make a confidence interval narrower?</strong><button type="button" class="answer-toggle" data-answer-target="lesson-23-closure-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-23-closure-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>A larger n makes the standard error √<span class="fraction"><span class="numerator">p̂q̂</span><span class="denominator">n</span></span> smaller, which usually lowers the margin of error and narrows the interval.</li></ul></div></li>
+              </ol>
+              <p><strong>Next lesson:</strong> We will use the t-distribution for confidence intervals involving population means and begin working with chi-squared methods for categorical data.</p>
             </div>
           </section>
         </div>
