@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Probability & Statistics - Unit 6</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      .unit-shell, .unit-sidebar, .unit-content, .lesson { min-width: 0; }
+      @media (max-width: 820px) { .unit-shell { grid-template-columns: minmax(0, 1fr); } }
+    </style>
   </head>
   <body>
     <header class="site-header unit-header">
@@ -25,82 +29,265 @@
         <aside class="unit-sidebar" aria-label="Unit 6 navigation">
           <div class="sidebar-header">
             <p class="sidebar-label">Unit 6</p>
-            <h2>Foundations</h2>
+            <h2>Survey Design, Study Methods & Sampling</h2>
           </div>
 
           <nav class="lesson-nav">
-            <a href="#lesson-1">Lesson 1</a>
-            <a href="#lesson-2">Lesson 2</a>
-            <a href="#lesson-3">Lesson 3</a>
-            <a href="#lesson-4">Lesson 4</a>
-            <a href="#lesson-5">Lesson 5</a>
-            <a href="#lesson-6">Lesson 6</a>
+
+            <a href="#lesson-26">Lesson 26</a>
+            <a href="#lesson-27">Lesson 27</a>
+            <a href="#lesson-28" aria-current="page">Lesson 28</a>
           </nav>
         </aside>
 
         <div class="unit-content">
-          <section id="lesson-1" class="lesson">
+          <section id="lesson-26" class="lesson">
             <div class="lesson-header">
-              <p class="lesson-number">Lesson 1</p>
-              <h3>Lesson 1 Title</h3>
+              <p class="lesson-number">Lesson 26</p>
+              <h3>Understanding Types of Data</h3>
             </div>
-            <p>
-              This is a placeholder lesson section for Unit 6. Replace this content with the first lesson's objectives,
-              notes, activities, and assignments.
-            </p>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <p>Imagine you ask students for their favorite school subject, a satisfaction rating, today's temperature, and how long it takes them to finish a task.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>For each variable, what kind of information would the answer produce? How are the four variables different?<button type="button" class="answer-toggle" data-answer-target="lesson-26-bellringer" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-26-bellringer" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Favorite subject gives a category with no order; a satisfaction rating gives ordered categories; temperature in °F is numerical with meaningful differences but no true zero; task time is numerical with a meaningful zero. The variable type and scale determine which summaries and comparisons make sense.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>Identify the individuals in a data set and the variables recorded for them.</li>
+                <li>Distinguish qualitative (categorical) data from quantitative data.</li>
+                <li>Classify variables using nominal, ordinal, interval, and ratio scales.</li>
+                <li>Choose reasonable summaries and comparisons for each type of variable.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore: What Kind of Data Do We Have?</h4>
+              <p>Start by naming the <strong>individuals</strong>: the people, objects, or events described by the data. A <strong>variable</strong> is a characteristic recorded for each individual.</p>
+              <div class="lesson-callout emphasis"><p><strong>Qualitative (categorical) data</strong> describe labels or groups. <strong>Quantitative data</strong> are numerical measurements or counts where arithmetic has meaning.</p></div>
+              <p>A number written in the data does not automatically make a variable quantitative. A jersey number such as 12 is an identifying label: adding jersey numbers or averaging them is not meaningful.</p>
+              <div class="lesson-table-wrap" style="width:100%; overflow-x:auto;">
+                <table class="mini-table">
+                  <caption>Four measurement scales</caption>
+                  <thead><tr><th scope="col">Scale</th><th scope="col">What it means</th><th scope="col">Example</th><th scope="col">Reasonable summaries</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Nominal</th><td>Categories with no meaningful order</td><td>Favorite color or school subject</td><td>Counts, proportions, mode</td></tr>
+                    <tr><th scope="row">Ordinal</th><td>Ordered categories; gaps need not be equal</td><td>Satisfaction rating: low, medium, high</td><td>Counts, proportions, median, order comparisons</td></tr>
+                    <tr><th scope="row">Interval</th><td>Numerical values with meaningful differences, but no true zero</td><td>Temperature in °F</td><td>Differences, mean, median, range</td></tr>
+                    <tr><th scope="row">Ratio</th><td>Numerical values with meaningful differences and a true zero</td><td>Time, length, speed</td><td>Arithmetic summaries and meaningful ratios</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">True zero<span class="glossary-definition">A value of zero means that none of the measured quantity is present. Zero minutes means no time elapsed; 0°F does not mean no temperature.</span></span> matters: 20 minutes is twice as long as 10 minutes, but 20°F is not twice as warm as 10°F.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A student's jersey number is 12. Is the variable quantitative just because it is written as a number? What summaries make sense?<button type="button" class="answer-toggle" data-answer-target="lesson-26-borderline" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-26-borderline" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>No. Jersey number is a nominal label used to identify a player. Counts or a list of players by number make sense, but a mean or arithmetic difference between numbers does not.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology / Data Investigation</h4>
+              <p>Work through each situation. Identify the individuals and variable, classify it as qualitative or quantitative, name its measurement scale where appropriate, and choose a sensible summary or comparison. Explain why your choice fits the data.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li><strong>School survey:</strong> Students choose their favorite school subject. Identify the individuals, variable, type, scale, and a sensible summary.<button type="button" class="answer-toggle" data-answer-target="lesson-26-investigation-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-26-investigation-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Individuals are students; the variable is favorite subject. It is qualitative, nominal data. Use category counts, proportions, or the mode; compare subject proportions across grades if grade is also recorded.</li></ul></div></li>
+                <li><strong>School survey:</strong> Students rate lunch satisfaction from 1 (very dissatisfied) to 5 (very satisfied). Classify the rating and suggest a comparison.<button type="button" class="answer-toggle" data-answer-target="lesson-26-investigation-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-26-investigation-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Individuals are students; the variable is satisfaction rating. It is qualitative ordinal data, even though numbers label the ordered responses. Summarize with category proportions or a median rating and compare rating distributions across grades; do not assume each step is an equal amount of satisfaction.</li></ul></div></li>
+                <li><strong>School survey:</strong> Students report the number of minutes they spend on homework each evening. Identify type, scale, and a useful summary.<button type="button" class="answer-toggle" data-answer-target="lesson-26-investigation-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-26-investigation-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Individuals are students; the variable is homework time in minutes. It is quantitative ratio data with a true zero. Summarize with a median and range (or mean and standard deviation if appropriate), and compare typical time across grades.</li></ul></div></li>
+                <li><strong>Sports:</strong> A roster records each player's jersey number. Are the numbers quantitative? What can you reasonably report?<button type="button" class="answer-toggle" data-answer-target="lesson-26-investigation-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-26-investigation-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Individuals are players; jersey number is a qualitative nominal identifier, not a measurement. List numbers or count players by another category; a mean jersey number has no useful interpretation.</li></ul></div></li>
+                <li><strong>Sports:</strong> A team records points scored in each game. Identify the variable type, scale, and one useful comparison.<button type="button" class="answer-toggle" data-answer-target="lesson-26-investigation-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-26-investigation-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Individuals are games; the variable is points scored. It is quantitative discrete ratio data with a true zero. Compare mean or median points per game across seasons or home and away games.</li></ul></div></li>
+                <li><strong>Sports:</strong> A race result records each runner's finishing place (1st, 2nd, 3rd, ...). Is this interval or ordinal? Explain.<button type="button" class="answer-toggle" data-answer-target="lesson-26-investigation-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-26-investigation-6" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Individuals are runners; finishing place is ordinal because it gives order, but the gaps between places are not equal time differences. Report ranks or compare median place; use actual elapsed times for quantitative time comparisons.</li></ul></div></li>
+                <li><strong>Shopping:</strong> A receipt records the price paid for each item. Identify the scale and a useful summary.<button type="button" class="answer-toggle" data-answer-target="lesson-26-investigation-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-26-investigation-7" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Individuals are purchased items; price is quantitative ratio data with a true zero. Summarize prices with a median or mean, and compare typical prices across product categories.</li></ul></div></li>
+                <li><strong>Shopping:</strong> A shopper records payment method (cash, card, phone, or gift card). What type of data is this, and what comparison is sensible?<button type="button" class="answer-toggle" data-answer-target="lesson-26-investigation-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-26-investigation-8" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Individuals are purchases; payment method is qualitative nominal data. Compare counts or proportions for each method, perhaps by store or time of day.</li></ul></div></li>
+                <li><strong>Everyday life:</strong> A weather report records daily temperature in °F. Explain why this is interval, not ratio, data and name a sensible summary.<button type="button" class="answer-toggle" data-answer-target="lesson-26-investigation-9" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-26-investigation-9" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Individuals are days; temperature in °F is quantitative interval data. Differences are meaningful, but 0°F is not absence of temperature, so ratios are not meaningful. Compare means, medians, or temperature differences across weeks.</li></ul></div></li>
+                <li><strong>Everyday life:</strong> A phone tracks the number of steps a person takes each day. Classify the variable and suggest a comparison.<button type="button" class="answer-toggle" data-answer-target="lesson-26-investigation-10" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-26-investigation-10" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Individuals are person-days; step count is quantitative discrete ratio data because zero steps means no steps were taken. Compare daily medians or means across weekdays and weekends.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-questions">
+              <h4>Closure</h4>
+              <p>A new survey records how students travel to school: walk, bike, bus, or car.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Identify the individuals and variable, classify the data, and explain what you could reasonably calculate or conclude.<button type="button" class="answer-toggle" data-answer-target="lesson-26-closure" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-26-closure" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Individuals are students; the variable is travel method. It is qualitative nominal data because the options are categories with no inherent order. We can count or find the proportion in each category and identify the most common method, but a mean travel-method code would not be meaningful.</li></ul></div></li>
+              </ol>
+              <div class="lesson-callout emphasis"><p><strong>The type of data you collect determines what questions you can ask and what conclusions you can draw.</strong></p></div>
+            </div>
           </section>
 
-          <section id="lesson-2" class="lesson">
+          <section id="lesson-27" class="lesson">
             <div class="lesson-header">
-              <p class="lesson-number">Lesson 2</p>
-              <h3>Lesson 2 Title</h3>
+              <p class="lesson-number">Lesson 27</p>
+              <h3>Designing Effective Surveys</h3>
             </div>
-            <p>
-              Add a short overview, class notes, examples, and any key vocabulary for Lesson 2 here.
-            </p>
+
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p>Imagine a school survey asks: <strong>“Don't you agree that our excellent new phone policy makes classes much better?”</strong></p></div>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>What might influence students' answers to this question? How could you ask it more fairly?<button type="button" class="answer-toggle" data-answer-target="lesson-27-bellringer" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-27-bellringer" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>“Don't you agree” and “excellent” suggest the preferred answer, while “makes classes much better” assumes the policy helped. Ask neutrally, such as: “How has the phone policy affected your learning in class?” with balanced response choices and an option for no effect.</li></ul></div></li>
+              </ol>
+              <div class="lesson-callout emphasis"><p><strong>Big Idea: Survey results are only as useful as the questions asked and the people willing and able to answer them.</strong></p></div>
+            </div>
+
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>Identify common survey question types and choose one that fits the information needed.</li>
+                <li>Recognize nonresponse, untruthful responses, faulty recall, leading questions, vague wording, interviewer influence, and voluntary-response bias.</li>
+                <li>Evaluate and revise flawed questions to make them clear and neutral.</li>
+                <li>Design a clear, appropriate survey and explain ways to reduce bias and encourage honest responses.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-section lesson-explore">
+              <h4>Explore: Ask Questions That Fit</h4>
+              <p>Survey questions can collect different kinds of answers. Choose the format that matches what you want to learn.</p>
+              <ul class="lesson-list">
+                <li><strong>Yes/no:</strong> a short choice between two answers. Example: “Did you eat breakfast today?”</li>
+                <li><strong>Multiple-choice:</strong> respondents choose from listed options. Example: “How do you usually get to school: walk, bike, bus, car, or another way?” Include an “Other” option when useful.</li>
+                <li><strong>Likert-scale:</strong> respondents show a level of agreement, frequency, or satisfaction on an ordered scale. Example: “How satisfied are you with the library hours?” from “Very dissatisfied” to “Very satisfied.” Keep the scale balanced and label its choices.</li>
+                <li><strong>Open-ended:</strong> respondents answer in their own words. Example: “What is one change that would make the cafeteria better?” These questions are useful for detail and unfamiliar topics, but responses are harder to summarize numerically. Open-ended questions are not inherently bad.</li>
+              </ul>
+              <h5>Ways a Survey Can Go Off Track</h5>
+              <ul class="lesson-list">
+                <li><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">Leading question<span class="glossary-definition">Wording that suggests a preferred answer or pushes respondents toward a particular response.</span></span>: “How much did you love the new lunch menu?”</li>
+                <li><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">Vague wording<span class="glossary-definition">A question without a clear time period, definition, or meaning that respondents may interpret differently.</span></span>: “Do you exercise often?”</li>
+                <li><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">Double-barreled question<span class="glossary-definition">One question that asks about two different things, making it unclear which part a response refers to.</span></span>: “Are classes and homework fair?”</li>
+                <li><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">Nonresponse<span class="glossary-definition">Bias that can occur when selected people do not answer and their views differ from those who respond.</span></span>: students who are too busy or cannot access the survey are missing.</li>
+                <li><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">Voluntary-response bias<span class="glossary-definition">Bias that occurs when people choose themselves to respond; those with especially strong opinions may be more likely to take part.</span></span>: an open link posted online may attract mostly students who feel strongly.</li>
+                <li><strong>Untruthful responses:</strong> people may give an answer they think sounds acceptable instead of their true behavior or opinion.</li>
+                <li><strong>Faulty recall:</strong> people may not accurately remember events, especially over a long or unclear time period.</li>
+                <li><strong>Interviewer influence:</strong> a researcher's tone, expression, or presence may affect how a respondent answers.</li>
+              </ul>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>You want to learn what students think about a new, unfamiliar after-school program. Why might an open-ended question help, and what is one tradeoff?<button type="button" class="answer-toggle" data-answer-target="lesson-27-open-ended" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-27-open-ended" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>An open-ended prompt lets students raise ideas the survey designer may not have anticipated and explain their reasoning. The tradeoff is that written answers take longer to organize and are harder to summarize numerically.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology / Data Investigation: Repair the Survey</h4>
+              <p>For each flawed question, name the problem or possible source of bias, then rewrite it. Keep the intended topic, but make the wording clearer, more neutral, and easier to answer honestly.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li><strong>Leading:</strong> “How helpful was the amazing new tutoring program?” Identify the flaw and revise it.<button type="button" class="answer-toggle" data-answer-target="lesson-27-revise-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-27-revise-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The word “amazing” signals a positive answer and assumes the program was helpful. Revise to: “How helpful, if at all, was the tutoring program?” with balanced choices from “Not at all helpful” to “Very helpful,” plus “I did not use it.”</li></ul></div></li>
+                <li><strong>Double-barreled:</strong> “Are you satisfied with the cafeteria food and the lunch period length?” What is wrong, and how could you fix it?<button type="button" class="answer-toggle" data-answer-target="lesson-27-revise-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-27-revise-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>It asks about food and schedule length at once, so one answer cannot show which part the student means. Split it into two questions: “How satisfied are you with the cafeteria food?” and “How satisfied are you with the amount of time for lunch?” Use the same balanced scale for both.</li></ul></div></li>
+                <li><strong>Vague time and wording:</strong> “Do you use social media a lot?” Identify what is unclear and rewrite it.<button type="button" class="answer-toggle" data-answer-target="lesson-27-revise-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-27-revise-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>“A lot” means different things to different people, and no time period is given. Revise to: “On a typical school day, about how much total time do you spend on social media?” with clear ranges such as “Less than 1 hour,” “1 to less than 2 hours,” and so on.</li></ul></div></li>
+                <li><strong>Faulty recall:</strong> “How many hours did you spend studying during the past month?” What might make the answer inaccurate? Revise it.<button type="button" class="answer-toggle" data-answer-target="lesson-27-revise-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-27-revise-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>A month is difficult to remember accurately. Ask about a shorter period, such as: “Yesterday, about how many minutes did you spend studying outside class?” Include “I did not study” and a reasonable set of ranges.</li></ul></div></li>
+                <li><strong>Untruthful or socially pressured responses:</strong> “How many times did you skip a class this semester? Write your name.” What could discourage an honest answer? Revise the approach.<button type="button" class="answer-toggle" data-answer-target="lesson-27-revise-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-27-revise-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Asking for a name on a sensitive question may make students fear consequences and encourage inaccurate answers. Do not collect names; explain that answers are confidential, use a neutral question and a defined time period, and allow “Prefer not to answer.”</li></ul></div></li>
+                <li><strong>Nonresponse:</strong> A school emails a survey about bus service but receives few answers from bus riders. Who may be missing, and what should the survey team do?<button type="button" class="answer-toggle" data-answer-target="lesson-27-revise-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-27-revise-6" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Bus riders who did not see or complete the email may be underrepresented, so the responses may not reflect their views. Send neutral reminders, make the survey easy to access on a phone, and offer another way to respond without pressuring students.</li></ul></div></li>
+                <li><strong>Voluntary-response bias:</strong> A school posts “Tell us why the new schedule is terrible!” on its public page. What kind of response pattern might this create? Suggest a better plan.<button type="button" class="answer-toggle" data-answer-target="lesson-27-revise-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-27-revise-7" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The prompt is leading, and an open public link invites people with strong negative opinions to select themselves into the survey. Invite a random or broadly representative group, ask neutrally how the schedule is working, and include positive, neutral, and negative response options.</li></ul></div></li>
+                <li><strong>Interviewer influence:</strong> An interviewer smiles and says “Most students like the new study hall. Do you?” What could affect the response, and how can it be improved?<button type="button" class="answer-toggle" data-answer-target="lesson-27-revise-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-27-revise-8" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The interviewer's expression, claim about other students, and yes/no wording can pressure agreement. Use a neutral script and ask privately: “How do you feel about the study hall?” with balanced choices, including “No opinion” or “I have not attended.”</li></ul></div></li>
+              </ol>
+              <h5>Design a Short School Survey</h5>
+              <p>Choose a school topic such as homework workload, lunch options, library hours, or access to after-school activities. Draft three or four questions. For each, choose yes/no, multiple-choice, Likert-scale, or open-ended responses. Then explain who you would survey, how you would invite them, and what you would do to reduce bias and encourage honest responses.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Describe your topic, respondents, question types and response options. How will you make participation accessible, reduce bias, and protect honest answers?<button type="button" class="answer-toggle" data-answer-target="lesson-27-design" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-27-design" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>One possible plan is to survey a randomly selected group of students about homework workload. Ask: (1) “On a typical school night, about how long do you spend on homework?” with non-overlapping time ranges; (2) a balanced Likert-scale question about workload; and (3) an optional open-ended question asking what would help. Invite students across grades, send neutral reminders, make the survey phone-accessible, avoid collecting names, explain how answers will be used, and let students skip a question.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p>Revise one flawed question from this lesson. Explain what was wrong with the original and why your version should produce more useful data.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Choose one flawed survey question, write your revision, and explain how the revision improves the data.<button type="button" class="answer-toggle" data-answer-target="lesson-27-closure" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-27-closure" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>For “Do you exercise often?”, a clearer revision is: “During the past 7 days, on how many days were you physically active for at least 30 minutes?” The fixed time period and specific definition reduce different interpretations and make answers easier to compare.</li></ul></div></li>
+              </ol>
+              <div class="lesson-callout emphasis"><p><strong>Clear, neutral questions and thoughtful sampling help turn responses into evidence we can use.</strong></p></div>
+            </div>
           </section>
 
-          <section id="lesson-3" class="lesson">
+          <section id="lesson-28" class="lesson">
             <div class="lesson-header">
-              <p class="lesson-number">Lesson 3</p>
-              <h3>Lesson 3 Title</h3>
+              <p class="lesson-number">Lesson 28</p>
+              <h3>Surveys, Observational Studies &amp; Experiments</h3>
             </div>
-            <p>
-              Use this section to include learning targets, guided practice, or discussion prompts for the next lesson.
-            </p>
-          </section>
 
-          <section id="lesson-4" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 4</p>
-              <h3>Lesson 4 Title</h3>
+            <div class="lesson-section lesson-bellringer">
+              <h4>Bellringer</h4>
+              <div class="lesson-callout"><p>A headline claims: <strong>“Students who exercise more earn better grades.”</strong></p></div>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Does this claim prove that exercise causes better grades? What additional information would you want before deciding?<button type="button" class="answer-toggle" data-answer-target="lesson-28-bellringer" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-28-bellringer" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>No. The statement describes an association, but other factors such as sleep, health, available free time, or study habits could be related to both exercise and grades. We would need to know how the data were collected and whether students were assigned to exercise conditions before making a causal claim.</li></ul></div></li>
+              </ol>
+              <div class="lesson-callout emphasis"><p><strong>Big Idea: The way data are collected determines what conclusions are justified.</strong></p></div>
             </div>
-            <p>
-              Placeholder content for Lesson 4. Add warm-ups, examples, or independent work as needed.
-            </p>
-          </section>
 
-          <section id="lesson-5" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 5</p>
-              <h3>Lesson 5 Title</h3>
+            <div class="lesson-section lesson-objectives">
+              <h4>Objectives</h4>
+              <ul class="lesson-list">
+                <li>Distinguish surveys, observational studies, experiments, and simulations.</li>
+                <li>Identify samples, control groups, and treatment groups.</li>
+                <li>Explain placebo effects and the difference between association and causation.</li>
+                <li>Choose a suitable study method and justify what conclusions it can support.</li>
+              </ul>
             </div>
-            <p>
-              This section can later hold assessment information, classwork, and review questions for Lesson 5.
-            </p>
-          </section>
 
-          <section id="lesson-6" class="lesson">
-            <div class="lesson-header">
-              <p class="lesson-number">Lesson 6</p>
-              <h3>Lesson 6 Title</h3>
+            <div class="lesson-section lesson-explore">
+              <h4>Explore: How Were the Data Collected?</h4>
+              <p>The <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">sample<span class="glossary-definition">The individuals selected from a population to provide data in a study.</span></span> is the group from whom data are collected. Different collection methods answer different questions:</p>
+              <ul class="lesson-list">
+                <li><strong>Survey:</strong> asks people questions. Surveys are useful for collecting information about many variables, such as opinions, habits, and experiences. A survey can describe responses or explore associations, but it does not assign treatments.</li>
+                <li><strong>Observational study:</strong> measures or observes individuals without imposing a treatment. Researchers can find patterns and associations, but other variables may help explain them.</li>
+                <li><strong>Experiment:</strong> deliberately imposes a treatment to investigate its effects. A <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">treatment group<span class="glossary-definition">The group of participants that receives the treatment being studied.</span></span> receives the treatment; a <span class="glossary-term" tabindex="0" role="button" aria-expanded="false">control group<span class="glossary-definition">The comparison group that does not receive the active treatment, or receives a standard condition or placebo.</span></span> provides a comparison. Random assignment can help make the groups comparable.</li>
+                <li><strong>Simulation:</strong> uses a model to replicate conditions and explore possible outcomes when direct observation or experimentation is difficult, unsafe, or impractical. A simulation's conclusions depend on how well its model represents the situation.</li>
+              </ul>
+              <div class="lesson-callout"><p><strong>Placebo effect:</strong> Participants may report or experience a change because they believe they received a treatment, even if they received an inactive placebo. A placebo control can help separate the treatment's effect from expectations.</p></div>
+              <p><span class="glossary-term" tabindex="0" role="button" aria-expanded="false">Association<span class="glossary-definition">A relationship or pattern between variables; by itself, it does not establish that one variable caused another.</span></span> means two variables are related in the observed data. <strong>Association alone does not prove causation.</strong> Well-designed randomized experiments can provide stronger evidence for causal claims; observational studies generally cannot establish causation on their own.</p>
+              <div class="lesson-callout emphasis"><p>The best method depends on your research question, the variables, what is feasible and ethical, and whether you need evidence about cause and effect.</p></div>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>A researcher notices that students who sleep longer tend to report better focus. Why does this association alone not prove that more sleep caused better focus?<button type="button" class="answer-toggle" data-answer-target="lesson-28-association" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-28-association" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The study only observes a pattern. Other factors, such as stress, health, workload, or screen use, could affect both sleep and focus; the direction could also be reversed. The association alone cannot identify a cause.</li></ul></div></li>
+              </ol>
             </div>
-            <p>
-              Add the final lesson content here, including summaries, exit tickets, or extension activities.
-            </p>
+
+            <div class="lesson-section lesson-simulation">
+              <h4>Technology / Data Investigation: Choose a Study Method</h4>
+              <p>For each scenario, choose a survey, observational study, experiment, or simulation. Explain why the method fits, identify the sample and relevant variables or groups, and state what conclusion is justified and what is not. Think about feasibility, ethics, and whether causal evidence is needed.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li><strong>Survey, student preferences:</strong> The student council wants to learn which lunch options students would choose next month. Which method fits, and what could the results tell them?<button type="button" class="answer-toggle" data-answer-target="lesson-28-method-1" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-28-method-1" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Use a survey of a sample of students. Ask neutrally about preferred options and include reasonable choices such as “Other.” The results can estimate preferences among students represented by the sample, but cannot show that a lunch option causes a change in attendance or satisfaction.</li></ul></div></li>
+                <li><strong>Survey, study habits:</strong> A counselor wants to learn how much time students spend studying and what gets in their way. Recommend a format and identify one limitation.<button type="button" class="answer-toggle" data-answer-target="lesson-28-method-2" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-28-method-2" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Survey a sample of students with a clearly defined time period and a mix of time-range choices and an optional open-ended prompt. Answers can describe reported study habits and obstacles, but may be affected by faulty recall or inaccurate self-reports.</li></ul></div></li>
+                <li><strong>Observational study, sleep and grades:</strong> A researcher records students' usual sleep hours and grades without changing anyone's routine. Identify the variables, a possible confounder, and what conclusion is justified.<button type="button" class="answer-toggle" data-answer-target="lesson-28-method-3" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-28-method-3" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>This is an observational study of sleep duration and grades. Stress or course workload could influence both sleep and grades, creating a confounding explanation. The study can report an association, but cannot conclude that more sleep caused higher grades.</li></ul></div></li>
+                <li><strong>Observational study, sports injuries:</strong> A school nurse compares injury rates among students who choose to play different sports. Why might the groups differ before the sport is considered?<button type="button" class="answer-toggle" data-answer-target="lesson-28-method-4" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-28-method-4" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Students choose their sports, so groups may differ in prior fitness, experience, training time, or risk-taking. The nurse can describe injury-rate associations, but those differences make a simple causal conclusion about the sport uncertain.</li></ul></div></li>
+                <li><strong>Experiment with placebo control:</strong> Researchers want to test whether a new study-skills app improves quiz scores. Design a fair comparison using a treatment group and a control group, and explain the placebo effect concern.<button type="button" class="answer-toggle" data-answer-target="lesson-28-method-5" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-28-method-5" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>Randomly assign volunteers to use the app or a control experience with the same amount of study time and attention, but without the app's active features. If possible, keep score graders unaware of group assignments. A placebo-style comparison helps account for attention and expectations; any causal conclusion should be limited to the participants and conditions studied.</li></ul></div></li>
+                <li><strong>Experiment, classroom seating:</strong> A teacher wants to know whether assigned seating near the front improves participation. What treatment and comparison could be used, and what should be randomized?<button type="button" class="answer-toggle" data-answer-target="lesson-28-method-6" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-28-method-6" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The treatment is assigned seating near the front; the control condition is the usual seating arrangement. If feasible, randomly assign students or class periods to conditions and record participation consistently. Random assignment helps reduce pre-existing differences, though the study should avoid disadvantaging students and should not overgeneralize beyond the setting.</li></ul></div></li>
+                <li><strong>Simulation, emergency planning:</strong> A city wants to explore how long it might take students to evacuate a large school under several hallway and exit plans. Why might simulation be useful, and what should be checked?<button type="button" class="answer-toggle" data-answer-target="lesson-28-method-7" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-28-method-7" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>A model can explore many layouts and crowd conditions without repeatedly running risky full-scale evacuations. Check that assumptions about walking speeds, bottlenecks, and behavior are realistic; results are predictions from the model, not proof of actual evacuation times.</li></ul></div></li>
+                <li><strong>Simulation, sports strategy:</strong> A coach models different free-throw percentages over many games to estimate possible season outcomes. What can the simulation show, and what does it depend on?<button type="button" class="answer-toggle" data-answer-target="lesson-28-method-8" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-28-method-8" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>The simulation can show a range of outcomes predicted by the model for the assumed shot rates and game conditions. Its usefulness depends on whether those assumptions match real games; it does not by itself establish that a particular practice plan caused improvement.</li></ul></div></li>
+              </ol>
+            </div>
+
+            <div class="lesson-section lesson-closure">
+              <h4>Closure</h4>
+              <p>A school claims that a new morning exercise program improves students' focus in first period.</p>
+              <ol class="lesson-list lesson-ordered-list">
+                <li>Recommend a study design and explain what conclusion it could support. Name one limitation or safeguard to consider.<button type="button" class="answer-toggle" data-answer-target="lesson-28-closure" data-show-label="Show Possible Answer" data-hide-label="Hide Possible Answer" aria-expanded="false">Show Possible Answer</button><div id="lesson-28-closure" class="possible-answer question-answer" hidden><ul class="lesson-list"><li>With consent and a feasible schedule, randomly assign volunteers or class groups to the exercise program or a comparable control activity, then measure focus using the same method for both groups. Random assignment and a fair comparison can provide evidence about a causal effect in the studied setting. Consider health and access needs, use a neutral focus measure, and avoid claiming the result applies to every school without further study.</li></ul></div></li>
+              </ol>
+              <div class="lesson-callout emphasis"><p><strong>The data-collection method sets the limits on what you can conclude: description, association, prediction, or stronger evidence about cause and effect.</strong></p></div>
+            </div>
           </section>
         </div>
       </div>
     </main>
+    <script>
+      document.querySelectorAll("[data-answer-target]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const answer = document.getElementById(button.dataset.answerTarget);
+          const showAnswer = answer.hidden;
+          answer.hidden = !showAnswer;
+          button.setAttribute("aria-expanded", String(showAnswer));
+          button.textContent = showAnswer ? "Hide Possible Answer" : "Show Possible Answer";
+        });
+      });
+
+      document.querySelectorAll(".glossary-term").forEach((term) => {
+        const toggleDefinition = () => {
+          const isOpen = term.classList.toggle("is-open");
+          term.setAttribute("aria-expanded", String(isOpen));
+        };
+        term.addEventListener("click", toggleDefinition);
+        term.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggleDefinition();
+          }
+        });
+      });
+    </script>
   </body>
 </html>
